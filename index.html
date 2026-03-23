@@ -19,10 +19,16 @@
     }
 
     h1 {
-      font-size: 5rem; /* tamaño grande en desktop */
+      font-size: 5rem; 
       margin: 20px 0;
       text-align: center;
       color: #333;
+    }
+
+    .botones {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
     }
 
     button {
@@ -41,7 +47,6 @@
       background-color: #0056b3;
     }
 
-    /* Ajustes para pantallas pequeñas */
     @media (max-width: 600px) {
       h1 {
         font-size: 3rem;
@@ -58,9 +63,11 @@
 
   <h1 id="contador">0</h1>
 
-  <div>
-    <button onclick="sumar()">+1</button>
-    <button onclick="restar()">-1</button>
+  <div class="botones">
+    <button onclick="sumar(1)">+1</button>
+    <button onclick="restar(1)">-1</button>
+    <button onclick="sumar(10)">+10</button>
+    <button onclick="restar(10)">-10</button>
   </div>
 
   <!-- Firebase SDK -->
@@ -68,7 +75,6 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { getDatabase, ref, onValue, runTransaction } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-    // Configuración de Firebase (actualiza databaseURL con tu URL real)
     const firebaseConfig = {
       apiKey: "AIzaSyC6AxztIL3sQnttXBdJoDHzF6afDPOwlz8",
       authDomain: "mcmasivo.firebaseapp.com",
@@ -76,7 +82,6 @@
       projectId: "mcmasivo"
     };
 
-    // Inicializar Firebase
     const app = initializeApp(firebaseConfig);
     const db = getDatabase(app);
 
@@ -88,12 +93,12 @@
     });
 
     // Funciones globales para sumar/restar
-    window.sumar = function() {
-      runTransaction(contadorRef, (valor) => (valor || 0) + 1);
+    window.sumar = function(valor) {
+      runTransaction(contadorRef, (v) => (v || 0) + valor);
     };
 
-    window.restar = function() {
-      runTransaction(contadorRef, (valor) => (valor || 0) - 1);
+    window.restar = function(valor) {
+      runTransaction(contadorRef, (v) => (v || 0) - valor);
     };
   </script>
 
