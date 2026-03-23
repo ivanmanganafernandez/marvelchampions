@@ -3,45 +3,99 @@
 <head>
   <meta charset="UTF-8">
   <title>Contador compartido</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Estilos CSS -->
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    h1 {
+      font-size: 5rem; /* tamaño grande en desktop */
+      margin: 20px 0;
+      text-align: center;
+      color: #333;
+    }
+
+    button {
+      font-size: 2rem;
+      padding: 15px 30px;
+      margin: 5px;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+      background-color: #007bff;
+      color: white;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Ajustes para pantallas pequeñas */
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 3rem;
+      }
+
+      button {
+        font-size: 1.5rem;
+        padding: 10px 20px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<h1 id="contador">0</h1>
+  <h1 id="contador">0</h1>
 
-<button onclick="sumar()">+1</button>
-<button onclick="restar()">-1</button>
+  <div>
+    <button onclick="sumar()">+1</button>
+    <button onclick="restar()">-1</button>
+  </div>
 
-<!-- Firebase SDK (versión moderna) -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-  import { getDatabase, ref, onValue, runTransaction } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+  <!-- Firebase SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getDatabase, ref, onValue, runTransaction } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyC6AxztIL3sQnttXBdJoDHzF6afDPOwlz8",
-    authDomain: "mcmasivo.firebaseapp.com",
-    databaseURL: "https://mcmasivo-default-rtdb.europe-west1.firebasedatabase.app",
-    projectId: "mcmasivo"
-  };
+    // Configuración de Firebase (actualiza databaseURL con tu URL real)
+    const firebaseConfig = {
+      apiKey: "AIzaSyC6AxztIL3sQnttXBdJoDHzF6afDPOwlz8",
+      authDomain: "mcmasivo.firebaseapp.com",
+      databaseURL: "https://mcmasivo-default-rtdb.europe-west1.firebasedatabase.app/",
+      projectId: "mcmasivo"
+    };
 
-  const app = initializeApp(firebaseConfig);
-  const db = getDatabase(app);
+    // Inicializar Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
 
-  const contadorRef = ref(db, "contador");
+    const contadorRef = ref(db, "contador");
 
-  // Escuchar cambios en tiempo real
-  onValue(contadorRef, (snapshot) => {
-    document.getElementById("contador").textContent = snapshot.val() ?? 0;
-  });
+    // Escuchar cambios en tiempo real
+    onValue(contadorRef, (snapshot) => {
+      document.getElementById("contador").textContent = snapshot.val() ?? 0;
+    });
 
-  // Funciones globales
-  window.sumar = function() {
-    runTransaction(contadorRef, (valor) => (valor || 0) + 1);
-  };
+    // Funciones globales para sumar/restar
+    window.sumar = function() {
+      runTransaction(contadorRef, (valor) => (valor || 0) + 1);
+    };
 
-  window.restar = function() {
-    runTransaction(contadorRef, (valor) => (valor || 0) - 1);
-  };
-</script>
+    window.restar = function() {
+      runTransaction(contadorRef, (valor) => (valor || 0) - 1);
+    };
+  </script>
 
 </body>
 </html>
