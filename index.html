@@ -7,16 +7,24 @@
 
   <!-- Estilos CSS -->
   <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-    }
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  
+  /* Imagen de fondo */
+  background-image: url('img/fondo.jpg'); /* ruta de tu imagen */
+  background-size: cover;       /* hace que cubra toda la pantalla */
+  background-position: center;  /* centra la imagen */
+  background-repeat: no-repeat; /* evita que se repita */
+  background-attachment: fixed; /* opcional: efecto parallax */
+  
+  color: white; /* opcional: para que el texto se vea sobre el fondo */
+}
 
     h1 {
       font-size: 8rem; 
