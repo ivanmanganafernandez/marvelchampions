@@ -1,22 +1,47 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Mi primera web</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 100px;
-            background-color: #f5f5f5;
-        }
-        h1 {
-            color: #333;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Contador compartido</title>
 </head>
 <body>
-    <h1>Hola mundo 🚀</h1>
-    <p>¡Mi web ya funciona!</p>
+
+<h1 id="contador">0</h1>
+
+<button onclick="sumar()">+1</button>
+<button onclick="restar()">-1</button>
+
+<!-- Firebase SDK (versión moderna) -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getDatabase, ref, onValue, runTransaction } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyC6AxztIL3sQnttXBdJoDHzF6afDPOwlz8",
+    authDomain: "mcmasivo.firebaseapp.com",
+    databaseURL: "https://mcmasivo-default-rtdb.europe-west1.firebasedatabase.app",
+    projectId: "mcmasivo"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  const contadorRef = ref(db, "contador");
+
+  // Escuchar cambios en tiempo real
+  onValue(contadorRef, (snapshot) => {
+    document.getElementById("contador").textContent = snapshot.val() ?? 0;
+  });
+
+  // Funciones globales
+  window.sumar = function() {
+    runTransaction(contadorRef, (valor) => (valor || 0) + 1);
+  };
+
+  window.restar = function() {
+    runTransaction(contadorRef, (valor) => (valor || 0) - 1);
+  };
+</script>
+
 </body>
 </html>
