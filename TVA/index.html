@@ -1,91 +1,27 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TVA | Líneas Temporales</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+<html lang="es"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TVA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="app-shell">
-    <header class="app-header">
-      <div>
-        <span class="eyebrow">TIME VARIANCE AUTHORITY</span>
-        <h1>Selecciona un destino</h1>
-        <p>Elige una línea temporal para viajar y comenzar la misión.</p>
-      </div>
-      <div class="status">
-        <span class="status__label">Estado del telar</span>
-        <strong>ESTABLE</strong>
-      </div>
-    </header>
+<main class="app">
+<header>
+<div class="brand">
+<img class="logo" src="./imagenes/TVALogo.png" alt="TVA">
+<div>
+<div class="mini">TIME VARIANCE AUTHORITY</div>
+<h1>Elige tu destino</h1>
+</div>
+</div>
+</header>
 
-    <section class="timeline-list" aria-label="Líneas temporales disponibles">
-
-      <article class="timeline-card">
-        <div class="timeline-card__image">
-          <img src="https://images.unsplash.com/photo-1564399579883-451a5d44ec08?auto=format&fit=crop&w=900&q=80" alt="Ciudad en guerra" />
-        </div>
-        <div class="timeline-card__content">
-          <span class="timeline-card__year">1945</span>
-          <h2>La victoria de Hydra</h2>
-          <p>Hydra ha ganado la guerra y controla gran parte del mundo. La línea temporal debe ser estabilizada.</p>
-        </div>
-        <a class="travel-button" href="#" aria-label="Viajar a 1945">
-          Viajar
-          <span aria-hidden="true">→</span>
-        </a>
-      </article>
-
-      <article class="timeline-card">
-        <div class="timeline-card__image">
-          <img src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=900&q=80" alt="Ciudad de noche" />
-        </div>
-        <div class="timeline-card__content">
-          <span class="timeline-card__year">2012</span>
-          <h2>Invasión de Nueva York</h2>
-          <p>El portal permanece abierto y las fuerzas invasoras siguen llegando a la ciudad.</p>
-        </div>
-        <a class="travel-button" href="#" aria-label="Viajar a 2012">
-          Viajar
-          <span aria-hidden="true">→</span>
-        </a>
-      </article>
-
-      <article class="timeline-card">
-        <div class="timeline-card__image">
-          <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=900&q=80" alt="Robot futurista" />
-        </div>
-        <div class="timeline-card__content">
-          <span class="timeline-card__year">2025</span>
-          <h2>Ultron evolucionado</h2>
-          <p>Ultron domina las redes globales y ha convertido el planeta en un territorio controlado por máquinas.</p>
-        </div>
-        <a class="travel-button" href="#" aria-label="Viajar a 2025">
-          Viajar
-          <span aria-hidden="true">→</span>
-        </a>
-      </article>
-
-      <article class="timeline-card">
-        <div class="timeline-card__image">
-          <img src="https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=900&q=80" alt="Paisaje futurista" />
-        </div>
-        <div class="timeline-card__content">
-          <span class="timeline-card__year">2099</span>
-          <h2>Era de Apocalipsis</h2>
-          <p>Apocalipsis gobierna un futuro devastado en el que la humanidad lucha por sobrevivir.</p>
-        </div>
-        <a class="travel-button" href="#" aria-label="Viajar a 2099">
-          Viajar
-          <span aria-hidden="true">→</span>
-        </a>
-      </article>
-
-    </section>
-  </main>
-</body>
-</html>
+<section class="card"><div class="img"></div><div class="content"><span>1945</span><h2>Hydra</h2><p>Descripción de la línea temporal.</p></div><button>Viajar</button></section>
+<section class="card"><div class="img"></div><div class="content"><span>2012</span><h2>Nueva York</h2><p>Descripción de la línea temporal.</p></div><button>Viajar</button></section>
+<section class="card"><div class="img"></div><div class="content"><span>2025</span><h2>Ultron</h2><p>Descripción de la línea temporal.</p></div><button>Viajar</button></section>
+<section class="card"><div class="img"></div><div class="content"><span>2099</span><h2>Apocalipsis</h2><p>Descripción de la línea temporal.</p></div><button>Viajar</button></section>
+</main>
+</body></html>
