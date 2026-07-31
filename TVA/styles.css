@@ -47,8 +47,13 @@ html {
 }
 
 body {
-    min-height: 100vh;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
     margin: 0;
+
+    display: flex;
+    justify-content: center;
 
     background:
         radial-gradient(
@@ -60,7 +65,7 @@ body {
 
     color: var(--text);
     font-family: "Share Tech Mono", monospace;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 img {
@@ -105,16 +110,24 @@ body::before {
 
 .terminal {
     width: min(100%, 760px);
-    min-height: 100vh;
+    height: 100vh;
+    height: 100dvh;
 
     margin: 0 auto;
     padding: 6px;
+
+    display: flex;
 }
 
 .terminal__screen {
     position: relative;
 
-    min-height: calc(100vh - 12px);
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    min-width: 0;
+    min-height: 0;
 
     padding: 16px 18px 12px;
 
@@ -343,9 +356,11 @@ body::before {
 
 .timeline-list {
     display: flex;
+    flex: 1;
     flex-direction: column;
     gap: 6px;
 
+    min-height: 0;
     padding: 0 20px;
 }
 
@@ -647,7 +662,7 @@ body::before {
     align-items: end;
     gap: 10px;
 
-    margin: 10px 20px 0;
+    margin: auto 20px 0;
     padding: 7px 0 0;
 
     border-top: 1px solid var(--border);
@@ -783,7 +798,7 @@ body::before {
     }
 
     .terminal__screen {
-        min-height: calc(100vh - 6px);
+        min-height: 0;
 
         padding: 10px 7px 8px;
 
@@ -899,7 +914,7 @@ body::before {
     .footer {
         gap: 5px;
 
-        margin: 7px 8px 0;
+        margin: auto 8px 0;
         padding-top: 5px;
     }
 
