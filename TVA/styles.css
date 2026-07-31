@@ -1079,7 +1079,7 @@ body::before {
 
     transform-origin: center;
 
-    animation: tva-horizontal-glitch 3s steps(1, end) infinite;
+    animation: tva-horizontal-glitch 11s steps(1, end) infinite;
 }
 
 @keyframes tva-horizontal-glitch {
@@ -1152,7 +1152,7 @@ body::before {
 
 .timeline-card h2,
 .timeline-card__year {
-    animation: tva-text-glitch 3s steps(1, end) infinite;
+    animation: tva-text-glitch 11s steps(1, end) infinite;
 }
 
 @keyframes tva-text-glitch {
