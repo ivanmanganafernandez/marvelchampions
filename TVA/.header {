@@ -129,7 +129,7 @@ body::before {
     min-width: 0;
     min-height: 0;
 
-    padding: 16px 18px 12px;
+    padding: 10px 10px 8px;
 
     background:
         linear-gradient(
@@ -228,7 +228,7 @@ body::before {
     align-items: center;
     gap: 18px;
 
-    padding: 6px 20px 15px;
+    padding: 4px 10px 10px;
 }
 
 .header__logo {
@@ -338,7 +338,7 @@ body::before {
     align-items: center;
     justify-content: space-between;
 
-    margin: 0 20px 7px;
+    margin: 0 10px 5px;
     padding: 4px 1px;
 
     border-top: 1px solid var(--border);
@@ -367,7 +367,7 @@ body::before {
     gap: 10px;
 
     min-height: 0;
-    padding: 0 20px;
+    padding: 0 10px;
 
     overflow-y: auto;
     overflow-x: hidden;
