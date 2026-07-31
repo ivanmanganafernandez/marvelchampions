@@ -850,7 +850,8 @@ body::before {
 
 .timeline-list {
     position: relative;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .timeline-list::before {
