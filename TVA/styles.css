@@ -923,46 +923,85 @@ body::before {
         opacity: 0;
     }
 
-   /* =====================================================
-   GLITCH OCASIONAL DEL DISPOSITIVO
+/* =====================================================
+   GLITCH TEMPAD
 ===================================================== */
 
-.header,
-.section-divider,
-.timeline-list,
-.footer {
-    animation: device-glitch 1s infinite;
+.terminal__screen {
+    animation: tempad-glitch 3s infinite;
 }
 
-@keyframes device-glitch {
-    0%,
-    88%,
-    90%,
-    92%,
-    94%,
-    100% {
-        transform: translate(0);
-        filter: none;
+@keyframes tempad-glitch {
+
+    0%, 94%, 100% {
+        transform: translateX(0);
+        filter: brightness(1) contrast(1);
     }
 
-    89% {
-        transform: translate(-1px, 0);
-        filter: brightness(1.18) contrast(1.08);
+    95% {
+        transform: translateX(-2px);
+        filter: brightness(1.18) contrast(1.25);
     }
 
-    91% {
-        transform: translate(1px, 0);
-        filter: brightness(0.9) contrast(1.18);
+    96% {
+        transform: translateX(2px);
+        filter: brightness(0.88) contrast(1.45);
     }
 
-    93% {
-        transform: translate(-0.5px, 0);
-        filter: brightness(1.08);
+    97% {
+        transform: translateX(-1px);
+        filter: brightness(1.08) contrast(1.15);
+    }
+
+    98% {
+        transform: translateX(1px);
+    }
+
+    99% {
+        transform: translateX(0);
+        filter: brightness(1) contrast(1);
     }
 }
 
-    100% {
-        transform: translateY(650%);
-        opacity: 0;
+/* =====================================================
+   FRANJA DE INTERFERENCIA
+===================================================== */
+
+.terminal__screen::selection {
+    background: transparent;
+}
+
+.terminal__screen::before {
+    animation:
+        screen-frame 3s infinite;
+}
+
+@keyframes screen-frame {
+
+    0%,94%,100%{
+        box-shadow:
+            inset 0 0 30px rgba(0,0,0,.9),
+            inset 0 0 5px rgba(228,119,19,.25);
+    }
+
+    95%{
+        box-shadow:
+            inset 0 42px 0 rgba(255,170,80,.18),
+            inset 0 0 30px rgba(0,0,0,.9),
+            inset 0 0 5px rgba(228,119,19,.25);
+    }
+
+    96%{
+        box-shadow:
+            inset 0 90px 0 rgba(255,170,80,.10),
+            inset 0 0 30px rgba(0,0,0,.9),
+            inset 0 0 5px rgba(228,119,19,.25);
+    }
+
+    97%{
+        box-shadow:
+            inset 0 140px 0 rgba(255,170,80,.15),
+            inset 0 0 30px rgba(0,0,0,.9),
+            inset 0 0 5px rgba(228,119,19,.25);
     }
 }
