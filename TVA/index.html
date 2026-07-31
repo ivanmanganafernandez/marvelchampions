@@ -3,125 +3,315 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>TVA</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    >
+
+    <meta name="theme-color" content="#080603">
+
+    <title>TVA | Selección de destino</title>
 
     <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-    <main class="app">
+    <main class="terminal">
 
-        <!-- CABECERA -->
-        <header class="header">
+        <div class="terminal__screen">
 
-            <div class="brand">
+            <!-- CABECERA -->
+            <header class="header">
 
-                <div class="logo">
-                     <img src="imagenes/TVALogo.png" alt="TVA">
+                <div class="header__logo">
+                    <img
+                        src="imagenes/TVALogo.png"
+                        alt="Logotipo de la TVA"
+                    >
                 </div>
 
-                <div>
-                    <div class="mini">
-                        TIME VARIANCE AUTHORITY
-                    </div>
+                <div class="header__content">
+
+                    <p class="header__organization">
+                        Time Variance Authority
+                    </p>
 
                     <h1>Elige tu destino</h1>
+
+                    <div class="header__status">
+                        <span class="status-light"></span>
+                        Sistema temporal operativo
+                    </div>
+
                 </div>
 
+            </header>
+
+            <!-- DIVISOR -->
+            <div class="section-divider">
+
+                <span>Destinos autorizados</span>
+
+                <span class="section-divider__code">
+                    TVA / TEMP-04
+                </span>
+
             </div>
 
-        </header>
+            <!-- LISTA DE DESTINOS -->
+            <section
+                class="timeline-list"
+                aria-label="Líneas temporales disponibles"
+            >
 
-        <!-- TARJETA 1 -->
-        <section class="card">
+                <!-- HYDRA -->
+                <article class="timeline-card">
 
-            <div class="img"></div>
+                    <div class="timeline-card__image">
 
-            <div class="content">
-                <span>1945</span>
+                        <img
+                            src="img/hydra.jpg"
+                            alt="Línea temporal Hydra"
+                        >
 
-                <h2>Hydra</h2>
+                        <div class="timeline-card__image-overlay"></div>
 
-                <p>
-                    Descripción de la línea temporal.
-                </p>
-            </div>
+                        <span class="timeline-card__identifier">
+                            TL-1945-07
+                        </span>
 
-            <button>
-                <span>Viajar</span>
-                <span class="arrow">➜</span>
-            </button>
+                    </div>
 
-        </section>
+                    <div class="timeline-card__content">
 
-        <!-- TARJETA 2 -->
-        <section class="card">
+                        <span class="timeline-card__year">
+                            1945
+                        </span>
 
-            <div class="img"></div>
+                        <h2>Hydra</h2>
 
-            <div class="content">
-                <span>2012</span>
+                        <div class="timeline-card__line"></div>
 
-                <h2>Nueva York</h2>
+                        <p>
+                            Infiltración detectada en una instalación
+                            estratégica de Hydra.
+                        </p>
 
-                <p>
-                    Descripción de la línea temporal.
-                </p>
-            </div>
+                    </div>
 
-            <button>
-                <span>Viajar</span>
-                <span class="arrow">➜</span>
-            </button>
+                    <a
+                        class="travel-button"
+                        href="hydra.html"
+                        aria-label="Viajar a Hydra, año 1945"
+                    >
 
-        </section>
+                        <span>Viajar</span>
 
-        <!-- TARJETA 3 -->
-        <section class="card">
+                        <span
+                            class="travel-button__arrow"
+                            aria-hidden="true"
+                        >
+                            →
+                        </span>
 
-            <div class="img"></div>
+                    </a>
 
-            <div class="content">
-                <span>2025</span>
+                </article>
 
-                <h2>Ultron</h2>
+                <!-- NUEVA YORK -->
+                <article class="timeline-card">
 
-                <p>
-                    Descripción de la línea temporal.
-                </p>
-            </div>
+                    <div class="timeline-card__image">
 
-            <button>
-                <span>Viajar</span>
-                <span class="arrow">➜</span>
-            </button>
+                        <img
+                            src="img/nueva-york.jpg"
+                            alt="Línea temporal de Nueva York"
+                        >
 
-        </section>
+                        <div class="timeline-card__image-overlay"></div>
 
-        <!-- TARJETA 4 -->
-        <section class="card">
+                        <span class="timeline-card__identifier">
+                            TL-2012-05
+                        </span>
 
-            <div class="img"></div>
+                    </div>
 
-            <div class="content">
-                <span>2099</span>
+                    <div class="timeline-card__content">
 
-                <h2>Apocalipsis</h2>
+                        <span class="timeline-card__year">
+                            2012
+                        </span>
 
-                <p>
-                    Descripción de la línea temporal.
-                </p>
-            </div>
+                        <h2>Nueva York</h2>
 
-            <button>
-                <span>Viajar</span>
-                <span class="arrow">➜</span>
-            </button>
+                        <div class="timeline-card__line"></div>
 
-        </section>
+                        <p>
+                            Una variante ha alterado los acontecimientos
+                            de la batalla de Nueva York.
+                        </p>
+
+                    </div>
+
+                    <a
+                        class="travel-button"
+                        href="nueva-york.html"
+                        aria-label="Viajar a Nueva York, año 2012"
+                    >
+
+                        <span>Viajar</span>
+
+                        <span
+                            class="travel-button__arrow"
+                            aria-hidden="true"
+                        >
+                            →
+                        </span>
+
+                    </a>
+
+                </article>
+
+                <!-- ULTRON -->
+                <article class="timeline-card">
+
+                    <div class="timeline-card__image">
+
+                        <img
+                            src="img/ultron.jpg"
+                            alt="Línea temporal de Ultron"
+                        >
+
+                        <div class="timeline-card__image-overlay"></div>
+
+                        <span class="timeline-card__identifier">
+                            TL-2025-09
+                        </span>
+
+                    </div>
+
+                    <div class="timeline-card__content">
+
+                        <span class="timeline-card__year">
+                            2025
+                        </span>
+
+                        <h2>Ultron</h2>
+
+                        <div class="timeline-card__line"></div>
+
+                        <p>
+                            Una inteligencia artificial amenaza la
+                            estabilidad de la Sagrada Línea Temporal.
+                        </p>
+
+                    </div>
+
+                    <a
+                        class="travel-button"
+                        href="ultron.html"
+                        aria-label="Viajar a la línea temporal de Ultron, año 2025"
+                    >
+
+                        <span>Viajar</span>
+
+                        <span
+                            class="travel-button__arrow"
+                            aria-hidden="true"
+                        >
+                            →
+                        </span>
+
+                    </a>
+
+                </article>
+
+                <!-- APOCALIPSIS -->
+                <article class="timeline-card">
+
+                    <div class="timeline-card__image">
+
+                        <img
+                            src="img/apocalipsis.jpg"
+                            alt="Línea temporal del Apocalipsis"
+                        >
+
+                        <div class="timeline-card__image-overlay"></div>
+
+                        <span class="timeline-card__identifier">
+                            TL-2099-02
+                        </span>
+
+                    </div>
+
+                    <div class="timeline-card__content">
+
+                        <span class="timeline-card__year">
+                            2099
+                        </span>
+
+                        <h2>Apocalipsis</h2>
+
+                        <div class="timeline-card__line"></div>
+
+                        <p>
+                            El colapso de esta realidad está próximo.
+                            Intervención inmediata autorizada.
+                        </p>
+
+                    </div>
+
+                    <a
+                        class="travel-button"
+                        href="apocalipsis.html"
+                        aria-label="Viajar al Apocalipsis, año 2099"
+                    >
+
+                        <span>Viajar</span>
+
+                        <span
+                            class="travel-button__arrow"
+                            aria-hidden="true"
+                        >
+                            →
+                        </span>
+
+                    </a>
+
+                </article>
+
+            </section>
+
+            <!-- PIE -->
+            <footer class="footer">
+
+                <div class="footer__block">
+                    <span>TVA Device</span>
+                    <strong>NS.612880-242</strong>
+                </div>
+
+                <div class="footer__center">
+
+                    <p>For all time. Always.</p>
+
+                    <img
+                        src="img/logo-tva.png"
+                        alt=""
+                        aria-hidden="true"
+                    >
+
+                </div>
+
+                <div class="footer__block footer__block--right">
+                    <span>Security clearance</span>
+                    <strong>Level 5</strong>
+                </div>
+
+            </footer>
+
+        </div>
 
     </main>
 
