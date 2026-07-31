@@ -845,78 +845,85 @@ body::before {
 }
 
 /* =====================================================
-   ENCENDER PANTALLA
-===================================================== */
-.terminal__screen {
-    animation:
-        device-boot 0.8s ease-out both,
-        screen-flicker 7s 0.8s infinite;
-}
-
-@keyframes device-boot {
-    0% {
-        opacity: 0;
-        filter: brightness(4);
-        transform: scaleY(0.03);
-    }
-
-    35% {
-        opacity: 1;
-        filter: brightness(2);
-        transform: scaleY(0.08);
-    }
-
-    70% {
-        filter: brightness(1.25);
-        transform: scaleY(1.02);
-    }
-
-    100% {
-        opacity: 1;
-        filter: brightness(1);
-        transform: scaleY(1);
-    }
-}
-
-/* =====================================================
-   BANDA DE ESCANEO
+   BANDA DE ESCANEO IRREGULAR
 ===================================================== */
 
 .timeline-list {
     position: relative;
+    overflow: hidden;
 }
 
 .timeline-list::before {
     content: "";
 
     position: absolute;
-    top: -30%;
+    top: -28%;
     left: 0;
 
     width: 100%;
-    height: 18%;
+    height: 16%;
 
     pointer-events: none;
     z-index: 2;
 
+    opacity: 0;
+
     background: linear-gradient(
         to bottom,
-        transparent,
-        rgba(255, 154, 56, 0.02),
-        rgba(255, 154, 56, 0.08),
-        rgba(255, 154, 56, 0.02),
-        transparent
+        transparent 0%,
+        rgba(255, 154, 56, 0.015) 20%,
+        rgba(255, 154, 56, 0.05) 45%,
+        rgba(255, 178, 94, 0.11) 52%,
+        rgba(255, 154, 56, 0.04) 65%,
+        transparent 100%
     );
 
-    animation: scan-band 7s linear infinite;
+    filter: blur(0.4px);
+
+    animation: scan-band-irregular 9s ease-in-out infinite;
 }
 
-@keyframes scan-band {
-    from {
+@keyframes scan-band-irregular {
+    0% {
         transform: translateY(0);
+        opacity: 0;
     }
 
-    to {
+    8% {
+        opacity: 0;
+    }
+
+    12% {
+        opacity: 0.35;
+    }
+
+    20% {
+        transform: translateY(120%);
+        opacity: 0.7;
+    }
+
+    34% {
+        transform: translateY(260%);
+        opacity: 0.45;
+    }
+
+    48% {
+        transform: translateY(390%);
+        opacity: 0.8;
+    }
+
+    60% {
+        transform: translateY(520%);
+        opacity: 0.3;
+    }
+
+    70% {
         transform: translateY(650%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(650%);
+        opacity: 0;
     }
 }
