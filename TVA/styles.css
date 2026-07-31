@@ -931,7 +931,7 @@ body::before {
 .section-divider,
 .timeline-list,
 .footer {
-    animation: device-glitch 11s infinite;
+    animation: device-glitch 1s infinite;
 }
 
 @keyframes device-glitch {
