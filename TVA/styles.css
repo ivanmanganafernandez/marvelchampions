@@ -1,13 +1,126 @@
-*{box-sizing:border-box}body{margin:0;background:#111;color:#eee;font-family:'Roboto Mono',monospace}
-.app{max-width:760px;margin:auto;padding:12px}
-.brand{display:flex;align-items:center;gap:14px;margin-bottom:12px}
-.logo{width:56px;height:56px;object-fit:contain;background:#2b2b2b;border:1px solid #77501d;padding:4px}
-.mini{font:600 .7rem 'Barlow Condensed';letter-spacing:.18em;color:#d7882b}
-h1{margin:2px 0 0;font:700 1.8rem 'Barlow Condensed';text-transform:uppercase}
-.card{width:88%;margin:8px auto;display:grid;grid-template-columns:90px 1fr 84px;background:#1a1a16;border:1px solid #77501d;min-height:96px}
-.img{background:#444}
-.content{padding:8px 10px;overflow:hidden}
-.content span{color:#f0a044;font:700 1rem 'Barlow Condensed'}
-.content h2{margin:2px 0;font:700 1.1rem 'Barlow Condensed';white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#dc7b17}
-.content p{margin:4px 0 0;font-size:.68rem;color:#b5ad9b}
-button{border:0;background:#dc7b17;font:700 .9rem 'Barlow Condensed';text-transform:uppercase}
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #111;
+    color: #eee;
+    font-family: Arial, sans-serif;
+}
+
+/* ==========================
+   CONTENEDOR PRINCIPAL
+========================== */
+
+.app {
+    max-width: 760px;
+    margin: auto;
+    padding: 12px;
+}
+
+/* ==========================
+   CABECERA
+========================== */
+
+.header {
+    width: 88%;
+    margin: 0 auto 12px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo {
+    width: 56px;
+    height: 56px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #2b2b2b;
+    border: 1px solid #77501d;
+
+    color: #d7882b;
+    font-weight: bold;
+}
+
+.mini {
+    font-size: 0.7rem;
+    color: #d7882b;
+    letter-spacing: 0.15em;
+}
+
+h1 {
+    margin: 2px 0 0;
+    font-size: 1.8rem;
+}
+
+/* ==========================
+   TARJETAS
+========================== */
+
+.card {
+    width: 88%;
+    min-height: 96px;
+
+    margin: 8px auto;
+
+    display: grid;
+    grid-template-columns: 90px 1fr 92px;
+
+    background: #1a1a16;
+    border: 1px solid #77501d;
+}
+
+.img {
+    background: #444;
+}
+
+.content {
+    padding: 8px;
+}
+
+.content span {
+    color: #f0a044;
+}
+
+.content h2 {
+    margin: 2px 0;
+    color: #dc7b17;
+}
+
+.content p {
+    font-size: 0.68rem;
+    color: #b5ad9b;
+}
+
+/* ==========================
+   BOTÓN
+========================== */
+
+button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    background: #dc7b17;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.arrow {
+    font-size: 1.3rem;
+    transition: transform 0.2s ease;
+}
+
+button:hover .arrow {
+    transform: translateX(3px);
+}
