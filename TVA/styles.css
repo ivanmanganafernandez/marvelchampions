@@ -257,7 +257,7 @@ body::before {
 
     opacity: 0.95;
 
-    animation: logo-image-pulse 2s ease-in-out infinite;
+    animation: logo-image-pulse 3s ease-in-out infinite;
 }
 
 .header__organization {
