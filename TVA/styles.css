@@ -879,5 +879,44 @@ body::before {
 }
 
 /* =====================================================
-   ENCENDER PANTALLA
+   BANDA DE ESCANEO
 ===================================================== */
+
+.timeline-list {
+    position: relative;
+}
+
+.timeline-list::before {
+    content: "";
+
+    position: absolute;
+    top: -30%;
+    left: 0;
+
+    width: 100%;
+    height: 18%;
+
+    pointer-events: none;
+    z-index: 2;
+
+    background: linear-gradient(
+        to bottom,
+        transparent,
+        rgba(255, 154, 56, 0.02),
+        rgba(255, 154, 56, 0.08),
+        rgba(255, 154, 56, 0.02),
+        transparent
+    );
+
+    animation: scan-band 7s linear infinite;
+}
+
+@keyframes scan-band {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(650%);
+    }
+}
