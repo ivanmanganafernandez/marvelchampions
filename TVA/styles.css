@@ -422,7 +422,7 @@ body::before {
         minmax(0, 1fr)
         var(--button-width);
 
-    min-height: 128px;
+    min-height: 108px;
 
     background:
         linear-gradient(
