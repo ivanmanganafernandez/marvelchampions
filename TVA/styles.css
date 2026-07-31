@@ -845,32 +845,39 @@ body::before {
 }
 
 /* =====================================================
-   EFECTOS DE PANTALLA
+   ENCENDER PANTALLA
 ===================================================== */
 .terminal__screen {
-    animation: screen-flicker 7s infinite;
+    animation:
+        device-boot 0.8s ease-out both,
+        screen-flicker 7s 0.8s infinite;
 }
 
-@keyframes screen-flicker {
-    0%,
-    18%,
-    22%,
-    25%,
-    53%,
-    57%,
+@keyframes device-boot {
+    0% {
+        opacity: 0;
+        filter: brightness(4);
+        transform: scaleY(0.03);
+    }
+
+    35% {
+        opacity: 1;
+        filter: brightness(2);
+        transform: scaleY(0.08);
+    }
+
+    70% {
+        filter: brightness(1.25);
+        transform: scaleY(1.02);
+    }
+
     100% {
+        opacity: 1;
         filter: brightness(1);
-    }
-
-    20% {
-        filter: brightness(0.94);
-    }
-
-    24% {
-        filter: brightness(1.06);
-    }
-
-    55% {
-        filter: brightness(0.97);
+        transform: scaleY(1);
     }
 }
+
+/* =====================================================
+   ENCENDER PANTALLA
+===================================================== */
