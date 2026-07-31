@@ -546,7 +546,7 @@ body::before {
 
     color: var(--orange);
 
-    font-size: 0.52rem;
+    font-size: 0.62rem;
     letter-spacing: 0.04em;
 
     text-shadow: 0 0 5px #000;
@@ -628,7 +628,7 @@ body::before {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 6px;
 
     min-width: 0;
 
@@ -718,7 +718,7 @@ body::before {
 
     color: var(--muted);
 
-    font-size: 0.52rem;
+    font-size: 0.62rem;
     letter-spacing: 0.05em;
     text-transform: uppercase;
 }
@@ -854,37 +854,37 @@ body::before {
     }
 
     .header {
-        grid-template-columns: 70px 1fr;
+        grid-template-columns: 84px 1fr;
         gap: 9px;
 
         padding: 4px 8px 7px;
     }
 
     .header__logo {
-        width: 70px;
-        height: 70px;
+        width: 84px;
+        height: 84px;
     }
 
     .header__logo img {
-        width: 58px;
-        height: 58px;
+        width: 70px;
+        height: 70px;
     }
 
     .header__organization {
         margin-bottom: 2px;
 
-        font-size: 0.52rem;
+        font-size: 0.62rem;
         letter-spacing: 0.08em;
     }
 
     .header h1 {
-        font-size: clamp(1.2rem, 6.5vw, 1.8rem);
+        font-size: clamp(1.44rem, 7.4vw, 2.16rem);
     }
 
     .header__status {
         margin-top: 4px;
 
-        font-size: 0.45rem;
+        font-size: 0.54rem;
     }
 
     .status-light {
@@ -896,11 +896,11 @@ body::before {
         margin: 0 8px 5px;
         padding: 3px 1px;
 
-        font-size: 0.46rem;
+        font-size: 0.55rem;
     }
 
     .timeline-list {
-        gap: 5px;
+        gap: 6px;
         padding: 0 8px;
     }
 
@@ -909,17 +909,17 @@ body::before {
     }
 
     .timeline-card__content {
-        padding: 6px 7px;
+        padding: 7px 8px;
     }
 
     .timeline-card__year {
-        font-size: 0.7rem;
+        font-size: 0.84rem;
     }
 
     .timeline-card h2 {
         margin-top: 2px;
 
-        font-size: clamp(0.78rem, 4vw, 1.15rem);
+        font-size: clamp(0.94rem, 4.8vw, 1.38rem);
     }
 
     .timeline-card__line {
@@ -929,7 +929,7 @@ body::before {
     }
 
     .timeline-card p {
-        font-size: 0.46rem;
+        font-size: 0.55rem;
         line-height: 1.12;
 
         -webkit-line-clamp: 2;
@@ -939,7 +939,7 @@ body::before {
         left: 5px;
         bottom: 4px;
 
-        font-size: 0.39rem;
+        font-size: 0.47rem;
     }
 
     .travel-button {
@@ -947,26 +947,26 @@ body::before {
 
         padding: 3px 1px;
 
-        font-size: 0.98rem;
+        font-size: 0.68rem;
     }
 
     .travel-button__arrow {
-        font-size: 1.15rem;
+        font-size: 1.38rem;
     }
 
     .footer {
-        gap: 5px;
+        gap: 6px;
 
         margin: 7px 8px 0;
         padding-top: 5px;
     }
 
     .footer__block {
-        font-size: 0.38rem;
+        font-size: 0.46rem;
     }
 
     .footer__center p {
-        font-size: 0.4rem;
+        font-size: 0.48rem;
     }
 
     .footer__center img {
@@ -988,21 +988,21 @@ body::before {
     }
 
     .header {
-        grid-template-columns: 56px 1fr;
+        grid-template-columns: 67px 1fr;
     }
 
     .header__logo {
+        width: 67px;
+        height: 67px;
+    }
+
+    .header__logo img {
         width: 56px;
         height: 56px;
     }
 
-    .header__logo img {
-        width: 47px;
-        height: 47px;
-    }
-
     .header h1 {
-        font-size: 1.12rem;
+        font-size: 1.34rem;
     }
 
     .timeline-card {
@@ -1014,19 +1014,19 @@ body::before {
     }
 
     .timeline-card h2 {
-        font-size: 0.73rem;
+        font-size: 0.88rem;
     }
 
     .timeline-card p {
-        font-size: 0.42rem;
+        font-size: 0.50rem;
     }
 
     .travel-button {
-        font-size: 0.5rem;
+        font-size: 0.60rem;
     }
 
     .travel-button__arrow {
-        font-size: 1rem;
+        font-size: 1.20rem;
     }
 }
 
