@@ -211,6 +211,12 @@ body::before {
     z-index: 3;
 }
 
+.header,
+.section-divider,
+.footer {
+    flex-shrink: 0;
+}
+
 
 /* =====================================================
    CABECERA
@@ -362,6 +368,43 @@ body::before {
 
     min-height: 0;
     padding: 0 20px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+}
+
+
+/* Scroll interno de la sección de tarjetas */
+
+.timeline-list {
+    scrollbar-width: thin;
+    scrollbar-color: var(--orange-dark) rgba(228, 119, 19, 0.08);
+}
+
+.timeline-list::-webkit-scrollbar {
+    width: 7px;
+}
+
+.timeline-list::-webkit-scrollbar-track {
+    background: rgba(228, 119, 19, 0.06);
+    border-left: 1px solid rgba(228, 119, 19, 0.12);
+}
+
+.timeline-list::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        to bottom,
+        var(--orange-dark),
+        var(--orange)
+    );
+
+    border: 1px solid rgba(255, 154, 56, 0.35);
+    border-radius: 10px;
+}
+
+.timeline-list::-webkit-scrollbar-thumb:hover {
+    background: var(--orange);
 }
 
 
@@ -662,7 +705,7 @@ body::before {
     align-items: end;
     gap: 10px;
 
-    margin: auto 20px 0;
+    margin: 10px 20px 0;
     padding: 7px 0 0;
 
     border-top: 1px solid var(--border);
@@ -914,7 +957,7 @@ body::before {
     .footer {
         gap: 5px;
 
-        margin: auto 8px 0;
+        margin: 7px 8px 0;
         padding-top: 5px;
     }
 
