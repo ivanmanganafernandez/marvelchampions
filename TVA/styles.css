@@ -923,6 +923,44 @@ body::before {
         opacity: 0;
     }
 
+   /* =====================================================
+   GLITCH OCASIONAL DEL DISPOSITIVO
+===================================================== */
+
+.header,
+.section-divider,
+.timeline-list,
+.footer {
+    animation: device-glitch 11s infinite;
+}
+
+@keyframes device-glitch {
+    0%,
+    88%,
+    90%,
+    92%,
+    94%,
+    100% {
+        transform: translate(0);
+        filter: none;
+    }
+
+    89% {
+        transform: translate(-1px, 0);
+        filter: brightness(1.18) contrast(1.08);
+    }
+
+    91% {
+        transform: translate(1px, 0);
+        filter: brightness(0.9) contrast(1.18);
+    }
+
+    93% {
+        transform: translate(-0.5px, 0);
+        filter: brightness(1.08);
+    }
+}
+
     100% {
         transform: translateY(650%);
         opacity: 0;
