@@ -218,11 +218,11 @@ body::before {
 
 .header {
     display: grid;
-    grid-template-columns: 88px 1fr;
+    grid-template-columns: 98px 1fr;
     align-items: center;
-    gap: 15px;
+    gap: 18px;
 
-    padding: 5px 20px 12px;
+    padding: 6px 20px 15px;
 }
 
 .header__logo {
@@ -230,8 +230,8 @@ body::before {
     align-items: center;
     justify-content: center;
 
-    width: 88px;
-    height: 88px;
+    width: 98px;
+    height: 98px;
 
     border: 1px solid var(--soft-border);
     border-radius: 50%;
@@ -251,8 +251,8 @@ body::before {
 }
 
 .header__logo img {
-    width: 72px;
-    height: 72px;
+    width: 82px;
+    height: 82px;
 
     object-fit: contain;
 
@@ -271,7 +271,7 @@ body::before {
 
     color: var(--orange-light);
 
-    font-size: 0.76rem;
+    font-size: 0.82rem;
     letter-spacing: 0.13em;
     text-transform: uppercase;
 }
@@ -283,7 +283,7 @@ body::before {
 
     font-family: "Chakra Petch", sans-serif;
 
-    font-size: clamp(1.65rem, 5vw, 2.7rem);
+    font-size: clamp(1.9rem, 5.4vw, 3rem);
     font-weight: 600;
     line-height: 0.98;
 
@@ -303,7 +303,7 @@ body::before {
 
     color: var(--muted);
 
-    font-size: 0.62rem;
+    font-size: 0.70rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
@@ -358,7 +358,7 @@ body::before {
     display: flex;
     flex: 1;
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
 
     min-height: 0;
     padding: 0 20px;
@@ -521,13 +521,13 @@ body::before {
 
     min-width: 0;
 
-    padding: 9px 12px;
+    padding: 10px 14px;
 }
 
 .timeline-card__year {
     color: var(--orange-light);
 
-    font-size: 0.9rem;
+    font-size: 1rem;
     line-height: 1;
 }
 
@@ -538,7 +538,7 @@ body::before {
 
     font-family: "Chakra Petch", sans-serif;
 
-    font-size: clamp(1.05rem, 3.5vw, 1.55rem);
+    font-size: clamp(1.18rem, 3.8vw, 1.7rem);
     font-weight: 600;
     line-height: 1;
 
@@ -566,7 +566,7 @@ body::before {
 
     color: #c58a56;
 
-    font-size: 0.62rem;
+    font-size: 0.68rem;
     line-height: 1.2;
 
     -webkit-box-orient: vertical;
@@ -612,7 +612,7 @@ body::before {
 
     font-family: "Chakra Petch", sans-serif;
 
-    font-size: 0.76rem;
+    font-size: 0.82rem;
     font-weight: 700;
     text-align: center;
     text-transform: uppercase;
@@ -640,7 +640,7 @@ body::before {
 .travel-button__arrow {
     font-family: Arial, sans-serif;
 
-    font-size: 1.45rem;
+    font-size: 1.6rem;
     font-weight: 900;
     line-height: 0.7;
 
@@ -811,20 +811,20 @@ body::before {
     }
 
     .header {
-        grid-template-columns: 62px 1fr;
+        grid-template-columns: 70px 1fr;
         gap: 9px;
 
         padding: 4px 8px 7px;
     }
 
     .header__logo {
-        width: 62px;
-        height: 62px;
+        width: 70px;
+        height: 70px;
     }
 
     .header__logo img {
-        width: 52px;
-        height: 52px;
+        width: 58px;
+        height: 58px;
     }
 
     .header__organization {
