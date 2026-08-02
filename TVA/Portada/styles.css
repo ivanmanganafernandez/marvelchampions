@@ -580,7 +580,7 @@ body::before {
   color: var(--orange-light);
 
   font-family: "Chakra Petch", sans-serif;
-  font-size: 1.55rem;
+  font-size: 1.3rem;
   font-weight: 500;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -591,7 +591,7 @@ body::before {
 
   color: #ce8140;
 
-  font-size: 0.82rem;
+  font-size: 0.75rem;
   line-height: 1.42;
   letter-spacing: 0.05em;
   text-transform: uppercase;
