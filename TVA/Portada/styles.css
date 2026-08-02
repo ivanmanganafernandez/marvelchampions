@@ -523,7 +523,7 @@ body::before {
 
   color: var(--orange-light);
 
-  font-size: 0.84rem;
+  font-size: 0.7rem;
   letter-spacing: 0.26em;
   text-transform: uppercase;
 }
