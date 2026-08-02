@@ -27,13 +27,11 @@
 html,
 body {
   width: 100%;
+  height: 100%;
   min-height: 100%;
 }
 
 body {
-  height: 100vh;
-  height: 100dvh;
-
   margin: 0;
 
   display: flex;
@@ -63,8 +61,6 @@ a {
   color: inherit;
   text-decoration: none;
 }
-
-/* Líneas de escaneado generales */
 
 body::before {
   content: "";
@@ -201,7 +197,7 @@ body::before {
 
   gap: 20px;
 
-  flex-shrink: 0;
+  flex: 0 0 auto;
 
   padding: 4px 12px 17px;
 
@@ -272,19 +268,63 @@ body::before {
 }
 
 /* =====================================================
-   CONTENIDO CENTRAL
+   CONTENIDO CENTRAL CON SCROLL
 ===================================================== */
 
 .welcome-content {
+  flex: 1 1 auto;
+
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  padding: 0 14px;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+
+  scrollbar-width: thin;
+  scrollbar-color:
+    rgba(231, 119, 18, 0.72)
+    rgba(231, 119, 18, 0.08);
+}
+
+.welcome-content__inner {
   display: flex;
-  flex: 1;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  min-height: 0;
+  width: 100%;
+  min-height: 100%;
 
-  padding: 18px 14px;
+  padding: 28px 0;
+}
+
+/* Scroll Chrome, Edge y Safari */
+
+.welcome-content::-webkit-scrollbar {
+  width: 5px;
+}
+
+.welcome-content::-webkit-scrollbar-track {
+  background: rgba(231, 119, 18, 0.06);
+}
+
+.welcome-content::-webkit-scrollbar-thumb {
+  background: rgba(231, 119, 18, 0.58);
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 0 5px rgba(231, 119, 18, 0.5);
+}
+
+.welcome-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 159, 63, 0.85);
 }
 
 /* =====================================================
@@ -299,11 +339,6 @@ body::before {
   text-align: center;
 }
 
-/*
-  El círculo del logo ya no tiene animación.
-  Mantiene un brillo permanente y estable.
-*/
-
 .main-logo__seal {
   position: relative;
 
@@ -313,6 +348,8 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  flex: 0 0 auto;
 
   border: 2px solid rgba(255, 159, 63, 0.9);
   border-radius: 50%;
@@ -330,11 +367,7 @@ body::before {
     0 0 34px rgba(231, 119, 18, 0.4),
     0 0 58px rgba(231, 119, 18, 0.16),
     inset 0 0 26px rgba(255, 159, 63, 0.2);
-
-  animation: none;
 }
-
-/* Halo permanente exterior */
 
 .main-logo__seal::before {
   content: "";
@@ -419,6 +452,8 @@ body::before {
   margin-top: 30px;
   padding: 20px 28px;
 
+  flex: 0 0 auto;
+
   text-align: center;
 
   border: 1px solid var(--border);
@@ -484,6 +519,8 @@ body::before {
   align-items: center;
   justify-content: center;
 
+  flex: 0 0 auto;
+
   gap: 54px;
 
   overflow: hidden;
@@ -542,8 +579,6 @@ body::before {
     transform 0.2s;
 }
 
-/* Luz interior pulsante */
-
 .start-button::before {
   content: "";
 
@@ -576,8 +611,6 @@ body::before {
     );
 }
 
-/* Línea luminosa inferior */
-
 .start-button::after {
   content: "";
 
@@ -604,8 +637,6 @@ body::before {
   animation:
     start-button-line 2.4s ease-in-out infinite;
 }
-
-/* Destello que atraviesa el botón */
 
 .start-button__shine {
   position: absolute;
@@ -690,7 +721,7 @@ body::before {
 }
 
 /* =====================================================
-   PIE
+   FOOTER
 ===================================================== */
 
 .system-footer {
@@ -700,7 +731,7 @@ body::before {
 
   gap: 20px;
 
-  flex-shrink: 0;
+  flex: 0 0 auto;
 
   padding: 17px 12px 4px;
 
@@ -883,8 +914,197 @@ body::before {
   }
 }
 
+/* =====================================================
+   TABLET Y MÓVIL
+===================================================== */
 
+@media (max-width: 600px) {
 
+  .terminal {
+    padding: 3px;
+  }
+
+  .terminal__screen {
+    padding: 15px 13px 12px;
+
+    border-radius: 27px;
+  }
+
+  .terminal__screen::before {
+    inset: 5px;
+
+    border-radius: 23px;
+  }
+
+  .system-header {
+    padding: 3px 7px 12px;
+
+    font-size: 0.5rem;
+  }
+
+  .welcome-content {
+    padding: 0 4px;
+  }
+
+  .welcome-content__inner {
+    padding: 16px 0;
+  }
+
+  .main-logo__seal {
+    width: 112px;
+    height: 112px;
+
+    box-shadow:
+      0 0 14px rgba(255, 159, 63, 0.68),
+      0 0 28px rgba(231, 119, 18, 0.34),
+      0 0 42px rgba(231, 119, 18, 0.12),
+      inset 0 0 20px rgba(255, 159, 63, 0.18);
+  }
+
+  .main-logo__seal::before {
+    inset: -7px;
+  }
+
+  .main-logo__seal img {
+    width: 88px;
+    height: 88px;
+  }
+
+  .main-logo h1 {
+    margin-top: 12px;
+
+    font-size: clamp(2.6rem, 14vw, 4rem);
+  }
+
+  .main-logo p {
+    margin-top: 9px;
+
+    font-size: 0.61rem;
+    letter-spacing: 0.17em;
+  }
+
+  .main-logo__line {
+    margin-top: 14px;
+  }
+
+  .welcome-message {
+    margin-top: 20px;
+    padding: 14px 16px;
+  }
+
+  .welcome-message h2 {
+    margin-bottom: 7px;
+
+    font-size: 1.12rem;
+  }
+
+  .welcome-message p {
+    margin: 4px 0;
+
+    font-size: 0.64rem;
+    line-height: 1.3;
+  }
+
+  .start-button {
+    min-height: 58px;
+
+    margin-top: 20px;
+
+    gap: 35px;
+
+    font-size: 1.12rem;
+  }
+
+  .start-button__arrow {
+    font-size: 1.6rem;
+  }
+
+  .system-footer {
+    gap: 7px;
+
+    padding: 11px 7px 2px;
+
+    font-size: 0.45rem;
+  }
+
+  .system-footer__logo {
+    gap: 6px;
+  }
+
+  .system-footer__logo img {
+    width: 40px;
+    height: 24px;
+  }
+
+  .system-footer__line {
+    width: 19px;
+  }
+
+}
+
+/* =====================================================
+   MÓVILES PEQUEÑOS
+===================================================== */
+
+@media (max-width: 390px) {
+
+  .system-header {
+    font-size: 0.43rem;
+  }
+
+  .main-logo__seal {
+    width: 98px;
+    height: 98px;
+  }
+
+  .main-logo__seal img {
+    width: 76px;
+    height: 76px;
+  }
+
+  .main-logo h1 {
+    font-size: 2.45rem;
+  }
+
+  .welcome-message {
+    margin-top: 16px;
+  }
+
+  .welcome-message h2 {
+    font-size: 1rem;
+  }
+
+  .welcome-message p {
+    font-size: 0.57rem;
+  }
+
+  .start-button {
+    min-height: 54px;
+
+    margin-top: 16px;
+
+    gap: 29px;
+
+    font-size: 1rem;
+  }
+
+  .system-footer {
+    font-size: 0.39rem;
+  }
+
+}
+
+/* =====================================================
+   PANTALLAS CON POCA ALTURA
+===================================================== */
+
+@media (max-height: 760px) {
+
+  .welcome-content__inner {
+    justify-content: flex-start;
+  }
+
+}
 
 /* =====================================================
    ACCESIBILIDAD
