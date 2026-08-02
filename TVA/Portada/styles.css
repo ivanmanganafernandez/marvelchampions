@@ -133,9 +133,7 @@ body::before {
     inset 0 0 20px rgba(231, 119, 18, 0.18),
     inset 0 0 100px rgba(0, 0, 0, 0.96);
 
-  animation:
-    device-boot 0.85s ease-out both,
-    screen-flicker 7s 0.9s infinite;
+
 }
 
 .terminal__screen::before {
@@ -342,8 +340,8 @@ body::before {
 .main-logo__seal {
   position: relative;
 
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
 
   display: flex;
   align-items: center;
@@ -389,8 +387,8 @@ body::before {
   position: relative;
   z-index: 2;
 
-  width: 116px;
-  height: 116px;
+  width: 82px;
+  height: 82px;
 
   object-fit: contain;
 
@@ -889,30 +887,7 @@ body::before {
   }
 }
 
-@keyframes device-boot {
-  0% {
-    opacity: 0;
-    filter: brightness(4);
-    transform: scaleY(0.03);
-  }
 
-  35% {
-    opacity: 1;
-    filter: brightness(2);
-    transform: scaleY(0.08);
-  }
-
-  70% {
-    filter: brightness(1.2);
-    transform: scaleY(1.02);
-  }
-
-  100% {
-    opacity: 1;
-    filter: brightness(1);
-    transform: scaleY(1);
-  }
-}
 
 
 
