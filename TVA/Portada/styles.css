@@ -40,7 +40,6 @@ body {
   overflow: hidden;
 
   color: var(--text);
-
   font-family: "Share Tech Mono", monospace;
 
   background:
@@ -339,7 +338,7 @@ body::before {
 }
 
 /* =====================================================
-   BANDA DE ESCANEO IRREGULAR
+   BANDA DE ESCANEO REGULAR
 ===================================================== */
 
 .welcome-stage::before {
@@ -350,7 +349,7 @@ body::before {
   left: 0;
 
   width: 100%;
-  height: 16%;
+  height: 18%;
 
   pointer-events: none;
 
@@ -362,17 +361,21 @@ body::before {
     linear-gradient(
       to bottom,
       transparent 0%,
-      rgba(255, 154, 56, 0.015) 20%,
-      rgba(255, 154, 56, 0.05) 45%,
-      rgba(255, 178, 94, 0.11) 52%,
-      rgba(255, 154, 56, 0.04) 65%,
+      rgba(255, 154, 56, 0.03) 18%,
+      rgba(255, 154, 56, 0.1) 40%,
+      rgba(255, 190, 115, 0.22) 50%,
+      rgba(255, 154, 56, 0.1) 60%,
+      rgba(255, 154, 56, 0.03) 82%,
       transparent 100%
     );
 
-  filter: blur(0.4px);
+  filter: blur(0.6px);
+
+  box-shadow:
+    0 0 12px rgba(255, 154, 56, 0.1);
 
   animation:
-    scan-band-irregular 9s ease-in-out infinite;
+    scan-band-regular 7s linear infinite;
 }
 
 /* =====================================================
@@ -580,7 +583,7 @@ body::before {
   color: var(--orange-light);
 
   font-family: "Chakra Petch", sans-serif;
-  font-size: 1.3rem;
+  font-size: 1.55rem;
   font-weight: 500;
   letter-spacing: 0.09em;
   text-transform: uppercase;
@@ -591,7 +594,7 @@ body::before {
 
   color: #ce8140;
 
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   line-height: 1.42;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -915,43 +918,19 @@ body::before {
   }
 }
 
-@keyframes scan-band-irregular {
+@keyframes scan-band-regular {
   0% {
     transform: translateY(0);
     opacity: 0;
   }
 
-  8% {
-    opacity: 0;
+  5% {
+    opacity: 0.85;
   }
 
-  12% {
-    opacity: 0.35;
-  }
-
-  20% {
-    transform: translateY(120%);
-    opacity: 0.7;
-  }
-
-  34% {
-    transform: translateY(260%);
-    opacity: 0.45;
-  }
-
-  48% {
-    transform: translateY(390%);
-    opacity: 0.8;
-  }
-
-  60% {
-    transform: translateY(520%);
-    opacity: 0.3;
-  }
-
-  70% {
+  90% {
     transform: translateY(760%);
-    opacity: 0;
+    opacity: 0.85;
   }
 
   100% {
@@ -1139,6 +1118,183 @@ body::before {
   }
 }
 
+/* =====================================================
+   MÓVIL
+===================================================== */
+
+@media (max-width: 600px) {
+
+  .terminal {
+    padding: 3px;
+  }
+
+  .terminal__screen {
+    padding: 15px 13px 12px;
+
+    border-radius: 27px;
+  }
+
+  .terminal__screen::before {
+    inset: 5px;
+
+    border-radius: 23px;
+  }
+
+  .system-header {
+    padding: 3px 7px 12px;
+
+    font-size: 0.5rem;
+  }
+
+  .welcome-content {
+    padding: 0 4px;
+  }
+
+  .welcome-content__inner {
+    padding: 16px 0;
+  }
+
+  .main-logo__seal {
+    width: 92px;
+    height: 92px;
+  }
+
+  .main-logo__seal img {
+    width: 74px;
+    height: 74px;
+  }
+
+  .main-logo h1 {
+    margin-top: 12px;
+
+    font-size: clamp(2.6rem, 14vw, 4rem);
+  }
+
+  .main-logo p {
+    margin-top: 9px;
+
+    font-size: 0.61rem;
+    letter-spacing: 0.17em;
+  }
+
+  .main-logo__line {
+    margin-top: 14px;
+  }
+
+  .welcome-message {
+    margin-top: 20px;
+    padding: 14px 16px;
+  }
+
+  .welcome-message h2 {
+    margin-bottom: 7px;
+
+    font-size: 1.12rem;
+  }
+
+  .welcome-message p {
+    margin: 4px 0;
+
+    font-size: 0.64rem;
+    line-height: 1.3;
+  }
+
+  .start-button {
+    min-height: 58px;
+
+    margin-top: 20px;
+
+    gap: 35px;
+
+    font-size: 1.12rem;
+  }
+
+  .start-button__arrow {
+    font-size: 1.6rem;
+  }
+
+  .footer {
+    gap: 6px;
+
+    margin: 8px 7px 0;
+    padding: 7px 0 3px;
+  }
+
+  .footer__block {
+    font-size: 0.43rem;
+  }
+
+  .footer__center p {
+    font-size: 0.55rem;
+  }
+
+  .footer__center img {
+    width: 32px;
+    height: 20px;
+  }
+}
+
+/* =====================================================
+   MÓVILES PEQUEÑOS
+===================================================== */
+
+@media (max-width: 390px) {
+
+  .system-header {
+    font-size: 0.43rem;
+  }
+
+  .main-logo__seal {
+    width: 82px;
+    height: 82px;
+  }
+
+  .main-logo__seal img {
+    width: 66px;
+    height: 66px;
+  }
+
+  .main-logo h1 {
+    font-size: 2.45rem;
+  }
+
+  .welcome-message {
+    margin-top: 16px;
+  }
+
+  .welcome-message h2 {
+    font-size: 1rem;
+  }
+
+  .welcome-message p {
+    font-size: 0.57rem;
+  }
+
+  .start-button {
+    min-height: 54px;
+
+    margin-top: 16px;
+
+    gap: 29px;
+
+    font-size: 1rem;
+  }
+
+  .footer__block {
+    font-size: 0.37rem;
+  }
+}
+
+/* =====================================================
+   PANTALLAS CON POCA ALTURA
+===================================================== */
+
+@media (max-height: 760px) {
+
+  .welcome-content__inner {
+    justify-content: flex-start;
+  }
+}
 
 /* =====================================================
    ACCESIBILIDAD
@@ -1156,5 +1312,4 @@ body::before {
 
     transition-duration: 0.01ms !important;
   }
-
 }
