@@ -1,45 +1,38 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const startButton = document.querySelector("#start-button");
-  const travelLoader = document.querySelector("#travel-loader");
+document.addEventListener("DOMContentLoaded", function () {
+    const startButton =
+        document.querySelector("#start-button");
 
-  if (!startButton || !travelLoader) {
-    console.warn(
-      "No se ha encontrado #start-button o #travel-loader en el documento."
-    );
-    return;
-  }
+    const travelLoader =
+        document.querySelector("#travel-loader");
 
-  let transitionStarted = false;
+    if (!startButton || !travelLoader) {
+        console.error(
+            "No se encuentra #start-button o #travel-loader"
+        );
 
-  startButton.addEventListener("click", (event) => {
-    event.preventDefault();
-
-    if (transitionStarted) {
-      return;
+        return;
     }
 
-    transitionStarted = true;
+    let transitionStarted = false;
 
-    const destination = startButton.href;
+    startButton.addEventListener("click", function (event) {
+        event.preventDefault();
 
-    travelLoader.classList.add("is-active");
-    travelLoader.setAttribute("aria-hidden", "false");
+        if (transitionStarted) {
+            return;
+        }
 
-    startButton.setAttribute("aria-disabled", "true");
-    startButton.style.pointerEvents = "none";
+        transitionStarted = true;
 
-    window.setTimeout(() => {
-      window.location.href = destination;
-    }, 2200);
-  });
+        const destination = startButton.href;
 
-  window.addEventListener("pageshow", () => {
-    transitionStarted = false;
+        travelLoader.classList.add("is-active");
+        travelLoader.setAttribute("aria-hidden", "false");
 
-    travelLoader.classList.remove("is-active");
-    travelLoader.setAttribute("aria-hidden", "true");
+        startButton.style.pointerEvents = "none";
 
-    startButton.removeAttribute("aria-disabled");
-    startButton.style.pointerEvents = "";
-  });
+        window.setTimeout(function () {
+            window.location.href = destination;
+        }, 2200);
+    });
 });
