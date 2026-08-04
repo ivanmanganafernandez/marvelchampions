@@ -42,16 +42,18 @@
 
     html {
       width: 100%;
-      height: 100%;
+      min-height: 100%;
 
       background: var(--blue-dark);
 
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
     }
 
     body {
       width: 100%;
-      height: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
 
       margin: 0;
 
@@ -74,7 +76,7 @@
         auto,
         8px 8px;
 
-      overflow: hidden;
+      overflow-x: hidden;
     }
 
     body::before {
@@ -126,13 +128,16 @@
       flex-direction: column;
 
       width: min(100%, 760px);
-      height: 100vh;
-      height: 100dvh;
+
+      /*
+        Si el contenido cabe, ocupa exactamente la pantalla.
+        Si no cabe, el contenedor crece y aparece scroll.
+      */
+      min-height: 100vh;
+      min-height: 100dvh;
 
       margin: 0 auto;
-      padding: 10px 14px 0;
-
-      overflow: hidden;
+      padding: 10px 14px 8px;
 
       z-index: 1;
     }
@@ -373,7 +378,9 @@
     .button-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
+
       flex-shrink: 0;
+
       gap: 10px;
 
       margin-top: 14px;
@@ -481,8 +488,13 @@
     .bottom-section {
       flex-shrink: 0;
 
+      /*
+        Empuja la sección al borde inferior cuando sobra espacio.
+        Cuando el contenido no cabe, continúa debajo y se accede
+        mediante scroll.
+      */
       margin-top: auto;
-      padding-bottom: 0;
+      padding-top: 14px;
     }
 
 
@@ -498,7 +510,6 @@
       width: 100%;
       min-height: 52px;
 
-      margin-top: 0;
       padding: 8px 18px;
 
       color: var(--black);
