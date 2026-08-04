@@ -696,7 +696,7 @@ body::before {
 
 
 /* =====================================================
-   PIE
+   PIE — ANCLADO AL FONDO DE LA PANTALLA
 ===================================================== */
 
 .footer {
@@ -705,62 +705,16 @@ body::before {
     align-items: end;
     gap: 10px;
 
-    margin: 10px 20px 0;
+    /*
+       El margen superior automático ocupa todo el espacio
+       disponible y empuja el pie hasta la parte inferior.
+    */
+    margin: auto 20px 0;
     padding: 7px 0 10px;
 
     border-top: 1px solid var(--border);
-}
 
-.footer__block {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-
-    color: var(--muted);
-
-    font-size: 0.52rem;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-}
-
-.footer__block strong {
-    color: var(--orange);
-    font-weight: 400;
-}
-
-.footer__block--right {
-    text-align: right;
-}
-
-.footer__center {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.footer__center p {
-    margin: 0 0 3px;
-
-    color: var(--orange);
-
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-    text-align: center;
-    text-transform: uppercase;
-}
-
-.footer__center img {
-    width: 40px;
-    height: 24px;
-
-    object-fit: contain;
-
-    filter:
-        sepia(1)
-        saturate(6)
-        hue-rotate(345deg);
-
-    opacity: 0.65;
+    flex-shrink: 0;
 }
 
 
