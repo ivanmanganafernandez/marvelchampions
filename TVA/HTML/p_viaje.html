@@ -13,7 +13,7 @@
 
     <title>TVA | Selección de destino</title>
 
-    <link rel="stylesheet" href="./../CSS/styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -22,19 +22,14 @@
 
         <div class="terminal__screen">
 
-            <!-- =================================================
-                 CABECERA COMÚN
-            ================================================== -->
-
+            <!-- CABECERA -->
             <header class="header">
 
                 <div class="header__logo">
-
                     <img
                         src="imagenes/TVALogo.png"
-                        alt="Logotipo de la TVA"
+                        alt="TVA"
                     >
-
                 </div>
 
                 <div class="header__content">
@@ -43,35 +38,16 @@
                         Time Variance Authority
                     </p>
 
-                    <h1>Seleccione destino</h1>
-
-                    <div class="header__status">
-
-                        <span
-                            class="status-light"
-                            aria-hidden="true"
-                        ></span>
-
-                        <span>
-                            Sistema temporal operativo
-                        </span>
-
-                    </div>
+                    <h1>Seleccione Destino</h1>
 
                 </div>
 
             </header>
 
-
-            <!-- =================================================
-                 DIVISOR COMÚN
-            ================================================== -->
-
+            <!-- DIVISOR -->
             <div class="section-divider">
 
-                <span>
-                    Destinos autorizados
-                </span>
+                <span>Destinos autorizados</span>
 
                 <span class="section-divider__code">
                     TVA / TEMP-04
@@ -79,31 +55,23 @@
 
             </div>
 
-
-            <!-- =================================================
-                 CONTENIDO VARIABLE DE LA PÁGINA
-            ================================================== -->
-
+            <!-- LISTA DE DESTINOS -->
             <section
-                class="page-content page-content--effects timeline-list"
+                class="timeline-list"
                 aria-label="Líneas temporales disponibles"
             >
 
                 <!-- HYDRA -->
-
                 <article class="timeline-card">
 
                     <div class="timeline-card__image">
 
                         <img
                             src="imagenes/Berlin.png"
-                            alt="Berlín bajo el control de Hydra"
+                            alt="Línea temporal Hydra"
                         >
 
-                        <div
-                            class="timeline-card__image-overlay"
-                            aria-hidden="true"
-                        ></div>
+                        <div class="timeline-card__image-overlay"></div>
 
                         <span class="timeline-card__identifier">
                             TL-1945-07
@@ -119,10 +87,7 @@
 
                         <h2>Berlín</h2>
 
-                        <div
-                            class="timeline-card__line"
-                            aria-hidden="true"
-                        ></div>
+                        <div class="timeline-card__line"></div>
 
                         <p>
                             Hydra ha ganado la guerra.
@@ -133,7 +98,7 @@
                     <a
                         class="travel-button"
                         href="./Viaje/index.html"
-                        aria-label="Viajar a Berlín, año 1945"
+                        aria-label="Viajar a Hydra, año 1945"
                     >
 
                         <span>Viajar</span>
@@ -149,22 +114,17 @@
 
                 </article>
 
-
                 <!-- NUEVA YORK -->
-
                 <article class="timeline-card">
 
                     <div class="timeline-card__image">
 
                         <img
                             src="imagenes/NY.png"
-                            alt="Nueva York durante la invasión Chitauri"
+                            alt="Línea temporal de Nueva York"
                         >
 
-                        <div
-                            class="timeline-card__image-overlay"
-                            aria-hidden="true"
-                        ></div>
+                        <div class="timeline-card__image-overlay"></div>
 
                         <span class="timeline-card__identifier">
                             TL-2012-05
@@ -180,10 +140,7 @@
 
                         <h2>Nueva York</h2>
 
-                        <div
-                            class="timeline-card__line"
-                            aria-hidden="true"
-                        ></div>
+                        <div class="timeline-card__line"></div>
 
                         <p>
                             Loki ha completado la invasión Chitauri.
@@ -210,25 +167,20 @@
 
                 </article>
 
-
-                <!-- SOKOVIA -->
-
+                <!-- ULTRON -->
                 <article class="timeline-card">
 
                     <div class="timeline-card__image">
 
                         <img
                             src="imagenes/Sokovia.png"
-                            alt="Sokovia bajo el control de Ultrón"
+                            alt="Línea temporal de Ultron"
                         >
 
-                        <div
-                            class="timeline-card__image-overlay"
-                            aria-hidden="true"
-                        ></div>
+                        <div class="timeline-card__image-overlay"></div>
 
                         <span class="timeline-card__identifier">
-                            TL-2015-09
+                            TL-2025-09
                         </span>
 
                     </div>
@@ -241,10 +193,7 @@
 
                         <h2>Sokovia</h2>
 
-                        <div
-                            class="timeline-card__line"
-                            aria-hidden="true"
-                        ></div>
+                        <div class="timeline-card__line"></div>
 
                         <p>
                             Ultrón tiene el control total de la ciudad.
@@ -255,7 +204,7 @@
                     <a
                         class="travel-button"
                         href="./Viaje/index.html"
-                        aria-label="Viajar a Sokovia, año 2015"
+                        aria-label="Viajar a la línea temporal de Ultron, año 2025"
                     >
 
                         <span>Viajar</span>
@@ -271,22 +220,17 @@
 
                 </article>
 
-
-                <!-- EL CAIRO -->
-
+                <!-- APOCALIPSIS -->
                 <article class="timeline-card">
 
                     <div class="timeline-card__image">
 
                         <img
                             src="imagenes/Cairo.png"
-                            alt="Realidad alternativa de El Cairo"
+                            alt="Línea temporal del Apocalipsis"
                         >
 
-                        <div
-                            class="timeline-card__image-overlay"
-                            aria-hidden="true"
-                        ></div>
+                        <div class="timeline-card__image-overlay"></div>
 
                         <span class="timeline-card__identifier">
                             TL-2099-02
@@ -302,10 +246,7 @@
 
                         <h2>El Cairo</h2>
 
-                        <div
-                            class="timeline-card__line"
-                            aria-hidden="true"
-                        ></div>
+                        <div class="timeline-card__line"></div>
 
                         <p>
                             El colapso de esta realidad está próximo.
@@ -316,7 +257,7 @@
                     <a
                         class="travel-button"
                         href="./Viaje/index.html"
-                        aria-label="Viajar a El Cairo, año 2099"
+                        aria-label="Viajar al Apocalipsis, año 2099"
                     >
 
                         <span>Viajar</span>
@@ -334,39 +275,23 @@
 
             </section>
 
-
-            <!-- =================================================
-                 PIE COMÚN
-            ================================================== -->
-
+            <!-- PIE -->
             <footer class="footer">
 
                 <div class="footer__block">
-
                     <span>TVA Device</span>
-
-                    <strong>
-                        NS.61280-24
-                    </strong>
-
+                    <strong>NS.61280-24</strong>
                 </div>
 
                 <div class="footer__center">
 
-                    <p>
-                        For all time. Always.
-                    </p>
+                    <p>For all time. Always.</p>
 
                 </div>
 
                 <div class="footer__block footer__block--right">
-
                     <span>Security</span>
-
-                    <strong>
-                        Level 5
-                    </strong>
-
+                    <strong>Level 5</strong>
                 </div>
 
             </footer>
@@ -378,4 +303,3 @@
 </body>
 
 </html>
-```
