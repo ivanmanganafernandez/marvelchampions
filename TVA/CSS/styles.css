@@ -1,4 +1,3 @@
-```css
 /* =====================================================
    FUENTES
 ===================================================== */
@@ -9,7 +8,7 @@
 
 
 /* =====================================================
-   VARIABLES GENERALES
+   VARIABLES
 ===================================================== */
 
 :root {
@@ -25,12 +24,10 @@
 
     --text: #ed8a2f;
     --muted: #ad7341;
-    --paragraph: #c58a56;
 
     --border: rgba(228, 119, 19, 0.72);
     --soft-border: rgba(228, 119, 19, 0.33);
 
-    --terminal-width: 760px;
     --card-image-width: 30%;
     --button-width: 19%;
 }
@@ -40,9 +37,7 @@
    RESET
 ===================================================== */
 
-*,
-*::before,
-*::after {
+* {
     box-sizing: border-box;
 }
 
@@ -53,8 +48,8 @@ html {
 
 body {
     width: 100%;
-    min-height: 100vh;
-    min-height: 100dvh;
+    height: 100vh;
+    height: 100dvh;
     margin: 0;
 
     display: flex;
@@ -69,11 +64,7 @@ body {
         );
 
     color: var(--text);
-
-    font-family:
-        "Share Tech Mono",
-        monospace;
-
+    font-family: "Share Tech Mono", monospace;
     overflow: hidden;
 }
 
@@ -87,13 +78,6 @@ a {
     text-decoration: none;
 }
 
-button,
-input,
-textarea,
-select {
-    font: inherit;
-}
-
 
 /* =====================================================
    FONDO EXTERIOR
@@ -105,8 +89,6 @@ body::before {
     position: fixed;
     inset: 0;
 
-    z-index: 20;
-
     pointer-events: none;
 
     background:
@@ -117,15 +99,17 @@ body::before {
             transparent 1px,
             transparent 4px
         );
+
+    z-index: 20;
 }
 
 
 /* =====================================================
-   TERMINAL COMÚN
+   TERMINAL
 ===================================================== */
 
 .terminal {
-    width: min(100%, var(--terminal-width));
+    width: min(100%, 760px);
     height: 100vh;
     height: 100dvh;
 
@@ -173,15 +157,13 @@ body::before {
 }
 
 
-/* Curvatura interior de la pantalla */
+/* Curvatura y brillo de la pantalla */
 
 .terminal__screen::before {
     content: "";
 
     position: absolute;
     inset: 9px;
-
-    z-index: 5;
 
     border: 1px solid rgba(228, 119, 19, 0.18);
     border-radius: 31px;
@@ -191,6 +173,7 @@ body::before {
         inset 0 0 5px rgba(228, 119, 19, 0.25);
 
     pointer-events: none;
+    z-index: 5;
 }
 
 
@@ -201,8 +184,6 @@ body::before {
 
     position: absolute;
     inset: 0;
-
-    z-index: 10;
 
     background:
         repeating-linear-gradient(
@@ -216,14 +197,15 @@ body::before {
     opacity: 0.68;
 
     pointer-events: none;
+    z-index: 10;
 }
 
 
-/* Elementos situados sobre la pantalla CRT */
+/* El contenido queda por encima del efecto CRT */
 
 .header,
 .section-divider,
-.page-content,
+.timeline-list,
 .footer {
     position: relative;
     z-index: 3;
@@ -237,12 +219,12 @@ body::before {
 
 
 /* =====================================================
-   CABECERA COMÚN
+   CABECERA
 ===================================================== */
 
 .header {
     display: grid;
-    grid-template-columns: 98px minmax(0, 1fr);
+    grid-template-columns: 98px 1fr;
     align-items: center;
     gap: 18px;
 
@@ -285,16 +267,9 @@ body::before {
         saturate(6)
         hue-rotate(345deg)
         brightness(1.1)
-        drop-shadow(
-            0 0 4px
-            rgba(228, 119, 19, 0.45)
-        );
+        drop-shadow(0 0 4px rgba(228, 119, 19, 0.45));
 
     opacity: 0.95;
-}
-
-.header__content {
-    min-width: 0;
 }
 
 .header__organization {
@@ -304,7 +279,6 @@ body::before {
 
     font-size: 0.82rem;
     letter-spacing: 0.13em;
-
     text-transform: uppercase;
 }
 
@@ -313,23 +287,17 @@ body::before {
 
     color: var(--orange);
 
-    font-family:
-        "Chakra Petch",
-        sans-serif;
+    font-family: "Chakra Petch", sans-serif;
 
     font-size: clamp(1.9rem, 5.4vw, 3rem);
     font-weight: 600;
     line-height: 0.98;
 
     letter-spacing: 0.03em;
-
     text-transform: uppercase;
 
-    overflow-wrap: anywhere;
-
     text-shadow:
-        0 0 7px
-        rgba(228, 119, 19, 0.35);
+        0 0 7px rgba(228, 119, 19, 0.35);
 }
 
 .header__status {
@@ -341,15 +309,12 @@ body::before {
 
     color: var(--muted);
 
-    font-size: 0.7rem;
+    font-size: 0.70rem;
     letter-spacing: 0.08em;
-
     text-transform: uppercase;
 }
 
 .status-light {
-    flex-shrink: 0;
-
     width: 7px;
     height: 7px;
 
@@ -365,14 +330,13 @@ body::before {
 
 
 /* =====================================================
-   DIVISOR COMÚN
+   DIVISOR
 ===================================================== */
 
 .section-divider {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
 
     margin: 0 10px 5px;
     padding: 4px 1px;
@@ -384,74 +348,11 @@ body::before {
 
     font-size: 0.64rem;
     letter-spacing: 0.1em;
-
     text-transform: uppercase;
 }
 
 .section-divider__code {
-    flex-shrink: 0;
     color: var(--muted);
-}
-
-
-/* =====================================================
-   CONTENIDO PRINCIPAL COMÚN
-===================================================== */
-
-.page-content {
-    position: relative;
-
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-
-    min-width: 0;
-    min-height: 0;
-
-    padding: 0 10px;
-
-    overflow-y: auto;
-    overflow-x: hidden;
-
-    overscroll-behavior: contain;
-    scrollbar-gutter: stable;
-
-    scrollbar-width: thin;
-    scrollbar-color:
-        var(--orange-dark)
-        rgba(228, 119, 19, 0.08);
-}
-
-.page-content::-webkit-scrollbar {
-    width: 7px;
-}
-
-.page-content::-webkit-scrollbar-track {
-    background:
-        rgba(228, 119, 19, 0.06);
-
-    border-left:
-        1px solid
-        rgba(228, 119, 19, 0.12);
-}
-
-.page-content::-webkit-scrollbar-thumb {
-    background:
-        linear-gradient(
-            to bottom,
-            var(--orange-dark),
-            var(--orange)
-        );
-
-    border:
-        1px solid
-        rgba(255, 154, 56, 0.35);
-
-    border-radius: 10px;
-}
-
-.page-content::-webkit-scrollbar-thumb:hover {
-    background: var(--orange);
 }
 
 
@@ -460,12 +361,55 @@ body::before {
 ===================================================== */
 
 .timeline-list {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
     gap: 10px;
+
+    min-height: 0;
+    padding: 0 10px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+}
+
+
+/* Scroll interno de la sección de tarjetas */
+
+.timeline-list {
+    scrollbar-width: thin;
+    scrollbar-color: var(--orange-dark) rgba(228, 119, 19, 0.08);
+}
+
+.timeline-list::-webkit-scrollbar {
+    width: 7px;
+}
+
+.timeline-list::-webkit-scrollbar-track {
+    background: rgba(228, 119, 19, 0.06);
+    border-left: 1px solid rgba(228, 119, 19, 0.12);
+}
+
+.timeline-list::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        to bottom,
+        var(--orange-dark),
+        var(--orange)
+    );
+
+    border: 1px solid rgba(255, 154, 56, 0.35);
+    border-radius: 10px;
+}
+
+.timeline-list::-webkit-scrollbar-thumb:hover {
+    background: var(--orange);
 }
 
 
 /* =====================================================
-   TARJETAS DE DESTINO
+   TARJETAS
 ===================================================== */
 
 .timeline-card {
@@ -477,8 +421,6 @@ body::before {
         var(--card-image-width)
         minmax(0, 1fr)
         var(--button-width);
-
-    flex-shrink: 0;
 
     min-height: 108px;
 
@@ -493,23 +435,21 @@ body::before {
     border: 1px solid var(--border);
 
     box-shadow:
-        inset 0 0 18px
-        rgba(228, 119, 19, 0.035),
+        inset 0 0 18px rgba(228, 119, 19, 0.035),
         0 0 10px rgba(0, 0, 0, 0.6);
 
     overflow: hidden;
 
-    clip-path:
-        polygon(
-            8px 0,
-            calc(100% - 8px) 0,
-            100% 8px,
-            100% calc(100% - 8px),
-            calc(100% - 8px) 100%,
-            8px 100%,
-            0 calc(100% - 8px),
-            0 8px
-        );
+    clip-path: polygon(
+        8px 0,
+        calc(100% - 8px) 0,
+        100% 8px,
+        100% calc(100% - 8px),
+        calc(100% - 8px) 100%,
+        8px 100%,
+        0 calc(100% - 8px),
+        0 8px
+    );
 }
 
 .timeline-card::before,
@@ -574,8 +514,7 @@ body::before {
         opacity 0.4s ease;
 }
 
-.timeline-card:hover
-.timeline-card__image img {
+.timeline-card:hover .timeline-card__image img {
     transform: scale(1.08);
     opacity: 0.9;
 }
@@ -640,17 +579,9 @@ body::before {
 
     color: var(--orange);
 
-    font-family:
-        "Chakra Petch",
-        sans-serif;
+    font-family: "Chakra Petch", sans-serif;
 
-    font-size:
-        clamp(
-            1.18rem,
-            3.8vw,
-            1.7rem
-        );
-
+    font-size: clamp(1.18rem, 3.8vw, 1.7rem);
     font-weight: 600;
     line-height: 1;
 
@@ -658,8 +589,7 @@ body::before {
     overflow-wrap: anywhere;
 
     text-shadow:
-        0 0 6px
-        rgba(228, 119, 19, 0.25);
+        0 0 6px rgba(228, 119, 19, 0.25);
 }
 
 .timeline-card__line {
@@ -677,7 +607,7 @@ body::before {
     max-width: 300px;
     margin: 0;
 
-    color: var(--paragraph);
+    color: #c58a56;
 
     font-size: 0.68rem;
     line-height: 1.2;
@@ -723,13 +653,10 @@ body::before {
 
     color: #130904;
 
-    font-family:
-        "Chakra Petch",
-        sans-serif;
+    font-family: "Chakra Petch", sans-serif;
 
     font-size: 0.82rem;
     font-weight: 700;
-
     text-align: center;
     text-transform: uppercase;
 
@@ -743,10 +670,8 @@ body::before {
     filter: brightness(1.22);
 
     box-shadow:
-        inset 0 0 18px
-        rgba(255, 192, 100, 0.35),
-        0 0 14px
-        rgba(228, 119, 19, 0.24);
+        inset 0 0 18px rgba(255, 192, 100, 0.35),
+        0 0 14px rgba(228, 119, 19, 0.24);
 
     outline: none;
 }
@@ -762,184 +687,16 @@ body::before {
     font-weight: 900;
     line-height: 0.7;
 
-    transition:
-        transform 0.2s ease;
+    transition: transform 0.2s ease;
 }
 
-.travel-button:hover
-.travel-button__arrow {
+.travel-button:hover .travel-button__arrow {
     transform: translateX(5px);
 }
 
 
 /* =====================================================
-   COMPONENTE GENÉRICO: PANEL TVA
-===================================================== */
-
-.tva-panel {
-    position: relative;
-
-    padding: 16px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(228, 119, 19, 0.06),
-            transparent 45%
-        ),
-        var(--panel-dark);
-
-    border: 1px solid var(--border);
-
-    box-shadow:
-        inset 0 0 20px
-        rgba(228, 119, 19, 0.04),
-        0 0 12px
-        rgba(0, 0, 0, 0.65);
-
-    clip-path:
-        polygon(
-            9px 0,
-            calc(100% - 9px) 0,
-            100% 9px,
-            100% calc(100% - 9px),
-            calc(100% - 9px) 100%,
-            9px 100%,
-            0 calc(100% - 9px),
-            0 9px
-        );
-}
-
-.tva-panel__code {
-    display: block;
-
-    margin-bottom: 8px;
-
-    color: var(--muted);
-
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
-
-    text-transform: uppercase;
-}
-
-.tva-panel__title {
-    margin: 0 0 8px;
-
-    color: var(--orange);
-
-    font-family:
-        "Chakra Petch",
-        sans-serif;
-
-    font-size: 1.3rem;
-    font-weight: 600;
-
-    text-transform: uppercase;
-}
-
-.tva-panel__text {
-    margin: 0;
-
-    color: var(--paragraph);
-
-    font-size: 0.82rem;
-    line-height: 1.45;
-}
-
-
-/* =====================================================
-   COMPONENTE GENÉRICO: BOTÓN TVA
-===================================================== */
-
-.tva-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-
-    min-height: 46px;
-
-    padding: 10px 18px;
-
-    border: 1px solid var(--orange);
-
-    background:
-        repeating-linear-gradient(
-            to bottom,
-            rgba(255, 255, 255, 0.018) 0,
-            rgba(255, 255, 255, 0.018) 1px,
-            transparent 1px,
-            transparent 4px
-        ),
-        linear-gradient(
-            135deg,
-            #a74d0a,
-            #d76d0d 55%,
-            #b4540b
-        );
-
-    color: #130904;
-
-    font-family:
-        "Chakra Petch",
-        sans-serif;
-
-    font-size: 0.85rem;
-    font-weight: 700;
-
-    cursor: pointer;
-
-    text-align: center;
-    text-transform: uppercase;
-
-    transition:
-        filter 0.2s ease,
-        box-shadow 0.2s ease,
-        transform 0.2s ease;
-}
-
-.tva-button:hover,
-.tva-button:focus-visible {
-    filter: brightness(1.2);
-
-    box-shadow:
-        inset 0 0 18px
-        rgba(255, 192, 100, 0.35),
-        0 0 14px
-        rgba(228, 119, 19, 0.3);
-
-    outline: none;
-}
-
-.tva-button:active {
-    transform: translateY(1px);
-    filter: brightness(0.92);
-}
-
-.tva-button--secondary {
-    background:
-        rgba(228, 119, 19, 0.05);
-
-    color: var(--orange);
-
-    border-color: var(--border);
-}
-
-.tva-button--danger {
-    background:
-        linear-gradient(
-            135deg,
-            #76240d,
-            #b33a13
-        );
-
-    color: #f7b577;
-}
-
-
-/* =====================================================
-   PIE COMÚN
+   PIE
 ===================================================== */
 
 .footer {
@@ -963,7 +720,6 @@ body::before {
 
     font-size: 0.52rem;
     letter-spacing: 0.05em;
-
     text-transform: uppercase;
 }
 
@@ -989,110 +745,22 @@ body::before {
 
     font-size: 0.7rem;
     letter-spacing: 0.08em;
-
     text-align: center;
     text-transform: uppercase;
 }
 
+.footer__center img {
+    width: 40px;
+    height: 24px;
 
-/* =====================================================
-   BANDA DE ESCANEO
-===================================================== */
+    object-fit: contain;
 
-.page-content--effects::before {
-    content: "";
+    filter:
+        sepia(1)
+        saturate(6)
+        hue-rotate(345deg);
 
-    position: absolute;
-    top: -28%;
-    left: 0;
-
-    width: 100%;
-    height: 16%;
-
-    z-index: 2;
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    background:
-        linear-gradient(
-            to bottom,
-            transparent 0%,
-            rgba(255, 154, 56, 0.015) 20%,
-            rgba(255, 154, 56, 0.05) 45%,
-            rgba(255, 178, 94, 0.11) 52%,
-            rgba(255, 154, 56, 0.04) 65%,
-            transparent 100%
-        );
-
-    filter: blur(0.4px);
-
-    animation:
-        scan-band-irregular
-        9s
-        ease-in-out
-        infinite;
-}
-
-
-/* =====================================================
-   GLITCH HORIZONTAL
-===================================================== */
-
-.page-content--effects::after {
-    content: "";
-
-    position: absolute;
-    top: 44%;
-    left: -3%;
-
-    width: 106%;
-    height: 34px;
-
-    z-index: 20;
-
-    opacity: 0;
-
-    pointer-events: none;
-
-    background:
-        repeating-linear-gradient(
-            to bottom,
-            rgba(255, 138, 30, 0.04) 0,
-            rgba(255, 138, 30, 0.04) 2px,
-            rgba(255, 205, 125, 0.65) 3px,
-            rgba(255, 168, 70, 0.22) 5px,
-            transparent 7px,
-            transparent 9px
-        );
-
-    box-shadow:
-        9px 0 0
-        rgba(255, 85, 15, 0.25),
-        -9px 0 0
-        rgba(255, 225, 170, 0.18),
-        0 0 15px
-        rgba(255, 145, 35, 0.25);
-
-    mix-blend-mode: screen;
-
-    transform-origin: center;
-
-    animation:
-        tva-horizontal-glitch
-        11s
-        steps(1, end)
-        infinite;
-}
-
-.timeline-card h2,
-.timeline-card__year {
-    animation:
-        tva-text-glitch
-        11s
-        steps(1, end)
-        infinite;
+    opacity: 0.65;
 }
 
 
@@ -1115,27 +783,105 @@ body::before {
     0%,
     100% {
         box-shadow:
-            inset 0 0 16px
-            rgba(228, 119, 19, 0.12),
-            0 0 8px
-            rgba(228, 119, 19, 0.18);
+            inset 0 0 16px rgba(228, 119, 19, 0.12),
+            0 0 8px rgba(228, 119, 19, 0.18);
 
-        border-color:
-            rgba(228, 119, 19, 0.35);
+        border-color: rgba(228, 119, 19, 0.35);
     }
 
     50% {
         box-shadow:
-            inset 0 0 22px
-            rgba(228, 119, 19, 0.24),
-            0 0 18px
-            rgba(228, 119, 19, 0.55),
-            0 0 32px
-            rgba(228, 119, 19, 0.22);
+            inset 0 0 22px rgba(228, 119, 19, 0.24),
+            0 0 18px rgba(228, 119, 19, 0.55),
+            0 0 32px rgba(228, 119, 19, 0.22);
 
-        border-color:
-            rgba(255, 154, 56, 0.85);
+        border-color: rgba(255, 154, 56, 0.85);
     }
+}
+
+@keyframes logo-image-pulse {
+    0%,
+    100% {
+        opacity: 0.78;
+
+        filter:
+            sepia(1)
+            saturate(6)
+            hue-rotate(345deg)
+            brightness(0.95)
+            drop-shadow(0 0 3px rgba(228, 119, 19, 0.35));
+    }
+
+    50% {
+        opacity: 1;
+
+        filter:
+            sepia(1)
+            saturate(7)
+            hue-rotate(345deg)
+            brightness(1.35)
+            drop-shadow(0 0 9px rgba(255, 154, 56, 0.8));
+    }
+}
+
+
+
+
+
+/* =====================================================
+   REDUCCIÓN DE MOVIMIENTO
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* =====================================================
+   BANDA DE ESCANEO IRREGULAR
+===================================================== */
+
+.timeline-list {
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.timeline-list::before {
+    content: "";
+
+    position: absolute;
+    top: -28%;
+    left: 0;
+
+    width: 100%;
+    height: 16%;
+
+    pointer-events: none;
+    z-index: 2;
+
+    opacity: 0;
+
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(255, 154, 56, 0.015) 20%,
+        rgba(255, 154, 56, 0.05) 45%,
+        rgba(255, 178, 94, 0.11) 52%,
+        rgba(255, 154, 56, 0.04) 65%,
+        transparent 100%
+    );
+
+    filter: blur(0.4px);
+
+    animation: scan-band-irregular 9s ease-in-out infinite;
 }
 
 @keyframes scan-band-irregular {
@@ -1172,11 +918,58 @@ body::before {
         opacity: 0.3;
     }
 
-    70%,
+    70% {
+        transform: translateY(650%);
+        opacity: 0;
+    }
+
     100% {
         transform: translateY(650%);
         opacity: 0;
     }
+}
+
+
+/* =====================================================
+   GLITCH HORIZONTAL TVA MEJORADO
+===================================================== */
+
+.timeline-list::after {
+    content: "";
+
+    position: absolute;
+    top: 44%;
+    left: -3%;
+
+    width: 106%;
+    height: 34px;
+
+    pointer-events: none;
+    z-index: 20;
+
+    opacity: 0;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255, 138, 30, 0.04) 0,
+            rgba(255, 138, 30, 0.04) 2px,
+            rgba(255, 205, 125, 0.65) 3px,
+            rgba(255, 168, 70, 0.22) 5px,
+            transparent 7px,
+            transparent 9px
+        );
+
+    box-shadow:
+        9px 0 0 rgba(255, 85, 15, 0.25),
+        -9px 0 0 rgba(255, 225, 170, 0.18),
+        0 0 15px rgba(255, 145, 35, 0.25);
+
+    mix-blend-mode: screen;
+
+    transform-origin: center;
+
+    animation: tva-horizontal-glitch 11s steps(1, end) infinite;
 }
 
 @keyframes tva-horizontal-glitch {
@@ -1184,7 +977,6 @@ body::before {
     86%,
     100% {
         opacity: 0;
-
         transform:
             translateX(0)
             translateY(0)
@@ -1244,10 +1036,13 @@ body::before {
 
     97% {
         opacity: 0;
-
-        transform:
-            translateX(0);
+        transform: translateX(0);
     }
+}
+
+.timeline-card h2,
+.timeline-card__year {
+    animation: tva-text-glitch 11s steps(1, end) infinite;
 }
 
 @keyframes tva-text-glitch {
@@ -1256,10 +1051,6 @@ body::before {
     100% {
         transform: translateX(0);
         opacity: 1;
-
-        text-shadow:
-            0 0 6px
-            rgba(228, 119, 19, 0.25);
     }
 
     87% {
@@ -1267,10 +1058,8 @@ body::before {
         opacity: 0.75;
 
         text-shadow:
-            3px 0
-            rgba(255, 90, 15, 0.5),
-            -3px 0
-            rgba(255, 220, 150, 0.35);
+            3px 0 rgba(255, 90, 15, 0.5),
+            -3px 0 rgba(255, 220, 150, 0.35);
     }
 
     89% {
@@ -1292,318 +1081,3 @@ body::before {
         transform: translateX(0);
     }
 }
-
-
-/* =====================================================
-   TABLET Y PANTALLAS BAJAS
-===================================================== */
-
-@media (max-height: 760px) {
-    .header {
-        grid-template-columns: 78px minmax(0, 1fr);
-        gap: 14px;
-
-        padding-top: 2px;
-        padding-bottom: 7px;
-    }
-
-    .header__logo {
-        width: 78px;
-        height: 78px;
-    }
-
-    .header__logo img {
-        width: 66px;
-        height: 66px;
-    }
-
-    .header h1 {
-        font-size:
-            clamp(
-                1.55rem,
-                5vw,
-                2.35rem
-            );
-    }
-
-    .header__status {
-        margin-top: 5px;
-    }
-
-    .timeline-card {
-        min-height: 98px;
-    }
-
-    .footer {
-        margin-top: 7px;
-        padding-bottom: 6px;
-    }
-}
-
-
-/* =====================================================
-   MÓVIL
-===================================================== */
-
-@media (max-width: 600px) {
-    :root {
-        --card-image-width: 29%;
-        --button-width: 20%;
-    }
-
-    .terminal {
-        padding: 3px;
-    }
-
-    .terminal__screen {
-        padding:
-            7px
-            5px
-            5px;
-
-        border-radius: 25px;
-    }
-
-    .terminal__screen::before {
-        inset: 6px;
-        border-radius: 20px;
-    }
-
-    .header {
-        grid-template-columns:
-            66px
-            minmax(0, 1fr);
-
-        gap: 10px;
-
-        padding:
-            2px
-            7px
-            7px;
-    }
-
-    .header__logo {
-        width: 66px;
-        height: 66px;
-    }
-
-    .header__logo img {
-        width: 56px;
-        height: 56px;
-    }
-
-    .header__organization {
-        margin-bottom: 2px;
-
-        font-size: 0.58rem;
-        letter-spacing: 0.09em;
-    }
-
-    .header h1 {
-        font-size:
-            clamp(
-                1.28rem,
-                6.4vw,
-                1.75rem
-            );
-
-        line-height: 1;
-    }
-
-    .header__status {
-        gap: 5px;
-
-        margin-top: 4px;
-
-        font-size: 0.52rem;
-        letter-spacing: 0.04em;
-    }
-
-    .status-light {
-        width: 5px;
-        height: 5px;
-    }
-
-    .section-divider {
-        margin:
-            0
-            7px
-            4px;
-
-        font-size: 0.5rem;
-        letter-spacing: 0.06em;
-    }
-
-    .page-content {
-        padding:
-            0
-            7px;
-    }
-
-    .timeline-list {
-        gap: 7px;
-    }
-
-    .timeline-card {
-        min-height: 92px;
-    }
-
-    .timeline-card__content {
-        padding:
-            4px
-            7px;
-    }
-
-    .timeline-card__year {
-        font-size: 0.74rem;
-    }
-
-    .timeline-card h2 {
-        margin-top: 3px;
-
-        font-size:
-            clamp(
-                0.92rem,
-                4.1vw,
-                1.18rem
-            );
-    }
-
-    .timeline-card__line {
-        width: 19px;
-
-        margin:
-            4px
-            0
-            4px;
-    }
-
-    .timeline-card p {
-        font-size: 0.55rem;
-        line-height: 1.15;
-    }
-
-    .timeline-card__identifier {
-        left: 5px;
-        bottom: 4px;
-
-        font-size: 0.42rem;
-    }
-
-    .travel-button {
-        gap: 3px;
-
-        font-size: 0.63rem;
-    }
-
-    .travel-button__arrow {
-        font-size: 1.25rem;
-    }
-
-    .footer {
-        gap: 5px;
-
-        margin:
-            7px
-            10px
-            0;
-
-        padding:
-            5px
-            0
-            6px;
-    }
-
-    .footer__block {
-        font-size: 0.4rem;
-    }
-
-    .footer__center p {
-        font-size: 0.5rem;
-        letter-spacing: 0.04em;
-    }
-}
-
-
-/* =====================================================
-   MÓVILES MUY ESTRECHOS
-===================================================== */
-
-@media (max-width: 390px) {
-    :root {
-        --card-image-width: 28%;
-        --button-width: 21%;
-    }
-
-    .header {
-        grid-template-columns:
-            58px
-            minmax(0, 1fr);
-    }
-
-    .header__logo {
-        width: 58px;
-        height: 58px;
-    }
-
-    .header__logo img {
-        width: 49px;
-        height: 49px;
-    }
-
-    .header__organization {
-        font-size: 0.5rem;
-    }
-
-    .header h1 {
-        font-size: 1.18rem;
-    }
-
-    .header__status {
-        font-size: 0.45rem;
-    }
-
-    .section-divider__code {
-        display: none;
-    }
-
-    .timeline-card {
-        min-height: 88px;
-    }
-
-    .timeline-card p {
-        -webkit-line-clamp: 2;
-    }
-
-    .travel-button {
-        font-size: 0.56rem;
-    }
-
-    .footer {
-        margin-left: 7px;
-        margin-right: 7px;
-    }
-}
-
-
-/* =====================================================
-   REDUCCIÓN DE MOVIMIENTO
-===================================================== */
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        scroll-behavior: auto !important;
-
-        animation-duration:
-            0.01ms !important;
-
-        animation-iteration-count:
-            1 !important;
-
-        transition-duration:
-            0.01ms !important;
-    }
-}
-```
