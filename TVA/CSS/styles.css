@@ -845,9 +845,8 @@ body::before {
 }
 
 
-
 /* =====================================================
-   BANDA DE ESCANEO REGULAR — LENTA Y SIN PAUSA
+   BANDA DE ESCANEO — LENTA, CONTINUA Y SIN PAUSA
 ===================================================== */
 
 .timeline-list {
@@ -856,6 +855,7 @@ body::before {
     overflow-y: auto;
     overflow-x: hidden;
 
+    /* Impide que la animación genere scroll adicional */
     contain: paint;
 }
 
@@ -863,52 +863,57 @@ body::before {
     content: "";
 
     position: absolute;
-    inset: 0;
+    top: 0;
+    left: 0;
 
     width: 100%;
-    height: 100%;
+    height: 12%;
 
     pointer-events: none;
     z-index: 2;
 
     opacity: 0.9;
 
-    background-image:
+    background:
         linear-gradient(
             to bottom,
             transparent 0%,
-            transparent 47%,
-            rgba(255, 154, 56, 0.05) 48.5%,
-            rgba(255, 178, 94, 0.22) 49.5%,
+            transparent 42%,
+            rgba(255, 154, 56, 0.05) 46%,
+            rgba(255, 178, 94, 0.22) 49%,
             rgba(255, 205, 145, 0.42) 50%,
-            rgba(255, 178, 94, 0.22) 50.5%,
-            rgba(255, 154, 56, 0.05) 51.5%,
-            transparent 53%,
+            rgba(255, 178, 94, 0.22) 51%,
+            rgba(255, 154, 56, 0.05) 54%,
+            transparent 58%,
             transparent 100%
         );
 
-    background-size: 100% 220%;
-    background-repeat: no-repeat;
-    background-position: center 120%;
-
     filter: blur(0.25px);
+
+    /*
+       Empieza completamente por encima del contenido.
+       834% equivale aproximadamente al recorrido necesario
+       para atravesar todo el contenedor cuando la banda mide 12%.
+    */
+    transform: translateY(-100%);
 
     animation:
         scan-band-regular
-        10s
+        12s
         linear
         infinite;
 }
 
 @keyframes scan-band-regular {
     0% {
-        background-position: center 120%;
+        transform: translateY(-100%);
     }
 
     100% {
-        background-position: center -120%;
+        transform: translateY(834%);
     }
 }
+
 
 
 /* =====================================================
