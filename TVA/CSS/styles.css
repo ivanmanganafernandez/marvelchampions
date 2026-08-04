@@ -844,9 +844,9 @@ body::before {
     }
 }
 
-```css
+
 /* =====================================================
-   BANDA DE ESCANEO REGULAR
+   BANDA DE ESCANEO REGULAR — LIGERAMENTE MÁS VISIBLE
 ===================================================== */
 
 .timeline-list {
@@ -873,10 +873,10 @@ body::before {
     background: linear-gradient(
         to bottom,
         transparent 0%,
-        rgba(255, 154, 56, 0.015) 20%,
-        rgba(255, 154, 56, 0.05) 45%,
-        rgba(255, 178, 94, 0.11) 52%,
-        rgba(255, 154, 56, 0.04) 65%,
+        rgba(255, 154, 56, 0.022) 20%,
+        rgba(255, 154, 56, 0.065) 45%,
+        rgba(255, 178, 94, 0.14) 52%,
+        rgba(255, 154, 56, 0.052) 65%,
         transparent 100%
     );
 
@@ -931,7 +931,7 @@ body::before {
         opacity: 0;
     }
 }
-```
+
 
 
 
