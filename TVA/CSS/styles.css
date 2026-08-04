@@ -1163,7 +1163,7 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 54px;
+    gap: 24px;
 
     flex: 0 0 auto;
 
