@@ -844,9 +844,9 @@ body::before {
     }
 }
 
-
+```css
 /* =====================================================
-   BANDA DE ESCANEO — LENTA, CONTINUA Y SIN PAUSA
+   BANDA DE ESCANEO — SIN ACTIVAR EL SCROLL
 ===================================================== */
 
 .timeline-list {
@@ -855,47 +855,47 @@ body::before {
     overflow-y: auto;
     overflow-x: hidden;
 
-    /* Impide que la animación genere scroll adicional */
-    contain: paint;
+    /* Recorta completamente los efectos visuales */
+    clip-path: inset(0);
 }
 
 .timeline-list::before {
     content: "";
 
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
 
     width: 100%;
-    height: 12%;
+    height: 100%;
 
     pointer-events: none;
     z-index: 2;
 
     opacity: 0.9;
 
-    background:
+    background-image:
         linear-gradient(
             to bottom,
             transparent 0%,
-            transparent 42%,
-            rgba(255, 154, 56, 0.05) 46%,
-            rgba(255, 178, 94, 0.22) 49%,
+            transparent 48%,
+            rgba(255, 154, 56, 0.05) 49%,
+            rgba(255, 178, 94, 0.22) 49.7%,
             rgba(255, 205, 145, 0.42) 50%,
-            rgba(255, 178, 94, 0.22) 51%,
-            rgba(255, 154, 56, 0.05) 54%,
-            transparent 58%,
+            rgba(255, 178, 94, 0.22) 50.3%,
+            rgba(255, 154, 56, 0.05) 51%,
+            transparent 52%,
             transparent 100%
         );
 
-    filter: blur(0.25px);
-
     /*
-       Empieza completamente por encima del contenido.
-       834% equivale aproximadamente al recorrido necesario
-       para atravesar todo el contenedor cuando la banda mide 12%.
+       El fondo es ligeramente más alto que el contenedor.
+       La línea recorre toda la pantalla sin mover el pseudoelemento.
     */
-    transform: translateY(-100%);
+    background-size: 100% 108%;
+    background-repeat: no-repeat;
+    background-position: center -54%;
+
+    filter: blur(0.25px);
 
     animation:
         scan-band-regular
@@ -905,12 +905,12 @@ body::before {
 }
 
 @keyframes scan-band-regular {
-    0% {
-        transform: translateY(-100%);
+    from {
+        background-position: center -54%;
     }
 
-    100% {
-        transform: translateY(834%);
+    to {
+        background-position: center 154%;
     }
 }
 
