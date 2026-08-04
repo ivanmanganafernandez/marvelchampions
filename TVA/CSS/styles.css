@@ -930,8 +930,9 @@ body::before {
 }
 
 
+
 /* =====================================================
-   GLITCH HORIZONTAL TVA MEJORADO
+   GLITCH HORIZONTAL TVA — DURACIÓN REDUCIDA
 ===================================================== */
 
 .timeline-list::after {
@@ -974,9 +975,10 @@ body::before {
 
 @keyframes tva-horizontal-glitch {
     0%,
-    86%,
+    93%,
     100% {
         opacity: 0;
+
         transform:
             translateX(0)
             translateY(0)
@@ -984,7 +986,7 @@ body::before {
             skewX(0);
     }
 
-    87% {
+    94% {
         opacity: 1;
 
         transform:
@@ -994,7 +996,7 @@ body::before {
             skewX(-8deg);
     }
 
-    89% {
+    95% {
         opacity: 0.85;
 
         transform:
@@ -1004,7 +1006,7 @@ body::before {
             skewX(6deg);
     }
 
-    91% {
+    96% {
         opacity: 1;
 
         transform:
@@ -1014,31 +1016,31 @@ body::before {
             skewX(-4deg);
     }
 
-    93% {
-        opacity: 0.7;
+    97% {
+        opacity: 0.6;
 
         transform:
-            translateX(7px)
-            translateY(3px)
-            scaleY(1.15)
+            translateX(5px)
+            translateY(2px)
+            scaleY(1.1)
             skewX(3deg);
     }
 
-    95% {
-        opacity: 0.35;
+    98% {
+        opacity: 0;
 
         transform:
-            translateX(-3px)
+            translateX(0)
             translateY(0)
-            scaleY(0.9)
+            scaleY(1)
             skewX(0);
     }
-
-    97% {
-        opacity: 0;
-        transform: translateX(0);
-    }
 }
+
+
+/* =====================================================
+   GLITCH DEL TEXTO — SINCRONIZADO
+===================================================== */
 
 .timeline-card h2,
 .timeline-card__year {
@@ -1047,13 +1049,16 @@ body::before {
 
 @keyframes tva-text-glitch {
     0%,
-    86%,
+    93%,
     100% {
         transform: translateX(0);
         opacity: 1;
+
+        text-shadow:
+            0 0 6px rgba(228, 119, 19, 0.25);
     }
 
-    87% {
+    94% {
         transform: translateX(-2px);
         opacity: 0.75;
 
@@ -1062,22 +1067,31 @@ body::before {
             -3px 0 rgba(255, 220, 150, 0.35);
     }
 
-    89% {
+    95% {
         transform: translateX(2px);
         opacity: 1;
+
+        text-shadow:
+            -2px 0 rgba(255, 90, 15, 0.45),
+            2px 0 rgba(255, 220, 150, 0.3);
     }
 
-    91% {
+    96% {
         transform: translateX(-1px);
         opacity: 0.8;
     }
 
-    94% {
+    97% {
         transform: translateX(1px);
         opacity: 1;
     }
 
-    97% {
+    98% {
         transform: translateX(0);
+        opacity: 1;
+
+        text-shadow:
+            0 0 6px rgba(228, 119, 19, 0.25);
     }
 }
+
