@@ -463,24 +463,25 @@ background:
       background: var(--green);
     }
 
-    .comic-button:hover,
-    .comic-button:focus-visible {
-      filter: brightness(1.13);
+@media (hover: hover) and (pointer: fine) {
+  .comic-button:hover {
+    filter: brightness(1.13);
+    transform: translate(-2px, -2px);
+    box-shadow: 7px 7px 0 var(--black);
+  }
+}
 
-      transform: translate(-2px, -2px);
+/* El foco no desplaza el botón */
+.comic-button:focus-visible {
+  outline: 3px solid var(--white);
+  outline-offset: 3px;
+}
 
-      box-shadow:
-        7px 7px 0 var(--black);
-
-      outline: none;
-    }
-
-    .comic-button:active {
-      transform: translate(3px, 3px);
-
-      box-shadow:
-        2px 2px 0 var(--black);
-    }
+.comic-button:active {
+  filter: brightness(0.95);
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--black);
+}
 
 
     /* =====================================================
