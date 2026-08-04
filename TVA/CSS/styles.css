@@ -51,6 +51,7 @@ body {
     width: 100%;
     height: 100vh;
     height: 100dvh;
+
     margin: 0;
 
     display: flex;
@@ -91,6 +92,8 @@ body::before {
     position: fixed;
     inset: 0;
 
+    z-index: 20;
+
     pointer-events: none;
 
     background:
@@ -101,8 +104,6 @@ body::before {
             transparent 1px,
             transparent 4px
         );
-
-    z-index: 20;
 }
 
 
@@ -167,6 +168,8 @@ body::before {
     position: absolute;
     inset: 9px;
 
+    z-index: 5;
+
     border: 1px solid rgba(228, 119, 19, 0.18);
     border-radius: 31px;
 
@@ -175,7 +178,6 @@ body::before {
         inset 0 0 5px rgba(228, 119, 19, 0.25);
 
     pointer-events: none;
-    z-index: 5;
 }
 
 
@@ -186,6 +188,8 @@ body::before {
 
     position: absolute;
     inset: 0;
+
+    z-index: 10;
 
     background:
         repeating-linear-gradient(
@@ -199,7 +203,6 @@ body::before {
     opacity: 0.68;
 
     pointer-events: none;
-    z-index: 10;
 }
 
 
@@ -290,7 +293,6 @@ body::before {
     color: var(--orange);
 
     font-family: "Chakra Petch", sans-serif;
-
     font-size: clamp(1.9rem, 5.4vw, 3rem);
     font-weight: 600;
     line-height: 0.98;
@@ -311,7 +313,7 @@ body::before {
 
     color: var(--muted);
 
-    font-size: 0.70rem;
+    font-size: 0.7rem;
     letter-spacing: 0.08em;
     text-transform: uppercase;
 }
@@ -363,12 +365,13 @@ body::before {
 ===================================================== */
 
 .timeline-list {
+    position: relative;
+
     display: flex;
     flex: 1;
     flex-direction: column;
     gap: 10px;
 
-    min-width: 0;
     min-height: 0;
 
     padding: 0 10px;
@@ -378,15 +381,15 @@ body::before {
 
     overscroll-behavior: contain;
     scrollbar-gutter: stable;
+
+    scrollbar-width: thin;
+    scrollbar-color:
+        var(--orange-dark)
+        rgba(228, 119, 19, 0.08);
 }
 
 
 /* Scroll interno de la sección de tarjetas */
-
-.timeline-list {
-    scrollbar-width: thin;
-    scrollbar-color: var(--orange-dark) rgba(228, 119, 19, 0.08);
-}
 
 .timeline-list::-webkit-scrollbar {
     width: 7px;
@@ -427,8 +430,6 @@ body::before {
         var(--card-image-width)
         minmax(0, 1fr)
         var(--button-width);
-
-    flex-shrink: 0;
 
     min-height: 108px;
 
@@ -589,7 +590,6 @@ body::before {
     color: var(--orange);
 
     font-family: "Chakra Petch", sans-serif;
-
     font-size: clamp(1.18rem, 3.8vw, 1.7rem);
     font-weight: 600;
     line-height: 1;
@@ -663,7 +663,6 @@ body::before {
     color: #130904;
 
     font-family: "Chakra Petch", sans-serif;
-
     font-size: 0.82rem;
     font-weight: 700;
 
@@ -706,7 +705,7 @@ body::before {
 
 
 /* =====================================================
-   PIE — FIJADO EN LA PARTE INFERIOR
+   PIE
 ===================================================== */
 
 .footer {
@@ -715,17 +714,10 @@ body::before {
     align-items: end;
     gap: 10px;
 
-    /*
-       El margen superior automático consume el espacio libre
-       y mantiene el footer en la parte inferior.
-    */
-    margin: auto 20px 0;
-
+    margin: 10px 20px 0;
     padding: 7px 0 10px;
 
     border-top: 1px solid var(--border);
-
-    flex-shrink: 0;
 }
 
 .footer__block {
@@ -859,14 +851,8 @@ body::before {
 
 
 /* =====================================================
-   BANDA DE ESCANEO REGULAR — LIGERAMENTE MÁS VISIBLE
+   BANDA DE ESCANEO REGULAR
 ===================================================== */
-
-.timeline-list {
-    position: relative;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
 
 .timeline-list::before {
     content: "";
@@ -878,8 +864,9 @@ body::before {
     width: 100%;
     height: 16%;
 
-    pointer-events: none;
     z-index: 2;
+
+    pointer-events: none;
 
     opacity: 0;
 
@@ -896,7 +883,11 @@ body::before {
 
     filter: blur(0.4px);
 
-    animation: scan-band-irregular 9s linear infinite;
+    animation:
+        scan-band-irregular
+        9s
+        linear
+        infinite;
 }
 
 @keyframes scan-band-irregular {
@@ -959,8 +950,9 @@ body::before {
     width: 106%;
     height: 34px;
 
-    pointer-events: none;
     z-index: 20;
+
+    pointer-events: none;
 
     opacity: 0;
 
@@ -984,7 +976,11 @@ body::before {
 
     transform-origin: center;
 
-    animation: tva-horizontal-glitch 11s steps(1, end) infinite;
+    animation:
+        tva-horizontal-glitch
+        11s
+        steps(1, end)
+        infinite;
 }
 
 @keyframes tva-horizontal-glitch {
@@ -1088,7 +1084,11 @@ body::before {
 
 .timeline-card h2,
 .timeline-card__year {
-    animation: tva-text-glitch 11s steps(1, end) infinite;
+    animation:
+        tva-text-glitch
+        11s
+        steps(1, end)
+        infinite;
 }
 
 @keyframes tva-text-glitch {
