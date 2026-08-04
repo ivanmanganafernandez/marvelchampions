@@ -716,6 +716,43 @@ body::before {
 
     flex-shrink: 0;
 }
+.footer__block {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+
+    color: var(--muted);
+
+    font-size: 0.52rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.footer__block strong {
+    color: var(--orange);
+    font-weight: 400;
+}
+
+.footer__block--right {
+    text-align: right;
+}
+
+.footer__center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer__center p {
+    margin: 0 0 3px;
+
+    color: var(--orange);
+
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-align: center;
+    text-transform: uppercase;
+}
 
 
 /* =====================================================
