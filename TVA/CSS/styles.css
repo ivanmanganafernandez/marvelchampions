@@ -844,8 +844,9 @@ body::before {
     }
 }
 
+```css
 /* =====================================================
-   BANDA DE ESCANEO IRREGULAR
+   BANDA DE ESCANEO A VELOCIDAD REGULAR
 ===================================================== */
 
 .timeline-list {
@@ -881,7 +882,7 @@ body::before {
 
     filter: blur(0.4px);
 
-    animation: scan-band-irregular 9s ease-in-out infinite;
+    animation: scan-band-irregular 9s linear infinite;
 }
 
 @keyframes scan-band-irregular {
@@ -928,6 +929,7 @@ body::before {
         opacity: 0;
     }
 }
+```
 
 
 /* =====================================================
