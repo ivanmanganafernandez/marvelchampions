@@ -847,7 +847,7 @@ body::before {
 
 
 /* =====================================================
-   BANDA DE ESCANEO REGULAR — DE ARRIBA HACIA ABAJO
+   BANDA DE ESCANEO REGULAR — LENTA Y SIN PAUSA
 ===================================================== */
 
 .timeline-list {
@@ -895,7 +895,7 @@ body::before {
 
     animation:
         scan-band-regular
-        7s
+        10s
         linear
         infinite;
 }
@@ -903,24 +903,12 @@ body::before {
 @keyframes scan-band-regular {
     0% {
         background-position: center 120%;
-        opacity: 0;
-    }
-
-    4% {
-        opacity: 0.9;
-    }
-
-    96% {
-        opacity: 0.9;
     }
 
     100% {
         background-position: center -120%;
-        opacity: 0;
     }
 }
-
-
 
 
 /* =====================================================
