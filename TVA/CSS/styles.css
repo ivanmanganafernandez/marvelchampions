@@ -872,12 +872,12 @@ body::before {
 
     background: linear-gradient(
         to bottom,
-        transparent 0%,
-        rgba(255, 154, 56, 0.022) 20%,
-        rgba(255, 154, 56, 0.065) 45%,
-        rgba(255, 178, 94, 0.14) 52%,
-        rgba(255, 154, 56, 0.052) 65%,
-        transparent 100%
+    transparent 0%,
+    rgba(255, 154, 56, 0.08) 20%,
+    rgba(255, 154, 56, 0.18) 45%,
+    rgba(255, 178, 94, 0.4) 52%,
+    rgba(255, 154, 56, 0.16) 65%,
+    transparent 100%
     );
 
     filter: blur(0.4px);
@@ -933,9 +933,6 @@ body::before {
 }
 
 
-
-
-```css
 /* =====================================================
    GLITCH HORIZONTAL TVA — DURACIÓN APROX. 0,75s
 ===================================================== */
