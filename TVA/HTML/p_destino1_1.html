@@ -41,12 +41,18 @@
     }
 
     html {
-      min-height: 100%;
+      width: 100%;
+      height: 100%;
+
       background: var(--blue-dark);
+
+      overflow: hidden;
     }
 
     body {
-      min-height: 100vh;
+      width: 100%;
+      height: 100%;
+
       margin: 0;
 
       color: var(--black);
@@ -68,7 +74,7 @@
         auto,
         8px 8px;
 
-      overflow-x: hidden;
+      overflow: hidden;
     }
 
     body::before {
@@ -117,10 +123,13 @@
       position: relative;
 
       width: min(100%, 760px);
-      min-height: 100vh;
+      height: 100vh;
+      height: 100dvh;
 
       margin: 0 auto;
-      padding: 10px 14px 14px;
+      padding: 10px 14px;
+
+      overflow: hidden;
 
       z-index: 1;
     }
