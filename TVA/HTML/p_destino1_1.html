@@ -122,12 +122,15 @@
     .game-screen {
       position: relative;
 
+      display: flex;
+      flex-direction: column;
+
       width: min(100%, 760px);
       height: 100vh;
       height: 100dvh;
 
       margin: 0 auto;
-      padding: 10px 14px;
+      padding: 10px 14px 0;
 
       overflow: hidden;
 
@@ -141,6 +144,8 @@
 
     .scheme-card {
       position: relative;
+
+      flex-shrink: 0;
 
       overflow: hidden;
 
@@ -281,6 +286,8 @@
     ===================================================== */
 
     .threat-section {
+      flex-shrink: 0;
+
       margin-top: 16px;
 
       text-align: center;
@@ -366,6 +373,7 @@
     .button-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      flex-shrink: 0;
       gap: 10px;
 
       margin-top: 14px;
@@ -467,6 +475,18 @@
 
 
     /* =====================================================
+       SECCIÓN INFERIOR
+    ===================================================== */
+
+    .bottom-section {
+      flex-shrink: 0;
+
+      margin-top: auto;
+      padding-bottom: 0;
+    }
+
+
+    /* =====================================================
        BOTÓN VOLVER
     ===================================================== */
 
@@ -478,7 +498,7 @@
       width: 100%;
       min-height: 52px;
 
-      margin-top: 14px;
+      margin-top: 0;
       padding: 8px 18px;
 
       color: var(--black);
@@ -543,6 +563,7 @@
 
     .connection-status {
       margin: 10px 0 0;
+      padding-bottom: 2px;
 
       color: rgba(255, 255, 255, 0.75);
 
@@ -630,20 +651,23 @@
     </section>
 
 
-    <a
-      class="return-button"
-      href="./p_viaje.html"
-    >
-      Volver a selección de destinos
-    </a>
+    <footer class="bottom-section">
 
+      <a
+        class="return-button"
+        href="./p_viaje.html"
+      >
+        Volver a selección de destinos
+      </a>
 
-    <p
-      id="connection-status"
-      class="connection-status"
-    >
-      Conectando con el servidor...
-    </p>
+      <p
+        id="connection-status"
+        class="connection-status"
+      >
+        Conectando con el servidor...
+      </p>
+
+    </footer>
 
   </main>
 
