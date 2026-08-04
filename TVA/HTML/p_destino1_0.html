@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    >
+
+    <meta name="theme-color" content="#080603">
+
+    <title>TVA | Inicio</title>
+
+    <link rel="stylesheet" href="../CSS/styles.css">
+</head>
+
+<body>
+
+    <main class="terminal">
+
+        <div class="terminal__screen">
+
+            <!-- CABECERA -->
+            <header class="header">
+
+                <div class="header__logo">
+                    <img
+                        src="../imagenes/TVALogo.png"
+                        alt="Logotipo de la TVA"
+                    >
+                </div>
+
+                <div class="header__content">
+
+                    <p class="header__organization">
+                        Time Variance Authority
+                    </p>
+
+                    <h1>TemPad</h1>
+
+                </div>
+
+            </header>
+
+            <!-- DIVISOR -->
+            <div class="section-divider">
+
+                <span>Iniciando sistema</span>
+
+                <span class="section-divider__code">
+                    TVA / TEMP-04
+                </span>
+
+            </div>
+
+            <!-- CONTENIDO CENTRAL -->
+            <section class="timeline-list welcome-screen">
+
+                <div class="welcome-message">
+
+                    <h2>Bienvenido, agente</h2>
+
+                    <p>
+                        Estás a punto de acceder a los archivos temporales
+                        autorizados por la TVA.
+                    </p>
+
+                    <p>
+                        Pulsa inicio para comenzar la misión.
+                    </p>
+
+                </div>
+
+                <a
+                    id="start-button"
+                    class="start-button"
+                    href="./p_viaje.html"
+                    aria-label="Iniciar TemPad"
+                >
+
+                    <span
+                        class="start-button__shine"
+                        aria-hidden="true"
+                    ></span>
+
+                    <span
+                        class="start-button__arrow"
+                        aria-hidden="true"
+                    >
+                        ›
+                    </span>
+
+                    <span class="start-button__text">
+                        Inicio
+                    </span>
+
+                    <span
+                        class="start-button__arrow"
+                        aria-hidden="true"
+                    >
+                        ›
+                    </span>
+
+                </a>
+
+            </section>
+
+            <!-- PIE -->
+            <footer class="footer">
+
+                <div class="footer__block">
+                    <span>TVA Device</span>
+                    <strong>NS.61280-24</strong>
+                </div>
+
+                <div class="footer__center">
+                    <p>For all time. Always.</p>
+                </div>
+
+                <div class="footer__block footer__block--right">
+                    <span>Security</span>
+                    <strong>Level 5</strong>
+                </div>
+
+            </footer>
+
+        </div>
+
+    </main>
+
+    <!-- PANTALLA DE CARGA -->
+    <div
+        id="travel-loader"
+        class="travel-loader"
+        aria-hidden="true"
+        role="status"
+        aria-live="polite"
+    >
+
+        <div class="travel-loader__content">
+
+            <div
+                class="travel-loader__icon"
+                aria-hidden="true"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <p class="travel-loader__label">
+                Inicializando TemPad
+            </p>
+
+            <h2 class="travel-loader__title">
+                Abriendo lugares de destino
+            </h2>
+
+            <div
+                class="travel-loader__progress"
+                aria-hidden="true"
+            >
+                <span class="travel-loader__progress-bar"></span>
+            </div>
+
+            <p class="travel-loader__status">
+                Sincronizando coordenadas temporales...
+            </p>
+
+        </div>
+
+    </div>
+
+    <script src="../JS/transicion.js"></script>
+
+</body>
+
+</html>
