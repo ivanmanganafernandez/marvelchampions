@@ -200,27 +200,30 @@
         1px 1px 0 rgba(255, 255, 255, 0.6);
     }
 
-    .scheme-card__image {
-      position: relative;
+.scheme-card__image {
+  position: relative;
 
-      aspect-ratio: 16 / 9;
-      width: 67%;
-      overflow: hidden;
+  width: 100%;
+  aspect-ratio: 16 / 9;
 
-      background:
-        linear-gradient(
-          135deg,
-          #39195b,
-          #e34331
-        );
-    }
+  overflow: hidden;
 
-    .scheme-card__image img {
-      width: 100%;
-      height: 100%;
+  background:
+    linear-gradient(
+      135deg,
+      #39195b,
+      #e34331
+    );
+}
 
-      object-fit: cover;
-    }
+.scheme-card__image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
 
     .scheme-card__image::after {
       content: "";
