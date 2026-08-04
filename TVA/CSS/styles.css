@@ -1047,7 +1047,7 @@ body::before {
 
 .timeline-card h2,
 .timeline-card__year,
-.welcome-message h2, p {
+.welcome-message h2, .welcome-message p {
     animation: tva-text-glitch 11s steps(1, end) infinite;
 }
 
