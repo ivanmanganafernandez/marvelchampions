@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 
@@ -161,10 +160,7 @@
     </main>
 
 
-    <!-- =================================================
-         PANTALLA DE CARGA
-    ================================================== -->
-
+    <!-- PANTALLA DE CARGA -->
     <div
         id="travel-loader"
         class="travel-loader"
@@ -179,11 +175,9 @@
                 class="travel-loader__icon"
                 aria-hidden="true"
             >
-
                 <span></span>
                 <span></span>
                 <span></span>
-
             </div>
 
             <p class="travel-loader__label">
@@ -198,9 +192,7 @@
                 class="travel-loader__progress"
                 aria-hidden="true"
             >
-
                 <span class="travel-loader__progress-bar"></span>
-
             </div>
 
             <p class="travel-loader__status">
@@ -212,29 +204,36 @@
     </div>
 
 
-    <!-- JAVASCRIPT DE LA TRANSICIÓN -->
- <!--   <script src="../JS/transicion.js"></script>-->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const startButton = document.querySelector("#start-button");
+    <!-- PRUEBA DE ACTIVACIÓN DE LA PANTALLA DE CARGA -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const startButton =
+                document.querySelector("#start-button");
 
-        if (!startButton) {
-            alert("ERROR: No se encuentra el botón #start-button");
-            return;
-        }
+            const travelLoader =
+                document.querySelector("#travel-loader");
 
-        alert("Botón encontrado correctamente");
+            if (!startButton || !travelLoader) {
+                console.error(
+                    "No se encuentra #start-button o #travel-loader"
+                );
 
-        startButton.addEventListener("click", function (event) {
-            event.preventDefault();
+                return;
+            }
 
-            alert("Has pulsado el botón Inicio");
+            startButton.addEventListener("click", function (event) {
+                event.preventDefault();
+
+                travelLoader.classList.add("is-active");
+
+                travelLoader.setAttribute(
+                    "aria-hidden",
+                    "false"
+                );
+            });
         });
-    });
-</script>
+    </script>
+
 </body>
 
 </html>
-```
-
-
