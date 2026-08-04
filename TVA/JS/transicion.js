@@ -1,38 +1,40 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const startButton =
-        document.querySelector("#start-button");
-
     const travelLoader =
         document.querySelector("#travel-loader");
 
-    if (!startButton || !travelLoader) {
-        console.error(
-            "No se encuentra #start-button o #travel-loader"
+    const transitionLinks =
+        document.querySelectorAll(
+            "#start-button, .js-transition-link"
         );
 
+    if (!travelLoader || transitionLinks.length === 0) {
         return;
     }
 
     let transitionStarted = false;
 
-    startButton.addEventListener("click", function (event) {
-        event.preventDefault();
+    transitionLinks.forEach(function (link) {
+        link.addEventListener("click", function (event) {
+            event.preventDefault();
 
-        if (transitionStarted) {
-            return;
-        }
+            if (transitionStarted) {
+                return;
+            }
 
-        transitionStarted = true;
+            transitionStarted = true;
 
-        const destination = startButton.href;
+            const destination = link.href;
 
-        travelLoader.classList.add("is-active");
-        travelLoader.setAttribute("aria-hidden", "false");
+            travelLoader.classList.add("is-active");
+            travelLoader.setAttribute("aria-hidden", "false");
 
-        startButton.style.pointerEvents = "none";
+            transitionLinks.forEach(function (item) {
+                item.style.pointerEvents = "none";
+            });
 
-        window.setTimeout(function () {
-            window.location.href = destination;
-        }, 2200);
+            window.setTimeout(function () {
+                window.location.href = destination;
+            }, 2200);
+        });
     });
 });
