@@ -845,48 +845,58 @@ body::before {
 }
 
 
+```css
 /* =====================================================
-   BANDA DE ESCANEO REGULAR — LÍNEA CENTRAL ÚNICA
+   BANDA DE ESCANEO REGULAR — SIN CREAR SCROLL
 ===================================================== */
 
 .timeline-list {
     position: relative;
+
     overflow-y: auto;
     overflow-x: hidden;
+
+    /* Evita que los efectos amplíen el área desplazable */
+    contain: paint;
 }
 
 .timeline-list::before {
     content: "";
 
     position: absolute;
-    top: -12%;
-    left: 0;
+    inset: 0;
 
     width: 100%;
-    height: 12%;
+    height: 100%;
 
     pointer-events: none;
     z-index: 2;
 
-    opacity: 0;
+    opacity: 0.9;
 
-    background:
+    background-image:
         linear-gradient(
             to bottom,
             transparent 0%,
-            transparent 42%,
-            rgba(255, 154, 56, 0.05) 46%,
-            rgba(255, 178, 94, 0.22) 49%,
+            transparent 47%,
+            rgba(255, 154, 56, 0.05) 48.5%,
+            rgba(255, 178, 94, 0.22) 49.5%,
             rgba(255, 205, 145, 0.42) 50%,
-            rgba(255, 178, 94, 0.22) 51%,
-            rgba(255, 154, 56, 0.05) 54%,
-            transparent 58%,
+            rgba(255, 178, 94, 0.22) 50.5%,
+            rgba(255, 154, 56, 0.05) 51.5%,
+            transparent 53%,
             transparent 100%
         );
 
-    filter: blur(0.25px);
+    /*
+       El fondo es más alto que el contenedor.
+       La animación mueve el fondo, no el pseudoelemento.
+    */
+    background-size: 100% 220%;
+    background-repeat: no-repeat;
+    background-position: center -120%;
 
-    transform: translateY(0);
+    filter: blur(0.25px);
 
     animation:
         scan-band-regular
@@ -897,7 +907,7 @@ body::before {
 
 @keyframes scan-band-regular {
     0% {
-        transform: translateY(0);
+        background-position: center -120%;
         opacity: 0;
     }
 
@@ -910,10 +920,12 @@ body::before {
     }
 
     100% {
-        transform: translateY(935%);
+        background-position: center 120%;
         opacity: 0;
     }
 }
+```
+
 
 
 
