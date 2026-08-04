@@ -1,3 +1,4 @@
+```css
 /* =====================================================
    FUENTES
 ===================================================== */
@@ -65,6 +66,7 @@ body {
 
     color: var(--text);
     font-family: "Share Tech Mono", monospace;
+
     overflow: hidden;
 }
 
@@ -366,11 +368,14 @@ body::before {
     flex-direction: column;
     gap: 10px;
 
+    min-width: 0;
     min-height: 0;
+
     padding: 0 10px;
 
     overflow-y: auto;
     overflow-x: hidden;
+
     overscroll-behavior: contain;
     scrollbar-gutter: stable;
 }
@@ -393,11 +398,12 @@ body::before {
 }
 
 .timeline-list::-webkit-scrollbar-thumb {
-    background: linear-gradient(
-        to bottom,
-        var(--orange-dark),
-        var(--orange)
-    );
+    background:
+        linear-gradient(
+            to bottom,
+            var(--orange-dark),
+            var(--orange)
+        );
 
     border: 1px solid rgba(255, 154, 56, 0.35);
     border-radius: 10px;
@@ -422,6 +428,8 @@ body::before {
         minmax(0, 1fr)
         var(--button-width);
 
+    flex-shrink: 0;
+
     min-height: 108px;
 
     background:
@@ -440,16 +448,17 @@ body::before {
 
     overflow: hidden;
 
-    clip-path: polygon(
-        8px 0,
-        calc(100% - 8px) 0,
-        100% 8px,
-        100% calc(100% - 8px),
-        calc(100% - 8px) 100%,
-        8px 100%,
-        0 calc(100% - 8px),
-        0 8px
-    );
+    clip-path:
+        polygon(
+            8px 0,
+            calc(100% - 8px) 0,
+            100% 8px,
+            100% calc(100% - 8px),
+            calc(100% - 8px) 100%,
+            8px 100%,
+            0 calc(100% - 8px),
+            0 8px
+        );
 }
 
 .timeline-card::before,
@@ -657,6 +666,7 @@ body::before {
 
     font-size: 0.82rem;
     font-weight: 700;
+
     text-align: center;
     text-transform: uppercase;
 
@@ -696,7 +706,7 @@ body::before {
 
 
 /* =====================================================
-   PIE
+   PIE — FIJADO EN LA PARTE INFERIOR
 ===================================================== */
 
 .footer {
@@ -705,10 +715,17 @@ body::before {
     align-items: end;
     gap: 10px;
 
-    margin: 10px 20px 0;
+    /*
+       El margen superior automático consume el espacio libre
+       y mantiene el footer en la parte inferior.
+    */
+    margin: auto 20px 0;
+
     padding: 7px 0 10px;
 
     border-top: 1px solid var(--border);
+
+    flex-shrink: 0;
 }
 
 .footer__block {
@@ -825,15 +842,11 @@ body::before {
 }
 
 
-
-
-
 /* =====================================================
    REDUCCIÓN DE MOVIMIENTO
 ===================================================== */
 
 @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {
@@ -870,15 +883,16 @@ body::before {
 
     opacity: 0;
 
-    background: linear-gradient(
-        to bottom,
-        transparent 0%,
-        rgba(255, 154, 56, 0.025) 20%,
-        rgba(255, 154, 56, 0.075) 45%,
-        rgba(255, 178, 94, 0.16) 52%,
-        rgba(255, 154, 56, 0.06) 65%,
-        transparent 100%
-    );
+    background:
+        linear-gradient(
+            to bottom,
+            transparent 0%,
+            rgba(255, 154, 56, 0.025) 20%,
+            rgba(255, 154, 56, 0.075) 45%,
+            rgba(255, 178, 94, 0.16) 52%,
+            rgba(255, 154, 56, 0.06) 65%,
+            transparent 100%
+        );
 
     filter: blur(0.4px);
 
@@ -929,8 +943,6 @@ body::before {
         opacity: 0;
     }
 }
-
-
 
 
 /* =====================================================
@@ -1149,3 +1161,4 @@ body::before {
             0 0 6px rgba(228, 119, 19, 0.25);
     }
 }
+```
