@@ -120,13 +120,13 @@
       min-height: 100vh;
 
       margin: 0 auto;
-      padding: 18px 14px 26px;
+      padding: 10px 14px 14px;
 
       z-index: 1;
     }
 
 
-       /* =====================================================
+    /* =====================================================
        CARTA DEL PLAN
     ===================================================== */
 
@@ -145,7 +145,7 @@
     }
 
     .scheme-card__type {
-      padding: 8px 15px;
+      padding: 5px 15px;
 
       color: var(--white);
 
@@ -161,7 +161,7 @@
 
       border-bottom: 3px solid var(--black);
 
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 800;
 
       letter-spacing: 0.06em;
@@ -170,8 +170,7 @@
 
     .scheme-card__title {
       margin: 0;
-
-      padding: 10px 16px;
+      padding: 7px 16px;
 
       color: var(--black);
 
@@ -188,7 +187,7 @@
       border-bottom: 4px solid var(--black);
 
       font-family: "Anton", sans-serif;
-      font-size: clamp(1.7rem, 7vw, 3.2rem);
+      font-size: clamp(1.5rem, 6vw, 2.8rem);
       font-style: italic;
       font-weight: 400;
       line-height: 1;
@@ -200,29 +199,29 @@
         1px 1px 0 rgba(255, 255, 255, 0.6);
     }
 
-.scheme-card__image {
-  position: relative;
+    .scheme-card__image {
+      position: relative;
 
-  width: 100%;
-  aspect-ratio: 2 / 1;
+      width: 100%;
+      aspect-ratio: 2.35 / 1;
 
-  overflow: hidden;
+      overflow: hidden;
 
-  background:
-    linear-gradient(
-      135deg,
-      #39195b,
-      #e34331
-    );
-}
+      background:
+        linear-gradient(
+          135deg,
+          #39195b,
+          #e34331
+        );
+    }
 
-.scheme-card__image img {
-  width: 100%;
-  height: 100%;
+    .scheme-card__image img {
+      width: 100%;
+      height: 100%;
 
-  object-fit: cover;
-  object-position: center;
-}
+      object-fit: cover;
+      object-position: center;
+    }
 
     .scheme-card__image::after {
       content: "";
@@ -246,7 +245,7 @@
 
     .scheme-card__description {
       margin: 0;
-      padding: 16px 18px 18px;
+      padding: 10px 16px 12px;
 
       color: #171717;
 
@@ -262,9 +261,9 @@
 
       border-top: 4px solid var(--black);
 
-      font-size: clamp(1rem, 3.6vw, 1.25rem);
+      font-size: clamp(0.95rem, 3.2vw, 1.1rem);
       font-weight: 600;
-      line-height: 1.25;
+      line-height: 1.15;
     }
 
 
@@ -273,7 +272,7 @@
     ===================================================== */
 
     .threat-section {
-      margin-top: 28px;
+      margin-top: 16px;
 
       text-align: center;
     }
@@ -284,7 +283,7 @@
       display: inline-block;
 
       margin: 0 0 -5px;
-      padding: 6px 22px;
+      padding: 4px 18px;
 
       color: var(--black);
 
@@ -292,7 +291,7 @@
 
       border: 3px solid var(--black);
 
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-style: italic;
       font-weight: 800;
 
@@ -307,10 +306,10 @@
     .threat-counter {
       position: relative;
 
-      width: min(72%, 300px);
+      width: min(68%, 280px);
 
       margin: 0 auto;
-      padding: 8px 24px;
+      padding: 2px 20px;
 
       color: var(--white);
 
@@ -327,10 +326,8 @@
       border: var(--border);
 
       box-shadow:
-        7px 7px 0 var(--black);
+        5px 5px 0 var(--black);
     }
-
-    
 
     #contador {
       position: relative;
@@ -340,13 +337,13 @@
       color: var(--white);
 
       font-family: "Anton", sans-serif;
-      font-size: clamp(4rem, 17vw, 6.5rem);
+      font-size: clamp(3.5rem, 14vw, 5.3rem);
       font-style: italic;
       font-weight: 400;
       line-height: 1;
 
       text-shadow:
-        5px 5px 0 var(--black),
+        4px 4px 0 var(--black),
         -2px -2px 0 var(--black);
 
       z-index: 2;
@@ -354,22 +351,22 @@
 
 
     /* =====================================================
-       BOTONES
+       BOTONES DE AMENAZA
     ===================================================== */
 
     .button-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
+      gap: 10px;
 
-      margin-top: 22px;
+      margin-top: 14px;
     }
 
     .comic-button {
       position: relative;
 
-      min-height: 76px;
-      padding: 8px 10px;
+      min-height: 62px;
+      padding: 5px 8px;
 
       cursor: pointer;
 
@@ -379,7 +376,7 @@
       border-radius: 10px;
 
       font-family: "Barlow Condensed", sans-serif;
-      font-size: clamp(1rem, 4.5vw, 1.45rem);
+      font-size: clamp(0.9rem, 4vw, 1.25rem);
       font-style: italic;
       font-weight: 800;
       line-height: 1;
@@ -388,7 +385,7 @@
       text-transform: uppercase;
 
       box-shadow:
-        5px 5px 0 var(--black);
+        4px 4px 0 var(--black);
 
       transition:
         transform 0.15s ease,
@@ -424,10 +421,10 @@
     }
 
     .comic-button__value {
-      margin-top: 4px;
+      margin-top: 2px;
 
       font-family: "Anton", sans-serif;
-      font-size: 1.8rem;
+      font-size: 1.45rem;
       font-style: italic;
       font-weight: 400;
     }
@@ -440,12 +437,6 @@
       background: var(--red);
     }
 
-    .comic-button--small {
-      min-height: 70px;
-
-      font-size: 1.15rem;
-    }
-
     .comic-button:hover,
     .comic-button:focus-visible {
       filter: brightness(1.13);
@@ -453,7 +444,7 @@
       transform: translate(-2px, -2px);
 
       box-shadow:
-        8px 8px 0 var(--black);
+        7px 7px 0 var(--black);
 
       outline: none;
     }
@@ -476,10 +467,10 @@
       justify-content: center;
 
       width: 100%;
-      min-height: 70px;
+      min-height: 52px;
 
-      margin-top: 22px;
-      padding: 14px 22px;
+      margin-top: 14px;
+      padding: 8px 18px;
 
       color: var(--black);
 
@@ -496,14 +487,14 @@
       border: var(--border);
 
       font-family: "Barlow Condensed", sans-serif;
-      font-size: clamp(1.25rem, 5vw, 1.8rem);
+      font-size: clamp(1.05rem, 4vw, 1.5rem);
       font-style: italic;
       font-weight: 800;
       text-align: center;
       text-transform: uppercase;
 
       box-shadow:
-        7px 7px 0 var(--black);
+        5px 5px 0 var(--black);
 
       transform: rotate(-0.5deg);
 
@@ -522,7 +513,7 @@
         translate(-2px, -2px);
 
       box-shadow:
-        9px 9px 0 var(--black);
+        8px 8px 0 var(--black);
 
       outline: none;
     }
@@ -542,43 +533,15 @@
     ===================================================== */
 
     .connection-status {
-      margin: 20px 0 0;
+      margin: 10px 0 0;
 
       color: rgba(255, 255, 255, 0.75);
 
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-align: center;
       text-transform: uppercase;
-    }
-
-
-    /* =====================================================
-       RESPONSIVE
-    ===================================================== */
-
-    @media (max-width: 420px) {
-      .game-screen {
-        padding-inline: 10px;
-      }
-
-      .scheme-card__description {
-        padding: 13px 14px 15px;
-      }
-
-      .button-grid {
-        gap: 8px;
-      }
-
-      .comic-button {
-        min-height: 84px;
-        padding-inline: 6px;
-      }
-
-      .comic-button__value {
-        font-size: 1.8rem;
-      }
     }
   </style>
 </head>
@@ -586,7 +549,6 @@
 <body>
 
   <main class="game-screen">
-
 
     <section class="scheme-card">
 
@@ -656,7 +618,6 @@
         <span class="comic-button__value">−1</span>
       </button>
 
-     
     </section>
 
 
@@ -757,10 +718,6 @@
         contadorRef,
 
         function (valorActual) {
-          /*
-             Evita que la amenaza descienda por debajo de cero.
-             Elimina Math.max si quieres permitir números negativos.
-          */
           return Math.max(
             0,
             (valorActual || 0) - valor
