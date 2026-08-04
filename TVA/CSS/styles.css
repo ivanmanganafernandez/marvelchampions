@@ -845,9 +845,9 @@ body::before {
 }
 
 
-```css
+
 /* =====================================================
-   BANDA DE ESCANEO REGULAR — SIN CREAR SCROLL
+   BANDA DE ESCANEO REGULAR — DE ARRIBA HACIA ABAJO
 ===================================================== */
 
 .timeline-list {
@@ -856,7 +856,6 @@ body::before {
     overflow-y: auto;
     overflow-x: hidden;
 
-    /* Evita que los efectos amplíen el área desplazable */
     contain: paint;
 }
 
@@ -888,13 +887,9 @@ body::before {
             transparent 100%
         );
 
-    /*
-       El fondo es más alto que el contenedor.
-       La animación mueve el fondo, no el pseudoelemento.
-    */
     background-size: 100% 220%;
     background-repeat: no-repeat;
-    background-position: center -120%;
+    background-position: center 120%;
 
     filter: blur(0.25px);
 
@@ -907,7 +902,7 @@ body::before {
 
 @keyframes scan-band-regular {
     0% {
-        background-position: center -120%;
+        background-position: center 120%;
         opacity: 0;
     }
 
@@ -920,11 +915,10 @@ body::before {
     }
 
     100% {
-        background-position: center 120%;
+        background-position: center -120%;
         opacity: 0;
     }
 }
-```
 
 
 
