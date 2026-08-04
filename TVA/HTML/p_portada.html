@@ -216,7 +216,20 @@
     <script src="../JS/transicion.js"></script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        alert("JavaScript cargado correctamente");
+        const startButton = document.querySelector("#start-button");
+
+        if (!startButton) {
+            alert("ERROR: No se encuentra el botón #start-button");
+            return;
+        }
+
+        alert("Botón encontrado correctamente");
+
+        startButton.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            alert("Has pulsado el botón Inicio");
+        });
     });
 </script>
 </body>
