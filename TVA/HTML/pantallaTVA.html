@@ -19,6 +19,8 @@
       --cream: #f4e9d8;
       --muted: #8f8f8f;
       --danger: #ff5a36;
+      --stable: #54e38e;
+      --stable-soft: rgba(84, 227, 142, 0.16);
       --glow: 0 0 28px rgba(248, 105, 0, 0.14);
     }
 
@@ -167,6 +169,10 @@
       border: 1px solid rgba(248, 105, 0, 0.22);
       box-shadow: var(--glow);
       overflow: hidden;
+      transition:
+        border-color 0.45s ease,
+        box-shadow 0.45s ease,
+        background 0.45s ease;
     }
 
     .timeline-card::before {
@@ -177,6 +183,7 @@
       height: 2px;
       background: var(--orange);
       box-shadow: 0 0 12px rgba(248, 105, 0, 0.5);
+      transition: background 0.45s ease, box-shadow 0.45s ease;
     }
 
     .timeline-card::after {
@@ -188,6 +195,40 @@
       height: 18px;
       border-top: 1px solid rgba(248, 105, 0, 0.38);
       border-right: 1px solid rgba(248, 105, 0, 0.38);
+      transition: border-color 0.45s ease;
+    }
+
+    /* Estado estable: se aplica automáticamente cuando la amenaza es 0 */
+    .timeline-card.is-stable {
+      border-color: rgba(84, 227, 142, 0.72);
+      background:
+        radial-gradient(circle at 50% 100%, var(--stable-soft), transparent 55%),
+        linear-gradient(180deg, rgba(84,227,142,0.05), transparent 35%),
+        var(--panel);
+      box-shadow:
+        0 0 18px rgba(84, 227, 142, 0.24),
+        0 0 48px rgba(84, 227, 142, 0.12),
+        inset 0 0 30px rgba(84, 227, 142, 0.035);
+    }
+
+    .timeline-card.is-stable::before {
+      background: var(--stable);
+      box-shadow: 0 0 16px rgba(84, 227, 142, 0.7);
+    }
+
+    .timeline-card.is-stable::after {
+      border-color: rgba(84, 227, 142, 0.7);
+    }
+
+    .timeline-card.is-stable .threat-current,
+    .timeline-card.is-stable .state-text {
+      color: var(--stable);
+      text-shadow: 0 0 12px rgba(84, 227, 142, 0.32);
+    }
+
+    .timeline-card.is-stable .bar {
+      border-color: rgba(84, 227, 142, 0.16);
+      background: rgba(84, 227, 142, 0.045);
     }
 
     .year {
@@ -245,11 +286,7 @@
       font-size: clamp(2.9rem, 5vw, 4.4rem);
       line-height: 1;
       color: var(--cream);
-    }
-
-    .threat-max {
-      color: var(--muted);
-      font-size: 1rem;
+      transition: color 0.45s ease, text-shadow 0.45s ease;
     }
 
     .bar {
@@ -258,6 +295,7 @@
       background: rgba(255, 255, 255, 0.055);
       border: 1px solid rgba(255, 255, 255, 0.05);
       overflow: hidden;
+      transition: background 0.45s ease, border-color 0.45s ease;
     }
 
     .bar-fill {
@@ -281,6 +319,10 @@
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: #6f7377;
+    }
+
+    .state-text {
+      transition: color 0.45s ease, text-shadow 0.45s ease;
     }
 
     .footer {
@@ -367,7 +409,7 @@
     </section>
 
     <section class="timeline-grid">
-      <article class="timeline-card">
+      <article class="timeline-card" id="card-berlin">
         <div>
           <div class="year">LÍNEA // 1946</div>
           <h2 class="place">Berlín</h2>
@@ -388,12 +430,12 @@
 
           <div class="card-footer">
             <span>Sector B-1946</span>
-            <span>Estado: Inestable</span>
+            <span class="state-text" id="state-berlin">Estado: Inestable</span>
           </div>
         </div>
       </article>
 
-      <article class="timeline-card">
+      <article class="timeline-card" id="card-ny">
         <div>
           <div class="year">LÍNEA // 2012</div>
           <h2 class="place">Nueva York</h2>
@@ -414,12 +456,12 @@
 
           <div class="card-footer">
             <span>Sector NY-2012</span>
-            <span>Estado: Inestable</span>
+            <span class="state-text" id="state-ny">Estado: Inestable</span>
           </div>
         </div>
       </article>
 
-      <article class="timeline-card">
+      <article class="timeline-card" id="card-sokovia">
         <div>
           <div class="year">LÍNEA // 2015</div>
           <h2 class="place">Sokovia</h2>
@@ -431,7 +473,6 @@
             <div class="threat-title">Nivel de amenaza</div>
             <div class="threat-value">
               <span class="threat-current" id="threat-sokovia"></span>
-
             </div>
           </div>
 
@@ -441,7 +482,7 @@
 
           <div class="card-footer">
             <span>Sector S-2015</span>
-            <span>Estado: Inestable</span>
+            <span class="state-text" id="state-sokovia">Estado: Inestable</span>
           </div>
         </div>
       </article>
@@ -463,8 +504,11 @@
       const hours = Math.floor(remaining / 3600);
       const minutes = Math.floor((remaining % 3600) / 60);
       const seconds = remaining % 60;
+
       document.getElementById("timer").textContent =
-        [hours, minutes, seconds].map(n => String(n).padStart(2, "0")).join(":");
+        [hours, minutes, seconds]
+          .map(n => String(n).padStart(2, "0"))
+          .join(":");
     }
 
     updateTimer();
@@ -512,19 +556,34 @@
     function updateThreat(id, rawValue) {
       const valueElement = document.getElementById(`threat-${id}`);
       const barElement = document.getElementById(`bar-${id}`);
-      const value = Number(rawValue ?? 0);
+      const cardElement = document.getElementById(`card-${id}`);
+      const stateElement = document.getElementById(`state-${id}`);
 
-      valueElement.textContent = Number.isFinite(value) ? value : 0;
+      const parsedValue = Number(rawValue ?? 0);
+      const value = Number.isFinite(parsedValue) ? parsedValue : 0;
 
-      const percentage = Number.isFinite(value)
-        ? Math.max(0, Math.min(100, (value / MAX_THREAT) * 100))
-        : 0;
+      valueElement.textContent = value;
+
+      const percentage = Math.max(
+        0,
+        Math.min(100, (value / MAX_THREAT) * 100)
+      );
 
       barElement.style.width = `${percentage}%`;
+
+      // Si la amenaza llega a 0, la línea temporal queda estable.
+      const isStable = value === 0;
+
+      cardElement.classList.toggle("is-stable", isStable);
+
+      stateElement.textContent = isStable
+        ? "Estado: Estable"
+        : "Estado: Inestable";
     }
 
     function markLoaded(id) {
       loaded.add(id);
+
       if (loaded.size === 3) {
         connectionStatus.textContent = "SINCRONIZACIÓN ACTIVA";
       }
@@ -550,3 +609,4 @@
   </script>
 </body>
 </html>
+
