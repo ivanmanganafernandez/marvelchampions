@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#090b0d" />
+  <title>TVA // Monitor Temporal</title>
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&family=Share+Tech+Mono&display=swap");
+
+    :root {
+      --bg: #07090b;
+      --panel: rgba(17, 20, 24, 0.92);
+      --panel-soft: rgba(255, 255, 255, 0.035);
+      --line: rgba(248, 105, 0, 0.28);
+      --orange: #f86900;
+      --orange-soft: #ff8a33;
+      --cream: #f4e9d8;
+      --muted: #8f8f8f;
+      --danger: #ff5a36;
+      --glow: 0 0 28px rgba(248, 105, 0, 0.14);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--cream);
+      font-family: "Chakra Petch", sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(248, 105, 0, 0.12), transparent 35%),
+        linear-gradient(rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.012) 1px, transparent 1px),
+        #07090b;
+      background-size: auto, 34px 34px, 34px 34px, auto;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.12;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.06) 0px,
+          rgba(255,255,255,0.06) 1px,
+          transparent 1px,
+          transparent 4px
+        );
+      mix-blend-mode: overlay;
+    }
+
+    .app {
+      min-height: 100vh;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 18px;
+      padding: 22px 26px 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 44px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 10px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      color: var(--orange-soft);
+      font-weight: 700;
+    }
+
+    .brand-mark {
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--orange);
+      transform: rotate(45deg);
+      box-shadow: 0 0 12px rgba(248, 105, 0, 0.5);
+    }
+
+    .status {
+      font-family: "Share Tech Mono", monospace;
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    .status strong {
+      color: var(--orange-soft);
+      font-weight: 400;
+    }
+
+    .timer-section {
+      text-align: center;
+      padding: 8px 0 2px;
+    }
+
+    .eyebrow {
+      font-family: "Share Tech Mono", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      font-size: 0.72rem;
+      color: var(--orange-soft);
+      margin-bottom: 2px;
+    }
+
+    .timer {
+      font-family: "Share Tech Mono", monospace;
+      font-size: clamp(4.6rem, 10vw, 8.6rem);
+      line-height: 0.95;
+      letter-spacing: 0.035em;
+      color: var(--cream);
+      text-shadow:
+        0 0 16px rgba(248, 105, 0, 0.18),
+        0 0 42px rgba(248, 105, 0, 0.08);
+      margin: 8px 0 5px;
+    }
+
+    .timer-label {
+      text-transform: uppercase;
+      letter-spacing: 0.34em;
+      font-size: 0.74rem;
+      color: var(--muted);
+    }
+
+    .timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      align-items: stretch;
+      min-height: 0;
+    }
+
+    .timeline-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 290px;
+      padding: 22px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.025), transparent 28%),
+        var(--panel);
+      border: 1px solid rgba(248, 105, 0, 0.22);
+      box-shadow: var(--glow);
+      overflow: hidden;
+    }
+
+    .timeline-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 54px;
+      height: 2px;
+      background: var(--orange);
+      box-shadow: 0 0 12px rgba(248, 105, 0, 0.5);
+    }
+
+    .timeline-card::after {
+      content: "";
+      position: absolute;
+      right: 14px;
+      top: 14px;
+      width: 18px;
+      height: 18px;
+      border-top: 1px solid rgba(248, 105, 0, 0.38);
+      border-right: 1px solid rgba(248, 105, 0, 0.38);
+    }
+
+    .year {
+      font-family: "Share Tech Mono", monospace;
+      color: var(--orange-soft);
+      font-size: 0.75rem;
+      letter-spacing: 0.24em;
+      margin-bottom: 8px;
+    }
+
+    .place {
+      font-size: clamp(1.4rem, 2.1vw, 2rem);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.055em;
+      margin: 0;
+    }
+
+    .subtitle {
+      margin-top: 6px;
+      font-family: "Share Tech Mono", monospace;
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .threat-wrap {
+      margin-top: 24px;
+    }
+
+    .threat-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 8px;
+    }
+
+    .threat-title {
+      font-family: "Share Tech Mono", monospace;
+      text-transform: uppercase;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+    .threat-value {
+      display: flex;
+      align-items: baseline;
+      gap: 5px;
+      font-family: "Share Tech Mono", monospace;
+    }
+
+    .threat-current {
+      font-size: clamp(2.9rem, 5vw, 4.4rem);
+      line-height: 1;
+      color: var(--cream);
+    }
+
+    .threat-max {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .bar {
+      position: relative;
+      height: 9px;
+      background: rgba(255, 255, 255, 0.055);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      width: 0%;
+      background:
+        linear-gradient(90deg, rgba(248,105,0,0.62), var(--orange));
+      box-shadow: 0 0 15px rgba(248, 105, 0, 0.35);
+      transition: width 0.5s ease;
+    }
+
+    .card-footer {
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-family: "Share Tech Mono", monospace;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #6f7377;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      border-top: 1px solid rgba(248, 105, 0, 0.16);
+      padding-top: 10px;
+      font-family: "Share Tech Mono", monospace;
+      color: #666a6e;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer .accent {
+      color: var(--orange-soft);
+    }
+
+    @media (max-width: 900px) {
+      body {
+        overflow: auto;
+      }
+
+      .app {
+        min-height: 100vh;
+      }
+
+      .timeline-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-card {
+        min-height: 220px;
+      }
+
+      .timer {
+        font-size: clamp(4rem, 17vw, 7rem);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .app {
+        padding: 16px;
+      }
+
+      .topbar,
+      .footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .status {
+        font-size: 0.7rem;
+      }
+
+      .timeline-card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark"></span>
+        TVA // Monitor temporal
+      </div>
+
+      <div class="status">
+        SISTEMA: <strong id="connection-status">CONECTANDO...</strong>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        RAMIFICACIONES DETECTADAS: <strong>03</strong>
+      </div>
+    </header>
+
+    <section class="timer-section">
+      <div class="eyebrow">Ventana de intervención temporal</div>
+      <div class="timer" id="timer">02:00:00</div>
+      <div class="timer-label">Tiempo restante</div>
+    </section>
+
+    <section class="timeline-grid">
+      <article class="timeline-card">
+        <div>
+          <div class="year">LÍNEA // 1946</div>
+          <h2 class="place">Berlín</h2>
+          <div class="subtitle">Ramificación Hydra</div>
+        </div>
+
+        <div class="threat-wrap">
+          <div class="threat-top">
+            <div class="threat-title">Nivel de amenaza</div>
+            <div class="threat-value">
+              <span class="threat-current" id="threat-berlin">—</span>
+              <span class="threat-max">/ 20</span>
+            </div>
+          </div>
+
+          <div class="bar">
+            <div class="bar-fill" id="bar-berlin"></div>
+          </div>
+
+          <div class="card-footer">
+            <span>Sector B-1946</span>
+            <span>Estado: Inestable</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="timeline-card">
+        <div>
+          <div class="year">LÍNEA // 2012</div>
+          <h2 class="place">Nueva York</h2>
+          <div class="subtitle">Incursión Chitauri</div>
+        </div>
+
+        <div class="threat-wrap">
+          <div class="threat-top">
+            <div class="threat-title">Nivel de amenaza</div>
+            <div class="threat-value">
+              <span class="threat-current" id="threat-ny">—</span>
+              <span class="threat-max">/ 20</span>
+            </div>
+          </div>
+
+          <div class="bar">
+            <div class="bar-fill" id="bar-ny"></div>
+          </div>
+
+          <div class="card-footer">
+            <span>Sector NY-2012</span>
+            <span>Estado: Inestable</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="timeline-card">
+        <div>
+          <div class="year">LÍNEA // 2015</div>
+          <h2 class="place">Sokovia</h2>
+          <div class="subtitle">Dominio de Ultrón</div>
+        </div>
+
+        <div class="threat-wrap">
+          <div class="threat-top">
+            <div class="threat-title">Nivel de amenaza</div>
+            <div class="threat-value">
+              <span class="threat-current" id="threat-sokovia">—</span>
+              <span class="threat-max">/ 20</span>
+            </div>
+          </div>
+
+          <div class="bar">
+            <div class="bar-fill" id="bar-sokovia"></div>
+          </div>
+
+          <div class="card-footer">
+            <span>Sector S-2015</span>
+            <span>Estado: Inestable</span>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <footer class="footer">
+      <span>Autoridad de Variación Temporal // División de Monitorización</span>
+      <span class="accent">TVA-OPS // TEMPAD ONLINE</span>
+    </footer>
+  </main>
+
+  <script>
+    // Temporizador local: comienza al abrir la página y no modifica Firebase.
+    const TOTAL_SECONDS = 2 * 60 * 60;
+    const deadline = Date.now() + TOTAL_SECONDS * 1000;
+
+    function updateTimer() {
+      const remaining = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+      const hours = Math.floor(remaining / 3600);
+      const minutes = Math.floor((remaining % 3600) / 60);
+      const seconds = remaining % 60;
+      document.getElementById("timer").textContent =
+        [hours, minutes, seconds].map(n => String(n).padStart(2, "0")).join(":");
+    }
+
+    updateTimer();
+    setInterval(updateTimer, 250);
+  </script>
+
+  <script type="module">
+    import {
+      initializeApp
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+
+    import {
+      getDatabase,
+      ref,
+      onValue
+    } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyC6AxztIL3sQnttXBdJoDHzF6afDPOwlz8",
+      authDomain: "mcmasivo.firebaseapp.com",
+      databaseURL:
+        "https://mcmasivo-default-rtdb.europe-west1.firebasedatabase.app/",
+      projectId: "mcmasivo"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getDatabase(app);
+
+    /*
+      Firebase -> marcador
+      Berlín      = contador
+      Nueva York  = contador2
+      Sokovia     = contador3
+    */
+    const timelineRefs = {
+      berlin: ref(db, "contador"),
+      ny: ref(db, "contador2"),
+      sokovia: ref(db, "contador3")
+    };
+
+    const connectionStatus = document.querySelector("#connection-status");
+    const MAX_THREAT = 20;
+    const loaded = new Set();
+
+    function updateThreat(id, rawValue) {
+      const valueElement = document.getElementById(`threat-${id}`);
+      const barElement = document.getElementById(`bar-${id}`);
+      const value = Number(rawValue ?? 0);
+
+      valueElement.textContent = Number.isFinite(value) ? value : 0;
+
+      const percentage = Number.isFinite(value)
+        ? Math.max(0, Math.min(100, (value / MAX_THREAT) * 100))
+        : 0;
+
+      barElement.style.width = `${percentage}%`;
+    }
+
+    function markLoaded(id) {
+      loaded.add(id);
+      if (loaded.size === 3) {
+        connectionStatus.textContent = "SINCRONIZACIÓN ACTIVA";
+      }
+    }
+
+    function listenToThreat(id, dbRef) {
+      onValue(
+        dbRef,
+        (snapshot) => {
+          updateThreat(id, snapshot.val());
+          markLoaded(id);
+        },
+        (error) => {
+          console.error(`Error al leer ${id}:`, error);
+          connectionStatus.textContent = "ERROR DE CONEXIÓN";
+        }
+      );
+    }
+
+    listenToThreat("berlin", timelineRefs.berlin);
+    listenToThreat("ny", timelineRefs.ny);
+    listenToThreat("sokovia", timelineRefs.sokovia);
+  </script>
+</body>
+</html>
