@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,20 +7,13 @@
 <title>Marvel Champions · Especial Navidad</title>
 
 <style>
-
-/* =========================================
-   VARIABLES GENERALES
-========================================= */
-
 :root {
-  --verde: #173c2a;
-  --verde-claro: #28543a;
-  --verde-oscuro: #0b2318;
-  --rojo: #c83e43;
-  --rojo-oscuro: #91272e;
-  --crema: #fff0c7;
-  --dorado: #e4bd70;
-  --negro: #24211e;
+  --crema: #f5dfaa;
+  --dorado: #d7a653;
+  --verde: #153c29;
+  --verde-oscuro: #092518;
+  --rojo: #c83d40;
+  --negro: #211b16;
 }
 
 * {
@@ -29,257 +21,152 @@
 }
 
 html, body {
-  margin: 0;
   width: 100%;
   height: 100%;
+  margin: 0;
   overflow: hidden;
 }
 
 body {
-  background-color: #f0e4c9;
-  background-image:
-    radial-gradient(
-      rgba(65, 40, 30, 0.16) 1px,
-      transparent 1px
-    );
-  background-size: 11px 11px;
   color: var(--crema);
-  font-family: Arial, sans-serif;
+  font-family: Georgia, serif;
+  background-color: #d9bc82;
+  background-image:
+    radial-gradient(#9e7b45 0.8px, transparent 0.8px);
+  background-size: 9px 9px;
 }
 
-/* =========================================
-   DISTRIBUCIÓN DE PANTALLA
-========================================= */
+/* DISTRIBUCIÓN 2 X 2 */
 
 .marcador {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   grid-template-rows: repeat(2, minmax(0, 1fr));
-
+  gap: 7px;
+  padding: 7px;
   width: 100%;
   height: 100vh;
   height: 100dvh;
-
-  padding: clamp(7px, 1.3vh, 15px);
-  gap: clamp(7px, 1.3vh, 15px);
-
   overflow: hidden;
 }
 
-/* =========================================
-   TARJETAS ESTILO CÓMIC
-========================================= */
+/* VIÑETAS */
 
 .villano {
   position: relative;
   display: flex;
   flex-direction: column;
-
   min-width: 0;
   min-height: 0;
-
   overflow: hidden;
-
-  border: clamp(2px, 0.3vw, 4px) solid var(--negro);
-  border-radius: 5px;
-
-  background: var(--verde);
-
-  box-shadow: 4px 4px 0 var(--rojo);
-}
-
-/* =========================================
-   GUIRNALDA NAVIDEÑA
-========================================= */
-
-/* Cable y bombillas dibujados con CSS */
-.villano::before {
-  content: "";
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  height: 30px;
-
-  background-image:
-
-    /* Luces rojas */
-    radial-gradient(
-      ellipse 5px 8px at 20px 16px,
-      #ef5757 95%,
-      transparent 100%
-    ),
-
-    /* Luces amarillas */
-    radial-gradient(
-      ellipse 5px 8px at 65px 21px,
-      #f5d46f 95%,
-      transparent 100%
-    ),
-
-    /* Luces verdes */
-    radial-gradient(
-      ellipse 5px 8px at 110px 16px,
-      #8ed78b 95%,
-      transparent 100%
-    ),
-
-    /* Luces azules */
-    radial-gradient(
-      ellipse 5px 8px at 155px 21px,
-      #80c6e8 95%,
-      transparent 100%
-    ),
-
-    /* Cable */
-    repeating-linear-gradient(
-      90deg,
-      transparent 0 8px,
-      #17231a 8px 10px,
-      transparent 10px 45px
-    );
-
-  background-size:
-    180px 30px,
-    180px 30px,
-    180px 30px,
-    180px 30px,
-    180px 3px;
-
-  background-repeat: repeat-x;
-
-  background-position:
-    0 0,
-    0 0,
-    0 0,
-    0 0,
-    0 5px;
-
-  z-index: 5;
-
-  pointer-events: none;
-
-  filter:
-    drop-shadow(
-      0 0 3px rgba(255,220,140,.4)
-    );
-}
-
-/* Copo de nieve */
-.villano::after {
-  content: "❄";
-
-  position: absolute;
-  top: 32px;
-  right: 14px;
-
-  color: var(--crema);
-
-  font-size: clamp(14px, 1.5vw, 21px);
-
-  text-shadow: 2px 2px 0 var(--negro);
-
-  opacity: .65;
-
-  z-index: 4;
-
-  pointer-events: none;
-}
-
-/* =========================================
-   IMÁGENES DE VILLANOS
-========================================= */
-
-.imagen {
-  position: relative;
-
-  flex: 1 1 auto;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  min-height: 0;
-  overflow: hidden;
-
-  padding: 30px 9px 0;
+  border: 4px solid #231a12;
+  border-radius: 9px;
 
   background:
     radial-gradient(
-      ellipse at 50% 45%,
-      #35684a 0%,
-      #214932 50%,
-      #143321 100%
+      ellipse at 50% 38%,
+      #38664a 0%,
+      #1d4730 52%,
+      #0c291c 100%
     );
+
+  box-shadow:
+    inset 0 0 0 2px #d8aa57,
+    inset 0 0 30px rgba(0,0,0,.3);
 }
 
-/* Trama de puntos de cómic */
-.imagen::before {
-  content: "";
+/* TEXTURA DE CÓMIC */
 
+.villano::before {
+  content: "";
   position: absolute;
   inset: 0;
+  z-index: 1;
+  pointer-events: none;
 
   background-image:
     radial-gradient(
-      rgba(0, 0, 0, .17) 1px,
+      rgba(0,0,0,.18) 1px,
       transparent 1px
     );
 
-  background-size: 9px 9px;
+  background-size: 8px 8px;
+  opacity: .5;
+}
 
-  opacity: .55;
+/* LUCES DE NAVIDAD */
 
+.luces {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 43px;
+  z-index: 7;
   pointer-events: none;
 }
 
-/* Resplandor central */
-.imagen::after {
+.luces svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.cable {
+  fill: none;
+  stroke: #161b13;
+  stroke-width: 3;
+}
+
+.bombilla {
+  stroke: #231a12;
+  stroke-width: 1.5;
+  filter: drop-shadow(0 0 4px currentColor);
+}
+
+/* ZONA DEL PERSONAJE */
+
+.imagen {
+  position: relative;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 8px 0;
+}
+
+.imagen::before {
   content: "";
-
   position: absolute;
-
-  width: 65%;
-  height: 85%;
-
-  left: 17.5%;
-  top: 5%;
-
-  border-radius: 50%;
-
+  inset: 0;
   background:
     radial-gradient(
-      ellipse,
-      rgba(255, 239, 181, .12),
-      transparent 70%
+      ellipse at center,
+      rgba(237,201,112,.13),
+      transparent 65%
     );
-
   pointer-events: none;
 }
 
-/* Ilustraciones */
 .imagen img {
   position: relative;
   z-index: 2;
-
   width: 100%;
   height: 100%;
   min-height: 0;
-
   object-fit: contain;
   object-position: center;
-
   filter:
-    drop-shadow(
-      0 7px 8px rgba(0,0,0,.45)
-    );
+    drop-shadow(0 8px 9px rgba(0,0,0,.55));
 }
 
-/* Tamaños individuales */
+/* AJUSTES DE PERSONAJES */
+
 #octopus .imagen img {
-  transform: scale(1.12);
+  transform: scale(1.16);
 }
 
 #electro .imagen img {
@@ -287,166 +174,210 @@ body {
 }
 
 #buitre .imagen img {
-  transform: scale(1.08);
+  transform: scale(1.11);
 }
 
 #sandman .imagen img {
-  transform: scale(1.05);
+  transform: scale(1.07);
 }
 
-/* =========================================
-   PANEL DE INFORMACIÓN
-========================================= */
+/* ZONA INFERIOR DE VIDA */
 
 .informacion {
   position: relative;
-  z-index: 3;
-
+  z-index: 4;
   flex: 0 0 auto;
-
   min-width: 0;
-
-  padding: 5px clamp(8px, 1.5vw, 22px) 6px;
-
+  padding: 20px 22px 12px;
   text-align: center;
 
   background:
     linear-gradient(
       180deg,
-      #173b29,
-      #0c2418
+      rgba(12,51,31,.88),
+      #092718
     );
 
-  border-top: 3px solid var(--negro);
+  border-top: 2px solid #b98b46;
 }
 
-/* =========================================
-   NOMBRES DE VILLANOS
-========================================= */
+/* PERGAMINO DEL NOMBRE */
 
 .nombre {
-  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: -22px;
+  transform: translateX(-50%) rotate(-1deg);
+  z-index: 6;
 
-  max-width: 100%;
+  max-width: 90%;
+  margin: 0;
+  padding: 7px 25px;
 
-  margin: 0 0 5px;
+  color: #21170f;
+  background:
+    linear-gradient(
+      180deg,
+      #fff0c3,
+      #eac98a
+    );
 
-  padding:
-    4px clamp(8px, 1.2vw, 18px);
+  border: 2px solid #3c2816;
+  border-radius: 6px 6px 12px 12px;
 
-  background: var(--crema);
+  box-shadow:
+    0 3px 0 #8d562e,
+    0 5px 8px rgba(0,0,0,.35);
 
-  border: 2px solid var(--negro);
-
-  box-shadow: 3px 3px 0 var(--rojo);
-
-  color: var(--negro);
-
-  font-family:
-    Impact,
-    "Arial Black",
-    sans-serif;
-
-  font-size: clamp(11px, 1.8vw, 27px);
-
+  font-family: Georgia, serif;
   font-weight: 900;
-
+  font-style: italic;
+  font-size: clamp(13px, 2vw, 28px);
   text-transform: uppercase;
-
   letter-spacing: .5px;
   line-height: 1.05;
-
-  transform: rotate(-1deg);
+  white-space: nowrap;
 }
 
-/* =========================================
-   VALORES DE VIDA
-========================================= */
+/* DETALLES DEL PERGAMINO */
+
+.nombre::before,
+.nombre::after {
+  content: "✦";
+  color: #a13432;
+  font-style: normal;
+  font-size: .7em;
+  vertical-align: middle;
+}
+
+.nombre::before {
+  margin-right: 12px;
+}
+
+.nombre::after {
+  margin-left: 12px;
+}
+
+/* VIDA */
 
 .vida {
-  margin-bottom: 5px;
-
-  font-family:
-    Impact,
-    "Arial Black",
-    sans-serif;
-
-  font-size: clamp(20px, 3vw, 44px);
-
-  font-weight: bold;
+  margin: 9px 0 8px;
+  font-family: Georgia, serif;
+  font-size: clamp(22px, 3vw, 41px);
+  font-weight: 900;
   line-height: 1.05;
-
-  color: white;
-
-  text-shadow: 2px 2px 0 var(--negro);
+  color: #fff8e7;
+  text-shadow:
+    2px 2px 0 #18110c,
+    -1px -1px 0 #18110c;
 }
 
 .vida .maxima {
-  color: #c2d0c4;
-
-  font-family: Arial, sans-serif;
-  font-size: .45em;
-  font-weight: normal;
-
-  text-shadow: none;
+  font-size: .66em;
+  color: #f0dfb8;
+  font-weight: 600;
 }
 
-/* =========================================
-   BARRAS DE VIDA
-========================================= */
+/* BARRA DE VIDA */
+
+.vida-contenedor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
 .barra-fondo {
-  width: 100%;
-
-  height: clamp(12px, 1.8vh, 21px);
-
+  flex: 1;
+  min-width: 0;
+  height: clamp(15px, 2.2vh, 25px);
   overflow: hidden;
-
-  background: #101911;
-
-  border: 3px solid var(--negro);
-
-  border-radius: 4px;
+  background: #341b1b;
+  border: 3px solid #d7a653;
+  border-radius: 20px;
+  box-shadow:
+    0 0 0 2px #21170f,
+    inset 0 2px 4px rgba(0,0,0,.65);
 }
 
 .barra {
   width: 100%;
   height: 100%;
-
+  border-radius: 12px;
   background:
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0 8px,
+      rgba(255,255,255,.08) 8px 13px
+    ),
     linear-gradient(
       180deg,
-      #e65b5c 0%,
-      #bc3038 100%
+      #ee6861,
+      #b62831
     );
-
-  border-radius: 0;
-
   transition: width .8s ease;
 }
 
 .porcentaje {
-  margin-top: 3px;
+  flex: 0 0 auto;
+  min-width: 54px;
+  padding: 4px 8px;
 
-  color: var(--crema);
+  color: #fff0c1;
+  font-family: Georgia, serif;
+  font-size: clamp(12px, 1.3vw, 19px);
+  font-weight: 900;
+  text-align: center;
 
-  font-family:
-    Impact,
-    "Arial Black",
-    sans-serif;
-
-  font-size: clamp(11px, 1.2vw, 17px);
-
-  letter-spacing: .5px;
+  background: #113d2a;
+  border: 2px solid var(--dorado);
+  border-radius: 7px;
+  box-shadow: 0 0 0 2px #21170f;
 }
 
-/* =========================================
-   VILLANO DERROTADO
-========================================= */
+/* ADORNOS NAVIDEÑOS */
+
+.decoracion {
+  position: absolute;
+  bottom: 9px;
+  z-index: 5;
+  pointer-events: none;
+  font-size: clamp(15px, 1.7vw, 25px);
+  filter: drop-shadow(2px 2px 1px #17120c);
+}
+
+.decoracion.izquierda {
+  left: 12px;
+}
+
+.decoracion.derecha {
+  right: 12px;
+}
+
+/* COPOS */
+
+.copo {
+  position: absolute;
+  z-index: 3;
+  color: rgba(255,245,213,.7);
+  font-size: clamp(12px, 1.5vw, 24px);
+  pointer-events: none;
+}
+
+.copo.uno {
+  top: 17%;
+  left: 5%;
+}
+
+.copo.dos {
+  top: 20%;
+  right: 6%;
+}
+
+/* DERROTADO */
 
 .derrotado .imagen {
   filter: grayscale(1);
-  opacity: .45;
+  opacity: .5;
 }
 
 .derrotado .barra {
@@ -454,146 +385,130 @@ body {
 }
 
 .derrotado .nombre {
-  background: #a9a9a9;
+  background: #b5ae9d;
 }
 
-/* =========================================
-   ESTADO DE FIREBASE
-========================================= */
+/* ESTADO DE FIREBASE */
 
 #estado {
   position: fixed;
-
-  bottom: 5px;
+  bottom: 8px;
   left: 50%;
-
   transform: translateX(-50%);
-
   z-index: 20;
 
   padding: 5px 12px;
-
+  background: #17261c;
+  color: #fff0c7;
+  border: 1px solid #d7a653;
   border-radius: 5px;
-
-  background: rgba(15, 25, 18, .95);
-
-  border: 1px solid var(--rojo);
-
-  color: white;
-
   font-family: Arial, sans-serif;
   font-size: 11px;
-
-  pointer-events: none;
 }
 
 #estado.conectado {
   display: none;
 }
 
-/* =========================================
-   PANTALLAS PEQUEÑAS
-========================================= */
+/* PANTALLAS PEQUEÑAS */
 
 @media (max-width: 650px) {
-
   .marcador {
-    gap: 7px;
-    padding: 7px;
+    gap: 5px;
+    padding: 5px;
   }
 
   .villano {
     border-width: 2px;
-    box-shadow: 2px 2px 0 var(--rojo);
+    border-radius: 5px;
   }
 
-  .villano::before {
-    height: 24px;
-  }
-
-  .villano::after {
-    top: 27px;
-    right: 6px;
-    font-size: 13px;
+  .luces {
+    height: 26px;
   }
 
   .imagen {
-    padding: 24px 3px 0;
+    padding: 16px 3px 0;
   }
 
   .informacion {
-    padding: 5px 4px 7px;
-    border-top-width: 2px;
+    padding: 15px 6px 7px;
   }
 
   .nombre {
-    font-size: clamp(10px, 2.6vw, 15px);
-
-    padding: 3px 6px;
-
+    top: -13px;
+    max-width: 96%;
+    padding: 3px 7px;
     border-width: 1px;
-
-    box-shadow: 2px 2px 0 var(--rojo);
-
+    font-size: clamp(9px, 2.45vw, 14px);
     letter-spacing: 0;
   }
 
+  .nombre::before,
+  .nombre::after {
+    display: none;
+  }
+
   .vida {
-    font-size: clamp(17px, 5vw, 26px);
+    margin: 4px 0 6px;
+    font-size: clamp(17px, 4.3vw, 26px);
+  }
+
+  .vida-contenedor {
+    gap: 6px;
   }
 
   .barra-fondo {
+    height: 13px;
     border-width: 2px;
-    height: 11px;
   }
 
   .porcentaje {
+    min-width: 38px;
+    padding: 2px 4px;
     font-size: 10px;
+    border-width: 1px;
+  }
+
+  .decoracion {
+    font-size: 13px;
   }
 }
 
-/* =========================================
-   PANTALLAS DE POCA ALTURA
-========================================= */
+/* PANTALLAS BAJAS */
 
-@media (max-height: 550px) {
-
+@media (max-height: 600px) {
   .informacion {
-    padding-top: 3px;
-    padding-bottom: 4px;
+    padding-top: 14px;
+    padding-bottom: 5px;
   }
 
   .nombre {
-    margin-bottom: 3px;
+    top: -12px;
+    padding-top: 3px;
+    padding-bottom: 3px;
     font-size: clamp(10px, 2vh, 17px);
   }
 
   .vida {
-    margin-bottom: 3px;
-    font-size: clamp(15px, 4vh, 27px);
-  }
-
-  .porcentaje {
-    margin-top: 2px;
-    font-size: 10px;
+    margin: 2px 0 5px;
+    font-size: clamp(15px, 3.5vh, 26px);
   }
 
   .barra-fondo {
-    height: 11px;
+    height: 13px;
   }
 
-  .imagen {
-    padding-top: 22px;
+  .decoracion {
+    display: none;
   }
 }
 
-/* Accesibilidad: reducir animaciones */
 @media (prefers-reduced-motion: reduce) {
   .barra {
     transition: none;
   }
 }
-
 </style>
 </head>
 
@@ -602,18 +517,17 @@ body {
 <main class="marcador">
 
   <!-- DOCTOR OCTOPUS -->
-
   <section class="villano" id="octopus">
 
+    <div class="luces" aria-hidden="true"></div>
+    <span class="copo uno" aria-hidden="true">❄</span>
+    <span class="copo dos" aria-hidden="true">❄</span>
+
     <div class="imagen">
-      <img
-        src="imagenes/octopus.png"
-        alt="Doctor Octopus"
-      >
+      <img src="imagenes/octopus.png" alt="Doctor Octopus">
     </div>
 
     <div class="informacion">
-
       <h2 class="nombre">Doctor Octopus</h2>
 
       <div class="vida">
@@ -621,30 +535,27 @@ body {
         <span class="maxima">/ -- PV</span>
       </div>
 
-      <div class="barra-fondo">
-        <div class="barra"></div>
+      <div class="vida-contenedor">
+        <div class="barra-fondo">
+          <div class="barra"></div>
+        </div>
+        <div class="porcentaje">--%</div>
       </div>
-
-      <div class="porcentaje">--%</div>
-
     </div>
-
   </section>
 
-
   <!-- ELECTRO -->
-
   <section class="villano" id="electro">
 
+    <div class="luces" aria-hidden="true"></div>
+    <span class="copo uno" aria-hidden="true">❄</span>
+    <span class="copo dos" aria-hidden="true">❄</span>
+
     <div class="imagen">
-      <img
-        src="imagenes/electro.png"
-        alt="Electro"
-      >
+      <img src="imagenes/electro.png" alt="Electro">
     </div>
 
     <div class="informacion">
-
       <h2 class="nombre">Electro</h2>
 
       <div class="vida">
@@ -652,30 +563,27 @@ body {
         <span class="maxima">/ -- PV</span>
       </div>
 
-      <div class="barra-fondo">
-        <div class="barra"></div>
+      <div class="vida-contenedor">
+        <div class="barra-fondo">
+          <div class="barra"></div>
+        </div>
+        <div class="porcentaje">--%</div>
       </div>
-
-      <div class="porcentaje">--%</div>
-
     </div>
-
   </section>
 
-
   <!-- BUITRE -->
-
   <section class="villano" id="buitre">
 
+    <div class="luces" aria-hidden="true"></div>
+    <span class="copo uno" aria-hidden="true">❄</span>
+    <span class="copo dos" aria-hidden="true">❄</span>
+
     <div class="imagen">
-      <img
-        src="imagenes/buitre.png"
-        alt="Buitre"
-      >
+      <img src="imagenes/buitre.png" alt="Buitre">
     </div>
 
     <div class="informacion">
-
       <h2 class="nombre">Buitre</h2>
 
       <div class="vida">
@@ -683,30 +591,27 @@ body {
         <span class="maxima">/ -- PV</span>
       </div>
 
-      <div class="barra-fondo">
-        <div class="barra"></div>
+      <div class="vida-contenedor">
+        <div class="barra-fondo">
+          <div class="barra"></div>
+        </div>
+        <div class="porcentaje">--%</div>
       </div>
-
-      <div class="porcentaje">--%</div>
-
     </div>
-
   </section>
 
-
   <!-- HOMBRE DE ARENA -->
-
   <section class="villano" id="sandman">
 
+    <div class="luces" aria-hidden="true"></div>
+    <span class="copo uno" aria-hidden="true">❄</span>
+    <span class="copo dos" aria-hidden="true">❄</span>
+
     <div class="imagen">
-      <img
-        src="imagenes/sandman.png"
-        alt="Hombre de Arena"
-      >
+      <img src="imagenes/sandman.png" alt="Hombre de Arena">
     </div>
 
     <div class="informacion">
-
       <h2 class="nombre">Hombre de Arena</h2>
 
       <div class="vida">
@@ -714,51 +619,56 @@ body {
         <span class="maxima">/ -- PV</span>
       </div>
 
-      <div class="barra-fondo">
-        <div class="barra"></div>
+      <div class="vida-contenedor">
+        <div class="barra-fondo">
+          <div class="barra"></div>
+        </div>
+        <div class="porcentaje">--%</div>
       </div>
-
-      <div class="porcentaje">--%</div>
-
     </div>
-
   </section>
 
 </main>
 
+<div id="estado">Conectando con Firebase...</div>
 
-<!-- ESTADO DE CONEXIÓN -->
+<script>
+/* GUIRNALDAS SVG DECORATIVAS */
+const guirnalda = `
+<svg viewBox="0 0 600 55" preserveAspectRatio="none"
+     xmlns="http://www.w3.org/2000/svg">
+  <path class="cable"
+    d="M0 5 Q75 45 150 10 T300 10 T450 10 T600 5"/>
+  <g class="bombillas">
+    <ellipse cx="26" cy="16" rx="5" ry="8" fill="#ff6767" class="bombilla"/>
+    <ellipse cx="72" cy="28" rx="5" ry="8" fill="#f6d45e" class="bombilla"/>
+    <ellipse cx="119" cy="21" rx="5" ry="8" fill="#88db80" class="bombilla"/>
+    <ellipse cx="167" cy="16" rx="5" ry="8" fill="#87c5ee" class="bombilla"/>
+    <ellipse cx="214" cy="28" rx="5" ry="8" fill="#ff6767" class="bombilla"/>
+    <ellipse cx="261" cy="21" rx="5" ry="8" fill="#f6d45e" class="bombilla"/>
+    <ellipse cx="309" cy="15" rx="5" ry="8" fill="#88db80" class="bombilla"/>
+    <ellipse cx="356" cy="27" rx="5" ry="8" fill="#87c5ee" class="bombilla"/>
+    <ellipse cx="403" cy="20" rx="5" ry="8" fill="#ff6767" class="bombilla"/>
+    <ellipse cx="451" cy="15" rx="5" ry="8" fill="#f6d45e" class="bombilla"/>
+    <ellipse cx="498" cy="27" rx="5" ry="8" fill="#88db80" class="bombilla"/>
+    <ellipse cx="545" cy="20" rx="5" ry="8" fill="#87c5ee" class="bombilla"/>
+  </g>
+</svg>`;
 
-<div id="estado">
-  Conectando con Firebase...
-</div>
-
-
-<!-- =====================================
-     FIREBASE
-===================================== -->
+document.querySelectorAll(".luces").forEach(elemento => {
+  elemento.innerHTML = guirnalda;
+});
+</script>
 
 <script type="module">
-
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
 
-import {
-  getFirestore,
-  doc,
-  onSnapshot
-}
+import { getFirestore, doc, onSnapshot }
 from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
 
-import {
-  getAuth,
-  signInAnonymously,
-  onAuthStateChanged
-}
+import { getAuth, signInAnonymously, onAuthStateChanged }
 from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
-
-
-/* CONFIGURACIÓN FIREBASE */
 
 const firebaseConfig = {
   apiKey: "AIzaSyDrZ0oOMYX0YH2cvgYD4pc9zU1jNenC1v8",
@@ -770,9 +680,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
 const db = getFirestore(app);
-
 const auth = getAuth(app);
 
 const ids = [
@@ -783,16 +691,10 @@ const ids = [
 ];
 
 const estado = document.getElementById("estado");
-
-
-/* =====================================
-   ACTUALIZAR VILLANO
-===================================== */
+const cargados = new Set();
 
 function actualizarVillano(id, datos) {
-
   const elemento = document.getElementById(id);
-
   if (!elemento) return;
 
   const maxima = Number(datos.vidaMaxima);
@@ -823,87 +725,60 @@ function actualizarVillano(id, datos) {
   elemento.querySelector(".porcentaje").textContent =
     Math.round(porcentaje) + "%";
 
-  elemento.classList.toggle(
-    "derrotado",
-    actual <= 0
-  );
+  elemento.classList.toggle("derrotado", actual <= 0);
 }
-
-
-/* =====================================
-   AUTENTICACIÓN Y SINCRONIZACIÓN
-===================================== */
 
 let escuchando = false;
 
+function mostrarError(mensaje) {
+  estado.classList.remove("conectado");
+  estado.textContent = mensaje;
+}
+
 onAuthStateChanged(auth, async usuario => {
-
   if (!usuario) {
-
     try {
       await signInAnonymously(auth);
     } catch (error) {
-
       console.error(error);
-
-      estado.classList.remove("conectado");
-      estado.textContent = "Error de autenticación";
+      mostrarError("Error de autenticación");
     }
-
     return;
   }
 
   if (escuchando) return;
-
   escuchando = true;
 
   ids.forEach(id => {
-
     onSnapshot(
       doc(db, "villanos", id),
-
       snapshot => {
-
         if (!snapshot.exists()) {
-
-          estado.classList.remove("conectado");
-          estado.textContent = "Falta el villano: " + id;
-
+          mostrarError("Falta el villano: " + id);
           return;
         }
 
         try {
-
           actualizarVillano(id, snapshot.data());
+          cargados.add(id);
 
-          estado.textContent = "Conectado · En directo";
-          estado.classList.add("conectado");
-
+          if (cargados.size === ids.length) {
+            estado.textContent = "Conectado · En directo";
+            estado.classList.add("conectado");
+          }
         } catch (error) {
-
           console.error(error);
-
-          estado.classList.remove("conectado");
-          estado.textContent = "Error en los datos";
+          mostrarError("Error en los datos");
         }
       },
-
       error => {
-
         console.error(error);
-
-        estado.classList.remove("conectado");
-        estado.textContent =
-          "Error de conexión con Firestore";
+        mostrarError("Error de conexión con Firestore");
       }
     );
-
   });
-
 });
-
 </script>
 
 </body>
 </html>
-
