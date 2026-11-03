@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marvel Champions · Navidad</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: #101b18;
+      color: #fff4db;
+      font-family: Arial, sans-serif;
+    }
+
+    .marcador {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      padding: 18px;
+      min-height: 100vh;
+    }
+
+    .villano {
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+      overflow: hidden;
+      border: 2px solid #b99a68;
+      border-radius: 14px;
+      background: #20382d;
+      text-align: center;
+    }
+
+    .imagen {
+      flex: 1;
+      min-height: 0;
+      overflow: hidden;
+      background: #14241d;
+    }
+
+    .imagen img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .informacion {
+      padding: 12px 20px 16px;
+    }
+
+    .nombre {
+      margin: 0 0 8px;
+      color: #e5bd74;
+      font-size: clamp(16px, 2vw, 27px);
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .vida {
+      margin-bottom: 10px;
+      font-size: clamp(23px, 3vw, 42px);
+      font-weight: bold;
+    }
+
+    .vida .maxima {
+      color: #9eb5a7;
+      font-size: 0.55em;
+      font-weight: normal;
+    }
+
+    .barra-fondo {
+      height: 18px;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #0c1712;
+    }
+
+    .barra {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: #c64343;
+      transition: width 0.8s ease;
+    }
+
+    .porcentaje {
+      margin-top: 7px;
+      color: #d1dfd4;
+      font-size: 15px;
+    }
+
+    .derrotado .imagen {
+      filter: grayscale(1);
+      opacity: 0.45;
+    }
+
+    .derrotado .barra {
+      width: 0%;
+    }
+
+    #estado {
+      position: fixed;
+      bottom: 12px;
+      right: 12px;
+      z-index: 10;
+      padding: 8px 12px;
+      border-radius: 8px;
+      background: #111c18e8;
+      color: #dce8df;
+      font-size: 12px;
+    }
+
+    @media (max-width: 650px) {
+      .marcador {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+      }
+
+      .villano { min-height: 340px; }
+      .imagen { height: 230px; flex: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="marcador">
+
+    <section class="villano" id="octopus">
+      <div class="imagen">
+        <img src="imagenes/octopus.png" alt="Doctor Octopus">
+      </div>
+      <div class="informacion">
+        <h2 class="nombre">Doctor Octopus</h2>
+        <div class="vida">
+          <span class="actual">--</span>
+          <span class="maxima">/ -- PV</span>
+        </div>
+        <div class="barra-fondo">
+          <div class="barra"></div>
+        </div>
+        <div class="porcentaje">--%</div>
+      </div>
+    </section>
+
+    <section class="villano" id="electro">
+      <div class="imagen">
+        <img src="imagenes/electro.png" alt="Electro">
+      </div>
+      <div class="informacion">
+        <h2 class="nombre">Electro</h2>
+        <div class="vida">
+          <span class="actual">--</span>
+          <span class="maxima">/ -- PV</span>
+        </div>
+        <div class="barra-fondo">
+          <div class="barra"></div>
+        </div>
+        <div class="porcentaje">--%</div>
+      </div>
+    </section>
+
+    <section class="villano" id="buitre">
+      <div class="imagen">
+        <img src="imagenes/buitre.png" alt="Buitre">
+      </div>
+      <div class="informacion">
+        <h2 class="nombre">Buitre</h2>
+        <div class="vida">
+          <span class="actual">--</span>
+          <span class="maxima">/ -- PV</span>
+        </div>
+        <div class="barra-fondo">
+          <div class="barra"></div>
+        </div>
+        <div class="porcentaje">--%</div>
+      </div>
+    </section>
+
+    <section class="villano" id="sandman">
+      <div class="imagen">
+        <img src="imagenes/sandman.png" alt="Hombre de Arena">
+      </div>
+      <div class="informacion">
+        <h2 class="nombre">Hombre de Arena</h2>
+        <div class="vida">
+          <span class="actual">--</span>
+          <span class="maxima">/ -- PV</span>
+        </div>
+        <div class="barra-fondo">
+          <div class="barra"></div>
+        </div>
+        <div class="porcentaje">--%</div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="estado">Conectando con Firebase...</div>
+
+  <script type="module">
+    import { initializeApp }
+      from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+
+    import { getFirestore, doc, onSnapshot }
+      from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
+
+    import { getAuth, signInAnonymously, onAuthStateChanged }
+      from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDrZ0oOMYX0YH2cvgYD4pc9zU1jNenC1v8",
+      authDomain: "marvel-champions-navidad.firebaseapp.com",
+      projectId: "marvel-champions-navidad",
+      storageBucket: "marvel-champions-navidad.firebasestorage.app",
+      messagingSenderId: "442553244844",
+      appId: "1:442553244844:web:c42e22c03a66d335d61309"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    const ids = ["octopus", "electro", "buitre", "sandman"];
+    const estado = document.getElementById("estado");
+
+    function actualizarVillano(id, datos) {
+      const elemento = document.getElementById(id);
+      if (!elemento) return;
+
+      const maxima = Number(datos.vidaMaxima);
+      const actual = Number(datos.vidaActual);
+
+      if (!Number.isFinite(maxima) ||
+          !Number.isFinite(actual) ||
+          maxima <= 0) {
+        throw new Error("Datos de vida incorrectos: " + id);
+      }
+
+      const porcentaje = Math.max(
+        0,
+        Math.min(100, actual / maxima * 100)
+      );
+
+      elemento.querySelector(".actual").textContent =
+        actual.toLocaleString("es-ES");
+
+      elemento.querySelector(".maxima").textContent =
+        "/ " + maxima.toLocaleString("es-ES") + " PV";
+
+      elemento.querySelector(".barra").style.width =
+        porcentaje + "%";
+
+      elemento.querySelector(".porcentaje").textContent =
+        Math.round(porcentaje) + "%";
+
+      elemento.classList.toggle("derrotado", actual <= 0);
+    }
+
+    let escuchando = false;
+
+    onAuthStateChanged(auth, async usuario => {
+      if (!usuario) {
+        try {
+          await signInAnonymously(auth);
+        } catch (error) {
+          console.error(error);
+          estado.textContent = "Error de autenticación";
+        }
+        return;
+      }
+
+      if (escuchando) return;
+      escuchando = true;
+
+      ids.forEach(id => {
+        onSnapshot(
+          doc(db, "villanos", id),
+          snapshot => {
+            if (!snapshot.exists()) {
+              estado.textContent = "Falta el villano: " + id;
+              return;
+            }
+
+            try {
+              actualizarVillano(id, snapshot.data());
+              estado.textContent = "Conectado · En directo";
+            } catch (error) {
+              console.error(error);
+              estado.textContent = "Error en los datos";
+            }
+          },
+          error => {
+            console.error(error);
+            estado.textContent = "Error de conexión con Firestore";
+          }
+        );
+      });
+    });
+  </script>
+
+</body>
+</html>
