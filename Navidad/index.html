@@ -2,12 +2,27 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Marvel Champions · Navidad</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marvel Champions · Especial Navidad</title>
 
-  <style>
-   
+<style>
+
+/* =========================================
+   VARIABLES Y ESTILOS GENERALES
+========================================= */
+
+:root {
+  --verde: #173c2a;
+  --verde-claro: #28543a;
+  --verde-oscuro: #0b2318;
+  --rojo: #c83e43;
+  --rojo-oscuro: #91272e;
+  --crema: #fff0c7;
+  --dorado: #e4bd70;
+  --negro: #24211e;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -20,161 +35,411 @@ html, body {
 }
 
 body {
-  background:
-    radial-gradient(ellipse at 50% 0%, #31543b 0%, transparent 65%),
-    linear-gradient(145deg, #10251c, #08140f);
-  color: #fff5dc;
-  font-family: Georgia, "Times New Roman", serif;
+  background-color: #f0e4c9;
+
+  /* Trama de puntos estilo cómic */
+  background-image:
+    radial-gradient(
+      rgba(65, 40, 30, 0.16) 1px,
+      transparent 1px
+    );
+
+  background-size: 11px 11px;
+
+  color: var(--crema);
+  font-family: Arial, sans-serif;
 }
 
-/* Cuadrícula que ocupa toda la pantalla */
+/* =========================================
+   DISTRIBUCIÓN GENERAL
+========================================= */
+
 .marcador {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-template-rows: repeat(2, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  grid-template-rows:
+    repeat(2, minmax(0, 1fr));
+
   width: 100%;
   height: 100vh;
   height: 100dvh;
-  gap: clamp(6px, 1.3vh, 18px);
-  padding: clamp(6px, 1.3vh, 18px);
+
+  padding: clamp(7px, 1.3vh, 15px);
+  gap: clamp(7px, 1.3vh, 15px);
+
   overflow: hidden;
 }
 
-/* Tarjetas */
+/* =========================================
+   TARJETAS DE VILLANOS
+========================================= */
+
 .villano {
   position: relative;
+
   display: flex;
   flex-direction: column;
+
   min-width: 0;
   min-height: 0;
+
   overflow: hidden;
-  border: 2px solid #c6a568;
-  border-radius: 13px;
-  background:
-    linear-gradient(145deg, #294934, #142a1e);
+
+  border: clamp(2px, 0.3vw, 4px)
+    solid var(--negro);
+
+  border-radius: 5px;
+
+  background: var(--verde);
+
   box-shadow:
-    inset 0 0 25px rgba(0,0,0,.25),
-    0 5px 15px rgba(0,0,0,.25);
+    4px 4px 0 var(--rojo);
 }
 
-/* Línea decorativa dorada */
+/* =========================================
+   DECORACIÓN NAVIDEÑA
+========================================= */
+
+/* Franja roja superior */
 .villano::before {
   content: "";
+
   position: absolute;
-  top: 5px;
-  left: 5px;
-  right: 5px;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    #e9c982,
-    transparent
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 9px;
+
+  background: repeating-linear-gradient(
+    45deg,
+    #c83e43 0px,
+    #c83e43 12px,
+    #fff0c7 12px,
+    #fff0c7 20px
   );
-  z-index: 2;
+
+  border-bottom: 2px solid var(--negro);
+
+  z-index: 5;
 }
 
-/* Copo navideño */
+/* Copo decorativo */
 .villano::after {
   content: "❄";
+
   position: absolute;
-  top: 10px;
+  top: 16px;
   right: 14px;
-  color: #e9d6aa;
-  font-size: clamp(13px, 2vw, 24px);
-  opacity: .7;
+
+  color: var(--crema);
+
+  font-size: clamp(15px, 2vw, 27px);
+
+  text-shadow:
+    2px 2px 0 var(--negro);
+
+  z-index: 4;
+
   pointer-events: none;
 }
 
-/* Imagen del villano */
+/* Adorno de Navidad */
+.adorno {
+  position: absolute;
+
+  top: 15px;
+  left: 15px;
+
+  font-size: clamp(16px, 2vw, 27px);
+
+  z-index: 4;
+
+  filter: drop-shadow(
+    2px 2px 0 rgba(0,0,0,.65)
+  );
+
+  pointer-events: none;
+}
+
+/* =========================================
+   IMÁGENES
+========================================= */
+
 .imagen {
+  position: relative;
+
   flex: 1 1 auto;
-  min-height: 0;
-  overflow: hidden;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 9px 9px 0;
+
+  min-height: 0;
+  overflow: hidden;
+
+  padding: 12px 9px 0;
+
+  background:
+    radial-gradient(
+      ellipse at 50% 45%,
+      #35684a 0%,
+      #214932 50%,
+      #143321 100%
+    );
 }
 
+/* Puntos de cómic */
+.imagen::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    radial-gradient(
+      rgba(0, 0, 0, .17) 1px,
+      transparent 1px
+    );
+
+  background-size: 9px 9px;
+
+  opacity: .55;
+
+  pointer-events: none;
+}
+
+/* Resplandor central */
+.imagen::after {
+  content: "";
+
+  position: absolute;
+
+  width: 65%;
+  height: 85%;
+
+  left: 17.5%;
+  top: 5%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(255, 239, 181, .12),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+/* Ilustraciones */
 .imagen img {
+  position: relative;
+  z-index: 2;
+
   width: 100%;
   height: 100%;
   min-height: 0;
+
   object-fit: contain;
   object-position: center;
-  filter: drop-shadow(0 6px 12px rgba(0,0,0,.4));
+
+  filter:
+    drop-shadow(
+      0 7px 8px rgba(0,0,0,.45)
+    );
+
+  transform: scale(1.12);
 }
 
-/* Información de vida */
-.informacion {
-  flex: 0 0 auto;
-  min-width: 0;
-  padding: clamp(6px, 1vh, 12px)
-           clamp(9px, 1.5vw, 22px);
-  text-align: center;
-  background: rgba(5, 19, 12, .55);
-  border-top: 1px solid rgba(218, 183, 109, .4);
+/* Tamaños individuales */
+#octopus .imagen img {
+  transform: scale(1.12);
 }
+
+#electro .imagen img {
+  transform: scale(1.16);
+}
+
+#buitre .imagen img {
+  transform: scale(1.18);
+}
+
+#sandman .imagen img {
+  transform: scale(1.15);
+}
+
+/* =========================================
+   PANEL INFERIOR
+========================================= */
+
+.informacion {
+  position: relative;
+  z-index: 3;
+
+  flex: 0 0 auto;
+
+  min-width: 0;
+
+  padding:
+    clamp(5px, .8vh, 11px)
+    clamp(8px, 1.5vw, 22px);
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      180deg,
+      #173b29,
+      #0c2418
+    );
+
+  border-top: 3px solid var(--negro);
+}
+
+/* =========================================
+   NOMBRE DEL VILLANO
+========================================= */
 
 .nombre {
-  margin: 0 0 4px;
-  font-family: Georgia, serif;
-  font-size: clamp(11px, 1.8vw, 25px);
-  font-weight: bold;
-  color: #ebc77e;
+  display: inline-block;
+
+  max-width: 100%;
+
+  margin: 0 0 6px;
+
+  padding:
+    clamp(3px, .6vh, 7px)
+    clamp(8px, 1.2vw, 18px);
+
+  background: var(--crema);
+
+  border: 2px solid var(--negro);
+
+  box-shadow:
+    3px 3px 0 var(--rojo);
+
+  color: var(--negro);
+
+  font-family:
+    Impact,
+    "Arial Black",
+    sans-serif;
+
+  font-size:
+    clamp(11px, 1.8vw, 27px);
+
+  font-weight: 900;
+
   text-transform: uppercase;
-  letter-spacing: .06em;
+
+  letter-spacing: .5px;
+
+  line-height: 1.05;
+
+  transform: rotate(-1deg);
 }
+
+/* =========================================
+   VIDA
+========================================= */
 
 .vida {
   margin-bottom: 7px;
-  color: #ffffff;
-  font-family: Arial, sans-serif;
-  font-size: clamp(19px, 3vw, 39px);
-  font-weight: 800;
-  line-height: 1.1;
+
+  font-family:
+    Impact,
+    "Arial Black",
+    sans-serif;
+
+  font-size:
+    clamp(20px, 3vw, 44px);
+
+  font-weight: bold;
+
+  line-height: 1.05;
+
+  color: white;
+
+  text-shadow:
+    2px 2px 0 var(--negro);
 }
 
 .vida .maxima {
-  color: #bbcabd;
-  font-size: .48em;
+  color: #c2d0c4;
+
+  font-family: Arial, sans-serif;
+
+  font-size: .45em;
+
   font-weight: normal;
+
+  text-shadow: none;
 }
 
-/* Barras de vida */
+/* =========================================
+   BARRA DE VIDA
+========================================= */
+
 .barra-fondo {
   width: 100%;
-  height: clamp(9px, 1.5vh, 19px);
+
+  height:
+    clamp(12px, 1.8vh, 21px);
+
   overflow: hidden;
-  background: #07140d;
-  border: 1px solid #866d42;
-  border-radius: 20px;
+
+  background: #101911;
+
+  border: 3px solid var(--negro);
+
+  border-radius: 4px;
 }
 
 .barra {
   width: 100%;
   height: 100%;
-  border-radius: inherit;
-  background: linear-gradient(
-    180deg,
-    #e06b60,
-    #aa292e
-  );
-  box-shadow: 0 0 9px rgba(211, 62, 59, .45);
-  transition: width .8s ease;
+
+  background:
+    linear-gradient(
+      180deg,
+      #e65b5c 0%,
+      #bc3038 100%
+    );
+
+  border-radius: 0;
+
+  transition:
+    width .8s ease;
 }
 
 .porcentaje {
-  margin-top: 5px;
-  font-family: Arial, sans-serif;
-  font-size: clamp(10px, 1.1vw, 15px);
-  color: #e2d3ac;
+  margin-top: 4px;
+
+  color: var(--crema);
+
+  font-family:
+    Impact,
+    "Arial Black",
+    sans-serif;
+
+  font-size:
+    clamp(11px, 1.2vw, 17px);
+
+  letter-spacing: .5px;
 }
 
-/* Villano derrotado */
+/* =========================================
+   VILLANO DERROTADO
+========================================= */
+
 .derrotado .imagen {
   filter: grayscale(1);
+
   opacity: .45;
 }
 
@@ -182,264 +447,545 @@ body {
   width: 0%;
 }
 
-/* Estado de conexión */
+.derrotado .nombre {
+  background: #a9a9a9;
+}
+
+/* =========================================
+   ESTADO DE FIREBASE
+========================================= */
+
 #estado {
   position: fixed;
-  bottom: 3px;
-  right: 50%;
-  transform: translateX(50%);
+
+  bottom: 5px;
+  left: 50%;
+
+  transform:
+    translateX(-50%);
+
   z-index: 20;
-  padding: 3px 9px;
-  border-radius: 8px;
-  background: rgba(4, 17, 10, .85);
-  color: #b8cabd;
+
+  padding: 5px 12px;
+
+  border-radius: 5px;
+
+  background:
+    rgba(15, 25, 18, .95);
+
+  border: 1px solid #c83e43;
+
+  color: white;
+
   font-family: Arial, sans-serif;
-  font-size: 10px;
+  font-size: 11px;
+
   pointer-events: none;
 }
 
-/* Pantallas pequeñas */
+/* Ocultar estado correcto */
+#estado.conectado {
+  display: none;
+}
+
+/* =========================================
+   PANTALLAS PEQUEÑAS
+========================================= */
+
 @media (max-width: 650px) {
+
   .marcador {
     gap: 7px;
     padding: 7px;
   }
 
   .villano {
-    border-width: 1px;
-    border-radius: 9px;
+    border-width: 2px;
+    box-shadow:
+      2px 2px 0 var(--rojo);
+  }
+
+  .villano::before {
+    height: 6px;
+  }
+
+  .villano::after {
+    top: 12px;
+    right: 6px;
+    font-size: 13px;
+  }
+
+  .adorno {
+    top: 12px;
+    left: 6px;
+    font-size: 13px;
   }
 
   .imagen {
-    padding: 5px;
+    padding: 7px 3px 0;
   }
 
   .informacion {
-    padding: 7px 5px 9px;
+    padding: 5px 4px 7px;
+    border-top-width: 2px;
   }
 
   .nombre {
-    font-size: clamp(10px, 2.8vw, 15px);
+    font-size:
+      clamp(10px, 2.6vw, 15px);
+
+    padding: 3px 6px;
+
+    border-width: 1px;
+
+    box-shadow:
+      2px 2px 0 var(--rojo);
+
     letter-spacing: 0;
   }
 
   .vida {
-    font-size: clamp(17px, 5vw, 26px);
+    font-size:
+      clamp(17px, 5vw, 26px);
+  }
+
+  .barra-fondo {
+    border-width: 2px;
+    height: 11px;
   }
 
   .porcentaje {
     font-size: 10px;
   }
 
-  .villano::after {
-    top: 7px;
-    right: 8px;
-    font-size: 13px;
-  }
 }
 
-/* Pantallas de poca altura */
+/* =========================================
+   PANTALLAS DE POCA ALTURA
+========================================= */
+
 @media (max-height: 550px) {
+
   .informacion {
-    padding-top: 4px;
-    padding-bottom: 5px;
+    padding-top: 3px;
+    padding-bottom: 4px;
   }
 
   .nombre {
-    margin-bottom: 2px;
-    font-size: clamp(10px, 2vh, 16px);
+    margin-bottom: 3px;
+
+    font-size:
+      clamp(10px, 2vh, 17px);
   }
 
   .vida {
     margin-bottom: 3px;
-    font-size: clamp(15px, 4vh, 27px);
+
+    font-size:
+      clamp(15px, 4vh, 27px);
   }
 
   .porcentaje {
     margin-top: 2px;
     font-size: 10px;
   }
+
+  .barra-fondo {
+    height: 11px;
+  }
+
 }
 
-  </style>
+/* Reducir animaciones si el usuario lo solicita */
+@media (prefers-reduced-motion: reduce) {
+  .barra {
+    transition: none;
+  }
+}
+
+</style>
 </head>
 
 <body>
 
-  <main class="marcador">
+<main class="marcador">
 
-    <section class="villano" id="octopus">
-      <div class="imagen">
-        <img src="imagenes/octopus.png" alt="Doctor Octopus">
+  <!-- DOCTOR OCTOPUS -->
+
+  <section class="villano" id="octopus">
+
+    <span class="adorno" aria-hidden="true">🎁</span>
+
+    <div class="imagen">
+      <img
+        src="imagenes/octopus.png"
+        alt="Doctor Octopus"
+      >
+    </div>
+
+    <div class="informacion">
+
+      <h2 class="nombre">
+        Doctor Octopus
+      </h2>
+
+      <div class="vida">
+        <span class="actual">--</span>
+        <span class="maxima">/ -- PV</span>
       </div>
-      <div class="informacion">
-        <h2 class="nombre">Doctor Octopus</h2>
-        <div class="vida">
-          <span class="actual">--</span>
-          <span class="maxima">/ -- PV</span>
-        </div>
-        <div class="barra-fondo">
-          <div class="barra"></div>
-        </div>
-        <div class="porcentaje">--%</div>
+
+      <div class="barra-fondo">
+        <div class="barra"></div>
       </div>
-    </section>
 
-    <section class="villano" id="electro">
-      <div class="imagen">
-        <img src="imagenes/electro.png" alt="Electro">
+      <div class="porcentaje">--%</div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ELECTRO -->
+
+  <section class="villano" id="electro">
+
+    <span class="adorno" aria-hidden="true">⭐</span>
+
+    <div class="imagen">
+      <img
+        src="imagenes/electro.png"
+        alt="Electro"
+      >
+    </div>
+
+    <div class="informacion">
+
+      <h2 class="nombre">
+        Electro
+      </h2>
+
+      <div class="vida">
+        <span class="actual">--</span>
+        <span class="maxima">/ -- PV</span>
       </div>
-      <div class="informacion">
-        <h2 class="nombre">Electro</h2>
-        <div class="vida">
-          <span class="actual">--</span>
-          <span class="maxima">/ -- PV</span>
-        </div>
-        <div class="barra-fondo">
-          <div class="barra"></div>
-        </div>
-        <div class="porcentaje">--%</div>
+
+      <div class="barra-fondo">
+        <div class="barra"></div>
       </div>
-    </section>
 
-    <section class="villano" id="buitre">
-      <div class="imagen">
-        <img src="imagenes/buitre.png" alt="Buitre">
+      <div class="porcentaje">--%</div>
+
+    </div>
+
+  </section>
+
+
+  <!-- BUITRE -->
+
+  <section class="villano" id="buitre">
+
+    <span class="adorno" aria-hidden="true">🍬</span>
+
+    <div class="imagen">
+      <img
+        src="imagenes/buitre.png"
+        alt="Buitre"
+      >
+    </div>
+
+    <div class="informacion">
+
+      <h2 class="nombre">
+        Buitre
+      </h2>
+
+      <div class="vida">
+        <span class="actual">--</span>
+        <span class="maxima">/ -- PV</span>
       </div>
-      <div class="informacion">
-        <h2 class="nombre">Buitre</h2>
-        <div class="vida">
-          <span class="actual">--</span>
-          <span class="maxima">/ -- PV</span>
-        </div>
-        <div class="barra-fondo">
-          <div class="barra"></div>
-        </div>
-        <div class="porcentaje">--%</div>
+
+      <div class="barra-fondo">
+        <div class="barra"></div>
       </div>
-    </section>
 
-    <section class="villano" id="sandman">
-      <div class="imagen">
-        <img src="imagenes/sandman.png" alt="Hombre de Arena">
+      <div class="porcentaje">--%</div>
+
+    </div>
+
+  </section>
+
+
+  <!-- HOMBRE DE ARENA -->
+
+  <section class="villano" id="sandman">
+
+    <span class="adorno" aria-hidden="true">🎄</span>
+
+    <div class="imagen">
+      <img
+        src="imagenes/sandman.png"
+        alt="Hombre de Arena"
+      >
+    </div>
+
+    <div class="informacion">
+
+      <h2 class="nombre">
+        Hombre de Arena
+      </h2>
+
+      <div class="vida">
+        <span class="actual">--</span>
+        <span class="maxima">/ -- PV</span>
       </div>
-      <div class="informacion">
-        <h2 class="nombre">Hombre de Arena</h2>
-        <div class="vida">
-          <span class="actual">--</span>
-          <span class="maxima">/ -- PV</span>
-        </div>
-        <div class="barra-fondo">
-          <div class="barra"></div>
-        </div>
-        <div class="porcentaje">--%</div>
+
+      <div class="barra-fondo">
+        <div class="barra"></div>
       </div>
-    </section>
 
-  </main>
+      <div class="porcentaje">--%</div>
 
-  <div id="estado">Conectando con Firebase...</div>
+    </div>
 
-  <script type="module">
-    import { initializeApp }
-      from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+  </section>
 
-    import { getFirestore, doc, onSnapshot }
-      from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
+</main>
 
-    import { getAuth, signInAnonymously, onAuthStateChanged }
-      from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyDrZ0oOMYX0YH2cvgYD4pc9zU1jNenC1v8",
-      authDomain: "marvel-champions-navidad.firebaseapp.com",
-      projectId: "marvel-champions-navidad",
-      storageBucket: "marvel-champions-navidad.firebasestorage.app",
-      messagingSenderId: "442553244844",
-      appId: "1:442553244844:web:c42e22c03a66d335d61309"
-    };
+<!-- ESTADO DE CONEXIÓN -->
 
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const auth = getAuth(app);
+<div id="estado">
+  Conectando con Firebase...
+</div>
 
-    const ids = ["octopus", "electro", "buitre", "sandman"];
-    const estado = document.getElementById("estado");
 
-    function actualizarVillano(id, datos) {
-      const elemento = document.getElementById(id);
-      if (!elemento) return;
+<!-- =====================================
+     FIREBASE
+===================================== -->
 
-      const maxima = Number(datos.vidaMaxima);
-      const actual = Number(datos.vidaActual);
+<script type="module">
 
-      if (!Number.isFinite(maxima) ||
-          !Number.isFinite(actual) ||
-          maxima <= 0) {
-        throw new Error("Datos de vida incorrectos: " + id);
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+
+import {
+  getFirestore,
+  doc,
+  onSnapshot
+}
+from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
+
+import {
+  getAuth,
+  signInAnonymously,
+  onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+
+
+/* CONFIGURACIÓN FIREBASE */
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDrZ0oOMYX0YH2cvgYD4pc9zU1jNenC1v8",
+  authDomain: "marvel-champions-navidad.firebaseapp.com",
+  projectId: "marvel-champions-navidad",
+  storageBucket: "marvel-champions-navidad.firebasestorage.app",
+  messagingSenderId: "442553244844",
+  appId: "1:442553244844:web:c42e22c03a66d335d61309"
+};
+
+
+const app = initializeApp(firebaseConfig);
+
+const db = getFirestore(app);
+
+const auth = getAuth(app);
+
+
+const ids = [
+  "octopus",
+  "electro",
+  "buitre",
+  "sandman"
+];
+
+const estado =
+  document.getElementById("estado");
+
+
+/* =====================================
+   ACTUALIZAR VILLANO
+===================================== */
+
+function actualizarVillano(id, datos) {
+
+  const elemento =
+    document.getElementById(id);
+
+  if (!elemento) return;
+
+  const maxima =
+    Number(datos.vidaMaxima);
+
+  const actual =
+    Number(datos.vidaActual);
+
+  if (
+    !Number.isFinite(maxima) ||
+    !Number.isFinite(actual) ||
+    maxima <= 0
+  ) {
+    throw new Error(
+      "Datos incorrectos: " + id
+    );
+  }
+
+  const porcentaje = Math.max(
+    0,
+    Math.min(
+      100,
+      actual / maxima * 100
+    )
+  );
+
+  elemento
+    .querySelector(".actual")
+    .textContent =
+      actual.toLocaleString("es-ES");
+
+  elemento
+    .querySelector(".maxima")
+    .textContent =
+      "/ " +
+      maxima.toLocaleString("es-ES") +
+      " PV";
+
+  elemento
+    .querySelector(".barra")
+    .style.width =
+      porcentaje + "%";
+
+  elemento
+    .querySelector(".porcentaje")
+    .textContent =
+      Math.round(porcentaje) + "%";
+
+  elemento.classList.toggle(
+    "derrotado",
+    actual <= 0
+  );
+
+}
+
+
+/* =====================================
+   AUTENTICACIÓN Y SINCRONIZACIÓN
+===================================== */
+
+let escuchando = false;
+
+onAuthStateChanged(
+  auth,
+  async usuario => {
+
+    if (!usuario) {
+
+      try {
+
+        await signInAnonymously(auth);
+
+      } catch (error) {
+
+        console.error(error);
+
+        estado.classList.remove(
+          "conectado"
+        );
+
+        estado.textContent =
+          "Error de autenticación";
+
       }
 
-      const porcentaje = Math.max(
-        0,
-        Math.min(100, actual / maxima * 100)
-      );
-
-      elemento.querySelector(".actual").textContent =
-        actual.toLocaleString("es-ES");
-
-      elemento.querySelector(".maxima").textContent =
-        "/ " + maxima.toLocaleString("es-ES") + " PV";
-
-      elemento.querySelector(".barra").style.width =
-        porcentaje + "%";
-
-      elemento.querySelector(".porcentaje").textContent =
-        Math.round(porcentaje) + "%";
-
-      elemento.classList.toggle("derrotado", actual <= 0);
+      return;
     }
 
-    let escuchando = false;
 
-    onAuthStateChanged(auth, async usuario => {
-      if (!usuario) {
-        try {
-          await signInAnonymously(auth);
-        } catch (error) {
-          console.error(error);
-          estado.textContent = "Error de autenticación";
-        }
-        return;
-      }
+    if (escuchando) return;
 
-      if (escuchando) return;
-      escuchando = true;
+    escuchando = true;
 
-      ids.forEach(id => {
-        onSnapshot(
-          doc(db, "villanos", id),
-          snapshot => {
-            if (!snapshot.exists()) {
-              estado.textContent = "Falta el villano: " + id;
-              return;
-            }
 
-            try {
-              actualizarVillano(id, snapshot.data());
-              estado.textContent = "Conectado · En directo";
-            } catch (error) {
-              console.error(error);
-              estado.textContent = "Error en los datos";
-            }
-          },
-          error => {
-            console.error(error);
-            estado.textContent = "Error de conexión con Firestore";
+    ids.forEach(id => {
+
+      onSnapshot(
+
+        doc(db, "villanos", id),
+
+        snapshot => {
+
+          if (!snapshot.exists()) {
+
+            estado.classList.remove(
+              "conectado"
+            );
+
+            estado.textContent =
+              "Falta el villano: " + id;
+
+            return;
           }
-        );
-      });
+
+          try {
+
+            actualizarVillano(
+              id,
+              snapshot.data()
+            );
+
+            estado.textContent =
+              "Conectado · En directo";
+
+            estado.classList.add(
+              "conectado"
+            );
+
+          } catch (error) {
+
+            console.error(error);
+
+            estado.classList.remove(
+              "conectado"
+            );
+
+            estado.textContent =
+              "Error en los datos";
+
+          }
+
+        },
+
+        error => {
+
+          console.error(error);
+
+          estado.classList.remove(
+            "conectado"
+          );
+
+          estado.textContent =
+            "Error de conexión con Firestore";
+
+        }
+
+      );
+
     });
-  </script>
+
+  }
+);
+
+</script>
 
 </body>
 </html>
