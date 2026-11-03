@@ -1,0 +1,888 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marvel Champions · Administración</title>
+
+<style>
+:root {
+  --verde: #143c29;
+  --verde-oscuro: #092719;
+  --dorado: #d8aa60;
+  --crema: #f6e2b1;
+  --rojo: #c83e43;
+  --negro: #241a13;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 20px;
+  background-color: #e9d4a7;
+  background-image:
+    radial-gradient(#b99a68 1px, transparent 1px);
+  background-size: 11px 11px;
+  font-family: Arial, sans-serif;
+}
+
+.panel {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background: var(--verde);
+  border: 3px solid var(--negro);
+  border-radius: 12px;
+  box-shadow: 5px 5px 0 var(--rojo);
+}
+
+.cabecera {
+  padding: 22px;
+  margin-bottom: 22px;
+  background:
+    linear-gradient(#fff0c7, #e7c588);
+  border: 2px solid var(--negro);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.cabecera small {
+  color: #a33736;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.cabecera h1 {
+  margin: 8px 0 0;
+  color: var(--negro);
+  font-family: Georgia, serif;
+  font-size: clamp(24px, 4vw, 36px);
+}
+
+.pestanas {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.pestana {
+  flex: 1;
+  padding: 13px 8px;
+  background: #245139;
+  border: 2px solid #987c4c;
+  border-radius: 7px;
+  color: var(--crema);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.pestana.activa {
+  background: var(--crema);
+  color: var(--negro);
+}
+
+.seccion {
+  display: none;
+}
+
+.seccion.activa {
+  display: block;
+}
+
+.titulo {
+  margin: 0 0 16px;
+  color: var(--crema);
+  font-family: Georgia, serif;
+  font-size: 21px;
+}
+
+.tarjeta {
+  margin-bottom: 14px;
+  padding: 18px;
+  background: #204832;
+  border: 2px solid #a58b54;
+  border-radius: 10px;
+}
+
+.nombre-villano {
+  margin: 0 0 15px;
+  color: var(--crema);
+  font-family: Georgia, serif;
+  font-size: 21px;
+}
+
+.campos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.campo label {
+  display: block;
+  margin-bottom: 7px;
+  color: #c7d9c9;
+  font-size: 13px;
+}
+
+.campo input {
+  width: 100%;
+  padding: 12px;
+  background: #fff5da;
+  border: 2px solid #34281c;
+  border-radius: 6px;
+  color: #241a13;
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.boton {
+  padding: 12px 17px;
+  border: 2px solid var(--negro);
+  border-radius: 7px;
+  background: #e4bb70;
+  color: #241a13;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.boton:hover {
+  filter: brightness(1.08);
+}
+
+.boton:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.boton.secundario {
+  background: #315d40;
+  border-color: #d8aa60;
+  color: white;
+}
+
+.boton.peligro {
+  background: #c83e43;
+  color: white;
+}
+
+.boton.grande {
+  width: 100%;
+  margin-top: 10px;
+  padding: 16px;
+}
+
+.descripcion {
+  color: #bfd0c1;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.contador-mesas {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  margin: 20px 0;
+}
+
+.contador-mesas button {
+  width: 55px;
+  height: 55px;
+  border: 2px solid var(--negro);
+  border-radius: 8px;
+  background: #e1b56c;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.numero-mesas {
+  color: white;
+  font-family: Georgia, serif;
+  font-size: 42px;
+  font-weight: bold;
+}
+
+.lista-mesas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.mesa {
+  padding: 15px;
+  background: #1d442f;
+  border: 1px solid #a58b54;
+  border-radius: 8px;
+}
+
+.mesa strong {
+  display: block;
+  margin-bottom: 9px;
+  color: var(--crema);
+}
+
+.mesa a {
+  color: #f5cf87;
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.estado {
+  margin-top: 18px;
+  padding: 11px;
+  color: #f3dba8;
+  background: #0c2b1b;
+  border-radius: 7px;
+  text-align: center;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 8px;
+  }
+
+  .panel {
+    padding: 10px;
+  }
+
+  .cabecera {
+    padding: 14px;
+  }
+
+  .pestana {
+    font-size: 12px;
+    padding: 10px 5px;
+  }
+
+  .tarjeta {
+    padding: 12px;
+  }
+
+  .campos {
+    gap: 8px;
+  }
+
+  .campo input {
+    font-size: 16px;
+  }
+
+  .lista-mesas {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="panel">
+
+  <header class="cabecera">
+    <small>MARVEL CHAMPIONS · ESPECIAL NAVIDAD</small>
+    <h1>ADMINISTRACIÓN</h1>
+  </header>
+
+  <nav class="pestanas">
+    <button class="pestana activa" data-tab="villanos">
+      VILLANOS
+    </button>
+    <button class="pestana" data-tab="mesas">
+      MESAS
+    </button>
+    <button class="pestana" data-tab="control">
+      CONTROL
+    </button>
+  </nav>
+
+  <!-- VILLANOS -->
+
+  <section class="seccion activa" id="villanos">
+    <h2 class="titulo">Configuración de villanos</h2>
+    <div id="listaVillanos"></div>
+  </section>
+
+  <!-- MESAS -->
+
+  <section class="seccion" id="mesas">
+
+    <h2 class="titulo">Gestión de mesas</h2>
+
+    <div class="tarjeta">
+
+      <p class="descripcion">
+        Selecciona cuántas mesas participarán.
+        Cada mesa tendrá su propio enlace.
+      </p>
+
+      <div class="contador-mesas">
+        <button id="menosMesas" type="button">−</button>
+        <span class="numero-mesas" id="numeroMesas">6</span>
+        <button id="masMesas" type="button">+</button>
+      </div>
+
+      <p class="descripcion" style="text-align:center">
+        <span id="jugadores">18</span> jugadores
+      </p>
+
+      <button class="boton grande" id="guardarMesas">
+        Guardar número de mesas
+      </button>
+
+    </div>
+
+    <h2 class="titulo">Accesos a las mesas</h2>
+
+    <div class="lista-mesas" id="listaMesas"></div>
+
+  </section>
+
+  <!-- CONTROL -->
+
+  <section class="seccion" id="control">
+
+    <h2 class="titulo">Control del evento</h2>
+
+    <div class="tarjeta">
+
+      <h3 class="nombre-villano">
+        Restablecer todos los villanos
+      </h3>
+
+      <p class="descripcion">
+        Esta acción devolverá a los cuatro villanos
+        su vida máxima configurada.
+      </p>
+
+      <button
+        class="boton peligro grande"
+        id="restablecerTodos"
+      >
+        Restablecer todas las vidas
+      </button>
+
+    </div>
+
+    <div class="tarjeta">
+
+      <h3 class="nombre-villano">Marcador general</h3>
+
+      <a
+        class="boton secundario"
+        style="display:inline-block;text-decoration:none"
+        href="index.html"
+        target="_blank"
+        rel="noopener"
+      >
+        Abrir marcador
+      </a>
+
+    </div>
+
+  </section>
+
+  <div class="estado" id="estado">
+    Conectando con Firebase...
+  </div>
+
+</main>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+
+import {
+  getFirestore,
+  doc,
+  onSnapshot,
+  runTransaction
+}
+from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
+
+import {
+  getAuth,
+  signInAnonymously,
+  onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+
+/* FIREBASE */
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDrZ0oOMYX0YH2cvgYD4pc9zU1jNenC1v8",
+  authDomain: "marvel-champions-navidad.firebaseapp.com",
+  projectId: "marvel-champions-navidad",
+  storageBucket: "marvel-champions-navidad.firebasestorage.app",
+  messagingSenderId: "442553244844",
+  appId: "1:442553244844:web:c42e22c03a66d335d61309"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+const villanos = [
+  { id: "octopus", nombre: "Doctor Octopus" },
+  { id: "electro", nombre: "Electro" },
+  { id: "buitre", nombre: "Buitre" },
+  { id: "sandman", nombre: "Hombre de Arena" }
+];
+
+const estado = document.getElementById("estado");
+const datosVillanos = {};
+let operacionesActivas = false;
+let suscripcionesIniciadas = false;
+
+/* PESTAÑAS */
+
+document.querySelectorAll(".pestana").forEach(boton => {
+
+  boton.addEventListener("click", () => {
+
+    document.querySelectorAll(".pestana")
+      .forEach(b => b.classList.remove("activa"));
+
+    document.querySelectorAll(".seccion")
+      .forEach(s => s.classList.remove("activa"));
+
+    boton.classList.add("activa");
+
+    document.getElementById(boton.dataset.tab)
+      .classList.add("activa");
+
+  });
+
+});
+
+/* CREAR TARJETAS DE VILLANOS */
+
+const lista = document.getElementById("listaVillanos");
+
+villanos.forEach(v => {
+
+  const tarjeta = document.createElement("div");
+  tarjeta.className = "tarjeta";
+  tarjeta.dataset.id = v.id;
+
+  const titulo = document.createElement("h3");
+  titulo.className = "nombre-villano";
+  titulo.textContent = v.nombre;
+
+  const campos = document.createElement("div");
+  campos.className = "campos";
+
+  const campoMax = document.createElement("div");
+  campoMax.className = "campo";
+
+  const labelMax = document.createElement("label");
+  labelMax.textContent = "Vida máxima";
+
+  const inputMax = document.createElement("input");
+  inputMax.type = "number";
+  inputMax.min = "1";
+  inputMax.max = "1000000";
+  inputMax.className = "maxima";
+
+  campoMax.append(labelMax, inputMax);
+
+  const campoActual = document.createElement("div");
+  campoActual.className = "campo";
+
+  const labelActual = document.createElement("label");
+  labelActual.textContent = "Vida actual";
+
+  const inputActual = document.createElement("input");
+  inputActual.type = "number";
+  inputActual.min = "0";
+  inputActual.className = "actual";
+
+  campoActual.append(labelActual, inputActual);
+  campos.append(campoMax, campoActual);
+
+  const acciones = document.createElement("div");
+  acciones.className = "acciones";
+
+  const guardar = document.createElement("button");
+  guardar.className = "boton";
+  guardar.type = "button";
+  guardar.textContent = "Guardar cambios";
+  guardar.disabled = true;
+
+  const reset = document.createElement("button");
+  reset.className = "boton secundario";
+  reset.type = "button";
+  reset.textContent = "Restablecer vida";
+  reset.disabled = true;
+
+  guardar.addEventListener("click", () => guardarVillano(v.id));
+  reset.addEventListener("click", () => restablecerVillano(v.id));
+
+  acciones.append(guardar, reset);
+  tarjeta.append(titulo, campos, acciones);
+  lista.appendChild(tarjeta);
+});
+
+/* SINCRONIZAR CAMPOS */
+
+function actualizarTarjeta(id) {
+
+  const tarjeta = document.querySelector(
+    '.tarjeta[data-id="' + id + '"]'
+  );
+
+  const datos = datosVillanos[id];
+  if (!tarjeta || !datos) return;
+
+  const maxima = tarjeta.querySelector(".maxima");
+  const actual = tarjeta.querySelector(".actual");
+
+  // Conservar valores que el administrador esté editando.
+  if (document.activeElement !== maxima) {
+    maxima.value = datos.vidaMaxima;
+  }
+
+  if (document.activeElement !== actual) {
+    actual.value = datos.vidaActual;
+  }
+
+  tarjeta.querySelectorAll("button").forEach(b => {
+    b.disabled = operacionesActivas;
+  });
+}
+
+/* GUARDAR VIDA */
+
+async function guardarVillano(id) {
+
+  const tarjeta = document.querySelector(
+    '.tarjeta[data-id="' + id + '"]'
+  );
+
+  const maxima = Number(tarjeta.querySelector(".maxima").value);
+  const actual = Number(tarjeta.querySelector(".actual").value);
+
+  if (
+    !Number.isInteger(maxima) ||
+    !Number.isInteger(actual) ||
+    maxima < 1 ||
+    maxima > 1000000 ||
+    actual < 0 ||
+    actual > maxima
+  ) {
+    alert("Comprueba los valores de vida.");
+    return;
+  }
+
+  operacionesActivas = true;
+  bloquearBotones();
+
+  estado.textContent = "Guardando cambios...";
+
+  try {
+
+    const referencia = doc(db, "villanos", id);
+
+    await runTransaction(db, async transaccion => {
+
+      const snapshot = await transaccion.get(referencia);
+
+      if (!snapshot.exists()) {
+        throw new Error("Villano no encontrado");
+      }
+
+      transaccion.update(referencia, {
+        vidaMaxima: maxima,
+        vidaActual: actual
+      });
+
+    });
+
+    estado.textContent = "Cambios guardados correctamente";
+
+  } catch (error) {
+
+    console.error(error);
+    estado.textContent = "Error al guardar los cambios";
+
+  } finally {
+
+    operacionesActivas = false;
+    bloquearBotones();
+
+  }
+}
+
+/* RESTABLECER UN VILLANO */
+
+async function restablecerVillano(id) {
+
+  if (!confirm("¿Restablecer la vida de este villano?")) {
+    return;
+  }
+
+  operacionesActivas = true;
+  bloquearBotones();
+
+  try {
+
+    const referencia = doc(db, "villanos", id);
+
+    await runTransaction(db, async transaccion => {
+
+      const snapshot = await transaccion.get(referencia);
+
+      if (!snapshot.exists()) {
+        throw new Error("Villano no encontrado");
+      }
+
+      transaccion.update(referencia, {
+        vidaActual: snapshot.data().vidaMaxima
+      });
+
+    });
+
+    estado.textContent = "Vida restablecida";
+
+  } catch (error) {
+
+    console.error(error);
+    estado.textContent = "Error al restablecer";
+
+  } finally {
+
+    operacionesActivas = false;
+    bloquearBotones();
+
+  }
+}
+
+/* RESTABLECER LOS CUATRO */
+
+document.getElementById("restablecerTodos")
+  .addEventListener("click", async () => {
+
+    if (!confirm(
+      "¿Restablecer la vida de los cuatro villanos?"
+    )) return;
+
+    operacionesActivas = true;
+    bloquearBotones();
+
+    estado.textContent = "Restableciendo villanos...";
+
+    try {
+
+      await runTransaction(db, async transaccion => {
+
+        const referencias = villanos.map(v =>
+          doc(db, "villanos", v.id)
+        );
+
+        // Todas las lecturas antes de escribir.
+        const snapshots = [];
+
+        for (const ref of referencias) {
+          const snapshot = await transaccion.get(ref);
+
+          if (!snapshot.exists()) {
+            throw new Error("Falta un villano");
+          }
+
+          snapshots.push(snapshot);
+        }
+
+        // Restablecer los cuatro en una única transacción.
+        snapshots.forEach((snapshot, i) => {
+          transaccion.update(referencias[i], {
+            vidaActual: snapshot.data().vidaMaxima
+          });
+        });
+
+      });
+
+      estado.textContent =
+        "Los cuatro villanos han sido restablecidos";
+
+    } catch (error) {
+
+      console.error(error);
+      estado.textContent =
+        "Error al restablecer las vidas";
+
+    } finally {
+
+      operacionesActivas = false;
+      bloquearBotones();
+
+    }
+
+  });
+
+function bloquearBotones() {
+
+  document.querySelectorAll(
+    '.tarjeta[data-id] button'
+  ).forEach(b => {
+
+    b.disabled = operacionesActivas;
+
+  });
+
+  document.getElementById("restablecerTodos").disabled =
+    operacionesActivas;
+}
+
+/* =====================================
+   GESTIÓN DE MESAS
+===================================== */
+
+let numeroMesas = Number(
+  localStorage.getItem("navidad_numero_mesas") || 6
+);
+
+numeroMesas = Math.max(
+  1,
+  Math.min(30, Math.floor(numeroMesas) || 6)
+);
+
+function actualizarMesas() {
+
+  document.getElementById("numeroMesas").textContent =
+    numeroMesas;
+
+  document.getElementById("jugadores").textContent =
+    numeroMesas * 3;
+
+  const contenedor =
+    document.getElementById("listaMesas");
+
+  contenedor.replaceChildren();
+
+  for (let i = 1; i <= numeroMesas; i++) {
+
+    const div = document.createElement("div");
+    div.className = "mesa";
+
+    const titulo = document.createElement("strong");
+    titulo.textContent =
+      "Mesa " + String(i).padStart(2, "0");
+
+    const enlace = document.createElement("a");
+
+    enlace.href =
+      "mesa.html?mesa=" + i;
+
+    enlace.target = "_blank";
+    enlace.rel = "noopener";
+
+    enlace.textContent = "Abrir panel de mesa";
+
+    div.append(titulo, enlace);
+    contenedor.appendChild(div);
+
+  }
+}
+
+document.getElementById("menosMesas")
+  .addEventListener("click", () => {
+
+    numeroMesas = Math.max(1, numeroMesas - 1);
+    actualizarMesas();
+
+  });
+
+document.getElementById("masMesas")
+  .addEventListener("click", () => {
+
+    numeroMesas = Math.min(30, numeroMesas + 1);
+    actualizarMesas();
+
+  });
+
+document.getElementById("guardarMesas")
+  .addEventListener("click", () => {
+
+    localStorage.setItem(
+      "navidad_numero_mesas",
+      String(numeroMesas)
+    );
+
+    estado.textContent =
+      "Número de mesas guardado en este navegador";
+
+  });
+
+actualizarMesas();
+
+/* =====================================
+   AUTENTICACIÓN Y FIRESTORE
+===================================== */
+
+onAuthStateChanged(auth, async usuario => {
+
+  if (!usuario) {
+
+    try {
+      await signInAnonymously(auth);
+    } catch (error) {
+      console.error(error);
+      estado.textContent = "Error de autenticación";
+    }
+
+    return;
+  }
+
+  if (suscripcionesIniciadas) return;
+  suscripcionesIniciadas = true;
+
+  estado.textContent = "Conectado · En directo";
+
+  villanos.forEach(v => {
+
+    onSnapshot(
+      doc(db, "villanos", v.id),
+
+      snapshot => {
+
+        if (!snapshot.exists()) {
+          estado.textContent =
+            "No existe el villano: " + v.id;
+          return;
+        }
+
+        datosVillanos[v.id] = snapshot.data();
+
+        actualizarTarjeta(v.id);
+      },
+
+      error => {
+        console.error(error);
+        estado.textContent =
+          "Error de conexión con Firestore";
+      }
+    );
+
+  });
+
+});
+
+</script>
+
+</body>
+</html>
