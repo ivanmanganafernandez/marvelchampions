@@ -316,6 +316,325 @@ body {
     gap: 12px;
   }
 }
+
+/* =========================================
+   VILLANOS EN BLANCO Y NEGRO
+========================================= */
+
+/* Villanos no seleccionados */
+.villano:not(.seleccionado) img {
+  filter: grayscale(100%);
+  opacity: .65;
+
+  transition:
+    filter .25s ease,
+    opacity .25s ease;
+}
+
+/* Villano seleccionado */
+.villano.seleccionado img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* Fondo de villanos no seleccionados */
+.villano:not(.seleccionado) {
+  background: #203328;
+  border-color: #536755;
+}
+
+/* Destacar el seleccionado */
+.villano.seleccionado {
+  background: #315e41;
+  border-color: #e9c478;
+  box-shadow:
+    0 0 12px rgba(233,196,120,.25);
+}
+
+
+/* =========================================
+   ADAPTACIÓN A MÓVILES
+========================================= */
+
+@media (max-width: 650px) {
+
+  /* Ocupar exactamente la pantalla */
+  html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  body {
+    min-height: 0;
+    height: 100vh;
+    height: 100dvh;
+
+    margin: 0;
+    padding: 6px;
+  }
+
+  /* Contenedor principal */
+  .panel {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: none;
+
+    height: 100%;
+    min-height: 0;
+
+    margin: 0;
+    padding: 9px;
+
+    overflow: hidden;
+
+    border-width: 2px;
+    border-radius: 9px;
+    box-shadow: none;
+  }
+
+  /* Cabecera compacta */
+  .cabecera {
+    flex: 0 0 auto;
+
+    padding: 8px;
+    margin-bottom: 10px;
+  }
+
+  .subtitulo {
+    font-size: 9px;
+  }
+
+  .cabecera h1 {
+    margin-top: 3px;
+    font-size: 24px;
+  }
+
+  /* Título de selección */
+  .titulo-seccion {
+    flex: 0 0 auto;
+
+    margin-bottom: 8px;
+
+    font-size: 13px;
+  }
+
+  /* Cuadrícula de villanos */
+  .villanos {
+    flex: 1 1 auto;
+
+    display: grid;
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    grid-template-rows:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 7px;
+
+    min-height: 0;
+
+    margin-bottom: 10px;
+  }
+
+  /* Tarjetas */
+  .villano {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    min-height: 0;
+
+    padding: 5px;
+
+    overflow: hidden;
+
+    border-radius: 7px;
+  }
+
+  /* Imagen adaptable */
+  .villano img {
+    flex: 1 1 auto;
+
+    width: 100%;
+    height: auto;
+    min-height: 0;
+
+    object-fit: contain;
+  }
+
+  /* Nombre */
+  .villano .nombre {
+    flex: 0 0 auto;
+
+    margin: 3px 0;
+
+    font-size: 10px;
+    line-height: 1.1;
+  }
+
+  /* Vida pequeña */
+  .villano .vida-pequena {
+    flex: 0 0 auto;
+
+    font-size: 11px;
+  }
+
+  /* Panel de control */
+  .control {
+    flex: 0 0 auto;
+
+    padding: 10px 10px 12px;
+  }
+
+  /* Nombre del objetivo */
+  .objetivo {
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .etiqueta {
+    font-size: 10px;
+  }
+
+  /* Vida principal */
+  .vida-principal {
+    margin: 4px 0 10px;
+    font-size: 32px;
+  }
+
+  .vida-principal span {
+    font-size: 14px;
+  }
+
+  /* Botones */
+  .botones {
+    gap: 14px;
+  }
+
+  .boton-vida {
+    width: 78px;
+    height: 72px;
+
+    font-size: 46px;
+
+    border-radius: 10px;
+  }
+
+  /* Cambio pendiente */
+  .cambio {
+    min-width: 65px;
+  }
+
+  .cambio-numero {
+    font-size: 25px;
+  }
+
+  .cambio-texto {
+    font-size: 9px;
+  }
+
+  /* Zona de envío */
+  .envio {
+    margin-top: 11px;
+    padding: 8px;
+
+    font-size: 11px;
+  }
+
+  .temporizador {
+    margin-top: 6px;
+    height: 4px;
+  }
+
+  /* Estado de conexión */
+  .estado {
+    flex: 0 0 auto;
+
+    margin-top: 8px;
+
+    font-size: 10px;
+  }
+}
+
+
+/* =========================================
+   MÓVILES CON PANTALLA PEQUEÑA
+========================================= */
+
+@media (max-width: 650px) and (max-height: 740px) {
+
+  .panel {
+    padding: 6px;
+  }
+
+  .cabecera {
+    padding: 5px;
+    margin-bottom: 6px;
+  }
+
+  .cabecera h1 {
+    font-size: 20px;
+  }
+
+  .titulo-seccion {
+    margin-bottom: 5px;
+    font-size: 11px;
+  }
+
+  .villanos {
+    gap: 5px;
+    margin-bottom: 6px;
+  }
+
+  .villano {
+    padding: 3px;
+  }
+
+  .villano .nombre {
+    font-size: 9px;
+  }
+
+  .villano .vida-pequena {
+    font-size: 10px;
+  }
+
+  .control {
+    padding: 7px;
+  }
+
+  .objetivo {
+    margin-bottom: 5px;
+    font-size: 12px;
+  }
+
+  .vida-principal {
+    margin: 3px 0 7px;
+    font-size: 27px;
+  }
+
+  .boton-vida {
+    width: 70px;
+    height: 62px;
+    font-size: 40px;
+  }
+
+  .envio {
+    margin-top: 7px;
+    padding: 6px;
+  }
+
+  .estado {
+    margin-top: 5px;
+  }
+}
+
+  
 </style>
 </head>
 
