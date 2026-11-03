@@ -1,0 +1,889 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Marvel Champions · Panel de Mesa</title>
+
+<style>
+:root {
+  --verde: #143c29;
+  --verde-oscuro: #092719;
+  --dorado: #d8aa60;
+  --crema: #f6e2b1;
+  --rojo: #c83e43;
+  --negro: #241a13;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  padding: 15px;
+  background-color: #e9d4a7;
+  background-image:
+    radial-gradient(#b99a68 1px, transparent 1px);
+  background-size: 11px 11px;
+  font-family: Arial, sans-serif;
+}
+
+.panel {
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 15px;
+  background: var(--verde);
+  border: 3px solid var(--negro);
+  border-radius: 12px;
+  box-shadow: 5px 5px 0 var(--rojo);
+}
+
+/* CABECERA */
+
+.cabecera {
+  padding: 15px;
+  margin-bottom: 22px;
+  text-align: center;
+  background:
+    linear-gradient(#fff0c7, #e7c588);
+  border: 2px solid var(--negro);
+  border-radius: 8px;
+}
+
+.subtitulo {
+  color: #a33736;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.cabecera h1 {
+  margin: 7px 0 0;
+  color: var(--negro);
+  font-family: Georgia, serif;
+  font-size: 30px;
+}
+
+/* TÍTULOS */
+
+.titulo-seccion {
+  margin: 0 0 13px;
+  color: var(--crema);
+  font-family: Georgia, serif;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* VILLANOS */
+
+.villanos {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.villano {
+  min-width: 0;
+  padding: 8px;
+  background: #204932;
+  border: 2px solid #7c704d;
+  border-radius: 9px;
+  color: var(--crema);
+  cursor: pointer;
+  text-align: center;
+  transition:
+    border-color .15s ease,
+    background .15s ease;
+}
+
+.villano.seleccionado {
+  background: #326044;
+  border: 3px solid #ebc47b;
+}
+
+.villano:disabled {
+  cursor: not-allowed;
+  opacity: .65;
+}
+
+.villano img {
+  display: block;
+  width: 100%;
+  height: 125px;
+  object-fit: contain;
+}
+
+.villano .nombre {
+  display: block;
+  margin: 7px 0;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.villano .vida-pequena {
+  display: block;
+  color: #e5c88d;
+  font-size: 13px;
+}
+
+/* CONTROL DE VIDA */
+
+.control {
+  padding: 18px 15px;
+  background: var(--verde-oscuro);
+  border: 2px solid var(--dorado);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.objetivo {
+  margin: 0 0 16px;
+  color: #e9c888;
+  font-family: Georgia, serif;
+  font-size: 17px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.etiqueta {
+  color: #b9cdbd;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.vida-principal {
+  margin: 6px 0 18px;
+  color: white;
+  font-family: Georgia, serif;
+  font-size: 43px;
+  font-weight: 900;
+}
+
+.vida-principal span {
+  color: #b8c9ba;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+/* BOTONES */
+
+.botones {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.boton-vida {
+  width: 90px;
+  height: 90px;
+  padding: 0;
+  border: 3px solid var(--negro);
+  border-radius: 12px;
+  color: white;
+  font-size: 55px;
+  font-weight: bold;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 3px 4px 0 #0008;
+}
+
+.boton-vida:active:not(:disabled) {
+  transform: translateY(2px);
+  box-shadow: 1px 2px 0 #0008;
+}
+
+.boton-vida:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.restar {
+  background: #bd363e;
+}
+
+.sumar {
+  background: #2c9859;
+}
+
+.cambio {
+  min-width: 75px;
+}
+
+.cambio-numero {
+  font-family: Georgia, serif;
+  font-size: 31px;
+  font-weight: bold;
+  color: white;
+}
+
+.cambio-numero.negativo {
+  color: #ff8585;
+}
+
+.cambio-numero.positivo {
+  color: #85e2a1;
+}
+
+.cambio-texto {
+  margin-top: 5px;
+  color: #b9cdbd;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+/* ENVÍO AUTOMÁTICO */
+
+.envio {
+  margin-top: 22px;
+  padding: 12px;
+  background: #204a32;
+  border-radius: 8px;
+  color: #e9d7ab;
+  font-size: 13px;
+}
+
+.temporizador {
+  width: 100%;
+  height: 5px;
+  margin-top: 10px;
+  overflow: hidden;
+  background: #10291c;
+  border-radius: 5px;
+}
+
+.progreso {
+  width: 0%;
+  height: 100%;
+  background: #e9bf6d;
+}
+
+.progreso.activo {
+  width: 100%;
+  transition: width 3s linear;
+}
+
+.reintentar {
+  display: none;
+  margin-top: 10px;
+  padding: 9px 15px;
+  border: 1px solid #e9bf6d;
+  border-radius: 6px;
+  background: #402b21;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* ESTADO */
+
+.estado {
+  margin-top: 16px;
+  text-align: center;
+  color: #bed0be;
+  font-size: 12px;
+}
+
+@media (max-width: 380px) {
+  body {
+    padding: 8px;
+  }
+
+  .panel {
+    padding: 10px;
+  }
+
+  .villano img {
+    height: 105px;
+  }
+
+  .boton-vida {
+    width: 75px;
+    height: 80px;
+  }
+
+  .botones {
+    gap: 12px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="panel">
+
+  <header class="cabecera">
+    <div class="subtitulo">
+      MARVEL CHAMPIONS · NAVIDAD
+    </div>
+
+    <h1 id="numeroMesa">MESA 01</h1>
+  </header>
+
+  <h2 class="titulo-seccion">
+    SELECCIONA EL VILLANO
+  </h2>
+
+  <div class="villanos" id="listaVillanos"></div>
+
+  <section class="control">
+
+    <h2 class="objetivo" id="nombreObjetivo">
+      Doctor Octopus
+    </h2>
+
+    <div class="etiqueta">
+      VIDA DEL VILLANO
+    </div>
+
+    <div class="vida-principal">
+      <strong id="vidaActual">--</strong>
+      <span id="vidaMaxima">/ -- PV</span>
+    </div>
+
+    <div class="botones">
+
+      <button
+        type="button"
+        class="boton-vida restar"
+        id="restar"
+        aria-label="Quitar un punto de vida"
+        disabled
+      >−</button>
+
+      <div class="cambio">
+        <div class="cambio-numero" id="cambio">0</div>
+        <div class="cambio-texto">CAMBIO</div>
+      </div>
+
+      <button
+        type="button"
+        class="boton-vida sumar"
+        id="sumar"
+        aria-label="Añadir un punto de vida"
+        disabled
+      >+</button>
+
+    </div>
+
+    <div class="envio">
+      <div id="mensajeEnvio">
+        Esperando conexión...
+      </div>
+
+      <div class="temporizador">
+        <div class="progreso" id="progreso"></div>
+      </div>
+
+      <button
+        type="button"
+        class="reintentar"
+        id="reintentar"
+      >Reintentar envío</button>
+    </div>
+
+  </section>
+
+  <div class="estado" id="estado">
+    Conectando con Firebase...
+  </div>
+
+</main>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
+
+import {
+  getFirestore,
+  doc,
+  onSnapshot,
+  runTransaction
+}
+from "https://www.gstatic.com/firebasejs/13.2.0/firebase-firestore.js";
+
+import {
+  getAuth,
+  signInAnonymously,
+  onAuthStateChanged
+}
+from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
+
+/* =====================================
+   FIREBASE
+===================================== */
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDrZ0oOMYX0YH2cvgYD4pc9zU1jNenC1v8",
+  authDomain: "marvel-champions-navidad.firebaseapp.com",
+  projectId: "marvel-champions-navidad",
+  storageBucket: "marvel-champions-navidad.firebasestorage.app",
+  messagingSenderId: "442553244844",
+  appId: "1:442553244844:web:c42e22c03a66d335d61309"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const auth = getAuth(app);
+
+/* =====================================
+   CONFIGURACIÓN
+===================================== */
+
+const villanos = [
+  {
+    id: "octopus",
+    nombre: "Doctor Octopus",
+    imagen: "imagenes/octopus.png"
+  },
+  {
+    id: "electro",
+    nombre: "Electro",
+    imagen: "imagenes/electro.png"
+  },
+  {
+    id: "buitre",
+    nombre: "Buitre",
+    imagen: "imagenes/buitre.png"
+  },
+  {
+    id: "sandman",
+    nombre: "Hombre de Arena",
+    imagen: "imagenes/sandman.png"
+  }
+];
+
+const TIEMPO_ENVIO = 3000;
+
+// Obtener mesa desde la URL.
+const parametros = new URLSearchParams(location.search);
+const numeroMesa = parametros.get("mesa") || "1";
+
+document.getElementById("numeroMesa").textContent =
+  "MESA " + String(numeroMesa).padStart(2, "0");
+
+/* =====================================
+   ESTADO LOCAL
+===================================== */
+
+let seleccionado = "octopus";
+let cambioPendiente = 0;
+let temporizador = null;
+let enviando = false;
+let conectado = false;
+let errorEnvio = false;
+
+// Datos sincronizados desde Firestore.
+const datosVillanos = {};
+
+// Referencias HTML.
+const lista = document.getElementById("listaVillanos");
+const vidaActualEl = document.getElementById("vidaActual");
+const vidaMaximaEl = document.getElementById("vidaMaxima");
+const cambioEl = document.getElementById("cambio");
+const objetivoEl = document.getElementById("nombreObjetivo");
+const restarBtn = document.getElementById("restar");
+const sumarBtn = document.getElementById("sumar");
+const mensajeEl = document.getElementById("mensajeEnvio");
+const progresoEl = document.getElementById("progreso");
+const reintentarBtn = document.getElementById("reintentar");
+const estadoEl = document.getElementById("estado");
+
+/* =====================================
+   CREAR TARJETAS
+===================================== */
+
+villanos.forEach(villano => {
+
+  const boton = document.createElement("button");
+
+  boton.type = "button";
+  boton.className = "villano";
+  boton.dataset.id = villano.id;
+
+  const imagen = document.createElement("img");
+  imagen.src = villano.imagen;
+  imagen.alt = villano.nombre;
+
+  const nombre = document.createElement("span");
+  nombre.className = "nombre";
+  nombre.textContent = villano.nombre;
+
+  const vida = document.createElement("span");
+  vida.className = "vida-pequena";
+  vida.textContent = "-- PV";
+
+  boton.append(imagen, nombre, vida);
+
+  boton.addEventListener("click", () => {
+    seleccionarVillano(villano.id);
+  });
+
+  lista.appendChild(boton);
+});
+
+/* =====================================
+   SELECCIONAR VILLANO
+===================================== */
+
+function seleccionarVillano(id) {
+
+  // Para no enviar un cambio al villano equivocado,
+  // no permitimos cambiar de objetivo durante un envío
+  // o mientras haya cambios pendientes.
+  if (enviando || cambioPendiente !== 0) {
+    mensajeEl.textContent =
+      "Espera a que se guarde el cambio antes de cambiar de villano.";
+    return;
+  }
+
+  cancelarTemporizador();
+
+  seleccionado = id;
+  errorEnvio = false;
+
+  actualizarPantalla();
+}
+
+/* =====================================
+   ACTUALIZAR PANTALLA
+===================================== */
+
+function actualizarPantalla() {
+
+  const villano = villanos.find(v => v.id === seleccionado);
+  const datos = datosVillanos[seleccionado];
+
+  objetivoEl.textContent = villano.nombre;
+
+  document.querySelectorAll(".villano").forEach(boton => {
+    const id = boton.dataset.id;
+    const info = datosVillanos[id];
+
+    boton.classList.toggle(
+      "seleccionado",
+      id === seleccionado
+    );
+
+    boton.querySelector(".vida-pequena").textContent =
+      info
+        ? info.vidaActual.toLocaleString("es-ES") + " PV"
+        : "-- PV";
+  });
+
+  if (!datos) {
+    vidaActualEl.textContent = "--";
+    vidaMaximaEl.textContent = "/ -- PV";
+    restarBtn.disabled = true;
+    sumarBtn.disabled = true;
+    return;
+  }
+
+  const actual = datos.vidaActual;
+  const maxima = datos.vidaMaxima;
+
+  // Vida provisional con cambios todavía no enviados.
+  const vidaMostrada = Math.max(
+    0,
+    Math.min(maxima, actual + cambioPendiente)
+  );
+
+  vidaActualEl.textContent =
+    vidaMostrada.toLocaleString("es-ES");
+
+  vidaMaximaEl.textContent =
+    "/ " + maxima.toLocaleString("es-ES") + " PV";
+
+  cambioEl.textContent =
+    cambioPendiente > 0
+      ? "+" + cambioPendiente
+      : String(cambioPendiente);
+
+  cambioEl.classList.toggle(
+    "positivo",
+    cambioPendiente > 0
+  );
+
+  cambioEl.classList.toggle(
+    "negativo",
+    cambioPendiente < 0
+  );
+
+  const bloqueado = !conectado || enviando || errorEnvio;
+
+  restarBtn.disabled = bloqueado || vidaMostrada <= 0;
+  sumarBtn.disabled = bloqueado || vidaMostrada >= maxima;
+}
+
+/* =====================================
+   MODIFICAR VIDA
+===================================== */
+
+function modificarVida(cantidad) {
+
+  if (!conectado || enviando || errorEnvio) return;
+
+  const datos = datosVillanos[seleccionado];
+  if (!datos) return;
+
+  const provisional =
+    datos.vidaActual + cambioPendiente;
+
+  const siguiente = provisional + cantidad;
+
+  // Respetar límites.
+  if (
+    siguiente < 0 ||
+    siguiente > datos.vidaMaxima
+  ) {
+    return;
+  }
+
+  cambioPendiente += cantidad;
+
+  actualizarPantalla();
+
+  cancelarTemporizador();
+
+  if (cambioPendiente === 0) {
+    mensajeEl.textContent = "Sin cambios pendientes";
+    return;
+  }
+
+  mensajeEl.textContent =
+    "Guardando en 3 segundos...";
+
+  // Reiniciar la animación de progreso.
+  progresoEl.classList.remove("activo");
+  progresoEl.style.transition = "none";
+  progresoEl.style.width = "0%";
+
+  void progresoEl.offsetWidth;
+
+  progresoEl.style.transition = "";
+  progresoEl.style.width = "";
+
+  progresoEl.classList.add("activo");
+
+  temporizador = setTimeout(() => {
+    enviarCambio();
+  }, TIEMPO_ENVIO);
+}
+
+restarBtn.addEventListener("click", () => {
+  modificarVida(-1);
+});
+
+sumarBtn.addEventListener("click", () => {
+  modificarVida(1);
+});
+
+/* =====================================
+   TEMPORIZADOR
+===================================== */
+
+function cancelarTemporizador() {
+
+  if (temporizador) {
+    clearTimeout(temporizador);
+    temporizador = null;
+  }
+
+  progresoEl.classList.remove("activo");
+}
+
+/* =====================================
+   ENVIAR A FIREBASE
+===================================== */
+
+async function enviarCambio() {
+
+  cancelarTemporizador();
+
+  if (enviando || cambioPendiente === 0) return;
+
+  enviando = true;
+  errorEnvio = false;
+
+  const id = seleccionado;
+  const variacion = cambioPendiente;
+
+  mensajeEl.textContent = "Guardando en Firebase...";
+  reintentarBtn.style.display = "none";
+
+  actualizarPantalla();
+
+  try {
+
+    const referencia = doc(db, "villanos", id);
+
+    await runTransaction(db, async transaccion => {
+
+      const snapshot = await transaccion.get(referencia);
+
+      if (!snapshot.exists()) {
+        throw new Error("No existe el villano");
+      }
+
+      const datos = snapshot.data();
+
+      const actual = Number(datos.vidaActual);
+      const maxima = Number(datos.vidaMaxima);
+
+      if (
+        !Number.isInteger(actual) ||
+        !Number.isInteger(maxima) ||
+        maxima <= 0
+      ) {
+        throw new Error("Datos de vida incorrectos");
+      }
+
+      // Aplicar el cambio sobre la vida más reciente,
+      // no sobre la que se veía al pulsar los botones.
+      const nuevaVida = Math.max(
+        0,
+        Math.min(maxima, actual + variacion)
+      );
+
+      if (nuevaVida !== actual) {
+        transaccion.update(referencia, {
+          vidaActual: nuevaVida
+        });
+      }
+
+    });
+
+    // El cambio ya se ha confirmado.
+    cambioPendiente = 0;
+
+    mensajeEl.textContent = "¡Vida actualizada!";
+
+    estadoEl.textContent = "Conectado · En directo";
+
+    setTimeout(() => {
+      if (!enviando && cambioPendiente === 0) {
+        mensajeEl.textContent = "Sin cambios pendientes";
+      }
+    }, 1800);
+
+  } catch (error) {
+
+    console.error("Error al guardar:", error);
+
+    // Conservamos la variación para evitar perderla.
+    errorEnvio = true;
+
+    mensajeEl.textContent =
+      "No se pudo guardar el cambio.";
+
+    reintentarBtn.style.display = "inline-block";
+
+  } finally {
+
+    enviando = false;
+    actualizarPantalla();
+
+  }
+}
+
+/* Reintentar manualmente tras un error */
+
+reintentarBtn.addEventListener("click", () => {
+  errorEnvio = false;
+  enviarCambio();
+});
+
+/* =====================================
+   FIREBASE EN TIEMPO REAL
+===================================== */
+
+let escuchando = false;
+
+onAuthStateChanged(auth, async usuario => {
+
+  if (!usuario) {
+
+    conectado = false;
+    actualizarPantalla();
+
+    try {
+      await signInAnonymously(auth);
+    } catch (error) {
+      console.error(error);
+      estadoEl.textContent = "Error de autenticación";
+    }
+
+    return;
+  }
+
+  if (escuchando) return;
+
+  escuchando = true;
+  conectado = true;
+
+  estadoEl.textContent = "Conectado · En directo";
+  mensajeEl.textContent = "Sin cambios pendientes";
+
+  villanos.forEach(villano => {
+
+    onSnapshot(
+      doc(db, "villanos", villano.id),
+
+      snapshot => {
+
+        if (!snapshot.exists()) {
+          estadoEl.textContent =
+            "Falta el villano: " + villano.id;
+          return;
+        }
+
+        const datos = snapshot.data();
+        const actual = Number(datos.vidaActual);
+        const maxima = Number(datos.vidaMaxima);
+
+        if (
+          !Number.isInteger(actual) ||
+          !Number.isInteger(maxima) ||
+          maxima <= 0
+        ) {
+          estadoEl.textContent =
+            "Datos incorrectos: " + villano.id;
+          return;
+        }
+
+        datosVillanos[villano.id] = {
+          vidaActual: actual,
+          vidaMaxima: maxima
+        };
+
+        actualizarPantalla();
+      },
+
+      error => {
+        console.error(error);
+        conectado = false;
+        estadoEl.textContent =
+          "Error de conexión con Firestore";
+        actualizarPantalla();
+      }
+    );
+
+  });
+
+});
+
+</script>
+</body>
+</html>
