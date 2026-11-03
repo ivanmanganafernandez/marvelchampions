@@ -509,6 +509,436 @@ body {
     transition: none;
   }
 }
+  
+/* =========================================
+   REDISEÑO DEL PANEL DE VIDA
+   ESTILO CÓMIC NAVIDEÑO
+========================================= */
+
+/* PANEL INFERIOR */
+
+.informacion {
+  position: relative;
+  z-index: 4;
+
+  flex: 0 0 auto;
+
+  padding:
+    18px
+    clamp(15px, 2vw, 30px)
+    11px;
+
+  text-align: center;
+
+  background:
+    linear-gradient(
+      180deg,
+      #103d29 0%,
+      #08271a 100%
+    );
+
+  border-top: 2px solid #d2a45b;
+}
+
+/* =========================================
+   PERGAMINO CON NOMBRE
+========================================= */
+
+.nombre {
+  position: absolute;
+
+  left: 50%;
+  top: -25px;
+
+  transform:
+    translateX(-50%) rotate(-1deg);
+
+  display: inline-block;
+
+  width: max-content;
+  max-width: 88%;
+
+  margin: 0;
+
+  padding:
+    8px
+    clamp(22px, 2.5vw, 40px);
+
+  /* Pergamino */
+  background:
+    linear-gradient(
+      180deg,
+      #fff3cc 0%,
+      #f5dcaa 48%,
+      #e7bf7b 100%
+    );
+
+  color: #24180f;
+
+  border: 2px solid #3b2617;
+
+  border-radius:
+    5px 5px 13px 13px;
+
+  box-shadow:
+    0 3px 0 #905a30,
+    0 6px 9px rgba(0,0,0,.35);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(14px, 2vw, 28px);
+
+  font-style: italic;
+  font-weight: 900;
+
+  text-transform: uppercase;
+
+  letter-spacing: .3px;
+
+  line-height: 1;
+
+  white-space: nowrap;
+
+  z-index: 6;
+}
+
+/* Decoración del pergamino */
+
+.nombre::before,
+.nombre::after {
+  content: "✦";
+
+  display: inline-block;
+
+  color: #ad3835;
+
+  font-size: .8em;
+  font-style: normal;
+
+  vertical-align: middle;
+}
+
+.nombre::before {
+  margin-right: 12px;
+}
+
+.nombre::after {
+  margin-left: 12px;
+}
+
+/* =========================================
+   NÚMERO DE VIDA
+========================================= */
+
+.vida {
+  display: flex;
+
+  justify-content: center;
+  align-items: baseline;
+
+  gap: clamp(5px, .8vw, 12px);
+
+  margin:
+    8px 0 12px;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  color: #fff9e9;
+
+  text-shadow:
+    2px 2px 0 #21160e,
+    -1px -1px 0 #21160e,
+    0 3px 0 #3b2817;
+}
+
+/* Vida restante */
+
+.vida .actual {
+  font-size:
+    clamp(27px, 3.2vw, 48px);
+
+  letter-spacing: -1px;
+}
+
+/* Vida máxima */
+
+.vida .maxima {
+  color: #f2dfb5;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(17px, 2.2vw, 30px);
+
+  font-weight: 800;
+
+  text-shadow:
+    1px 1px 0 #21160e;
+}
+
+/* =========================================
+   BARRA DE VIDA
+========================================= */
+
+.vida-contenedor {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+
+  gap: clamp(8px, 1vw, 15px);
+}
+
+/* Marco exterior */
+
+.barra-fondo {
+  position: relative;
+
+  flex: 1;
+
+  min-width: 0;
+
+  height:
+    clamp(18px, 2.6vh, 29px);
+
+  padding: 3px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      #361c19,
+      #1b1110
+    );
+
+  border: 3px solid #d9ab5e;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 0 0 2px #21170f,
+    inset 0 3px 5px rgba(0,0,0,.65),
+    0 3px 4px rgba(0,0,0,.4);
+}
+
+/* Relleno rojo */
+
+.barra {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: 12px;
+
+  background:
+
+    /* Líneas diagonales de cómic */
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0px,
+      transparent 8px,
+      rgba(255,255,255,.10) 8px,
+      rgba(255,255,255,.10) 13px
+    ),
+
+    /* Degradado rojo */
+    linear-gradient(
+      180deg,
+      #f26e67 0%,
+      #dc3e45 45%,
+      #aa252c 100%
+    );
+
+  box-shadow:
+    inset 0 2px 2px rgba(255,255,255,.28),
+    inset 0 -2px 3px rgba(0,0,0,.25);
+
+  transition:
+    width .8s ease;
+}
+
+/* =========================================
+   PLACA DE PORCENTAJE
+========================================= */
+
+.porcentaje {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  min-width:
+    clamp(48px, 5vw, 72px);
+
+  min-height:
+    clamp(29px, 3.6vh, 42px);
+
+  margin: 0;
+
+  padding: 4px 8px;
+
+  color: #fff0c5;
+
+  background:
+    linear-gradient(
+      180deg,
+      #1d593a,
+      #103c29
+    );
+
+  border: 2px solid #d9ab5e;
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 0 0 2px #21170f,
+    0 3px 4px rgba(0,0,0,.35);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size:
+    clamp(14px, 1.5vw, 22px);
+
+  font-weight: 900;
+
+  line-height: 1;
+
+  text-shadow:
+    1px 1px 0 #21170f;
+}
+
+/* =========================================
+   AJUSTES EN MÓVILES
+========================================= */
+
+@media (max-width: 650px) {
+
+  .informacion {
+    padding:
+      12px 6px 7px;
+  }
+
+  .nombre {
+    top: -14px;
+
+    max-width: 96%;
+
+    padding: 4px 8px;
+
+    font-size:
+      clamp(9px, 2.5vw, 15px);
+
+    border-width: 1px;
+  }
+
+  .nombre::before,
+  .nombre::after {
+    display: none;
+  }
+
+  .vida {
+    gap: 4px;
+    margin: 4px 0 7px;
+  }
+
+  .vida .actual {
+    font-size:
+      clamp(17px, 4.5vw, 28px);
+  }
+
+  .vida .maxima {
+    font-size:
+      clamp(10px, 2.6vw, 17px);
+  }
+
+  .vida-contenedor {
+    gap: 6px;
+  }
+
+  .barra-fondo {
+    height: 14px;
+    padding: 1px;
+    border-width: 2px;
+  }
+
+  .porcentaje {
+    min-width: 38px;
+    min-height: 25px;
+
+    padding: 3px 5px;
+
+    font-size: 11px;
+    border-width: 1px;
+  }
+}
+
+/* =========================================
+   PANTALLAS CON POCA ALTURA
+========================================= */
+
+@media (max-height: 600px) {
+
+  .informacion {
+    padding-top: 12px;
+    padding-bottom: 5px;
+  }
+
+  .nombre {
+    top: -13px;
+
+    padding-top: 3px;
+    padding-bottom: 3px;
+
+    font-size:
+      clamp(10px, 2vh, 18px);
+  }
+
+  .vida {
+    margin-top: 3px;
+    margin-bottom: 5px;
+  }
+
+  .vida .actual {
+    font-size:
+      clamp(17px, 3.5vh, 28px);
+  }
+
+  .vida .maxima {
+    font-size:
+      clamp(11px, 2.5vh, 19px);
+  }
+
+  .barra-fondo {
+    height: 15px;
+  }
+
+  .porcentaje {
+    min-height: 25px;
+    font-size: 12px;
+  }
+}
+
 </style>
 </head>
 
