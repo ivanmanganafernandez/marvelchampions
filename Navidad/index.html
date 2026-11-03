@@ -602,6 +602,60 @@ body {
     transition: none;
   }
 }
+   /* =====================================
+   AJUSTES FINALES DEL MARCADOR
+===================================== */
+
+/* Más espacio para los personajes */
+.informacion {
+  padding-top: 5px;
+  padding-bottom: 6px;
+}
+
+/* Etiquetas más compactas */
+.nombre {
+  margin-bottom: 5px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+/* Números y barras ligeramente más compactos */
+.vida {
+  margin-bottom: 5px;
+}
+
+.porcentaje {
+  margin-top: 3px;
+}
+
+/* Ajustar tamaño de personajes */
+#octopus .imagen img {
+  transform: scale(1.12);
+}
+
+#electro .imagen img {
+  transform: scale(1.20);
+}
+
+#buitre .imagen img {
+  transform: scale(1.08);
+}
+
+#sandman .imagen img {
+  transform: scale(1.05);
+}
+
+/* Ocultar emojis para mantener
+   una estética de cómic uniforme */
+.adorno {
+  display: none;
+}
+
+/* Copos más discretos */
+.villano::after {
+  font-size: clamp(14px, 1.5vw, 21px);
+  opacity: .65;
+}
 
 </style>
 </head>
