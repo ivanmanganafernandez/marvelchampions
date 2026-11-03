@@ -1,12 +1,19 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Marvel Champions · Administración</title>
 
 <style>
+
+/* =====================================
+   VARIABLES
+===================================== */
+
 :root {
   --verde: #143c29;
   --verde-oscuro: #092719;
@@ -24,31 +31,47 @@ body {
   margin: 0;
   min-height: 100vh;
   padding: 20px;
+
   background-color: #e9d4a7;
   background-image:
     radial-gradient(#b99a68 1px, transparent 1px);
   background-size: 11px 11px;
+
   font-family: Arial, sans-serif;
 }
+
+/* =====================================
+   PANEL GENERAL
+===================================== */
 
 .panel {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
   padding: 20px;
+
   background: var(--verde);
+
   border: 3px solid var(--negro);
   border-radius: 12px;
+
   box-shadow: 5px 5px 0 var(--rojo);
 }
+
+/* =====================================
+   CABECERA
+===================================== */
 
 .cabecera {
   padding: 22px;
   margin-bottom: 22px;
+
   background:
     linear-gradient(#fff0c7, #e7c588);
+
   border: 2px solid var(--negro);
   border-radius: 8px;
+
   text-align: center;
 }
 
@@ -61,10 +84,15 @@ body {
 
 .cabecera h1 {
   margin: 8px 0 0;
+
   color: var(--negro);
   font-family: Georgia, serif;
   font-size: clamp(24px, 4vw, 36px);
 }
+
+/* =====================================
+   PESTAÑAS
+===================================== */
 
 .pestanas {
   display: flex;
@@ -75,11 +103,15 @@ body {
 .pestana {
   flex: 1;
   padding: 13px 8px;
+
   background: #245139;
+
   border: 2px solid #987c4c;
   border-radius: 7px;
+
   color: var(--crema);
   font-weight: bold;
+
   cursor: pointer;
 }
 
@@ -98,36 +130,61 @@ body {
 
 .titulo {
   margin: 0 0 16px;
+
   color: var(--crema);
+
   font-family: Georgia, serif;
   font-size: 21px;
 }
 
+/* =====================================
+   TARJETAS
+===================================== */
+
 .tarjeta {
   margin-bottom: 14px;
   padding: 18px;
+
   background: #204832;
+
   border: 2px solid #a58b54;
   border-radius: 10px;
 }
 
 .nombre-villano {
   margin: 0 0 15px;
+
   color: var(--crema);
+
   font-family: Georgia, serif;
   font-size: 21px;
 }
 
+.descripcion {
+  color: #bfd0c1;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* =====================================
+   CAMPOS
+===================================== */
+
 .campos {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
   gap: 12px;
+
   margin-bottom: 15px;
 }
 
 .campo label {
   display: block;
   margin-bottom: 7px;
+
   color: #c7d9c9;
   font-size: 13px;
 }
@@ -135,13 +192,27 @@ body {
 .campo input {
   width: 100%;
   padding: 12px;
+
   background: #fff5da;
+
   border: 2px solid #34281c;
   border-radius: 6px;
+
   color: #241a13;
+
   font-size: 19px;
   font-weight: bold;
 }
+
+.campo input[readonly] {
+  background: #d8d1bd;
+  color: #555044;
+  cursor: not-allowed;
+}
+
+/* =====================================
+   BOTONES
+===================================== */
 
 .acciones {
   display: flex;
@@ -151,16 +222,21 @@ body {
 
 .boton {
   padding: 12px 17px;
+
   border: 2px solid var(--negro);
   border-radius: 7px;
+
   background: #e4bb70;
+
   color: #241a13;
+
   font-size: 14px;
   font-weight: bold;
+
   cursor: pointer;
 }
 
-.boton:hover {
+.boton:hover:not(:disabled) {
   filter: brightness(1.08);
 }
 
@@ -186,16 +262,16 @@ body {
   padding: 16px;
 }
 
-.descripcion {
-  color: #bfd0c1;
-  font-size: 14px;
-  line-height: 1.5;
-}
+/* =====================================
+   CONTADORES
+===================================== */
 
 .contador-mesas {
   display: flex;
+
   align-items: center;
   justify-content: center;
+
   gap: 22px;
   margin: 20px 0;
 }
@@ -203,29 +279,79 @@ body {
 .contador-mesas button {
   width: 55px;
   height: 55px;
+
   border: 2px solid var(--negro);
   border-radius: 8px;
+
   background: #e1b56c;
+
   font-size: 30px;
+
   cursor: pointer;
 }
 
 .numero-mesas {
   color: white;
+
   font-family: Georgia, serif;
   font-size: 42px;
   font-weight: bold;
 }
 
+/* =====================================
+   VIDA CALCULADA
+===================================== */
+
+.vida-calculada {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 10px;
+
+  padding: 11px 0;
+
+  border-bottom:
+    1px solid rgba(216,170,96,.25);
+}
+
+.vida-calculada:last-child {
+  border-bottom: none;
+}
+
+.vida-calculada .nombre {
+  color: var(--crema);
+  font-size: 14px;
+}
+
+.vida-calculada .valor {
+  color: white;
+
+  font-family: Georgia, serif;
+  font-size: 19px;
+  font-weight: bold;
+
+  white-space: nowrap;
+}
+
+/* =====================================
+   MESAS
+===================================== */
+
 .lista-mesas {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
   gap: 10px;
 }
 
 .mesa {
   padding: 15px;
+
   background: #1d442f;
+
   border: 1px solid #a58b54;
   border-radius: 8px;
 }
@@ -233,6 +359,7 @@ body {
 .mesa strong {
   display: block;
   margin-bottom: 9px;
+
   color: var(--crema);
 }
 
@@ -242,17 +369,29 @@ body {
   overflow-wrap: anywhere;
 }
 
+/* =====================================
+   ESTADO
+===================================== */
+
 .estado {
   margin-top: 18px;
   padding: 11px;
+
   color: #f3dba8;
+
   background: #0c2b1b;
   border-radius: 7px;
+
   text-align: center;
   font-size: 13px;
 }
 
+/* =====================================
+   MÓVILES
+===================================== */
+
 @media (max-width: 600px) {
+
   body {
     padding: 8px;
   }
@@ -285,7 +424,16 @@ body {
   .lista-mesas {
     grid-template-columns: 1fr;
   }
+
+  .vida-calculada .nombre {
+    font-size: 12px;
+  }
+
+  .vida-calculada .valor {
+    font-size: 16px;
+  }
 }
+
 </style>
 </head>
 
@@ -293,70 +441,211 @@ body {
 
 <main class="panel">
 
+  <!-- CABECERA -->
+
   <header class="cabecera">
-    <small>MARVEL CHAMPIONS · ESPECIAL NAVIDAD</small>
+
+    <small>
+      MARVEL CHAMPIONS · ESPECIAL NAVIDAD
+    </small>
+
     <h1>ADMINISTRACIÓN</h1>
+
   </header>
 
+
+  <!-- PESTAÑAS -->
+
   <nav class="pestanas">
-    <button class="pestana activa" data-tab="villanos">
+
+    <button
+      class="pestana activa"
+      data-tab="villanos"
+    >
       VILLANOS
     </button>
-    <button class="pestana" data-tab="mesas">
+
+    <button
+      class="pestana"
+      data-tab="mesas"
+    >
       MESAS
     </button>
-    <button class="pestana" data-tab="control">
+
+    <button
+      class="pestana"
+      data-tab="control"
+    >
       CONTROL
     </button>
+
   </nav>
 
-  <!-- VILLANOS -->
+
+  <!-- =====================================
+       VILLANOS
+  ===================================== -->
 
   <section class="seccion activa" id="villanos">
-    <h2 class="titulo">Configuración de villanos</h2>
+
+    <h2 class="titulo">
+      Configuración de villanos
+    </h2>
+
+    <p class="descripcion">
+      La vida máxima se calcula automáticamente
+      según el número de jugadores configurado.
+      Desde aquí puedes corregir la vida actual
+      de cada villano durante el evento.
+    </p>
+
     <div id="listaVillanos"></div>
+
   </section>
 
-  <!-- MESAS -->
+
+  <!-- =====================================
+       MESAS
+  ===================================== -->
 
   <section class="seccion" id="mesas">
 
-    <h2 class="titulo">Gestión de mesas</h2>
+    <h2 class="titulo">
+      Gestión de mesas
+    </h2>
 
     <div class="tarjeta">
 
       <p class="descripcion">
         Selecciona cuántas mesas participarán.
         Cada mesa tendrá su propio enlace.
+        Este valor es independiente del número
+        de jugadores.
       </p>
 
       <div class="contador-mesas">
-        <button id="menosMesas" type="button">−</button>
-        <span class="numero-mesas" id="numeroMesas">6</span>
-        <button id="masMesas" type="button">+</button>
+
+        <button
+          type="button"
+          id="menosMesas"
+        >−</button>
+
+        <span
+          class="numero-mesas"
+          id="numeroMesas"
+        >6</span>
+
+        <button
+          type="button"
+          id="masMesas"
+        >+</button>
+
       </div>
 
-      <p class="descripcion" style="text-align:center">
-        <span id="jugadores">18</span> jugadores
-      </p>
-
-      <button class="boton grande" id="guardarMesas">
+      <button
+        class="boton grande"
+        id="guardarMesas"
+      >
         Guardar número de mesas
       </button>
 
     </div>
 
-    <h2 class="titulo">Accesos a las mesas</h2>
+    <h2 class="titulo">
+      Accesos a las mesas
+    </h2>
 
-    <div class="lista-mesas" id="listaMesas"></div>
+    <div
+      class="lista-mesas"
+      id="listaMesas"
+    ></div>
 
   </section>
 
-  <!-- CONTROL -->
+
+  <!-- =====================================
+       CONTROL
+  ===================================== -->
 
   <section class="seccion" id="control">
 
-    <h2 class="titulo">Control del evento</h2>
+    <h2 class="titulo">
+      Control del evento
+    </h2>
+
+
+    <!-- CONFIGURACIÓN DE JUGADORES -->
+
+    <div class="tarjeta">
+
+      <h3 class="nombre-villano">
+        Número de jugadores
+      </h3>
+
+      <p class="descripcion">
+        Indica el número total de jugadores.
+        La vida máxima de los cuatro villanos
+        se calculará automáticamente.
+      </p>
+
+      <div class="contador-mesas">
+
+        <button
+          type="button"
+          id="menosJugadores"
+        >−</button>
+
+        <span
+          class="numero-mesas"
+          id="numeroJugadores"
+        >18</span>
+
+        <button
+          type="button"
+          id="masJugadores"
+        >+</button>
+
+      </div>
+
+
+      <!-- VIDA CALCULADA -->
+
+      <div class="tarjeta" style="margin:15px 0 0">
+
+        <h3
+          class="nombre-villano"
+          style="font-size:17px"
+        >
+          Vida calculada
+        </h3>
+
+        <div id="vidasCalculadas"></div>
+
+      </div>
+
+
+      <button
+        type="button"
+        class="boton grande"
+        id="aplicarJugadores"
+      >
+        Aplicar configuración de jugadores
+      </button>
+
+      <p
+        class="descripcion"
+        style="text-align:center"
+      >
+        Al aplicar esta configuración,
+        la vida máxima y la vida actual
+        de los cuatro villanos se establecerán
+        con los valores calculados.
+      </p>
+
+    </div>
+
+
+    <!-- RESTABLECER VIDAS -->
 
     <div class="tarjeta">
 
@@ -365,8 +654,9 @@ body {
       </h3>
 
       <p class="descripcion">
-        Esta acción devolverá a los cuatro villanos
-        su vida máxima configurada.
+        Esta acción devolverá a los cuatro
+        villanos su vida máxima configurada,
+        sin modificar el número de jugadores.
       </p>
 
       <button
@@ -378,9 +668,14 @@ body {
 
     </div>
 
+
+    <!-- MARCADOR GENERAL -->
+
     <div class="tarjeta">
 
-      <h3 class="nombre-villano">Marcador general</h3>
+      <h3 class="nombre-villano">
+        Marcador general
+      </h3>
 
       <a
         class="boton secundario"
@@ -396,11 +691,19 @@ body {
 
   </section>
 
+
+  <!-- ESTADO -->
+
   <div class="estado" id="estado">
     Conectando con Firebase...
   </div>
 
 </main>
+
+
+<!-- =====================================
+     FIREBASE Y JAVASCRIPT
+===================================== -->
 
 <script type="module">
 
@@ -422,7 +725,10 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
 
-/* FIREBASE */
+
+/* =====================================
+   CONFIGURACIÓN FIREBASE
+===================================== */
 
 const firebaseConfig = {
   apiKey: "AIzaSyDrZ0oOMYX0YH2cvgYD4pc9zU1jNenC1v8",
@@ -437,19 +743,45 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
+
+/* =====================================
+   VILLANOS Y MULTIPLICADORES
+===================================== */
+
 const villanos = [
-  { id: "octopus", nombre: "Doctor Octopus" },
-  { id: "electro", nombre: "Electro" },
-  { id: "buitre", nombre: "Buitre" },
-  { id: "sandman", nombre: "Hombre de Arena" }
+  {
+    id: "octopus",
+    nombre: "Doctor Octopus",
+    multiplicador: 13
+  },
+  {
+    id: "electro",
+    nombre: "Electro",
+    multiplicador: 14
+  },
+  {
+    id: "buitre",
+    nombre: "Buitre",
+    multiplicador: 15
+  },
+  {
+    id: "sandman",
+    nombre: "Hombre de Arena",
+    multiplicador: 16
+  }
 ];
 
 const estado = document.getElementById("estado");
+
 const datosVillanos = {};
+
 let operacionesActivas = false;
 let suscripcionesIniciadas = false;
 
-/* PESTAÑAS */
+
+/* =====================================
+   PESTAÑAS
+===================================== */
 
 document.querySelectorAll(".pestana").forEach(boton => {
 
@@ -470,22 +802,33 @@ document.querySelectorAll(".pestana").forEach(boton => {
 
 });
 
-/* CREAR TARJETAS DE VILLANOS */
+
+/* =====================================
+   CREAR TARJETAS DE VILLANOS
+===================================== */
 
 const lista = document.getElementById("listaVillanos");
 
 villanos.forEach(v => {
 
   const tarjeta = document.createElement("div");
+
   tarjeta.className = "tarjeta";
   tarjeta.dataset.id = v.id;
 
   const titulo = document.createElement("h3");
+
   titulo.className = "nombre-villano";
   titulo.textContent = v.nombre;
 
+
+  /* CAMPOS */
+
   const campos = document.createElement("div");
   campos.className = "campos";
+
+
+  /* VIDA MÁXIMA */
 
   const campoMax = document.createElement("div");
   campoMax.className = "campo";
@@ -494,12 +837,19 @@ villanos.forEach(v => {
   labelMax.textContent = "Vida máxima";
 
   const inputMax = document.createElement("input");
+
   inputMax.type = "number";
   inputMax.min = "1";
   inputMax.max = "1000000";
   inputMax.className = "maxima";
 
+  // La vida máxima depende de los jugadores.
+  inputMax.readOnly = true;
+
   campoMax.append(labelMax, inputMax);
+
+
+  /* VIDA ACTUAL */
 
   const campoActual = document.createElement("div");
   campoActual.className = "campo";
@@ -508,37 +858,55 @@ villanos.forEach(v => {
   labelActual.textContent = "Vida actual";
 
   const inputActual = document.createElement("input");
+
   inputActual.type = "number";
   inputActual.min = "0";
   inputActual.className = "actual";
 
   campoActual.append(labelActual, inputActual);
+
   campos.append(campoMax, campoActual);
+
+
+  /* BOTONES */
 
   const acciones = document.createElement("div");
   acciones.className = "acciones";
 
   const guardar = document.createElement("button");
+
   guardar.className = "boton";
   guardar.type = "button";
-  guardar.textContent = "Guardar cambios";
+  guardar.textContent = "Guardar vida actual";
   guardar.disabled = true;
 
   const reset = document.createElement("button");
+
   reset.className = "boton secundario";
   reset.type = "button";
   reset.textContent = "Restablecer vida";
   reset.disabled = true;
 
-  guardar.addEventListener("click", () => guardarVillano(v.id));
-  reset.addEventListener("click", () => restablecerVillano(v.id));
+  guardar.addEventListener("click", () => {
+    guardarVillano(v.id);
+  });
+
+  reset.addEventListener("click", () => {
+    restablecerVillano(v.id);
+  });
 
   acciones.append(guardar, reset);
+
   tarjeta.append(titulo, campos, acciones);
+
   lista.appendChild(tarjeta);
+
 });
 
-/* SINCRONIZAR CAMPOS */
+
+/* =====================================
+   SINCRONIZAR CAMPOS
+===================================== */
 
 function actualizarTarjeta(id) {
 
@@ -547,16 +915,18 @@ function actualizarTarjeta(id) {
   );
 
   const datos = datosVillanos[id];
+
   if (!tarjeta || !datos) return;
 
-  const maxima = tarjeta.querySelector(".maxima");
-  const actual = tarjeta.querySelector(".actual");
+  const maxima =
+    tarjeta.querySelector(".maxima");
 
-  // Conservar valores que el administrador esté editando.
-  if (document.activeElement !== maxima) {
-    maxima.value = datos.vidaMaxima;
-  }
+  const actual =
+    tarjeta.querySelector(".actual");
 
+  maxima.value = datos.vidaMaxima;
+
+  // No sobrescribir mientras se está editando.
   if (document.activeElement !== actual) {
     actual.value = datos.vidaActual;
   }
@@ -564,35 +934,61 @@ function actualizarTarjeta(id) {
   tarjeta.querySelectorAll("button").forEach(b => {
     b.disabled = operacionesActivas;
   });
+
 }
 
-/* GUARDAR VIDA */
+
+/* =====================================
+   BLOQUEAR BOTONES
+===================================== */
+
+function bloquearBotones() {
+
+  document.querySelectorAll(
+    '.tarjeta[data-id] button'
+  ).forEach(b => {
+
+    b.disabled = operacionesActivas;
+
+  });
+
+  document.getElementById("restablecerTodos").disabled =
+    operacionesActivas;
+
+  document.getElementById("aplicarJugadores").disabled =
+    operacionesActivas;
+
+}
+
+
+/* =====================================
+   GUARDAR VIDA ACTUAL
+===================================== */
 
 async function guardarVillano(id) {
+
+  if (operacionesActivas) return;
 
   const tarjeta = document.querySelector(
     '.tarjeta[data-id="' + id + '"]'
   );
 
-  const maxima = Number(tarjeta.querySelector(".maxima").value);
-  const actual = Number(tarjeta.querySelector(".actual").value);
+  const texto = tarjeta.querySelector(".actual").value;
+  const actual = Number(texto);
 
   if (
-    !Number.isInteger(maxima) ||
+    texto.trim() === "" ||
     !Number.isInteger(actual) ||
-    maxima < 1 ||
-    maxima > 1000000 ||
-    actual < 0 ||
-    actual > maxima
+    actual < 0
   ) {
-    alert("Comprueba los valores de vida.");
+    alert("Introduce una vida actual válida.");
     return;
   }
 
   operacionesActivas = true;
   bloquearBotones();
 
-  estado.textContent = "Guardando cambios...";
+  estado.textContent = "Guardando vida actual...";
 
   try {
 
@@ -600,25 +996,37 @@ async function guardarVillano(id) {
 
     await runTransaction(db, async transaccion => {
 
-      const snapshot = await transaccion.get(referencia);
+      const snapshot =
+        await transaccion.get(referencia);
 
       if (!snapshot.exists()) {
         throw new Error("Villano no encontrado");
       }
 
+      const maxima =
+        Number(snapshot.data().vidaMaxima);
+
+      if (actual > maxima) {
+        throw new Error(
+          "La vida actual supera la máxima"
+        );
+      }
+
       transaccion.update(referencia, {
-        vidaMaxima: maxima,
         vidaActual: actual
       });
 
     });
 
-    estado.textContent = "Cambios guardados correctamente";
+    estado.textContent =
+      "Vida actual guardada correctamente";
 
   } catch (error) {
 
     console.error(error);
-    estado.textContent = "Error al guardar los cambios";
+
+    estado.textContent =
+      "No se pudo guardar la vida actual";
 
   } finally {
 
@@ -626,13 +1034,21 @@ async function guardarVillano(id) {
     bloquearBotones();
 
   }
+
 }
 
-/* RESTABLECER UN VILLANO */
+
+/* =====================================
+   RESTABLECER UN VILLANO
+===================================== */
 
 async function restablecerVillano(id) {
 
-  if (!confirm("¿Restablecer la vida de este villano?")) {
+  if (operacionesActivas) return;
+
+  if (!confirm(
+    "¿Restablecer la vida de este villano?"
+  )) {
     return;
   }
 
@@ -645,7 +1061,8 @@ async function restablecerVillano(id) {
 
     await runTransaction(db, async transaccion => {
 
-      const snapshot = await transaccion.get(referencia);
+      const snapshot =
+        await transaccion.get(referencia);
 
       if (!snapshot.exists()) {
         throw new Error("Villano no encontrado");
@@ -662,7 +1079,9 @@ async function restablecerVillano(id) {
   } catch (error) {
 
     console.error(error);
-    estado.textContent = "Error al restablecer";
+
+    estado.textContent =
+      "Error al restablecer la vida";
 
   } finally {
 
@@ -670,21 +1089,30 @@ async function restablecerVillano(id) {
     bloquearBotones();
 
   }
+
 }
 
-/* RESTABLECER LOS CUATRO */
+
+/* =====================================
+   RESTABLECER TODOS
+===================================== */
 
 document.getElementById("restablecerTodos")
   .addEventListener("click", async () => {
 
+    if (operacionesActivas) return;
+
     if (!confirm(
       "¿Restablecer la vida de los cuatro villanos?"
-    )) return;
+    )) {
+      return;
+    }
 
     operacionesActivas = true;
     bloquearBotones();
 
-    estado.textContent = "Restableciendo villanos...";
+    estado.textContent =
+      "Restableciendo villanos...";
 
     try {
 
@@ -694,11 +1122,13 @@ document.getElementById("restablecerTodos")
           doc(db, "villanos", v.id)
         );
 
-        // Todas las lecturas antes de escribir.
         const snapshots = [];
 
-        for (const ref of referencias) {
-          const snapshot = await transaccion.get(ref);
+        // Todas las lecturas antes de escribir.
+        for (const referencia of referencias) {
+
+          const snapshot =
+            await transaccion.get(referencia);
 
           if (!snapshot.exists()) {
             throw new Error("Falta un villano");
@@ -707,11 +1137,13 @@ document.getElementById("restablecerTodos")
           snapshots.push(snapshot);
         }
 
-        // Restablecer los cuatro en una única transacción.
+        // Actualizar los cuatro.
         snapshots.forEach((snapshot, i) => {
+
           transaccion.update(referencias[i], {
             vidaActual: snapshot.data().vidaMaxima
           });
+
         });
 
       });
@@ -722,6 +1154,7 @@ document.getElementById("restablecerTodos")
     } catch (error) {
 
       console.error(error);
+
       estado.textContent =
         "Error al restablecer las vidas";
 
@@ -734,19 +1167,187 @@ document.getElementById("restablecerTodos")
 
   });
 
-function bloquearBotones() {
 
-  document.querySelectorAll(
-    '.tarjeta[data-id] button'
-  ).forEach(b => {
+/* =====================================
+   CONFIGURACIÓN DE JUGADORES
+===================================== */
 
-    b.disabled = operacionesActivas;
+let numeroJugadores = Number(
+  localStorage.getItem("navidad_numero_jugadores") || 18
+);
+
+numeroJugadores = Math.max(
+  1,
+  Math.min(999, Math.floor(numeroJugadores) || 18)
+);
+
+
+/* MOSTRAR CÁLCULOS */
+
+function actualizarJugadores() {
+
+  document.getElementById("numeroJugadores").textContent =
+    numeroJugadores;
+
+  const contenedor =
+    document.getElementById("vidasCalculadas");
+
+  contenedor.replaceChildren();
+
+  villanos.forEach(v => {
+
+    const vida =
+      numeroJugadores * v.multiplicador;
+
+    const fila = document.createElement("div");
+    fila.className = "vida-calculada";
+
+    const nombre = document.createElement("span");
+    nombre.className = "nombre";
+    nombre.textContent = v.nombre;
+
+    const valor = document.createElement("span");
+    valor.className = "valor";
+
+    valor.textContent =
+      vida.toLocaleString("es-ES") + " PV";
+
+    fila.append(nombre, valor);
+
+    contenedor.appendChild(fila);
 
   });
 
-  document.getElementById("restablecerTodos").disabled =
-    operacionesActivas;
 }
+
+
+/* BOTÓN MENOS */
+
+document.getElementById("menosJugadores")
+  .addEventListener("click", () => {
+
+    numeroJugadores = Math.max(
+      1,
+      numeroJugadores - 1
+    );
+
+    actualizarJugadores();
+
+  });
+
+
+/* BOTÓN MÁS */
+
+document.getElementById("masJugadores")
+  .addEventListener("click", () => {
+
+    numeroJugadores = Math.min(
+      999,
+      numeroJugadores + 1
+    );
+
+    actualizarJugadores();
+
+  });
+
+
+/* =====================================
+   APLICAR CONFIGURACIÓN DE JUGADORES
+===================================== */
+
+document.getElementById("aplicarJugadores")
+  .addEventListener("click", async () => {
+
+    if (operacionesActivas) return;
+
+    const jugadoresAplicados = numeroJugadores;
+
+    const mensaje =
+      "¿Aplicar la configuración de " +
+      jugadoresAplicados +
+      " jugadores?\n\n" +
+      "Esto recalculará la vida máxima y " +
+      "RESTABLECERÁ la vida actual de los " +
+      "cuatro villanos.";
+
+    if (!confirm(mensaje)) return;
+
+    operacionesActivas = true;
+    bloquearBotones();
+
+    estado.textContent =
+      "Configurando la vida de los villanos...";
+
+    try {
+
+      await runTransaction(db, async transaccion => {
+
+        const referencias = villanos.map(v =>
+          doc(db, "villanos", v.id)
+        );
+
+        const snapshots = [];
+
+        // Primero leer todos los documentos.
+        for (const referencia of referencias) {
+
+          const snapshot =
+            await transaccion.get(referencia);
+
+          if (!snapshot.exists()) {
+            throw new Error(
+              "No existe uno de los villanos"
+            );
+          }
+
+          snapshots.push(snapshot);
+        }
+
+        // Aplicar las fórmulas.
+        villanos.forEach((v, i) => {
+
+          const nuevaVida =
+            jugadoresAplicados * v.multiplicador;
+
+          transaccion.update(referencias[i], {
+            vidaMaxima: nuevaVida,
+            vidaActual: nuevaVida
+          });
+
+        });
+
+      });
+
+      // Recordar el número en este navegador.
+      localStorage.setItem(
+        "navidad_numero_jugadores",
+        String(jugadoresAplicados)
+      );
+
+      estado.textContent =
+        "Configuración aplicada: " +
+        jugadoresAplicados +
+        " jugadores";
+
+    } catch (error) {
+
+      console.error(error);
+
+      estado.textContent =
+        "Error al aplicar la configuración";
+
+    } finally {
+
+      operacionesActivas = false;
+      bloquearBotones();
+
+    }
+
+  });
+
+
+actualizarJugadores();
+
 
 /* =====================================
    GESTIÓN DE MESAS
@@ -761,13 +1362,13 @@ numeroMesas = Math.max(
   Math.min(30, Math.floor(numeroMesas) || 6)
 );
 
+
+/* ACTUALIZAR MESAS */
+
 function actualizarMesas() {
 
   document.getElementById("numeroMesas").textContent =
     numeroMesas;
-
-  document.getElementById("jugadores").textContent =
-    numeroMesas * 3;
 
   const contenedor =
     document.getElementById("listaMesas");
@@ -780,6 +1381,7 @@ function actualizarMesas() {
     div.className = "mesa";
 
     const titulo = document.createElement("strong");
+
     titulo.textContent =
       "Mesa " + String(i).padStart(2, "0");
 
@@ -794,26 +1396,45 @@ function actualizarMesas() {
     enlace.textContent = "Abrir panel de mesa";
 
     div.append(titulo, enlace);
+
     contenedor.appendChild(div);
 
   }
+
 }
+
+
+/* REDUCIR MESAS */
 
 document.getElementById("menosMesas")
   .addEventListener("click", () => {
 
-    numeroMesas = Math.max(1, numeroMesas - 1);
+    numeroMesas = Math.max(
+      1,
+      numeroMesas - 1
+    );
+
     actualizarMesas();
 
   });
+
+
+/* AUMENTAR MESAS */
 
 document.getElementById("masMesas")
   .addEventListener("click", () => {
 
-    numeroMesas = Math.min(30, numeroMesas + 1);
+    numeroMesas = Math.min(
+      30,
+      numeroMesas + 1
+    );
+
     actualizarMesas();
 
   });
+
+
+/* GUARDAR MESAS */
 
 document.getElementById("guardarMesas")
   .addEventListener("click", () => {
@@ -828,10 +1449,12 @@ document.getElementById("guardarMesas")
 
   });
 
+
 actualizarMesas();
 
+
 /* =====================================
-   AUTENTICACIÓN Y FIRESTORE
+   FIREBASE EN TIEMPO REAL
 ===================================== */
 
 onAuthStateChanged(auth, async usuario => {
@@ -839,19 +1462,27 @@ onAuthStateChanged(auth, async usuario => {
   if (!usuario) {
 
     try {
+
       await signInAnonymously(auth);
+
     } catch (error) {
+
       console.error(error);
-      estado.textContent = "Error de autenticación";
+
+      estado.textContent =
+        "Error de autenticación";
+
     }
 
     return;
   }
 
   if (suscripcionesIniciadas) return;
+
   suscripcionesIniciadas = true;
 
-  estado.textContent = "Conectado · En directo";
+  estado.textContent =
+    "Conectado · En directo";
 
   villanos.forEach(v => {
 
@@ -861,20 +1492,27 @@ onAuthStateChanged(auth, async usuario => {
       snapshot => {
 
         if (!snapshot.exists()) {
+
           estado.textContent =
             "No existe el villano: " + v.id;
+
           return;
         }
 
-        datosVillanos[v.id] = snapshot.data();
+        datosVillanos[v.id] =
+          snapshot.data();
 
         actualizarTarjeta(v.id);
+
       },
 
       error => {
+
         console.error(error);
+
         estado.textContent =
           "Error de conexión con Firestore";
+
       }
     );
 
