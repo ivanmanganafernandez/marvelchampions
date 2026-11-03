@@ -25,8 +25,7 @@ body {
   min-height: 100dvh;
   padding: 15px;
   background-color: #e9d4a7;
-  background-image:
-    radial-gradient(#b99a68 1px, transparent 1px);
+  background-image: radial-gradient(#b99a68 1px, transparent 1px);
   background-size: 11px 11px;
   font-family: Arial, sans-serif;
 }
@@ -42,14 +41,11 @@ body {
   box-shadow: 5px 5px 0 var(--rojo);
 }
 
-/* CABECERA */
-
 .cabecera {
   padding: 15px;
   margin-bottom: 22px;
   text-align: center;
-  background:
-    linear-gradient(#fff0c7, #e7c588);
+  background: linear-gradient(#fff0c7, #e7c588);
   border: 2px solid var(--negro);
   border-radius: 8px;
 }
@@ -68,8 +64,6 @@ body {
   font-size: 30px;
 }
 
-/* TÍTULOS */
-
 .titulo-seccion {
   margin: 0 0 13px;
   color: var(--crema);
@@ -78,8 +72,6 @@ body {
   font-weight: bold;
   text-align: center;
 }
-
-/* VILLANOS */
 
 .villanos {
   display: grid;
@@ -91,20 +83,19 @@ body {
 .villano {
   min-width: 0;
   padding: 8px;
-  background: #204932;
-  border: 2px solid #7c704d;
+  background: #203328;
+  border: 2px solid #536755;
   border-radius: 9px;
   color: var(--crema);
   cursor: pointer;
   text-align: center;
-  transition:
-    border-color .15s ease,
-    background .15s ease;
+  transition: background .15s ease, border-color .15s ease;
 }
 
 .villano.seleccionado {
-  background: #326044;
-  border: 3px solid #ebc47b;
+  background: #315e41;
+  border: 3px solid #e9c478;
+  box-shadow: 0 0 12px rgba(233,196,120,.25);
 }
 
 .villano:disabled {
@@ -117,6 +108,17 @@ body {
   width: 100%;
   height: 125px;
   object-fit: contain;
+}
+
+.villano:not(.seleccionado) img {
+  filter: grayscale(100%);
+  opacity: .65;
+  transition: filter .25s ease, opacity .25s ease;
+}
+
+.villano.seleccionado img {
+  filter: grayscale(0%);
+  opacity: 1;
 }
 
 .villano .nombre {
@@ -132,8 +134,6 @@ body {
   color: #e5c88d;
   font-size: 13px;
 }
-
-/* CONTROL DE VIDA */
 
 .control {
   padding: 18px 15px;
@@ -172,8 +172,6 @@ body {
   font-size: 18px;
   font-weight: normal;
 }
-
-/* BOTONES */
 
 .botones {
   display: flex;
@@ -242,8 +240,6 @@ body {
   text-transform: uppercase;
 }
 
-/* ENVÍO AUTOMÁTICO */
-
 .envio {
   margin-top: 22px;
   padding: 12px;
@@ -285,8 +281,6 @@ body {
   cursor: pointer;
 }
 
-/* ESTADO */
-
 .estado {
   margin-top: 16px;
   text-align: center;
@@ -295,70 +289,14 @@ body {
 }
 
 @media (max-width: 380px) {
-  body {
-    padding: 8px;
-  }
-
-  .panel {
-    padding: 10px;
-  }
-
-  .villano img {
-    height: 105px;
-  }
-
-  .boton-vida {
-    width: 75px;
-    height: 80px;
-  }
-
-  .botones {
-    gap: 12px;
-  }
+  body { padding: 8px; }
+  .panel { padding: 10px; }
+  .villano img { height: 105px; }
+  .boton-vida { width: 75px; height: 80px; }
+  .botones { gap: 12px; }
 }
-
-/* =========================================
-   VILLANOS EN BLANCO Y NEGRO
-========================================= */
-
-/* Villanos no seleccionados */
-.villano:not(.seleccionado) img {
-  filter: grayscale(100%);
-  opacity: .65;
-
-  transition:
-    filter .25s ease,
-    opacity .25s ease;
-}
-
-/* Villano seleccionado */
-.villano.seleccionado img {
-  filter: grayscale(0%);
-  opacity: 1;
-}
-
-/* Fondo de villanos no seleccionados */
-.villano:not(.seleccionado) {
-  background: #203328;
-  border-color: #536755;
-}
-
-/* Destacar el seleccionado */
-.villano.seleccionado {
-  background: #315e41;
-  border-color: #e9c478;
-  box-shadow:
-    0 0 12px rgba(233,196,120,.25);
-}
-
-
-/* =========================================
-   ADAPTACIÓN A MÓVILES
-========================================= */
 
 @media (max-width: 650px) {
-
-  /* Ocupar exactamente la pantalla */
   html, body {
     width: 100%;
     height: 100%;
@@ -369,181 +307,119 @@ body {
     min-height: 0;
     height: 100vh;
     height: 100dvh;
-
-    margin: 0;
     padding: 6px;
   }
 
-  /* Contenedor principal */
   .panel {
     display: flex;
     flex-direction: column;
-
     width: 100%;
     max-width: none;
-
     height: 100%;
     min-height: 0;
-
     margin: 0;
     padding: 9px;
-
     overflow: hidden;
-
     border-width: 2px;
     border-radius: 9px;
     box-shadow: none;
   }
 
-  /* Cabecera compacta */
   .cabecera {
     flex: 0 0 auto;
-
     padding: 8px;
     margin-bottom: 10px;
   }
 
-  .subtitulo {
-    font-size: 9px;
-  }
+  .subtitulo { font-size: 9px; }
 
   .cabecera h1 {
     margin-top: 3px;
     font-size: 24px;
   }
 
-  /* Título de selección */
   .titulo-seccion {
     flex: 0 0 auto;
-
     margin-bottom: 8px;
-
     font-size: 13px;
   }
 
-  /* Cuadrícula de villanos */
   .villanos {
     flex: 1 1 auto;
-
     display: grid;
-
-    grid-template-columns:
-      repeat(2, minmax(0, 1fr));
-
-    grid-template-rows:
-      repeat(2, minmax(0, 1fr));
-
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, minmax(0, 1fr));
     gap: 7px;
-
     min-height: 0;
-
     margin-bottom: 10px;
   }
 
-  /* Tarjetas */
   .villano {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     min-width: 0;
     min-height: 0;
-
     padding: 5px;
-
     overflow: hidden;
-
     border-radius: 7px;
   }
 
-  /* Imagen adaptable */
   .villano img {
     flex: 1 1 auto;
-
     width: 100%;
     height: auto;
     min-height: 0;
-
     object-fit: contain;
   }
 
-  /* Nombre */
   .villano .nombre {
     flex: 0 0 auto;
-
     margin: 3px 0;
-
     font-size: 10px;
     line-height: 1.1;
   }
 
-  /* Vida pequeña */
   .villano .vida-pequena {
     flex: 0 0 auto;
-
     font-size: 11px;
   }
 
-  /* Panel de control */
   .control {
     flex: 0 0 auto;
-
     padding: 10px 10px 12px;
   }
 
-  /* Nombre del objetivo */
   .objetivo {
     margin-bottom: 8px;
     font-size: 14px;
   }
 
-  .etiqueta {
-    font-size: 10px;
-  }
+  .etiqueta { font-size: 10px; }
 
-  /* Vida principal */
   .vida-principal {
     margin: 4px 0 10px;
     font-size: 32px;
   }
 
-  .vida-principal span {
-    font-size: 14px;
-  }
-
-  /* Botones */
-  .botones {
-    gap: 14px;
-  }
+  .vida-principal span { font-size: 14px; }
+  .botones { gap: 14px; }
 
   .boton-vida {
     width: 78px;
     height: 72px;
-
     font-size: 46px;
-
     border-radius: 10px;
   }
 
-  /* Cambio pendiente */
-  .cambio {
-    min-width: 65px;
-  }
+  .cambio { min-width: 65px; }
+  .cambio-numero { font-size: 25px; }
+  .cambio-texto { font-size: 9px; }
 
-  .cambio-numero {
-    font-size: 25px;
-  }
-
-  .cambio-texto {
-    font-size: 9px;
-  }
-
-  /* Zona de envío */
   .envio {
     margin-top: 11px;
     padding: 8px;
-
     font-size: 11px;
   }
 
@@ -552,89 +428,33 @@ body {
     height: 4px;
   }
 
-  /* Estado de conexión */
   .estado {
     flex: 0 0 auto;
-
     margin-top: 8px;
-
     font-size: 10px;
   }
 }
-
-
-/* =========================================
-   MÓVILES CON PANTALLA PEQUEÑA
-========================================= */
 
 @media (max-width: 650px) and (max-height: 740px) {
-
-  .panel {
-    padding: 6px;
-  }
-
-  .cabecera {
-    padding: 5px;
-    margin-bottom: 6px;
-  }
-
-  .cabecera h1 {
-    font-size: 20px;
-  }
-
-  .titulo-seccion {
-    margin-bottom: 5px;
-    font-size: 11px;
-  }
-
-  .villanos {
-    gap: 5px;
-    margin-bottom: 6px;
-  }
-
-  .villano {
-    padding: 3px;
-  }
-
-  .villano .nombre {
-    font-size: 9px;
-  }
-
-  .villano .vida-pequena {
-    font-size: 10px;
-  }
-
-  .control {
-    padding: 7px;
-  }
-
-  .objetivo {
-    margin-bottom: 5px;
-    font-size: 12px;
-  }
-
-  .vida-principal {
-    margin: 3px 0 7px;
-    font-size: 27px;
-  }
-
-  .boton-vida {
-    width: 70px;
-    height: 62px;
-    font-size: 40px;
-  }
-
-  .envio {
-    margin-top: 7px;
-    padding: 6px;
-  }
-
-  .estado {
-    margin-top: 5px;
-  }
+  .panel { padding: 6px; }
+  .cabecera { padding: 5px; margin-bottom: 6px; }
+  .cabecera h1 { font-size: 20px; }
+  .titulo-seccion { margin-bottom: 5px; font-size: 11px; }
+  .villanos { gap: 5px; margin-bottom: 6px; }
+  .villano { padding: 3px; }
+  .villano .nombre { font-size: 9px; }
+  .villano .vida-pequena { font-size: 10px; }
+  .control { padding: 7px; }
+  .objetivo { margin-bottom: 5px; font-size: 12px; }
+  .vida-principal { margin: 3px 0 7px; font-size: 27px; }
+  .boton-vida { width: 70px; height: 62px; font-size: 40px; }
+  .envio { margin-top: 7px; padding: 6px; }
+  .estado { margin-top: 5px; }
 }
 
-  
+@media (prefers-reduced-motion: reduce) {
+  .progreso.activo { transition: none; }
+}
 </style>
 </head>
 
@@ -646,7 +466,6 @@ body {
     <div class="subtitulo">
       MARVEL CHAMPIONS · NAVIDAD
     </div>
-
     <h1 id="numeroMesa">MESA 01</h1>
   </header>
 
@@ -662,9 +481,7 @@ body {
       Doctor Octopus
     </h2>
 
-    <div class="etiqueta">
-      VIDA DEL VILLANO
-    </div>
+    <div class="etiqueta">VIDA DEL VILLANO</div>
 
     <div class="vida-principal">
       <strong id="vidaActual">--</strong>
@@ -786,9 +603,28 @@ const villanos = [
 
 const TIEMPO_ENVIO = 2000;
 
-// Obtener mesa desde la URL.
-const parametros = new URLSearchParams(location.search);
-const numeroMesa = parametros.get("mesa") || "1";
+// Identificador de mesa desde la URL.
+const parametros = new URLSearchParams(window.location.search);
+const valorMesa = parametros.get("mesa") || "1";
+const numeroMesa = Number(valorMesa);
+
+// Evitar identificadores de mesa incorrectos.
+if (
+  !Number.isSafeInteger(numeroMesa) ||
+  numeroMesa < 1 ||
+  numeroMesa > 30
+) {
+  document.body.textContent =
+    "Número de mesa incorrecto. Abre el enlace QR de tu mesa.";
+  throw new Error("Número de mesa inválido");
+}
+
+// Documento de clasificación exclusivo de esta mesa.
+const referenciaMesa = doc(
+  db,
+  "mesas",
+  "mesa_" + numeroMesa
+);
 
 document.getElementById("numeroMesa").textContent =
   "MESA " + String(numeroMesa).padStart(2, "0");
@@ -803,11 +639,14 @@ let temporizador = null;
 let enviando = false;
 let conectado = false;
 let errorEnvio = false;
+let escuchando = false;
 
-// Datos sincronizados desde Firestore.
 const datosVillanos = {};
 
-// Referencias HTML.
+/* =====================================
+   ELEMENTOS HTML
+===================================== */
+
 const lista = document.getElementById("listaVillanos");
 const vidaActualEl = document.getElementById("vidaActual");
 const vidaMaximaEl = document.getElementById("vidaMaxima");
@@ -859,9 +698,6 @@ villanos.forEach(villano => {
 
 function seleccionarVillano(id) {
 
-  // Para no enviar un cambio al villano equivocado,
-  // no permitimos cambiar de objetivo durante un envío
-  // o mientras haya cambios pendientes.
   if (enviando || cambioPendiente !== 0) {
     mensajeEl.textContent =
       "Espera a que se guarde el cambio antes de cambiar de villano.";
@@ -888,6 +724,7 @@ function actualizarPantalla() {
   objetivoEl.textContent = villano.nombre;
 
   document.querySelectorAll(".villano").forEach(boton => {
+
     const id = boton.dataset.id;
     const info = datosVillanos[id];
 
@@ -901,29 +738,6 @@ function actualizarPantalla() {
         ? info.vidaActual.toLocaleString("es-ES") + " PV"
         : "-- PV";
   });
-
-  if (!datos) {
-    vidaActualEl.textContent = "--";
-    vidaMaximaEl.textContent = "/ -- PV";
-    restarBtn.disabled = true;
-    sumarBtn.disabled = true;
-    return;
-  }
-
-  const actual = datos.vidaActual;
-  const maxima = datos.vidaMaxima;
-
-  // Vida provisional con cambios todavía no enviados.
-  const vidaMostrada = Math.max(
-    0,
-    Math.min(maxima, actual + cambioPendiente)
-  );
-
-  vidaActualEl.textContent =
-    vidaMostrada.toLocaleString("es-ES");
-
-  vidaMaximaEl.textContent =
-    "/ " + maxima.toLocaleString("es-ES") + " PV";
 
   cambioEl.textContent =
     cambioPendiente > 0
@@ -939,6 +753,28 @@ function actualizarPantalla() {
     "negativo",
     cambioPendiente < 0
   );
+
+  if (!datos) {
+    vidaActualEl.textContent = "--";
+    vidaMaximaEl.textContent = "/ -- PV";
+    restarBtn.disabled = true;
+    sumarBtn.disabled = true;
+    return;
+  }
+
+  const actual = datos.vidaActual;
+  const maxima = datos.vidaMaxima;
+
+  const vidaMostrada = Math.max(
+    0,
+    Math.min(maxima, actual + cambioPendiente)
+  );
+
+  vidaActualEl.textContent =
+    vidaMostrada.toLocaleString("es-ES");
+
+  vidaMaximaEl.textContent =
+    "/ " + maxima.toLocaleString("es-ES") + " PV";
 
   const bloqueado = !conectado || enviando || errorEnvio;
 
@@ -962,7 +798,6 @@ function modificarVida(cantidad) {
 
   const siguiente = provisional + cantidad;
 
-  // Respetar límites.
   if (
     siguiente < 0 ||
     siguiente > datos.vidaMaxima
@@ -981,10 +816,8 @@ function modificarVida(cantidad) {
     return;
   }
 
-  mensajeEl.textContent =
-    "Guardando en 2 segundos...";
+  mensajeEl.textContent = "Guardando en 2 segundos...";
 
-  // Reiniciar la animación de progreso.
   progresoEl.classList.remove("activo");
   progresoEl.style.transition = "none";
   progresoEl.style.width = "0%";
@@ -993,7 +826,6 @@ function modificarVida(cantidad) {
 
   progresoEl.style.transition = "";
   progresoEl.style.width = "";
-
   progresoEl.classList.add("activo");
 
   temporizador = setTimeout(() => {
@@ -1015,7 +847,7 @@ sumarBtn.addEventListener("click", () => {
 
 function cancelarTemporizador() {
 
-  if (temporizador) {
+  if (temporizador !== null) {
     clearTimeout(temporizador);
     temporizador = null;
   }
@@ -1024,7 +856,7 @@ function cancelarTemporizador() {
 }
 
 /* =====================================
-   ENVIAR A FIREBASE
+   ENVIAR VIDA Y PUNTUACIÓN A FIREBASE
 ===================================== */
 
 async function enviarCambio() {
@@ -1046,48 +878,120 @@ async function enviarCambio() {
 
   try {
 
-    const referencia = doc(db, "villanos", id);
+    const referenciaVillano = doc(db, "villanos", id);
 
-    await runTransaction(db, async transaccion => {
+    const resultado = await runTransaction(
+      db,
+      async transaccion => {
 
-      const snapshot = await transaccion.get(referencia);
+        // Leer los dos documentos ANTES de escribir.
+        const snapshotVillano =
+          await transaccion.get(referenciaVillano);
 
-      if (!snapshot.exists()) {
-        throw new Error("No existe el villano");
-      }
+        const snapshotMesa =
+          await transaccion.get(referenciaMesa);
 
-      const datos = snapshot.data();
+        if (!snapshotVillano.exists()) {
+          throw new Error("No existe el villano");
+        }
 
-      const actual = Number(datos.vidaActual);
-      const maxima = Number(datos.vidaMaxima);
+        const datos = snapshotVillano.data();
 
-      if (
-        !Number.isInteger(actual) ||
-        !Number.isInteger(maxima) ||
-        maxima <= 0
-      ) {
-        throw new Error("Datos de vida incorrectos");
-      }
+        const actual = Number(datos.vidaActual);
+        const maxima = Number(datos.vidaMaxima);
 
-      // Aplicar el cambio sobre la vida más reciente,
-      // no sobre la que se veía al pulsar los botones.
-      const nuevaVida = Math.max(
-        0,
-        Math.min(maxima, actual + variacion)
-      );
+        if (
+          !Number.isInteger(actual) ||
+          !Number.isInteger(maxima) ||
+          maxima <= 0
+        ) {
+          throw new Error("Datos de vida incorrectos");
+        }
 
-      if (nuevaVida !== actual) {
-        transaccion.update(referencia, {
+        // Aplicar el cambio sobre la vida más reciente.
+        const nuevaVida = Math.max(
+          0,
+          Math.min(maxima, actual + variacion)
+        );
+
+        // Daño real aplicado.
+        // Restar vida = daño positivo.
+        // Curar vida = daño negativo.
+        const danoReal = actual - nuevaVida;
+
+        if (danoReal === 0) {
+          return {
+            danoReal: 0,
+            nuevaVida
+          };
+        }
+
+        const puntuacionAnterior = snapshotMesa.exists()
+          ? Number(snapshotMesa.data().danoTotal)
+          : 0;
+
+        if (
+          !Number.isSafeInteger(puntuacionAnterior) ||
+          puntuacionAnterior < 0
+        ) {
+          throw new Error(
+            "Puntuación incorrecta de la mesa"
+          );
+        }
+
+        // La clasificación nunca será negativa.
+        const nuevaPuntuacion = Math.max(
+          0,
+          puntuacionAnterior + danoReal
+        );
+
+        // Ambas escrituras pertenecen a la misma transacción.
+        transaccion.update(referenciaVillano, {
           vidaActual: nuevaVida
         });
+
+        if (snapshotMesa.exists()) {
+
+          transaccion.update(referenciaMesa, {
+            danoTotal: nuevaPuntuacion
+          });
+
+        } else {
+
+          transaccion.set(referenciaMesa, {
+            numero: numeroMesa,
+            danoTotal: nuevaPuntuacion
+          });
+
+        }
+
+        return {
+          danoReal,
+          nuevaVida,
+          nuevaPuntuacion
+        };
       }
+    );
 
-    });
-
-    // El cambio ya se ha confirmado.
     cambioPendiente = 0;
 
-    mensajeEl.textContent = "¡Vida actualizada!";
+    if (resultado.danoReal > 0) {
+
+      mensajeEl.textContent =
+        "¡" + resultado.danoReal +
+        " de daño registrado para la mesa!";
+
+    } else if (resultado.danoReal < 0) {
+
+      mensajeEl.textContent =
+        "¡Villano curado " +
+        Math.abs(resultado.danoReal) + " PV!";
+
+    } else {
+
+      mensajeEl.textContent =
+        "Sin cambios: límite de vida alcanzado";
+    }
 
     estadoEl.textContent = "Conectado · En directo";
 
@@ -1101,11 +1005,11 @@ async function enviarCambio() {
 
     console.error("Error al guardar:", error);
 
-    // Conservamos la variación para evitar perderla.
+    // Mantener el cambio hasta que pueda reintentarse.
     errorEnvio = true;
 
     mensajeEl.textContent =
-      "No se pudo guardar el cambio.";
+      "No se pudo guardar la vida y la puntuación.";
 
     reintentarBtn.style.display = "inline-block";
 
@@ -1117,18 +1021,21 @@ async function enviarCambio() {
   }
 }
 
-/* Reintentar manualmente tras un error */
+/* =====================================
+   REINTENTAR ENVÍO
+===================================== */
 
 reintentarBtn.addEventListener("click", () => {
+
   errorEnvio = false;
+  reintentarBtn.style.display = "none";
+
   enviarCambio();
 });
 
 /* =====================================
    FIREBASE EN TIEMPO REAL
 ===================================== */
-
-let escuchando = false;
 
 onAuthStateChanged(auth, async usuario => {
 
@@ -1163,8 +1070,10 @@ onAuthStateChanged(auth, async usuario => {
       snapshot => {
 
         if (!snapshot.exists()) {
+          conectado = false;
           estadoEl.textContent =
             "Falta el villano: " + villano.id;
+          actualizarPantalla();
           return;
         }
 
@@ -1177,8 +1086,10 @@ onAuthStateChanged(auth, async usuario => {
           !Number.isInteger(maxima) ||
           maxima <= 0
         ) {
+          conectado = false;
           estadoEl.textContent =
             "Datos incorrectos: " + villano.id;
+          actualizarPantalla();
           return;
         }
 
@@ -1187,6 +1098,7 @@ onAuthStateChanged(auth, async usuario => {
           vidaMaxima: maxima
         };
 
+        conectado = true;
         actualizarPantalla();
       },
 
@@ -1206,3 +1118,4 @@ onAuthStateChanged(auth, async usuario => {
 </script>
 </body>
 </html>
+
