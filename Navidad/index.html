@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +10,7 @@
 <style>
 
 /* =========================================
-   VARIABLES Y ESTILOS GENERALES
+   VARIABLES GENERALES
 ========================================= */
 
 :root {
@@ -36,32 +37,24 @@ html, body {
 
 body {
   background-color: #f0e4c9;
-
-  /* Trama de puntos estilo cómic */
   background-image:
     radial-gradient(
       rgba(65, 40, 30, 0.16) 1px,
       transparent 1px
     );
-
   background-size: 11px 11px;
-
   color: var(--crema);
   font-family: Arial, sans-serif;
 }
 
 /* =========================================
-   DISTRIBUCIÓN GENERAL
+   DISTRIBUCIÓN DE PANTALLA
 ========================================= */
 
 .marcador {
   display: grid;
-
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
-
-  grid-template-rows:
-    repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
 
   width: 100%;
   height: 100vh;
@@ -74,12 +67,11 @@ body {
 }
 
 /* =========================================
-   TARJETAS DE VILLANOS
+   TARJETAS ESTILO CÓMIC
 ========================================= */
 
 .villano {
   position: relative;
-
   display: flex;
   flex-direction: column;
 
@@ -88,22 +80,19 @@ body {
 
   overflow: hidden;
 
-  border: clamp(2px, 0.3vw, 4px)
-    solid var(--negro);
-
+  border: clamp(2px, 0.3vw, 4px) solid var(--negro);
   border-radius: 5px;
 
   background: var(--verde);
 
-  box-shadow:
-    4px 4px 0 var(--rojo);
+  box-shadow: 4px 4px 0 var(--rojo);
 }
 
 /* =========================================
-   DECORACIÓN NAVIDEÑA
+   GUIRNALDA NAVIDEÑA
 ========================================= */
 
-/* Franja roja superior */
+/* Cable y bombillas dibujados con CSS */
 .villano::before {
   content: "";
 
@@ -112,61 +101,95 @@ body {
   left: 0;
   right: 0;
 
-  height: 9px;
+  height: 30px;
 
-  background: repeating-linear-gradient(
-    45deg,
-    #c83e43 0px,
-    #c83e43 12px,
-    #fff0c7 12px,
-    #fff0c7 20px
-  );
+  background-image:
 
-  border-bottom: 2px solid var(--negro);
+    /* Luces rojas */
+    radial-gradient(
+      ellipse 5px 8px at 20px 16px,
+      #ef5757 95%,
+      transparent 100%
+    ),
+
+    /* Luces amarillas */
+    radial-gradient(
+      ellipse 5px 8px at 65px 21px,
+      #f5d46f 95%,
+      transparent 100%
+    ),
+
+    /* Luces verdes */
+    radial-gradient(
+      ellipse 5px 8px at 110px 16px,
+      #8ed78b 95%,
+      transparent 100%
+    ),
+
+    /* Luces azules */
+    radial-gradient(
+      ellipse 5px 8px at 155px 21px,
+      #80c6e8 95%,
+      transparent 100%
+    ),
+
+    /* Cable */
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 8px,
+      #17231a 8px 10px,
+      transparent 10px 45px
+    );
+
+  background-size:
+    180px 30px,
+    180px 30px,
+    180px 30px,
+    180px 30px,
+    180px 3px;
+
+  background-repeat: repeat-x;
+
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    0 0,
+    0 5px;
 
   z-index: 5;
+
+  pointer-events: none;
+
+  filter:
+    drop-shadow(
+      0 0 3px rgba(255,220,140,.4)
+    );
 }
 
-/* Copo decorativo */
+/* Copo de nieve */
 .villano::after {
   content: "❄";
 
   position: absolute;
-  top: 16px;
+  top: 32px;
   right: 14px;
 
   color: var(--crema);
 
-  font-size: clamp(15px, 2vw, 27px);
+  font-size: clamp(14px, 1.5vw, 21px);
 
-  text-shadow:
-    2px 2px 0 var(--negro);
+  text-shadow: 2px 2px 0 var(--negro);
 
-  z-index: 4;
-
-  pointer-events: none;
-}
-
-/* Adorno de Navidad */
-.adorno {
-  position: absolute;
-
-  top: 15px;
-  left: 15px;
-
-  font-size: clamp(16px, 2vw, 27px);
+  opacity: .65;
 
   z-index: 4;
-
-  filter: drop-shadow(
-    2px 2px 0 rgba(0,0,0,.65)
-  );
 
   pointer-events: none;
 }
 
 /* =========================================
-   IMÁGENES
+   IMÁGENES DE VILLANOS
 ========================================= */
 
 .imagen {
@@ -181,7 +204,7 @@ body {
   min-height: 0;
   overflow: hidden;
 
-  padding: 12px 9px 0;
+  padding: 30px 9px 0;
 
   background:
     radial-gradient(
@@ -192,7 +215,7 @@ body {
     );
 }
 
-/* Puntos de cómic */
+/* Trama de puntos de cómic */
 .imagen::before {
   content: "";
 
@@ -252,8 +275,6 @@ body {
     drop-shadow(
       0 7px 8px rgba(0,0,0,.45)
     );
-
-  transform: scale(1.12);
 }
 
 /* Tamaños individuales */
@@ -262,19 +283,19 @@ body {
 }
 
 #electro .imagen img {
-  transform: scale(1.16);
+  transform: scale(1.20);
 }
 
 #buitre .imagen img {
-  transform: scale(1.18);
+  transform: scale(1.08);
 }
 
 #sandman .imagen img {
-  transform: scale(1.15);
+  transform: scale(1.05);
 }
 
 /* =========================================
-   PANEL INFERIOR
+   PANEL DE INFORMACIÓN
 ========================================= */
 
 .informacion {
@@ -285,9 +306,7 @@ body {
 
   min-width: 0;
 
-  padding:
-    clamp(5px, .8vh, 11px)
-    clamp(8px, 1.5vw, 22px);
+  padding: 5px clamp(8px, 1.5vw, 22px) 6px;
 
   text-align: center;
 
@@ -302,7 +321,7 @@ body {
 }
 
 /* =========================================
-   NOMBRE DEL VILLANO
+   NOMBRES DE VILLANOS
 ========================================= */
 
 .nombre {
@@ -310,18 +329,16 @@ body {
 
   max-width: 100%;
 
-  margin: 0 0 6px;
+  margin: 0 0 5px;
 
   padding:
-    clamp(3px, .6vh, 7px)
-    clamp(8px, 1.2vw, 18px);
+    4px clamp(8px, 1.2vw, 18px);
 
   background: var(--crema);
 
   border: 2px solid var(--negro);
 
-  box-shadow:
-    3px 3px 0 var(--rojo);
+  box-shadow: 3px 3px 0 var(--rojo);
 
   color: var(--negro);
 
@@ -330,66 +347,58 @@ body {
     "Arial Black",
     sans-serif;
 
-  font-size:
-    clamp(11px, 1.8vw, 27px);
+  font-size: clamp(11px, 1.8vw, 27px);
 
   font-weight: 900;
 
   text-transform: uppercase;
 
   letter-spacing: .5px;
-
   line-height: 1.05;
 
   transform: rotate(-1deg);
 }
 
 /* =========================================
-   VIDA
+   VALORES DE VIDA
 ========================================= */
 
 .vida {
-  margin-bottom: 7px;
+  margin-bottom: 5px;
 
   font-family:
     Impact,
     "Arial Black",
     sans-serif;
 
-  font-size:
-    clamp(20px, 3vw, 44px);
+  font-size: clamp(20px, 3vw, 44px);
 
   font-weight: bold;
-
   line-height: 1.05;
 
   color: white;
 
-  text-shadow:
-    2px 2px 0 var(--negro);
+  text-shadow: 2px 2px 0 var(--negro);
 }
 
 .vida .maxima {
   color: #c2d0c4;
 
   font-family: Arial, sans-serif;
-
   font-size: .45em;
-
   font-weight: normal;
 
   text-shadow: none;
 }
 
 /* =========================================
-   BARRA DE VIDA
+   BARRAS DE VIDA
 ========================================= */
 
 .barra-fondo {
   width: 100%;
 
-  height:
-    clamp(12px, 1.8vh, 21px);
+  height: clamp(12px, 1.8vh, 21px);
 
   overflow: hidden;
 
@@ -413,12 +422,11 @@ body {
 
   border-radius: 0;
 
-  transition:
-    width .8s ease;
+  transition: width .8s ease;
 }
 
 .porcentaje {
-  margin-top: 4px;
+  margin-top: 3px;
 
   color: var(--crema);
 
@@ -427,8 +435,7 @@ body {
     "Arial Black",
     sans-serif;
 
-  font-size:
-    clamp(11px, 1.2vw, 17px);
+  font-size: clamp(11px, 1.2vw, 17px);
 
   letter-spacing: .5px;
 }
@@ -439,7 +446,6 @@ body {
 
 .derrotado .imagen {
   filter: grayscale(1);
-
   opacity: .45;
 }
 
@@ -461,8 +467,7 @@ body {
   bottom: 5px;
   left: 50%;
 
-  transform:
-    translateX(-50%);
+  transform: translateX(-50%);
 
   z-index: 20;
 
@@ -470,10 +475,9 @@ body {
 
   border-radius: 5px;
 
-  background:
-    rgba(15, 25, 18, .95);
+  background: rgba(15, 25, 18, .95);
 
-  border: 1px solid #c83e43;
+  border: 1px solid var(--rojo);
 
   color: white;
 
@@ -483,7 +487,6 @@ body {
   pointer-events: none;
 }
 
-/* Ocultar estado correcto */
 #estado.conectado {
   display: none;
 }
@@ -501,28 +504,21 @@ body {
 
   .villano {
     border-width: 2px;
-    box-shadow:
-      2px 2px 0 var(--rojo);
+    box-shadow: 2px 2px 0 var(--rojo);
   }
 
   .villano::before {
-    height: 6px;
+    height: 24px;
   }
 
   .villano::after {
-    top: 12px;
+    top: 27px;
     right: 6px;
     font-size: 13px;
   }
 
-  .adorno {
-    top: 12px;
-    left: 6px;
-    font-size: 13px;
-  }
-
   .imagen {
-    padding: 7px 3px 0;
+    padding: 24px 3px 0;
   }
 
   .informacion {
@@ -531,22 +527,19 @@ body {
   }
 
   .nombre {
-    font-size:
-      clamp(10px, 2.6vw, 15px);
+    font-size: clamp(10px, 2.6vw, 15px);
 
     padding: 3px 6px;
 
     border-width: 1px;
 
-    box-shadow:
-      2px 2px 0 var(--rojo);
+    box-shadow: 2px 2px 0 var(--rojo);
 
     letter-spacing: 0;
   }
 
   .vida {
-    font-size:
-      clamp(17px, 5vw, 26px);
+    font-size: clamp(17px, 5vw, 26px);
   }
 
   .barra-fondo {
@@ -557,7 +550,6 @@ body {
   .porcentaje {
     font-size: 10px;
   }
-
 }
 
 /* =========================================
@@ -573,16 +565,12 @@ body {
 
   .nombre {
     margin-bottom: 3px;
-
-    font-size:
-      clamp(10px, 2vh, 17px);
+    font-size: clamp(10px, 2vh, 17px);
   }
 
   .vida {
     margin-bottom: 3px;
-
-    font-size:
-      clamp(15px, 4vh, 27px);
+    font-size: clamp(15px, 4vh, 27px);
   }
 
   .porcentaje {
@@ -594,67 +582,16 @@ body {
     height: 11px;
   }
 
+  .imagen {
+    padding-top: 22px;
+  }
 }
 
-/* Reducir animaciones si el usuario lo solicita */
+/* Accesibilidad: reducir animaciones */
 @media (prefers-reduced-motion: reduce) {
   .barra {
     transition: none;
   }
-}
-   /* =====================================
-   AJUSTES FINALES DEL MARCADOR
-===================================== */
-
-/* Más espacio para los personajes */
-.informacion {
-  padding-top: 5px;
-  padding-bottom: 6px;
-}
-
-/* Etiquetas más compactas */
-.nombre {
-  margin-bottom: 5px;
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-/* Números y barras ligeramente más compactos */
-.vida {
-  margin-bottom: 5px;
-}
-
-.porcentaje {
-  margin-top: 3px;
-}
-
-/* Ajustar tamaño de personajes */
-#octopus .imagen img {
-  transform: scale(1.12);
-}
-
-#electro .imagen img {
-  transform: scale(1.20);
-}
-
-#buitre .imagen img {
-  transform: scale(1.08);
-}
-
-#sandman .imagen img {
-  transform: scale(1.05);
-}
-
-/* Ocultar emojis para mantener
-   una estética de cómic uniforme */
-.adorno {
-  display: none;
-}
-
-/* Copos más discretos */
-.villano::after {
-  font-size: clamp(14px, 1.5vw, 21px);
-  opacity: .65;
 }
 
 </style>
@@ -668,8 +605,6 @@ body {
 
   <section class="villano" id="octopus">
 
-    <span class="adorno" aria-hidden="true">🎁</span>
-
     <div class="imagen">
       <img
         src="imagenes/octopus.png"
@@ -679,9 +614,7 @@ body {
 
     <div class="informacion">
 
-      <h2 class="nombre">
-        Doctor Octopus
-      </h2>
+      <h2 class="nombre">Doctor Octopus</h2>
 
       <div class="vida">
         <span class="actual">--</span>
@@ -703,8 +636,6 @@ body {
 
   <section class="villano" id="electro">
 
-    <span class="adorno" aria-hidden="true">⭐</span>
-
     <div class="imagen">
       <img
         src="imagenes/electro.png"
@@ -714,9 +645,7 @@ body {
 
     <div class="informacion">
 
-      <h2 class="nombre">
-        Electro
-      </h2>
+      <h2 class="nombre">Electro</h2>
 
       <div class="vida">
         <span class="actual">--</span>
@@ -738,8 +667,6 @@ body {
 
   <section class="villano" id="buitre">
 
-    <span class="adorno" aria-hidden="true">🍬</span>
-
     <div class="imagen">
       <img
         src="imagenes/buitre.png"
@@ -749,9 +676,7 @@ body {
 
     <div class="informacion">
 
-      <h2 class="nombre">
-        Buitre
-      </h2>
+      <h2 class="nombre">Buitre</h2>
 
       <div class="vida">
         <span class="actual">--</span>
@@ -773,8 +698,6 @@ body {
 
   <section class="villano" id="sandman">
 
-    <span class="adorno" aria-hidden="true">🎄</span>
-
     <div class="imagen">
       <img
         src="imagenes/sandman.png"
@@ -784,9 +707,7 @@ body {
 
     <div class="informacion">
 
-      <h2 class="nombre">
-        Hombre de Arena
-      </h2>
+      <h2 class="nombre">Hombre de Arena</h2>
 
       <div class="vida">
         <span class="actual">--</span>
@@ -848,13 +769,11 @@ const firebaseConfig = {
   appId: "1:442553244844:web:c42e22c03a66d335d61309"
 };
 
-
 const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
 const auth = getAuth(app);
-
 
 const ids = [
   "octopus",
@@ -863,8 +782,7 @@ const ids = [
   "sandman"
 ];
 
-const estado =
-  document.getElementById("estado");
+const estado = document.getElementById("estado");
 
 
 /* =====================================
@@ -873,62 +791,42 @@ const estado =
 
 function actualizarVillano(id, datos) {
 
-  const elemento =
-    document.getElementById(id);
+  const elemento = document.getElementById(id);
 
   if (!elemento) return;
 
-  const maxima =
-    Number(datos.vidaMaxima);
-
-  const actual =
-    Number(datos.vidaActual);
+  const maxima = Number(datos.vidaMaxima);
+  const actual = Number(datos.vidaActual);
 
   if (
     !Number.isFinite(maxima) ||
     !Number.isFinite(actual) ||
     maxima <= 0
   ) {
-    throw new Error(
-      "Datos incorrectos: " + id
-    );
+    throw new Error("Datos incorrectos: " + id);
   }
 
   const porcentaje = Math.max(
     0,
-    Math.min(
-      100,
-      actual / maxima * 100
-    )
+    Math.min(100, actual / maxima * 100)
   );
 
-  elemento
-    .querySelector(".actual")
-    .textContent =
-      actual.toLocaleString("es-ES");
+  elemento.querySelector(".actual").textContent =
+    actual.toLocaleString("es-ES");
 
-  elemento
-    .querySelector(".maxima")
-    .textContent =
-      "/ " +
-      maxima.toLocaleString("es-ES") +
-      " PV";
+  elemento.querySelector(".maxima").textContent =
+    "/ " + maxima.toLocaleString("es-ES") + " PV";
 
-  elemento
-    .querySelector(".barra")
-    .style.width =
-      porcentaje + "%";
+  elemento.querySelector(".barra").style.width =
+    porcentaje + "%";
 
-  elemento
-    .querySelector(".porcentaje")
-    .textContent =
-      Math.round(porcentaje) + "%";
+  elemento.querySelector(".porcentaje").textContent =
+    Math.round(porcentaje) + "%";
 
   elemento.classList.toggle(
     "derrotado",
     actual <= 0
   );
-
 }
 
 
@@ -938,108 +836,74 @@ function actualizarVillano(id, datos) {
 
 let escuchando = false;
 
-onAuthStateChanged(
-  auth,
-  async usuario => {
+onAuthStateChanged(auth, async usuario => {
 
-    if (!usuario) {
+  if (!usuario) {
 
-      try {
+    try {
+      await signInAnonymously(auth);
+    } catch (error) {
 
-        await signInAnonymously(auth);
+      console.error(error);
 
-      } catch (error) {
-
-        console.error(error);
-
-        estado.classList.remove(
-          "conectado"
-        );
-
-        estado.textContent =
-          "Error de autenticación";
-
-      }
-
-      return;
+      estado.classList.remove("conectado");
+      estado.textContent = "Error de autenticación";
     }
 
+    return;
+  }
 
-    if (escuchando) return;
+  if (escuchando) return;
 
-    escuchando = true;
+  escuchando = true;
 
+  ids.forEach(id => {
 
-    ids.forEach(id => {
+    onSnapshot(
+      doc(db, "villanos", id),
 
-      onSnapshot(
+      snapshot => {
 
-        doc(db, "villanos", id),
+        if (!snapshot.exists()) {
 
-        snapshot => {
+          estado.classList.remove("conectado");
+          estado.textContent = "Falta el villano: " + id;
 
-          if (!snapshot.exists()) {
+          return;
+        }
 
-            estado.classList.remove(
-              "conectado"
-            );
+        try {
 
-            estado.textContent =
-              "Falta el villano: " + id;
+          actualizarVillano(id, snapshot.data());
 
-            return;
-          }
+          estado.textContent = "Conectado · En directo";
+          estado.classList.add("conectado");
 
-          try {
-
-            actualizarVillano(
-              id,
-              snapshot.data()
-            );
-
-            estado.textContent =
-              "Conectado · En directo";
-
-            estado.classList.add(
-              "conectado"
-            );
-
-          } catch (error) {
-
-            console.error(error);
-
-            estado.classList.remove(
-              "conectado"
-            );
-
-            estado.textContent =
-              "Error en los datos";
-
-          }
-
-        },
-
-        error => {
+        } catch (error) {
 
           console.error(error);
 
-          estado.classList.remove(
-            "conectado"
-          );
-
-          estado.textContent =
-            "Error de conexión con Firestore";
-
+          estado.classList.remove("conectado");
+          estado.textContent = "Error en los datos";
         }
+      },
 
-      );
+      error => {
 
-    });
+        console.error(error);
 
-  }
-);
+        estado.classList.remove("conectado");
+        estado.textContent =
+          "Error de conexión con Firestore";
+      }
+    );
+
+  });
+
+});
 
 </script>
 
 </body>
 </html>
+
