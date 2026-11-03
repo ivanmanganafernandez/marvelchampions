@@ -1,11 +1,9 @@
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>Marvel Champions · Administración</title>
 
 <style>
@@ -18,17 +16,14 @@
   --negro: #241a13;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
   min-height: 100vh;
   padding: 20px;
   background-color: #e9d4a7;
-  background-image:
-    radial-gradient(#b99a68 1px, transparent 1px);
+  background-image: radial-gradient(#b99a68 1px, transparent 1px);
   background-size: 11px 11px;
   font-family: Arial, sans-serif;
 }
@@ -70,18 +65,20 @@ body {
 /* PESTAÑAS */
 
 .pestanas {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 8px;
   margin-bottom: 22px;
 }
 
 .pestana {
-  flex: 1;
-  padding: 13px 8px;
+  min-width: 0;
+  padding: 13px 5px;
   background: #245139;
   border: 2px solid #987c4c;
   border-radius: 7px;
   color: var(--crema);
+  font-size: 13px;
   font-weight: bold;
   cursor: pointer;
 }
@@ -91,13 +88,8 @@ body {
   color: var(--negro);
 }
 
-.seccion {
-  display: none;
-}
-
-.seccion.activa {
-  display: block;
-}
+.seccion { display: none; }
+.seccion.activa { display: block; }
 
 .titulo {
   margin: 0 0 16px;
@@ -262,9 +254,7 @@ body {
   white-space: nowrap;
 }
 
-/* =====================================
-   BOTONES DE MESA
-===================================== */
+/* BOTONES DE MESA */
 
 .lista-mesas {
   display: grid;
@@ -287,9 +277,7 @@ body {
   cursor: pointer;
 }
 
-.mesa-boton:active {
-  transform: scale(.97);
-}
+.mesa-boton:active { transform: scale(.97); }
 
 .mesa-boton strong {
   font-family: Georgia, serif;
@@ -306,9 +294,113 @@ body {
   font-size: 12px;
 }
 
-/* =====================================
-   VENTANA QR
-===================================== */
+/* CLASIFICACIÓN */
+
+.resumen-ranking {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.resumen-dato {
+  padding: 18px 12px;
+  background: #092719;
+  border: 2px solid #a58b54;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.resumen-dato strong {
+  display: block;
+  color: #fff0c7;
+  font-family: Georgia, serif;
+  font-size: clamp(24px, 4vw, 36px);
+}
+
+.resumen-dato span {
+  display: block;
+  margin-top: 5px;
+  color: #b9cdbd;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.lista-clasificacion {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fila-ranking {
+  display: grid;
+  grid-template-columns: 55px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  background: #204832;
+  border: 2px solid #a58b54;
+  border-radius: 10px;
+}
+
+.fila-ranking.primero {
+  background: #31543b;
+  border-color: #f0cc75;
+}
+
+.fila-ranking.segundo {
+  border-color: #bec9c7;
+}
+
+.fila-ranking.tercero {
+  border-color: #cc9265;
+}
+
+.posicion-ranking {
+  color: #f7e4b4;
+  font-family: Georgia, serif;
+  font-size: 26px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.nombre-ranking {
+  min-width: 0;
+  color: #fff0c7;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.puntos-ranking {
+  color: white;
+  font-family: Georgia, serif;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.puntos-ranking small {
+  display: block;
+  margin-top: 2px;
+  color: #bfd0c1;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+.sin-datos {
+  padding: 25px;
+  background: #204832;
+  border: 2px dashed #a58b54;
+  border-radius: 10px;
+  color: #d7dfd0;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* VENTANA QR */
 
 .modal-qr {
   display: none;
@@ -321,9 +413,7 @@ body {
   background: rgba(0,0,0,.9);
 }
 
-.modal-qr.abierto {
-  display: flex;
-}
+.modal-qr.abierto { display: flex; }
 
 .modal-contenido {
   position: relative;
@@ -406,63 +496,42 @@ body {
 /* MÓVILES */
 
 @media (max-width: 600px) {
-  body {
-    padding: 8px;
-  }
+  body { padding: 8px; }
+  .panel { padding: 10px; }
+  .cabecera { padding: 14px; }
 
-  .panel {
-    padding: 10px;
-  }
-
-  .cabecera {
-    padding: 14px;
-  }
+  .pestanas { gap: 4px; }
 
   .pestana {
-    font-size: 12px;
-    padding: 10px 5px;
+    padding: 11px 2px;
+    font-size: clamp(9px, 2.4vw, 12px);
   }
 
-  .tarjeta {
-    padding: 12px;
-  }
-
-  .campos {
-    gap: 8px;
-  }
-
-  .campo input {
-    font-size: 16px;
-  }
-
-  .lista-mesas {
-    gap: 8px;
-  }
+  .tarjeta { padding: 12px; }
+  .campos { gap: 8px; }
+  .campo input { font-size: 16px; }
+  .lista-mesas { gap: 8px; }
 
   .mesa-boton {
     padding: 12px 7px;
     min-height: 100px;
   }
 
-  .mesa-boton strong {
-    font-size: 17px;
+  .mesa-boton strong { font-size: 17px; }
+  .vida-calculada .nombre { font-size: 12px; }
+  .vida-calculada .valor { font-size: 16px; }
+  .modal-contenido { padding: 30px 15px; }
+  .modal-contenido h2 { font-size: 32px; }
+
+  .fila-ranking {
+    grid-template-columns: 42px minmax(0,1fr) auto;
+    gap: 7px;
+    padding: 12px 9px;
   }
 
-  .vida-calculada .nombre {
-    font-size: 12px;
-  }
-
-  .vida-calculada .valor {
-    font-size: 16px;
-  }
-
-  .modal-contenido {
-    padding: 30px 15px;
-  }
-
-  .modal-contenido h2 {
-    font-size: 32px;
-  }
+  .posicion-ranking { font-size: 21px; }
+  .nombre-ranking { font-size: 15px; }
+  .puntos-ranking { font-size: 21px; }
 }
 </style>
 </head>
@@ -471,41 +540,48 @@ body {
 
 <main class="panel">
 
-  <!-- CABECERA -->
-
   <header class="cabecera">
     <small>MARVEL CHAMPIONS · ESPECIAL NAVIDAD</small>
     <h1>ADMINISTRACIÓN</h1>
   </header>
 
-  <!-- PESTAÑAS -->
+  <nav class="pestanas" aria-label="Administración">
 
-  <nav class="pestanas">
-    <button class="pestana activa" data-tab="villanos">
-      VILLANOS
-    </button>
+    <button
+      type="button"
+      class="pestana activa"
+      data-tab="villanos"
+    >VILLANOS</button>
 
-    <button class="pestana" data-tab="mesas">
-      MESAS
-    </button>
+    <button
+      type="button"
+      class="pestana"
+      data-tab="mesas"
+    >MESAS</button>
 
-    <button class="pestana" data-tab="control">
-      CONTROL
-    </button>
+    <button
+      type="button"
+      class="pestana"
+      data-tab="clasificacion"
+    >RANKING</button>
+
+    <button
+      type="button"
+      class="pestana"
+      data-tab="control"
+    >CONTROL</button>
+
   </nav>
 
   <!-- VILLANOS -->
 
   <section class="seccion activa" id="villanos">
 
-    <h2 class="titulo">
-      Configuración de villanos
-    </h2>
+    <h2 class="titulo">Configuración de villanos</h2>
 
     <p class="descripcion">
       La vida máxima depende del número de jugadores.
-      Desde aquí puedes corregir la vida actual
-      durante el evento.
+      Desde aquí puedes corregir la vida actual durante el evento.
     </p>
 
     <div id="listaVillanos"></div>
@@ -516,39 +592,32 @@ body {
 
   <section class="seccion" id="mesas">
 
-    <h2 class="titulo">
-      Gestión de mesas
-    </h2>
+    <h2 class="titulo">Gestión de mesas</h2>
 
     <div class="tarjeta">
 
       <p class="descripcion">
         Selecciona cuántas mesas participarán.
-        Este valor es independiente del número
-        de jugadores.
+        Este valor es independiente del número de jugadores.
       </p>
 
       <div class="contador-mesas">
-
         <button type="button" id="menosMesas">−</button>
-
-        <span class="numero-mesas" id="numeroMesas">
-          6
-        </span>
-
+        <span class="numero-mesas" id="numeroMesas">6</span>
         <button type="button" id="masMesas">+</button>
-
       </div>
 
-      <button class="boton grande" id="guardarMesas">
+      <button
+        type="button"
+        class="boton grande"
+        id="guardarMesas"
+      >
         Guardar número de mesas
       </button>
 
     </div>
 
-    <h2 class="titulo">
-      Accesos a las mesas
-    </h2>
+    <h2 class="titulo">Accesos a las mesas</h2>
 
     <p class="descripcion">
       Pulsa sobre una mesa para mostrar su código QR.
@@ -560,38 +629,84 @@ body {
 
   </section>
 
+  <!-- CLASIFICACIÓN -->
+
+  <section class="seccion" id="clasificacion">
+
+    <h2 class="titulo">Clasificación de mesas</h2>
+
+    <p class="descripcion">
+      Puntuación acumulada por cada mesa.
+      El daño causado suma puntos y las curaciones
+      realizadas por la mesa los restan.
+    </p>
+
+    <div class="resumen-ranking">
+
+      <div class="resumen-dato">
+        <strong id="danoTotalEvento">0</strong>
+        <span>Daño total registrado</span>
+      </div>
+
+      <div class="resumen-dato">
+        <strong id="mesasParticipantes">0</strong>
+        <span>Mesas con puntuación</span>
+      </div>
+
+    </div>
+
+    <div class="lista-clasificacion" id="listaClasificacion">
+
+      <div class="sin-datos">
+        Cargando clasificación...
+      </div>
+
+    </div>
+
+    <div class="tarjeta" style="margin-top:22px">
+
+      <h3 class="nombre-villano">
+        Reiniciar clasificación
+      </h3>
+
+      <p class="descripcion">
+        Pone a cero la puntuación de todas las mesas
+        registradas en Firebase.
+        No modifica la vida de los villanos.
+      </p>
+
+      <button
+        type="button"
+        class="boton peligro grande"
+        id="reiniciarClasificacion"
+        disabled
+      >
+        Reiniciar puntuaciones
+      </button>
+
+    </div>
+
+  </section>
+
   <!-- CONTROL -->
 
   <section class="seccion" id="control">
 
-    <h2 class="titulo">
-      Control del evento
-    </h2>
-
-    <!-- JUGADORES -->
+    <h2 class="titulo">Control del evento</h2>
 
     <div class="tarjeta">
 
-      <h3 class="nombre-villano">
-        Número de jugadores
-      </h3>
+      <h3 class="nombre-villano">Número de jugadores</h3>
 
       <p class="descripcion">
         Introduce el número total de jugadores.
-        La vida de los villanos se calculará
-        automáticamente.
+        La vida de los villanos se calculará automáticamente.
       </p>
 
       <div class="contador-mesas">
-
         <button type="button" id="menosJugadores">−</button>
-
-        <span class="numero-mesas" id="numeroJugadores">
-          18
-        </span>
-
+        <span class="numero-mesas" id="numeroJugadores">18</span>
         <button type="button" id="masJugadores">+</button>
-
       </div>
 
       <div class="tarjeta" style="margin:15px 0 0">
@@ -614,13 +729,10 @@ body {
 
       <p class="descripcion" style="text-align:center">
         Se establecerá la vida máxima y se
-        restablecerá la vida actual de los
-        cuatro villanos.
+        restablecerá la vida actual de los cuatro villanos.
       </p>
 
     </div>
-
-    <!-- RESTABLECER -->
 
     <div class="tarjeta">
 
@@ -629,11 +741,12 @@ body {
       </h3>
 
       <p class="descripcion">
-        Devuelve a los cuatro villanos su vida
-        máxima sin cambiar el número de jugadores.
+        Devuelve a los cuatro villanos su vida máxima
+        sin cambiar el número de jugadores ni la clasificación.
       </p>
 
       <button
+        type="button"
         class="boton peligro grande"
         id="restablecerTodos"
       >
@@ -642,13 +755,9 @@ body {
 
     </div>
 
-    <!-- MARCADOR -->
-
     <div class="tarjeta">
 
-      <h3 class="nombre-villano">
-        Marcador general
-      </h3>
+      <h3 class="nombre-villano">Marcador general</h3>
 
       <a
         class="boton secundario"
@@ -670,11 +779,9 @@ body {
 
 </main>
 
-<!-- =====================================
-     MODAL QR
-===================================== -->
+<!-- MODAL QR -->
 
-<div id="modalQR" class="modal-qr">
+<div id="modalQR" class="modal-qr" role="dialog" aria-modal="true">
 
   <div class="modal-contenido">
 
@@ -699,7 +806,7 @@ body {
 
 </div>
 
-<!-- LIBRERÍA QR -->
+<!-- GENERADOR QR -->
 
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 
@@ -713,6 +820,7 @@ from "https://www.gstatic.com/firebasejs/13.2.0/firebase-app.js";
 import {
   getFirestore,
   doc,
+  collection,
   onSnapshot,
   runTransaction
 }
@@ -725,7 +833,9 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
 
-/* FIREBASE */
+/* =====================================
+   FIREBASE
+===================================== */
 
 const firebaseConfig = {
   apiKey: "AIzaSyDrZ0oOMYX0YH2cvgYD4pc9zU1jNenC1v8",
@@ -740,7 +850,9 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-/* VILLANOS */
+/* =====================================
+   CONFIGURACIÓN
+===================================== */
 
 const villanos = [
   {
@@ -766,12 +878,18 @@ const villanos = [
 ];
 
 const estado = document.getElementById("estado");
+
 const datosVillanos = {};
+const datosMesas = new Map();
 
 let operacionesActivas = false;
 let suscripcionesIniciadas = false;
+let clasificacionCargada = false;
+let reiniciandoClasificacion = false;
 
-/* PESTAÑAS */
+/* =====================================
+   PESTAÑAS
+===================================== */
 
 document.querySelectorAll(".pestana").forEach(boton => {
 
@@ -792,7 +910,9 @@ document.querySelectorAll(".pestana").forEach(boton => {
 
 });
 
-/* CREAR TARJETAS DE VILLANOS */
+/* =====================================
+   TARJETAS DE VILLANOS
+===================================== */
 
 const lista = document.getElementById("listaVillanos");
 
@@ -867,7 +987,9 @@ villanos.forEach(v => {
 
 });
 
-/* ACTUALIZAR TARJETA */
+/* =====================================
+   ACTUALIZAR TARJETA
+===================================== */
 
 function actualizarTarjeta(id) {
 
@@ -891,10 +1013,11 @@ function actualizarTarjeta(id) {
   tarjeta.querySelectorAll("button").forEach(b => {
     b.disabled = operacionesActivas;
   });
-
 }
 
-/* BLOQUEAR BOTONES */
+/* =====================================
+   BLOQUEAR BOTONES
+===================================== */
 
 function bloquearBotones() {
 
@@ -910,9 +1033,12 @@ function bloquearBotones() {
   document.getElementById("aplicarJugadores").disabled =
     operacionesActivas;
 
+  actualizarBotonReinicioRanking();
 }
 
-/* GUARDAR VIDA ACTUAL */
+/* =====================================
+   GUARDAR VIDA ACTUAL
+===================================== */
 
 async function guardarVillano(id) {
 
@@ -978,7 +1104,9 @@ async function guardarVillano(id) {
   }
 }
 
-/* RESTABLECER UN VILLANO */
+/* =====================================
+   RESTABLECER UN VILLANO
+===================================== */
 
 async function restablecerVillano(id) {
 
@@ -1024,7 +1152,9 @@ async function restablecerVillano(id) {
   }
 }
 
-/* RESTABLECER TODOS */
+/* =====================================
+   RESTABLECER TODOS LOS VILLANOS
+===================================== */
 
 document.getElementById("restablecerTodos")
   .addEventListener("click", async () => {
@@ -1128,7 +1258,6 @@ function actualizarJugadores() {
 
     fila.append(nombre, valor);
     contenedor.appendChild(fila);
-
   });
 }
 
@@ -1311,7 +1440,6 @@ function mostrarQR(numero) {
   const titulo = document.getElementById("tituloQR");
   const contenedor = document.getElementById("codigoQRGrande");
 
-  // URL absoluta del panel de esta mesa.
   const url = new URL(
     "mesa.html?mesa=" + numero,
     window.location.href
@@ -1344,8 +1472,6 @@ function mostrarQR(numero) {
   document.body.style.overflow = "hidden";
 }
 
-/* CERRAR QR */
-
 function cerrarQR() {
 
   document.getElementById("modalQR")
@@ -1375,6 +1501,188 @@ document.addEventListener("keydown", evento => {
 });
 
 /* =====================================
+   CLASIFICACIÓN EN TIEMPO REAL
+===================================== */
+
+function actualizarBotonReinicioRanking() {
+
+  document.getElementById("reiniciarClasificacion").disabled =
+    !clasificacionCargada ||
+    reiniciandoClasificacion ||
+    operacionesActivas ||
+    datosMesas.size === 0;
+}
+
+function renderizarClasificacion() {
+
+  const contenedor =
+    document.getElementById("listaClasificacion");
+
+  const registros = [...datosMesas.values()];
+
+  registros.sort((a, b) =>
+    b.danoTotal - a.danoTotal || a.numero - b.numero
+  );
+
+  const danoTotal = registros.reduce(
+    (acumulado, mesa) => acumulado + mesa.danoTotal,
+    0
+  );
+
+  document.getElementById("danoTotalEvento").textContent =
+    danoTotal.toLocaleString("es-ES");
+
+  document.getElementById("mesasParticipantes").textContent =
+    String(registros.filter(m => m.danoTotal > 0).length);
+
+  contenedor.replaceChildren();
+
+  if (registros.length === 0) {
+
+    const mensaje = document.createElement("div");
+    mensaje.className = "sin-datos";
+    mensaje.textContent =
+      "Todavía no hay puntuaciones. Aparecerán cuando " +
+      "alguna mesa registre daño contra un villano.";
+
+    contenedor.appendChild(mensaje);
+    actualizarBotonReinicioRanking();
+    return;
+  }
+
+  registros.forEach((mesa, indice) => {
+
+    const fila = document.createElement("div");
+    fila.className = "fila-ranking";
+
+    if (indice === 0) fila.classList.add("primero");
+    if (indice === 1) fila.classList.add("segundo");
+    if (indice === 2) fila.classList.add("tercero");
+
+    const posicion = document.createElement("div");
+    posicion.className = "posicion-ranking";
+
+    posicion.textContent =
+      indice === 0 ? "🥇" :
+      indice === 1 ? "🥈" :
+      indice === 2 ? "🥉" :
+      String(indice + 1) + "º";
+
+    const nombre = document.createElement("div");
+    nombre.className = "nombre-ranking";
+    nombre.textContent =
+      "MESA " + String(mesa.numero).padStart(2, "0");
+
+    const puntos = document.createElement("div");
+    puntos.className = "puntos-ranking";
+
+    const cantidad = document.createElement("div");
+    cantidad.textContent =
+      mesa.danoTotal.toLocaleString("es-ES");
+
+    const etiqueta = document.createElement("small");
+    etiqueta.textContent = "DAÑO";
+
+    puntos.append(cantidad, etiqueta);
+    fila.append(posicion, nombre, puntos);
+
+    contenedor.appendChild(fila);
+  });
+
+  actualizarBotonReinicioRanking();
+}
+
+/* =====================================
+   REINICIAR PUNTUACIONES
+===================================== */
+
+document.getElementById("reiniciarClasificacion")
+  .addEventListener("click", async () => {
+
+    if (
+      !clasificacionCargada ||
+      reiniciandoClasificacion ||
+      operacionesActivas ||
+      datosMesas.size === 0
+    ) {
+      return;
+    }
+
+    const confirmar = confirm(
+      "¿Reiniciar la clasificación de todas las mesas?\n\n" +
+      "Todas las puntuaciones pasarán a 0.\n" +
+      "La vida de los villanos no cambiará."
+    );
+
+    if (!confirmar) return;
+
+    reiniciandoClasificacion = true;
+    actualizarBotonReinicioRanking();
+
+    estado.textContent = "Reiniciando clasificación...";
+
+    try {
+
+      // Documentos de mesa conocidos por la suscripción.
+      const ids = [...datosMesas.keys()];
+
+      const referencias = ids.map(id =>
+        doc(db, "mesas", id)
+      );
+
+      await runTransaction(db, async transaccion => {
+
+        const snapshots = [];
+
+        // Todas las lecturas antes de las escrituras.
+        for (const referencia of referencias) {
+
+          const snapshot = await transaccion.get(referencia);
+          snapshots.push(snapshot);
+        }
+
+        snapshots.forEach((snapshot, indice) => {
+
+          if (!snapshot.exists()) return;
+
+          const puntuacion = Number(
+            snapshot.data().danoTotal
+          );
+
+          if (!Number.isInteger(puntuacion) || puntuacion < 0) {
+            throw new Error("Puntuación incorrecta");
+          }
+
+          // Solo actualizar documentos existentes.
+          if (puntuacion !== 0) {
+            transaccion.update(referencias[indice], {
+              danoTotal: 0
+            });
+          }
+
+        });
+
+      });
+
+      estado.textContent =
+        "Clasificación reiniciada correctamente";
+
+    } catch (error) {
+
+      console.error("Error al reiniciar clasificación:", error);
+
+      estado.textContent =
+        "No se pudo reiniciar la clasificación";
+
+    } finally {
+
+      reiniciandoClasificacion = false;
+      actualizarBotonReinicioRanking();
+
+    }
+  });
+
+/* =====================================
    FIREBASE EN TIEMPO REAL
 ===================================== */
 
@@ -1398,6 +1706,8 @@ onAuthStateChanged(auth, async usuario => {
 
   estado.textContent = "Conectado · En directo";
 
+  /* ESCUCHAR VILLANOS */
+
   villanos.forEach(v => {
 
     onSnapshot(
@@ -1412,12 +1722,13 @@ onAuthStateChanged(auth, async usuario => {
         }
 
         datosVillanos[v.id] = snapshot.data();
-
         actualizarTarjeta(v.id);
       },
 
       error => {
+
         console.error(error);
+
         estado.textContent =
           "Error de conexión con Firestore";
       }
@@ -1425,9 +1736,67 @@ onAuthStateChanged(auth, async usuario => {
 
   });
 
+  /* ESCUCHAR CLASIFICACIÓN */
+
+  onSnapshot(
+    collection(db, "mesas"),
+
+    snapshot => {
+
+      datosMesas.clear();
+
+      snapshot.forEach(documento => {
+
+        const datos = documento.data();
+
+        const numero = Number(datos.numero);
+        const danoTotal = Number(datos.danoTotal);
+
+        if (
+          !Number.isInteger(numero) ||
+          numero < 1 ||
+          numero > 30 ||
+          !Number.isInteger(danoTotal) ||
+          danoTotal < 0
+        ) {
+          console.warn(
+            "Documento de mesa incorrecto:",
+            documento.id
+          );
+          return;
+        }
+
+        datosMesas.set(documento.id, {
+          numero,
+          danoTotal
+        });
+
+      });
+
+      clasificacionCargada = true;
+      renderizarClasificacion();
+
+    },
+
+    error => {
+
+      console.error(
+        "Error al cargar clasificación:",
+        error
+      );
+
+      clasificacionCargada = false;
+      actualizarBotonReinicioRanking();
+
+      estado.textContent =
+        "Error de conexión con la clasificación";
+
+    }
+  );
+
 });
 
 </script>
-
 </body>
 </html>
+
