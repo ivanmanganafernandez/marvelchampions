@@ -9,11 +9,6 @@
 <title>Marvel Champions · Administración</title>
 
 <style>
-
-/* =====================================
-   VARIABLES
-===================================== */
-
 :root {
   --verde: #143c29;
   --verde-oscuro: #092719;
@@ -31,47 +26,30 @@ body {
   margin: 0;
   min-height: 100vh;
   padding: 20px;
-
   background-color: #e9d4a7;
   background-image:
     radial-gradient(#b99a68 1px, transparent 1px);
   background-size: 11px 11px;
-
   font-family: Arial, sans-serif;
 }
-
-/* =====================================
-   PANEL GENERAL
-===================================== */
 
 .panel {
   width: 100%;
   max-width: 900px;
   margin: 0 auto;
   padding: 20px;
-
   background: var(--verde);
-
   border: 3px solid var(--negro);
   border-radius: 12px;
-
   box-shadow: 5px 5px 0 var(--rojo);
 }
-
-/* =====================================
-   CABECERA
-===================================== */
 
 .cabecera {
   padding: 22px;
   margin-bottom: 22px;
-
-  background:
-    linear-gradient(#fff0c7, #e7c588);
-
+  background: linear-gradient(#fff0c7, #e7c588);
   border: 2px solid var(--negro);
   border-radius: 8px;
-
   text-align: center;
 }
 
@@ -84,15 +62,12 @@ body {
 
 .cabecera h1 {
   margin: 8px 0 0;
-
   color: var(--negro);
   font-family: Georgia, serif;
   font-size: clamp(24px, 4vw, 36px);
 }
 
-/* =====================================
-   PESTAÑAS
-===================================== */
+/* PESTAÑAS */
 
 .pestanas {
   display: flex;
@@ -103,15 +78,11 @@ body {
 .pestana {
   flex: 1;
   padding: 13px 8px;
-
   background: #245139;
-
   border: 2px solid #987c4c;
   border-radius: 7px;
-
   color: var(--crema);
   font-weight: bold;
-
   cursor: pointer;
 }
 
@@ -130,32 +101,24 @@ body {
 
 .titulo {
   margin: 0 0 16px;
-
   color: var(--crema);
-
   font-family: Georgia, serif;
   font-size: 21px;
 }
 
-/* =====================================
-   TARJETAS
-===================================== */
+/* TARJETAS */
 
 .tarjeta {
   margin-bottom: 14px;
   padding: 18px;
-
   background: #204832;
-
   border: 2px solid #a58b54;
   border-radius: 10px;
 }
 
 .nombre-villano {
   margin: 0 0 15px;
-
   color: var(--crema);
-
   font-family: Georgia, serif;
   font-size: 21px;
 }
@@ -166,25 +129,18 @@ body {
   line-height: 1.5;
 }
 
-/* =====================================
-   CAMPOS
-===================================== */
+/* CAMPOS */
 
 .campos {
   display: grid;
-
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
-
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
-
   margin-bottom: 15px;
 }
 
 .campo label {
   display: block;
   margin-bottom: 7px;
-
   color: #c7d9c9;
   font-size: 13px;
 }
@@ -192,14 +148,10 @@ body {
 .campo input {
   width: 100%;
   padding: 12px;
-
   background: #fff5da;
-
   border: 2px solid #34281c;
   border-radius: 6px;
-
   color: #241a13;
-
   font-size: 19px;
   font-weight: bold;
 }
@@ -210,9 +162,7 @@ body {
   cursor: not-allowed;
 }
 
-/* =====================================
-   BOTONES
-===================================== */
+/* BOTONES */
 
 .acciones {
   display: flex;
@@ -222,17 +172,12 @@ body {
 
 .boton {
   padding: 12px 17px;
-
   border: 2px solid var(--negro);
   border-radius: 7px;
-
   background: #e4bb70;
-
   color: #241a13;
-
   font-size: 14px;
   font-weight: bold;
-
   cursor: pointer;
 }
 
@@ -262,16 +207,12 @@ body {
   padding: 16px;
 }
 
-/* =====================================
-   CONTADORES
-===================================== */
+/* CONTADORES */
 
 .contador-mesas {
   display: flex;
-
   align-items: center;
   justify-content: center;
-
   gap: 22px;
   margin: 20px 0;
 }
@@ -279,40 +220,29 @@ body {
 .contador-mesas button {
   width: 55px;
   height: 55px;
-
   border: 2px solid var(--negro);
   border-radius: 8px;
-
   background: #e1b56c;
-
   font-size: 30px;
-
   cursor: pointer;
 }
 
 .numero-mesas {
   color: white;
-
   font-family: Georgia, serif;
   font-size: 42px;
   font-weight: bold;
 }
 
-/* =====================================
-   VIDA CALCULADA
-===================================== */
+/* VIDA CALCULADA */
 
 .vida-calculada {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   gap: 10px;
-
   padding: 11px 0;
-
-  border-bottom:
-    1px solid rgba(216,170,96,.25);
+  border-bottom: 1px solid rgba(216,170,96,.25);
 }
 
 .vida-calculada:last-child {
@@ -326,72 +256,156 @@ body {
 
 .vida-calculada .valor {
   color: white;
-
   font-family: Georgia, serif;
   font-size: 19px;
   font-weight: bold;
-
   white-space: nowrap;
 }
 
 /* =====================================
-   MESAS
+   BOTONES DE MESA
 ===================================== */
 
 .lista-mesas {
   display: grid;
-
-  grid-template-columns:
-    repeat(2, minmax(0, 1fr));
-
-  gap: 10px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
-.mesa {
-  padding: 15px;
-
-  background: #1d442f;
-
-  border: 1px solid #a58b54;
-  border-radius: 8px;
+.mesa-boton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 115px;
+  padding: 18px;
+  background: #24513a;
+  border: 2px solid #b89a62;
+  border-radius: 10px;
+  color: #fff0c7;
+  cursor: pointer;
 }
 
-.mesa strong {
-  display: block;
-  margin-bottom: 9px;
-
-  color: var(--crema);
+.mesa-boton:active {
+  transform: scale(.97);
 }
 
-.mesa a {
-  color: #f5cf87;
-  font-size: 13px;
-  overflow-wrap: anywhere;
+.mesa-boton strong {
+  font-family: Georgia, serif;
+  font-size: 21px;
+}
+
+.mesa-boton .icono-qr {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.mesa-boton span {
+  color: #bdd0c0;
+  font-size: 12px;
 }
 
 /* =====================================
-   ESTADO
+   VENTANA QR
 ===================================== */
+
+.modal-qr {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  background: rgba(0,0,0,.9);
+}
+
+.modal-qr.abierto {
+  display: flex;
+}
+
+.modal-contenido {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  padding: 35px 20px;
+  background: linear-gradient(#fff3d3, #e8c68c);
+  border: 4px solid #34251b;
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 0 0 3px #c83e43;
+}
+
+.cerrar-qr {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  color: #34251b;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+.modal-subtitulo {
+  color: #a63836;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.modal-contenido h2 {
+  margin: 15px 0 25px;
+  color: #25190e;
+  font-family: Georgia, serif;
+  font-size: 38px;
+}
+
+#codigoQRGrande {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 12px;
+  background: white;
+  border: 3px solid #34251b;
+  border-radius: 8px;
+}
+
+#codigoQRGrande img,
+#codigoQRGrande canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.modal-contenido p {
+  margin: 25px 0 0;
+  color: #34251b;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* ESTADO */
 
 .estado {
   margin-top: 18px;
   padding: 11px;
-
   color: #f3dba8;
-
   background: #0c2b1b;
   border-radius: 7px;
-
   text-align: center;
   font-size: 13px;
 }
 
-/* =====================================
-   MÓVILES
-===================================== */
+/* MÓVILES */
 
 @media (max-width: 600px) {
-
   body {
     padding: 8px;
   }
@@ -422,7 +436,16 @@ body {
   }
 
   .lista-mesas {
-    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .mesa-boton {
+    padding: 12px 7px;
+    min-height: 100px;
+  }
+
+  .mesa-boton strong {
+    font-size: 17px;
   }
 
   .vida-calculada .nombre {
@@ -432,8 +455,15 @@ body {
   .vida-calculada .valor {
     font-size: 16px;
   }
-}
 
+  .modal-contenido {
+    padding: 30px 15px;
+  }
+
+  .modal-contenido h2 {
+    font-size: 32px;
+  }
+}
 </style>
 </head>
 
@@ -444,47 +474,27 @@ body {
   <!-- CABECERA -->
 
   <header class="cabecera">
-
-    <small>
-      MARVEL CHAMPIONS · ESPECIAL NAVIDAD
-    </small>
-
+    <small>MARVEL CHAMPIONS · ESPECIAL NAVIDAD</small>
     <h1>ADMINISTRACIÓN</h1>
-
   </header>
-
 
   <!-- PESTAÑAS -->
 
   <nav class="pestanas">
-
-    <button
-      class="pestana activa"
-      data-tab="villanos"
-    >
+    <button class="pestana activa" data-tab="villanos">
       VILLANOS
     </button>
 
-    <button
-      class="pestana"
-      data-tab="mesas"
-    >
+    <button class="pestana" data-tab="mesas">
       MESAS
     </button>
 
-    <button
-      class="pestana"
-      data-tab="control"
-    >
+    <button class="pestana" data-tab="control">
       CONTROL
     </button>
-
   </nav>
 
-
-  <!-- =====================================
-       VILLANOS
-  ===================================== -->
+  <!-- VILLANOS -->
 
   <section class="seccion activa" id="villanos">
 
@@ -493,20 +503,16 @@ body {
     </h2>
 
     <p class="descripcion">
-      La vida máxima se calcula automáticamente
-      según el número de jugadores configurado.
+      La vida máxima depende del número de jugadores.
       Desde aquí puedes corregir la vida actual
-      de cada villano durante el evento.
+      durante el evento.
     </p>
 
     <div id="listaVillanos"></div>
 
   </section>
 
-
-  <!-- =====================================
-       MESAS
-  ===================================== -->
+  <!-- MESAS -->
 
   <section class="seccion" id="mesas">
 
@@ -518,34 +524,23 @@ body {
 
       <p class="descripcion">
         Selecciona cuántas mesas participarán.
-        Cada mesa tendrá su propio enlace.
         Este valor es independiente del número
         de jugadores.
       </p>
 
       <div class="contador-mesas">
 
-        <button
-          type="button"
-          id="menosMesas"
-        >−</button>
+        <button type="button" id="menosMesas">−</button>
 
-        <span
-          class="numero-mesas"
-          id="numeroMesas"
-        >6</span>
+        <span class="numero-mesas" id="numeroMesas">
+          6
+        </span>
 
-        <button
-          type="button"
-          id="masMesas"
-        >+</button>
+        <button type="button" id="masMesas">+</button>
 
       </div>
 
-      <button
-        class="boton grande"
-        id="guardarMesas"
-      >
+      <button class="boton grande" id="guardarMesas">
         Guardar número de mesas
       </button>
 
@@ -555,17 +550,17 @@ body {
       Accesos a las mesas
     </h2>
 
-    <div
-      class="lista-mesas"
-      id="listaMesas"
-    ></div>
+    <p class="descripcion">
+      Pulsa sobre una mesa para mostrar su código QR.
+      Los jugadores podrán escanearlo directamente
+      desde tu móvil.
+    </p>
+
+    <div class="lista-mesas" id="listaMesas"></div>
 
   </section>
 
-
-  <!-- =====================================
-       CONTROL
-  ===================================== -->
+  <!-- CONTROL -->
 
   <section class="seccion" id="control">
 
@@ -573,8 +568,7 @@ body {
       Control del evento
     </h2>
 
-
-    <!-- CONFIGURACIÓN DE JUGADORES -->
+    <!-- JUGADORES -->
 
     <div class="tarjeta">
 
@@ -583,46 +577,32 @@ body {
       </h3>
 
       <p class="descripcion">
-        Indica el número total de jugadores.
-        La vida máxima de los cuatro villanos
-        se calculará automáticamente.
+        Introduce el número total de jugadores.
+        La vida de los villanos se calculará
+        automáticamente.
       </p>
 
       <div class="contador-mesas">
 
-        <button
-          type="button"
-          id="menosJugadores"
-        >−</button>
+        <button type="button" id="menosJugadores">−</button>
 
-        <span
-          class="numero-mesas"
-          id="numeroJugadores"
-        >18</span>
+        <span class="numero-mesas" id="numeroJugadores">
+          18
+        </span>
 
-        <button
-          type="button"
-          id="masJugadores"
-        >+</button>
+        <button type="button" id="masJugadores">+</button>
 
       </div>
 
-
-      <!-- VIDA CALCULADA -->
-
       <div class="tarjeta" style="margin:15px 0 0">
 
-        <h3
-          class="nombre-villano"
-          style="font-size:17px"
-        >
+        <h3 class="nombre-villano" style="font-size:17px">
           Vida calculada
         </h3>
 
         <div id="vidasCalculadas"></div>
 
       </div>
-
 
       <button
         type="button"
@@ -632,20 +612,15 @@ body {
         Aplicar configuración de jugadores
       </button>
 
-      <p
-        class="descripcion"
-        style="text-align:center"
-      >
-        Al aplicar esta configuración,
-        la vida máxima y la vida actual
-        de los cuatro villanos se establecerán
-        con los valores calculados.
+      <p class="descripcion" style="text-align:center">
+        Se establecerá la vida máxima y se
+        restablecerá la vida actual de los
+        cuatro villanos.
       </p>
 
     </div>
 
-
-    <!-- RESTABLECER VIDAS -->
+    <!-- RESTABLECER -->
 
     <div class="tarjeta">
 
@@ -654,9 +629,8 @@ body {
       </h3>
 
       <p class="descripcion">
-        Esta acción devolverá a los cuatro
-        villanos su vida máxima configurada,
-        sin modificar el número de jugadores.
+        Devuelve a los cuatro villanos su vida
+        máxima sin cambiar el número de jugadores.
       </p>
 
       <button
@@ -668,8 +642,7 @@ body {
 
     </div>
 
-
-    <!-- MARCADOR GENERAL -->
+    <!-- MARCADOR -->
 
     <div class="tarjeta">
 
@@ -691,19 +664,46 @@ body {
 
   </section>
 
-
-  <!-- ESTADO -->
-
   <div class="estado" id="estado">
     Conectando con Firebase...
   </div>
 
 </main>
 
-
 <!-- =====================================
-     FIREBASE Y JAVASCRIPT
+     MODAL QR
 ===================================== -->
+
+<div id="modalQR" class="modal-qr">
+
+  <div class="modal-contenido">
+
+    <button
+      type="button"
+      class="cerrar-qr"
+      id="cerrarQR"
+      aria-label="Cerrar código QR"
+    >×</button>
+
+    <div class="modal-subtitulo">
+      MARVEL CHAMPIONS · NAVIDAD
+    </div>
+
+    <h2 id="tituloQR">MESA 01</h2>
+
+    <div id="codigoQRGrande"></div>
+
+    <p>ESCANEA PARA JUGAR</p>
+
+  </div>
+
+</div>
+
+<!-- LIBRERÍA QR -->
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
+<!-- FIREBASE -->
 
 <script type="module">
 
@@ -725,10 +725,7 @@ import {
 }
 from "https://www.gstatic.com/firebasejs/13.2.0/firebase-auth.js";
 
-
-/* =====================================
-   CONFIGURACIÓN FIREBASE
-===================================== */
+/* FIREBASE */
 
 const firebaseConfig = {
   apiKey: "AIzaSyDrZ0oOMYX0YH2cvgYD4pc9zU1jNenC1v8",
@@ -743,10 +740,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const auth = getAuth(app);
 
-
-/* =====================================
-   VILLANOS Y MULTIPLICADORES
-===================================== */
+/* VILLANOS */
 
 const villanos = [
   {
@@ -772,16 +766,12 @@ const villanos = [
 ];
 
 const estado = document.getElementById("estado");
-
 const datosVillanos = {};
 
 let operacionesActivas = false;
 let suscripcionesIniciadas = false;
 
-
-/* =====================================
-   PESTAÑAS
-===================================== */
+/* PESTAÑAS */
 
 document.querySelectorAll(".pestana").forEach(boton => {
 
@@ -802,33 +792,22 @@ document.querySelectorAll(".pestana").forEach(boton => {
 
 });
 
-
-/* =====================================
-   CREAR TARJETAS DE VILLANOS
-===================================== */
+/* CREAR TARJETAS DE VILLANOS */
 
 const lista = document.getElementById("listaVillanos");
 
 villanos.forEach(v => {
 
   const tarjeta = document.createElement("div");
-
   tarjeta.className = "tarjeta";
   tarjeta.dataset.id = v.id;
 
   const titulo = document.createElement("h3");
-
   titulo.className = "nombre-villano";
   titulo.textContent = v.nombre;
 
-
-  /* CAMPOS */
-
   const campos = document.createElement("div");
   campos.className = "campos";
-
-
-  /* VIDA MÁXIMA */
 
   const campoMax = document.createElement("div");
   campoMax.className = "campo";
@@ -837,19 +816,13 @@ villanos.forEach(v => {
   labelMax.textContent = "Vida máxima";
 
   const inputMax = document.createElement("input");
-
   inputMax.type = "number";
   inputMax.min = "1";
   inputMax.max = "1000000";
   inputMax.className = "maxima";
-
-  // La vida máxima depende de los jugadores.
   inputMax.readOnly = true;
 
   campoMax.append(labelMax, inputMax);
-
-
-  /* VIDA ACTUAL */
 
   const campoActual = document.createElement("div");
   campoActual.className = "campo";
@@ -858,30 +831,23 @@ villanos.forEach(v => {
   labelActual.textContent = "Vida actual";
 
   const inputActual = document.createElement("input");
-
   inputActual.type = "number";
   inputActual.min = "0";
   inputActual.className = "actual";
 
   campoActual.append(labelActual, inputActual);
-
   campos.append(campoMax, campoActual);
-
-
-  /* BOTONES */
 
   const acciones = document.createElement("div");
   acciones.className = "acciones";
 
   const guardar = document.createElement("button");
-
   guardar.className = "boton";
   guardar.type = "button";
   guardar.textContent = "Guardar vida actual";
   guardar.disabled = true;
 
   const reset = document.createElement("button");
-
   reset.className = "boton secundario";
   reset.type = "button";
   reset.textContent = "Restablecer vida";
@@ -896,17 +862,12 @@ villanos.forEach(v => {
   });
 
   acciones.append(guardar, reset);
-
   tarjeta.append(titulo, campos, acciones);
-
   lista.appendChild(tarjeta);
 
 });
 
-
-/* =====================================
-   SINCRONIZAR CAMPOS
-===================================== */
+/* ACTUALIZAR TARJETA */
 
 function actualizarTarjeta(id) {
 
@@ -918,15 +879,11 @@ function actualizarTarjeta(id) {
 
   if (!tarjeta || !datos) return;
 
-  const maxima =
-    tarjeta.querySelector(".maxima");
-
-  const actual =
-    tarjeta.querySelector(".actual");
+  const maxima = tarjeta.querySelector(".maxima");
+  const actual = tarjeta.querySelector(".actual");
 
   maxima.value = datos.vidaMaxima;
 
-  // No sobrescribir mientras se está editando.
   if (document.activeElement !== actual) {
     actual.value = datos.vidaActual;
   }
@@ -937,19 +894,14 @@ function actualizarTarjeta(id) {
 
 }
 
-
-/* =====================================
-   BLOQUEAR BOTONES
-===================================== */
+/* BLOQUEAR BOTONES */
 
 function bloquearBotones() {
 
   document.querySelectorAll(
     '.tarjeta[data-id] button'
   ).forEach(b => {
-
     b.disabled = operacionesActivas;
-
   });
 
   document.getElementById("restablecerTodos").disabled =
@@ -960,10 +912,7 @@ function bloquearBotones() {
 
 }
 
-
-/* =====================================
-   GUARDAR VIDA ACTUAL
-===================================== */
+/* GUARDAR VIDA ACTUAL */
 
 async function guardarVillano(id) {
 
@@ -996,20 +945,16 @@ async function guardarVillano(id) {
 
     await runTransaction(db, async transaccion => {
 
-      const snapshot =
-        await transaccion.get(referencia);
+      const snapshot = await transaccion.get(referencia);
 
       if (!snapshot.exists()) {
         throw new Error("Villano no encontrado");
       }
 
-      const maxima =
-        Number(snapshot.data().vidaMaxima);
+      const maxima = Number(snapshot.data().vidaMaxima);
 
       if (actual > maxima) {
-        throw new Error(
-          "La vida actual supera la máxima"
-        );
+        throw new Error("La vida actual supera la máxima");
       }
 
       transaccion.update(referencia, {
@@ -1018,15 +963,12 @@ async function guardarVillano(id) {
 
     });
 
-    estado.textContent =
-      "Vida actual guardada correctamente";
+    estado.textContent = "Vida actual guardada correctamente";
 
   } catch (error) {
 
     console.error(error);
-
-    estado.textContent =
-      "No se pudo guardar la vida actual";
+    estado.textContent = "Error al guardar la vida";
 
   } finally {
 
@@ -1034,21 +976,15 @@ async function guardarVillano(id) {
     bloquearBotones();
 
   }
-
 }
 
-
-/* =====================================
-   RESTABLECER UN VILLANO
-===================================== */
+/* RESTABLECER UN VILLANO */
 
 async function restablecerVillano(id) {
 
   if (operacionesActivas) return;
 
-  if (!confirm(
-    "¿Restablecer la vida de este villano?"
-  )) {
+  if (!confirm("¿Restablecer la vida de este villano?")) {
     return;
   }
 
@@ -1061,8 +997,7 @@ async function restablecerVillano(id) {
 
     await runTransaction(db, async transaccion => {
 
-      const snapshot =
-        await transaccion.get(referencia);
+      const snapshot = await transaccion.get(referencia);
 
       if (!snapshot.exists()) {
         throw new Error("Villano no encontrado");
@@ -1079,9 +1014,7 @@ async function restablecerVillano(id) {
   } catch (error) {
 
     console.error(error);
-
-    estado.textContent =
-      "Error al restablecer la vida";
+    estado.textContent = "Error al restablecer la vida";
 
   } finally {
 
@@ -1089,13 +1022,9 @@ async function restablecerVillano(id) {
     bloquearBotones();
 
   }
-
 }
 
-
-/* =====================================
-   RESTABLECER TODOS
-===================================== */
+/* RESTABLECER TODOS */
 
 document.getElementById("restablecerTodos")
   .addEventListener("click", async () => {
@@ -1104,15 +1033,12 @@ document.getElementById("restablecerTodos")
 
     if (!confirm(
       "¿Restablecer la vida de los cuatro villanos?"
-    )) {
-      return;
-    }
+    )) return;
 
     operacionesActivas = true;
     bloquearBotones();
 
-    estado.textContent =
-      "Restableciendo villanos...";
+    estado.textContent = "Restableciendo villanos...";
 
     try {
 
@@ -1124,7 +1050,6 @@ document.getElementById("restablecerTodos")
 
         const snapshots = [];
 
-        // Todas las lecturas antes de escribir.
         for (const referencia of referencias) {
 
           const snapshot =
@@ -1137,7 +1062,6 @@ document.getElementById("restablecerTodos")
           snapshots.push(snapshot);
         }
 
-        // Actualizar los cuatro.
         snapshots.forEach((snapshot, i) => {
 
           transaccion.update(referencias[i], {
@@ -1148,15 +1072,12 @@ document.getElementById("restablecerTodos")
 
       });
 
-      estado.textContent =
-        "Los cuatro villanos han sido restablecidos";
+      estado.textContent = "Todos los villanos restablecidos";
 
     } catch (error) {
 
       console.error(error);
-
-      estado.textContent =
-        "Error al restablecer las vidas";
+      estado.textContent = "Error al restablecer las vidas";
 
     } finally {
 
@@ -1164,9 +1085,7 @@ document.getElementById("restablecerTodos")
       bloquearBotones();
 
     }
-
   });
-
 
 /* =====================================
    CONFIGURACIÓN DE JUGADORES
@@ -1181,9 +1100,6 @@ numeroJugadores = Math.max(
   Math.min(999, Math.floor(numeroJugadores) || 18)
 );
 
-
-/* MOSTRAR CÁLCULOS */
-
 function actualizarJugadores() {
 
   document.getElementById("numeroJugadores").textContent =
@@ -1196,8 +1112,7 @@ function actualizarJugadores() {
 
   villanos.forEach(v => {
 
-    const vida =
-      numeroJugadores * v.multiplicador;
+    const vida = numeroJugadores * v.multiplicador;
 
     const fila = document.createElement("div");
     fila.className = "vida-calculada";
@@ -1208,52 +1123,30 @@ function actualizarJugadores() {
 
     const valor = document.createElement("span");
     valor.className = "valor";
-
     valor.textContent =
       vida.toLocaleString("es-ES") + " PV";
 
     fila.append(nombre, valor);
-
     contenedor.appendChild(fila);
 
   });
-
 }
-
-
-/* BOTÓN MENOS */
 
 document.getElementById("menosJugadores")
   .addEventListener("click", () => {
 
-    numeroJugadores = Math.max(
-      1,
-      numeroJugadores - 1
-    );
-
+    numeroJugadores = Math.max(1, numeroJugadores - 1);
     actualizarJugadores();
 
   });
-
-
-/* BOTÓN MÁS */
 
 document.getElementById("masJugadores")
   .addEventListener("click", () => {
 
-    numeroJugadores = Math.min(
-      999,
-      numeroJugadores + 1
-    );
-
+    numeroJugadores = Math.min(999, numeroJugadores + 1);
     actualizarJugadores();
 
   });
-
-
-/* =====================================
-   APLICAR CONFIGURACIÓN DE JUGADORES
-===================================== */
 
 document.getElementById("aplicarJugadores")
   .addEventListener("click", async () => {
@@ -1262,21 +1155,15 @@ document.getElementById("aplicarJugadores")
 
     const jugadoresAplicados = numeroJugadores;
 
-    const mensaje =
-      "¿Aplicar la configuración de " +
-      jugadoresAplicados +
-      " jugadores?\n\n" +
-      "Esto recalculará la vida máxima y " +
-      "RESTABLECERÁ la vida actual de los " +
-      "cuatro villanos.";
-
-    if (!confirm(mensaje)) return;
+    if (!confirm(
+      "¿Aplicar " + jugadoresAplicados +
+      " jugadores?\n\nSe restablecerá la vida de los cuatro villanos."
+    )) return;
 
     operacionesActivas = true;
     bloquearBotones();
 
-    estado.textContent =
-      "Configurando la vida de los villanos...";
+    estado.textContent = "Aplicando configuración...";
 
     try {
 
@@ -1286,39 +1173,29 @@ document.getElementById("aplicarJugadores")
           doc(db, "villanos", v.id)
         );
 
-        const snapshots = [];
-
-        // Primero leer todos los documentos.
         for (const referencia of referencias) {
 
           const snapshot =
             await transaccion.get(referencia);
 
           if (!snapshot.exists()) {
-            throw new Error(
-              "No existe uno de los villanos"
-            );
+            throw new Error("Falta un villano");
           }
-
-          snapshots.push(snapshot);
         }
 
-        // Aplicar las fórmulas.
         villanos.forEach((v, i) => {
 
-          const nuevaVida =
-            jugadoresAplicados * v.multiplicador;
+          const vida = jugadoresAplicados * v.multiplicador;
 
           transaccion.update(referencias[i], {
-            vidaMaxima: nuevaVida,
-            vidaActual: nuevaVida
+            vidaMaxima: vida,
+            vidaActual: vida
           });
 
         });
 
       });
 
-      // Recordar el número en este navegador.
       localStorage.setItem(
         "navidad_numero_jugadores",
         String(jugadoresAplicados)
@@ -1326,15 +1203,12 @@ document.getElementById("aplicarJugadores")
 
       estado.textContent =
         "Configuración aplicada: " +
-        jugadoresAplicados +
-        " jugadores";
+        jugadoresAplicados + " jugadores";
 
     } catch (error) {
 
       console.error(error);
-
-      estado.textContent =
-        "Error al aplicar la configuración";
+      estado.textContent = "Error al aplicar configuración";
 
     } finally {
 
@@ -1342,12 +1216,9 @@ document.getElementById("aplicarJugadores")
       bloquearBotones();
 
     }
-
   });
 
-
 actualizarJugadores();
-
 
 /* =====================================
    GESTIÓN DE MESAS
@@ -1362,9 +1233,6 @@ numeroMesas = Math.max(
   Math.min(30, Math.floor(numeroMesas) || 6)
 );
 
-
-/* ACTUALIZAR MESAS */
-
 function actualizarMesas() {
 
   document.getElementById("numeroMesas").textContent =
@@ -1377,64 +1245,46 @@ function actualizarMesas() {
 
   for (let i = 1; i <= numeroMesas; i++) {
 
-    const div = document.createElement("div");
-    div.className = "mesa";
+    const boton = document.createElement("button");
+    boton.type = "button";
+    boton.className = "mesa-boton";
+
+    const icono = document.createElement("div");
+    icono.className = "icono-qr";
+    icono.textContent = "▦";
 
     const titulo = document.createElement("strong");
-
     titulo.textContent =
-      "Mesa " + String(i).padStart(2, "0");
+      "MESA " + String(i).padStart(2, "0");
 
-    const enlace = document.createElement("a");
+    const texto = document.createElement("span");
+    texto.textContent = "MOSTRAR QR";
 
-    enlace.href =
-      "mesa.html?mesa=" + i;
+    boton.append(icono, titulo, texto);
 
-    enlace.target = "_blank";
-    enlace.rel = "noopener";
+    boton.addEventListener("click", () => {
+      mostrarQR(i);
+    });
 
-    enlace.textContent = "Abrir panel de mesa";
-
-    div.append(titulo, enlace);
-
-    contenedor.appendChild(div);
-
+    contenedor.appendChild(boton);
   }
-
 }
-
-
-/* REDUCIR MESAS */
 
 document.getElementById("menosMesas")
   .addEventListener("click", () => {
 
-    numeroMesas = Math.max(
-      1,
-      numeroMesas - 1
-    );
-
+    numeroMesas = Math.max(1, numeroMesas - 1);
     actualizarMesas();
 
   });
-
-
-/* AUMENTAR MESAS */
 
 document.getElementById("masMesas")
   .addEventListener("click", () => {
 
-    numeroMesas = Math.min(
-      30,
-      numeroMesas + 1
-    );
-
+    numeroMesas = Math.min(30, numeroMesas + 1);
     actualizarMesas();
 
   });
-
-
-/* GUARDAR MESAS */
 
 document.getElementById("guardarMesas")
   .addEventListener("click", () => {
@@ -1449,9 +1299,80 @@ document.getElementById("guardarMesas")
 
   });
 
-
 actualizarMesas();
 
+/* =====================================
+   MOSTRAR QR
+===================================== */
+
+function mostrarQR(numero) {
+
+  const modal = document.getElementById("modalQR");
+  const titulo = document.getElementById("tituloQR");
+  const contenedor = document.getElementById("codigoQRGrande");
+
+  // URL absoluta del panel de esta mesa.
+  const url = new URL(
+    "mesa.html?mesa=" + numero,
+    window.location.href
+  ).href;
+
+  titulo.textContent =
+    "MESA " + String(numero).padStart(2, "0");
+
+  contenedor.replaceChildren();
+
+  if (typeof QRCode === "undefined") {
+
+    contenedor.textContent =
+      "No se pudo cargar el generador QR";
+
+  } else {
+
+    new QRCode(contenedor, {
+      text: url,
+      width: 250,
+      height: 250,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.M
+    });
+
+  }
+
+  modal.classList.add("abierto");
+  document.body.style.overflow = "hidden";
+}
+
+/* CERRAR QR */
+
+function cerrarQR() {
+
+  document.getElementById("modalQR")
+    .classList.remove("abierto");
+
+  document.body.style.overflow = "";
+}
+
+document.getElementById("cerrarQR")
+  .addEventListener("click", cerrarQR);
+
+document.getElementById("modalQR")
+  .addEventListener("click", evento => {
+
+    if (evento.target.id === "modalQR") {
+      cerrarQR();
+    }
+
+  });
+
+document.addEventListener("keydown", evento => {
+
+  if (evento.key === "Escape") {
+    cerrarQR();
+  }
+
+});
 
 /* =====================================
    FIREBASE EN TIEMPO REAL
@@ -1462,16 +1383,10 @@ onAuthStateChanged(auth, async usuario => {
   if (!usuario) {
 
     try {
-
       await signInAnonymously(auth);
-
     } catch (error) {
-
       console.error(error);
-
-      estado.textContent =
-        "Error de autenticación";
-
+      estado.textContent = "Error de autenticación";
     }
 
     return;
@@ -1481,8 +1396,7 @@ onAuthStateChanged(auth, async usuario => {
 
   suscripcionesIniciadas = true;
 
-  estado.textContent =
-    "Conectado · En directo";
+  estado.textContent = "Conectado · En directo";
 
   villanos.forEach(v => {
 
@@ -1492,27 +1406,20 @@ onAuthStateChanged(auth, async usuario => {
       snapshot => {
 
         if (!snapshot.exists()) {
-
           estado.textContent =
             "No existe el villano: " + v.id;
-
           return;
         }
 
-        datosVillanos[v.id] =
-          snapshot.data();
+        datosVillanos[v.id] = snapshot.data();
 
         actualizarTarjeta(v.id);
-
       },
 
       error => {
-
         console.error(error);
-
         estado.textContent =
           "Error de conexión con Firestore";
-
       }
     );
 
