@@ -7,124 +7,260 @@
   <title>Marvel Champions · Navidad</title>
 
   <style>
-    * { box-sizing: border-box; }
+   
+* {
+  box-sizing: border-box;
+}
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      background: #101b18;
-      color: #fff4db;
-      font-family: Arial, sans-serif;
-    }
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
-    .marcador {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-template-rows: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-      padding: 18px;
-      min-height: 100vh;
-    }
+body {
+  background:
+    radial-gradient(ellipse at 50% 0%, #31543b 0%, transparent 65%),
+    linear-gradient(145deg, #10251c, #08140f);
+  color: #fff5dc;
+  font-family: Georgia, "Times New Roman", serif;
+}
 
-    .villano {
-      display: flex;
-      flex-direction: column;
-      min-height: 0;
-      overflow: hidden;
-      border: 2px solid #b99a68;
-      border-radius: 14px;
-      background: #20382d;
-      text-align: center;
-    }
+/* Cuadrícula que ocupa toda la pantalla */
+.marcador {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  gap: clamp(6px, 1.3vh, 18px);
+  padding: clamp(6px, 1.3vh, 18px);
+  overflow: hidden;
+}
 
-    .imagen {
-      flex: 1;
-      min-height: 0;
-      overflow: hidden;
-      background: #14241d;
-    }
+/* Tarjetas */
+.villano {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  border: 2px solid #c6a568;
+  border-radius: 13px;
+  background:
+    linear-gradient(145deg, #294934, #142a1e);
+  box-shadow:
+    inset 0 0 25px rgba(0,0,0,.25),
+    0 5px 15px rgba(0,0,0,.25);
+}
 
-    .imagen img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
+/* Línea decorativa dorada */
+.villano::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #e9c982,
+    transparent
+  );
+  z-index: 2;
+}
 
-    .informacion {
-      padding: 12px 20px 16px;
-    }
+/* Copo navideño */
+.villano::after {
+  content: "❄";
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  color: #e9d6aa;
+  font-size: clamp(13px, 2vw, 24px);
+  opacity: .7;
+  pointer-events: none;
+}
 
-    .nombre {
-      margin: 0 0 8px;
-      color: #e5bd74;
-      font-size: clamp(16px, 2vw, 27px);
-      font-weight: bold;
-      text-transform: uppercase;
-    }
+/* Imagen del villano */
+.imagen {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 9px 0;
+}
 
-    .vida {
-      margin-bottom: 10px;
-      font-size: clamp(23px, 3vw, 42px);
-      font-weight: bold;
-    }
+.imagen img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,.4));
+}
 
-    .vida .maxima {
-      color: #9eb5a7;
-      font-size: 0.55em;
-      font-weight: normal;
-    }
+/* Información de vida */
+.informacion {
+  flex: 0 0 auto;
+  min-width: 0;
+  padding: clamp(6px, 1vh, 12px)
+           clamp(9px, 1.5vw, 22px);
+  text-align: center;
+  background: rgba(5, 19, 12, .55);
+  border-top: 1px solid rgba(218, 183, 109, .4);
+}
 
-    .barra-fondo {
-      height: 18px;
-      overflow: hidden;
-      border-radius: 20px;
-      background: #0c1712;
-    }
+.nombre {
+  margin: 0 0 4px;
+  font-family: Georgia, serif;
+  font-size: clamp(11px, 1.8vw, 25px);
+  font-weight: bold;
+  color: #ebc77e;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
 
-    .barra {
-      width: 100%;
-      height: 100%;
-      border-radius: inherit;
-      background: #c64343;
-      transition: width 0.8s ease;
-    }
+.vida {
+  margin-bottom: 7px;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-size: clamp(19px, 3vw, 39px);
+  font-weight: 800;
+  line-height: 1.1;
+}
 
-    .porcentaje {
-      margin-top: 7px;
-      color: #d1dfd4;
-      font-size: 15px;
-    }
+.vida .maxima {
+  color: #bbcabd;
+  font-size: .48em;
+  font-weight: normal;
+}
 
-    .derrotado .imagen {
-      filter: grayscale(1);
-      opacity: 0.45;
-    }
+/* Barras de vida */
+.barra-fondo {
+  width: 100%;
+  height: clamp(9px, 1.5vh, 19px);
+  overflow: hidden;
+  background: #07140d;
+  border: 1px solid #866d42;
+  border-radius: 20px;
+}
 
-    .derrotado .barra {
-      width: 0%;
-    }
+.barra {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    #e06b60,
+    #aa292e
+  );
+  box-shadow: 0 0 9px rgba(211, 62, 59, .45);
+  transition: width .8s ease;
+}
 
-    #estado {
-      position: fixed;
-      bottom: 12px;
-      right: 12px;
-      z-index: 10;
-      padding: 8px 12px;
-      border-radius: 8px;
-      background: #111c18e8;
-      color: #dce8df;
-      font-size: 12px;
-    }
+.porcentaje {
+  margin-top: 5px;
+  font-family: Arial, sans-serif;
+  font-size: clamp(10px, 1.1vw, 15px);
+  color: #e2d3ac;
+}
 
-    @media (max-width: 650px) {
-      .marcador {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-      }
+/* Villano derrotado */
+.derrotado .imagen {
+  filter: grayscale(1);
+  opacity: .45;
+}
 
-      .villano { min-height: 340px; }
-      .imagen { height: 230px; flex: none; }
-    }
+.derrotado .barra {
+  width: 0%;
+}
+
+/* Estado de conexión */
+#estado {
+  position: fixed;
+  bottom: 3px;
+  right: 50%;
+  transform: translateX(50%);
+  z-index: 20;
+  padding: 3px 9px;
+  border-radius: 8px;
+  background: rgba(4, 17, 10, .85);
+  color: #b8cabd;
+  font-family: Arial, sans-serif;
+  font-size: 10px;
+  pointer-events: none;
+}
+
+/* Pantallas pequeñas */
+@media (max-width: 650px) {
+  .marcador {
+    gap: 7px;
+    padding: 7px;
+  }
+
+  .villano {
+    border-width: 1px;
+    border-radius: 9px;
+  }
+
+  .imagen {
+    padding: 5px;
+  }
+
+  .informacion {
+    padding: 7px 5px 9px;
+  }
+
+  .nombre {
+    font-size: clamp(10px, 2.8vw, 15px);
+    letter-spacing: 0;
+  }
+
+  .vida {
+    font-size: clamp(17px, 5vw, 26px);
+  }
+
+  .porcentaje {
+    font-size: 10px;
+  }
+
+  .villano::after {
+    top: 7px;
+    right: 8px;
+    font-size: 13px;
+  }
+}
+
+/* Pantallas de poca altura */
+@media (max-height: 550px) {
+  .informacion {
+    padding-top: 4px;
+    padding-bottom: 5px;
+  }
+
+  .nombre {
+    margin-bottom: 2px;
+    font-size: clamp(10px, 2vh, 16px);
+  }
+
+  .vida {
+    margin-bottom: 3px;
+    font-size: clamp(15px, 4vh, 27px);
+  }
+
+  .porcentaje {
+    margin-top: 2px;
+    font-size: 10px;
+  }
+}
+
   </style>
 </head>
 
